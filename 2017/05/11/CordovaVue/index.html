@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://crossgit.github.io">
   <title>cordova-vue | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="cordova + vue-cli (1)安装 首先保证装了node,然后提前下好android开发的那堆东西,jdk,java等等接着安装 vue-cli,cordova npm install -g vue-cli npm install -g cordova 创建 创建cordova项目 cordova create MyApp 创建vue项目,注意选项,把不需要的尽量选no. vue in">
+  <meta name="description" content="cordova + vue-cli (1)安装首先保证装了node,然后提前下好android开发的那堆东西,jdk,java等等接着安装 vue-cli,cordova npm install -g vue-cli npm install -g cordova 创建创建cordova项目 cordova create MyApp 创建vue项目,注意选项,把不需要的尽量选no. vue init">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cordova-vue">
 <meta property="og:url" content="http://crossgit.github.io/2017/05/11/CordovaVue/index.html">
 <meta property="og:site_name" content="走走停停">
-<meta property="og:description" content="cordova + vue-cli (1)安装 首先保证装了node,然后提前下好android开发的那堆东西,jdk,java等等接着安装 vue-cli,cordova npm install -g vue-cli npm install -g cordova 创建 创建cordova项目 cordova create MyApp 创建vue项目,注意选项,把不需要的尽量选no. vue in">
-<meta property="og:updated_time" content="2017-05-12T02:03:41.000Z">
+<meta property="og:description" content="cordova + vue-cli (1)安装首先保证装了node,然后提前下好android开发的那堆东西,jdk,java等等接着安装 vue-cli,cordova npm install -g vue-cli npm install -g cordova 创建创建cordova项目 cordova create MyApp 创建vue项目,注意选项,把不需要的尽量选no. vue init">
+<meta property="og:updated_time" content="2017-05-12T14:26:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cordova-vue">
-<meta name="twitter:description" content="cordova + vue-cli (1)安装 首先保证装了node,然后提前下好android开发的那堆东西,jdk,java等等接着安装 vue-cli,cordova npm install -g vue-cli npm install -g cordova 创建 创建cordova项目 cordova create MyApp 创建vue项目,注意选项,把不需要的尽量选no. vue in">
+<meta name="twitter:description" content="cordova + vue-cli (1)安装首先保证装了node,然后提前下好android开发的那堆东西,jdk,java等等接着安装 vue-cli,cordova npm install -g vue-cli npm install -g cordova 创建创建cordova项目 cordova create MyApp 创建vue项目,注意选项,把不需要的尽量选no. vue init">
   
     <link rel="alternative" href="/atom.xml" title="走走停停" type="application/atom+xml">
   
@@ -195,19 +195,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="cordova-vue-cli-1"><a href="#cordova-vue-cli-1" class="headerlink" title="cordova + vue-cli (1)"></a>cordova + vue-cli (1)</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><hr>
-<p>首先保证装了node,然后提前下好android开发的那堆东西,jdk,java等等<br>接着安装 vue-cli,cordova</p>
+        <h1 id="cordova-vue-cli-1"><a href="#cordova-vue-cli-1" class="headerlink" title="cordova + vue-cli (1)"></a>cordova + vue-cli (1)</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>首先保证装了node,然后提前下好android开发的那堆东西,jdk,java等等<br>接着安装 vue-cli,cordova</p>
 <pre><code>npm install -g vue-cli
 npm install -g cordova
-</code></pre><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><hr>
-<p>创建cordova项目</p>
+</code></pre><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><p>创建cordova项目</p>
 <pre><code>cordova create MyApp
 </code></pre><p>创建vue项目,注意选项,把不需要的尽量选no.</p>
 <pre><code>vue init webpack Myvue
 </code></pre><p>将vue项目的文件目录都复制到MyApp文件里,注意有几个隐藏文件,别落下.<br>或者可以把cordova项目复制到vue项目里.</p>
 <p>在目录下执行   <code>npm i</code> 安装vue需要的包</p>
-<h2 id="对vue项目的一些配置更改"><a href="#对vue项目的一些配置更改" class="headerlink" title="对vue项目的一些配置更改."></a>对vue项目的一些配置更改.</h2><hr>
-<blockquote>
+<h2 id="对vue项目的一些配置更改"><a href="#对vue项目的一些配置更改" class="headerlink" title="对vue项目的一些配置更改."></a>对vue项目的一些配置更改.</h2><blockquote>
 <p>原来生成路径的dist改成www: 在config/index.js下</p>
 </blockquote>
 <pre><code>build: {
@@ -259,20 +256,34 @@ data(){
 <pre><code>手工删除package.json文件里面的相关,大概长这样:npm:^3.0.0 ,然后
 npm uninstall npm
 npm install npm
-</code></pre><h2 id="添加平台"><a href="#添加平台" class="headerlink" title="添加平台"></a>添加平台</h2><hr>
-<pre><code>cd MyApp
+</code></pre><h2 id="添加平台"><a href="#添加平台" class="headerlink" title="添加平台"></a>添加平台</h2><pre><code>cd MyApp
 cordova platform add browser,android,ios
-</code></pre><h2 id="试运行"><a href="#试运行" class="headerlink" title="试运行"></a>试运行</h2><hr>
-<p>在MyApp下运行</p>
+</code></pre><h2 id="试运行"><a href="#试运行" class="headerlink" title="试运行"></a>试运行</h2><p>在MyApp下运行</p>
 <pre><code>npm run dev // 浏览器运行,一般会一直开启.
 npm run build //在www目录下生成压缩文件,属于第二步,打包
 npm run ios // 用ios虚拟机跑
 npm run android //用android虚拟机跑
 </code></pre><blockquote>
-<p>android,有时需要安装android studio,用他打开项目对应的android平台后,然后配置一通虚拟机什么的.配置完成,再执行npm run android,或者直接在adroid studio跑也行.<br>如果请求api时,提示<code>Provisional headers are shown</code>,而浏览器上没问题,需要重新装一下android平台,引起原因可能是,在cordova里需要的包版本,比adroid studio里的旧,当用adroid strudio打开后,提示升级别搭理.<br>ios,装xcode,虚拟机. 命令或者在xcode运行都可以.</p>
+<p>android,有时需要安装android studio,用他打开项目对应的android平台后,然后配置一通虚拟机什么的.配置完成,再执行npm run android,或者直接在adroid studio跑也行.</p>
+<p>如果请求api时,提示<code>Provisional headers are shown</code>,而浏览器上没问题,需要重新装一下android平台,引起原因可能是,在cordova里需要的包版本,比adroid studio里的旧,当用adroid strudio打开后,提示升级别搭理.</p>
+<p>ios,装xcode,虚拟机. 命令或者在xcode运行都可以.</p>
 </blockquote>
-<h2 id="添加与使用cordova插件"><a href="#添加与使用cordova插件" class="headerlink" title="添加与使用cordova插件"></a>添加与使用cordova插件</h2><hr>
-<p>先推荐一个插件 vue-cordova,在gayhub上搜一下,能找到使用方法.</p>
+<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>理论上说只要在npm run dev下运行成功了,打包后在手机上也差不多..但是仅限于理论,如果想看手机上什么情况,就需要如下操作</p>
+<blockquote>
+<p>android</p>
+</blockquote>
+<pre><code>chrome浏览器必须的
+开启手机的USB调试模式
+打开网址 `chrome://inspect/#devices` ,机器慢的多等会.
+其他的就和web调试都一样了
+</code></pre><blockquote>
+<p>ios</p>
+</blockquote>
+<pre><code>暂时买不起iphone,但是已经安装的app调试如下
+mac+safari浏览器
+【iOS 终端】：设置 → Safari → 高级 → Web 检查器 → 开.
+</code></pre><p>　　【OS X】：Safari → 偏好设置 → 高级 → 在菜单栏中显示“开发”菜单.<br>    safari调试</p>
+<h2 id="添加与使用cordova插件"><a href="#添加与使用cordova插件" class="headerlink" title="添加与使用cordova插件"></a>添加与使用cordova插件</h2><p>先推荐一个插件 vue-cordova,在gayhub上搜一下,能找到使用方法.</p>
 <pre><code>npm i vue-cordova --save
 </code></pre><p>添加/卸载cordova插件命令,卸载执行完记得在config.xml里,把这个插件的配置删掉,要不下次cordova build的时候就又加上去了</p>
 <pre><code>cordova plugin add/remove cordova-plugin-device --save

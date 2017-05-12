@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://crossgit.github.io">
-  <title>cordova相关的 | 走走停停</title>
+  <title>cordova-vue | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="cordova + vue-cli (1)安装 首先保证装了node,然后提前下好android开发的那堆东西,jdk,java等等接着安装 vue-cli,cordova npm install -g vue-cli npm install -g cordova 创建 创建cordova项目 cordova create MyApp 创建vue项目,注意选项,把不需要的尽量选no. vue in">
-<meta property="og:type" content="website">
-<meta property="og:title" content="cordova相关的">
-<meta property="og:url" content="http://crossgit.github.io/cordova/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cordova-vue">
+<meta property="og:url" content="http://crossgit.github.io/2017/05/11/cordova-vue/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="cordova + vue-cli (1)安装 首先保证装了node,然后提前下好android开发的那堆东西,jdk,java等等接着安装 vue-cli,cordova npm install -g vue-cli npm install -g cordova 创建 创建cordova项目 cordova create MyApp 创建vue项目,注意选项,把不需要的尽量选no. vue in">
-<meta property="og:updated_time" content="2017-05-12T01:25:46.000Z">
+<meta property="og:updated_time" content="2017-05-12T01:30:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cordova相关的">
+<meta name="twitter:title" content="cordova-vue">
 <meta name="twitter:description" content="cordova + vue-cli (1)安装 首先保证装了node,然后提前下好android开发的那堆东西,jdk,java等等接着安装 vue-cli,cordova npm install -g vue-cli npm install -g cordova 创建 创建cordova项目 cordova create MyApp 创建vue项目,注意选项,把不需要的尽量选no. vue in">
   
     <link rel="alternative" href="/atom.xml" title="走走停停" type="application/atom+xml">
@@ -175,20 +175,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-cordova-vue" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      cordova相关的
+      cordova-vue
     </h1>
   
 
         
-        <a href="/cordova/index.html" class="archive-article-date">
-  	<time datetime="2017-05-07T11:25:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
+        <a href="/2017/05/11/cordova-vue/" class="archive-article-date">
+  	<time datetime="2017-05-11T15:07:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
 </a>
         
       </header>
@@ -205,6 +205,7 @@ npm install -g cordova
 </code></pre><p>创建vue项目,注意选项,把不需要的尽量选no.</p>
 <pre><code>vue init webpack Myvue
 </code></pre><p>将vue项目的文件目录都复制到MyApp文件里,注意有几个隐藏文件,别落下.<br>或者可以把cordova项目复制到vue项目里.</p>
+<p>在目录下执行   <code>npm i</code> 安装vue需要的包</p>
 <h2 id="对vue项目的一些配置更改"><a href="#对vue项目的一些配置更改" class="headerlink" title="对vue项目的一些配置更改."></a>对vue项目的一些配置更改.</h2><hr>
 <blockquote>
 <p>原来生成路径的dist改成www: 在config/index.js下</p>
@@ -244,7 +245,7 @@ data(){
     &quot;android&quot;: &quot;cordova prepare android &amp;&amp; cordova run android&quot;
 },
 </code></pre><blockquote>
-<p>vue下的main.js,要引入cordova.js</p>
+<p>vue下的main.js,要引入cordova.js,否则加入的cordova插件将没法使用.</p>
 </blockquote>
 <pre><code>if (window.location.protocol === &apos;file:&apos; || window.location.port === &apos;3000&apos;) {
     var cordovaScript = document.createElement(&apos;script&apos;)
@@ -262,7 +263,7 @@ npm run build //在www目录下生成压缩文件,属于第二步,打包
 npm run ios // 用ios虚拟机跑
 npm run android //用android虚拟机跑
 </code></pre><blockquote>
-<p>android,有时需要安装android studio,用他打开项目对应的android平台后,然后配置一通虚拟机什么的.配置完成,再执行npm run android,或者直接用adroid studio跑也行.</p>
+<p>android,有时需要安装android studio,用他打开项目对应的android平台后,然后配置一通虚拟机什么的.配置完成,再执行npm run android,或者直接在adroid studio跑也行.<br>ios,装xcode,虚拟机. 命令或者在xcode运行都可以.</p>
 </blockquote>
 <h2 id="添加与使用cordova插件"><a href="#添加与使用cordova插件" class="headerlink" title="添加与使用cordova插件"></a>添加与使用cordova插件</h2><hr>
 <p>先推荐一个插件 vue-cordova,在gayhub上搜一下,能找到使用方法.</p>
@@ -348,7 +349,7 @@ npm run android //用android虚拟机跑
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/cordova/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2017/05/11/cordova-vue/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -360,6 +361,16 @@ npm run android //用android虚拟机跑
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2017/05/07/走走停停/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">走走停停</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 
 
@@ -370,8 +381,8 @@ npm run android //用android虚拟机跑
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://crossgit.github.io/cordova/index.html", 
-    sourceId: "undefined",
+    url: "http://crossgit.github.io/2017/05/11/cordova-vue/", 
+    sourceId: "cordova-vue",
     productKey: "falsexiangce",
     target: "cloud-tie-wrapper"
   };
@@ -405,7 +416,7 @@ npm run android //用android虚拟机跑
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

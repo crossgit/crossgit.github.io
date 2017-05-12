@@ -173,19 +173,110 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-cordova-vue" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-CordovaVue-vue" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/11/cordova-vue/">cordova-vue</a>
+      <a class="article-title" href="/2017/05/12/CordovaVue-vue/">CordovaVue-vue</a>
     </h1>
   
 
         
-        <a href="/2017/05/11/cordova-vue/" class="archive-article-date">
+        <a href="/2017/05/12/CordovaVue-vue/" class="archive-article-date">
+  	<time datetime="2017-05-12T01:49:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="cordova-vue-2-之vue"><a href="#cordova-vue-2-之vue" class="headerlink" title="cordova-vue(2)之vue"></a>cordova-vue(2)之vue</h1><p>其实是 vue-cli,vue版本在2.3 左右.</p>
+<hr>
+<blockquote>
+<p>不能丢掉隐藏文件.</p>
+<p>当引入一个第三方js文件时,提示不是严格模式的设置,更改.babelrc文件</p>
+</blockquote>
+<pre><code>{
+    &quot;presets&quot;: [
+        [&quot;env&quot;, { &quot;modules&quot;: false }],
+        &quot;stage-2&quot;
+    ],
+    &quot;ignore&quot;: [
+        &quot;./app/assets/js/mui.js&quot; //不是严格模式的js文件
+    ],
+    &quot;plugins&quot;: [&quot;transform-runtime&quot;],
+    &quot;comments&quot;: false,
+    &quot;env&quot;: {
+        &quot;test&quot;: {
+            &quot;presets&quot;: [&quot;env&quot;, &quot;stage-2&quot;],
+            &quot;plugins&quot;: [&quot;istanbul&quot;]
+        }
+    }
+}
+</code></pre><h2 id="项目中必不可少的东西"><a href="#项目中必不可少的东西" class="headerlink" title="项目中必不可少的东西"></a>项目中必不可少的东西</h2><pre><code>* vue-router    // 路由,页面跳转,传递参数
+* vuex          // 状态管理,不如叫全局变量管理
+* axios         // 请求后端api
+</code></pre><h2 id="vue-router相关-https-router-vuejs-org-zh-cn"><a href="#vue-router相关-https-router-vuejs-org-zh-cn" class="headerlink" title="vue-router相关 https://router.vuejs.org/zh-cn/"></a>vue-router相关 <a href="https://router.vuejs.org/zh-cn/" target="_blank" rel="external">https://router.vuejs.org/zh-cn/</a></h2><blockquote>
+<p>router-view的子页面</p>
+<p>生命中的拦截 meta</p>
+<p>生命周期的应用</p>
+</blockquote>
+<ul>
+<li>打开页面之前判断是否登录</li>
+<li>打开页面之前加载完数据</li>
+<li>退出页面之前提示是否退出</li>
+</ul>
+<h2 id="vuex-严格模式与非严格模式"><a href="#vuex-严格模式与非严格模式" class="headerlink" title="vuex 严格模式与非严格模式"></a>vuex 严格模式与非严格模式</h2><blockquote>
+<p>一刷新就没了.</p>
+</blockquote>
+<p>刷新后会执行main.js,可以在这里再次读取存放在localstorage里的数据.</p>
+<blockquote>
+<p>不赋值,就取不到值.</p>
+</blockquote>
+<p>main.js为啥取不到store.state的值</p>
+<h2 id="axios的配置的初始与覆盖初始"><a href="#axios的配置的初始与覆盖初始" class="headerlink" title="axios的配置的初始与覆盖初始"></a>axios的配置的初始与覆盖初始</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/12/CordovaVue-vue/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-CordovaVue" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/11/CordovaVue/">cordova-vue</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/11/CordovaVue/" class="archive-article-date">
   	<time datetime="2017-05-11T15:07:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
 </a>
         
@@ -251,6 +342,12 @@ data(){
     cordovaScript.setAttribute(&apos;src&apos;, &apos;cordova.js&apos;)
     document.body.appendChild(cordovaScript)
 }
+</code></pre><blockquote>
+<p>需要重装的npm,如果提示什么什么npm的版本号要大于3.0.0,但是实际系统里装的npm已经超过了3.0.0,那么需要把vue项目里的npm卸载了重新装一下,需要时间可能会很长.</p>
+</blockquote>
+<pre><code>手工删除package.json文件里面的相关,大概长这样:npm:^3.0.0 ,然后
+npm uninstall npm
+npm install npm
 </code></pre><h2 id="添加平台"><a href="#添加平台" class="headerlink" title="添加平台"></a>添加平台</h2><hr>
 <pre><code>cd MyApp
 cordova platform add browser,android,ios
@@ -261,7 +358,7 @@ npm run build //在www目录下生成压缩文件,属于第二步,打包
 npm run ios // 用ios虚拟机跑
 npm run android //用android虚拟机跑
 </code></pre><blockquote>
-<p>android,有时需要安装android studio,用他打开项目对应的android平台后,然后配置一通虚拟机什么的.配置完成,再执行npm run android,或者直接在adroid studio跑也行.<br>ios,装xcode,虚拟机. 命令或者在xcode运行都可以.</p>
+<p>android,有时需要安装android studio,用他打开项目对应的android平台后,然后配置一通虚拟机什么的.配置完成,再执行npm run android,或者直接在adroid studio跑也行.<br>如果请求api时,提示<code>Provisional headers are shown</code>,而浏览器上没问题,需要重新装一下android平台,引起原因可能是,在cordova里需要的包版本,比adroid studio里的旧,当用adroid strudio打开后,提示升级别搭理.<br>ios,装xcode,虚拟机. 命令或者在xcode运行都可以.</p>
 </blockquote>
 <h2 id="添加与使用cordova插件"><a href="#添加与使用cordova插件" class="headerlink" title="添加与使用cordova插件"></a>添加与使用cordova插件</h2><hr>
 <p>先推荐一个插件 vue-cordova,在gayhub上搜一下,能找到使用方法.</p>
@@ -280,7 +377,7 @@ npm run android //用android虚拟机跑
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/11/cordova-vue/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/11/CordovaVue/">展开全文 >></a>
         </p>
       
 

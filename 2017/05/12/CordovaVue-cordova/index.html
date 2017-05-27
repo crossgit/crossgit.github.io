@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/05/12/CordovaVue-cordova/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="cordova-vue(3)之cordova插件使用不能忘记cordova.js,否则加载的插件就不能用白名单cordova-plugin-whitelist  装了cordova就带了的   我用的是什么设备cordova-plugin-device  抖动 加速度运动传感器 cordova-plugin-device-motion通知来了,抖动通知 cordova-plugin-dialogs">
-<meta property="og:updated_time" content="2017-05-27T06:40:33.000Z">
+<meta property="og:updated_time" content="2017-05-27T06:57:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CordovaVue-cordova">
 <meta name="twitter:description" content="cordova-vue(3)之cordova插件使用不能忘记cordova.js,否则加载的插件就不能用白名单cordova-plugin-whitelist  装了cordova就带了的   我用的是什么设备cordova-plugin-device  抖动 加速度运动传感器 cordova-plugin-device-motion通知来了,抖动通知 cordova-plugin-dialogs">
@@ -209,28 +209,34 @@ cordova-plugin-ortoo-splashscreen
 </code></pre><blockquote>
 <h2 id="我想热升级"><a href="#我想热升级" class="headerlink" title="我想热升级"></a>我想热升级</h2><p>微软出的,需要注册云服务 <code>cordova-plugin-code-push</code></p>
 <p>自由自在的,推荐 <code>cordova-hot-code-push-plugin</code></p>
+<p>先说代码上的设置<br>    安装了cordova插件后,需要安装一个客户端工具,用来生成一些配置文件.</p>
 </blockquote>
-<ul>
-<li><p>先说代码上的设置<br>  安装了cordova插件后,需要安装一个客户端工具,用来生成一些配置文件.</p>
-<pre><code>npm install -g cordova-hot-code-push-cli
-</code></pre><p>  生成一个json模板,当更新www文件夹内容时,更改里面的配置文件</p>
-<pre><code>cordova-hcp init
-写个非中文的名字
-写上android和ios的id
-设置更新方式为 start
-写服务器连接 http://.....,根目录,其他空着.
-最后手工再加一句  ` &quot;min_native_interface&quot;:9 ` ,意思是第9个版本
-</code></pre><p>  根目录的config.xml添加设置服务端比对文件路径</p>
-<pre><code>&lt;chcp&gt;
-    &lt;native-interface version=&quot;9&quot; /&gt; //版本号
-    &lt;auto-download enabled=&quot;false&quot; /&gt; //不自动下载
-    &lt;auto-install enabled=&quot;false&quot; /&gt; //不自定安装  这些可以等到设备加载完以后在操作,js控制的.
-    &lt;config-file url=&quot;http://192.168.1.101:8081/chcp.json&quot;/&gt; // 比对配置文件
-&lt;/chcp&gt;
-</code></pre><p>  当www文件的内容给变后,执行配置文件的更新命令,vue项目就是执行在npm run build之后, 在npm run ios/android之前</p>
-<pre><code>cordova-hcp build
-</code></pre><p>  然后将这个www文件内容复制到服务端目录</p>
-</li>
+<pre><code>        npm install -g cordova-hot-code-push-cli
+
+生成一个json模板,当更新www文件夹内容时,更改里面的配置文件
+
+        cordova-hcp init
+        写个非中文的名字
+        写上android和ios的id
+        设置更新方式为 start
+        写服务器连接 http://.....,根目录,其他空着.
+        最后手工再加一句  ` &quot;min_native_interface&quot;:9 ` ,意思是第9个版本
+
+根目录的config.xml添加设置服务端比对文件路径
+
+        &lt;chcp&gt;
+            &lt;native-interface version=&quot;9&quot; /&gt; //版本号
+            &lt;auto-download enabled=&quot;false&quot; /&gt; //不自动下载
+            &lt;auto-install enabled=&quot;false&quot; /&gt; //不自定安装  这些可以等到设备加载完以后在操作,js控制的.
+            &lt;config-file url=&quot;http://192.168.1.101:8081/chcp.json&quot;/&gt; // 比对配置文件
+        &lt;/chcp&gt;
+
+当www文件的内容给变后,执行配置文件的更新命令,vue项目就是执行在npm run build之后, 在npm run ios/android之前
+
+        cordova-hcp build
+
+然后将这个www文件内容复制到服务端目录
+</code></pre><ul>
 <li>服务端,就是用nginx发布一个文件目录,浏览器可以打开就行.</li>
 <li>有一个更新,请重新打开应用就自动升级了.</li>
 <li>如果需要下载版本的升级,这个整理也是很多东西…</li>

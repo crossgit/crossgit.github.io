@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/05/11/CordovaVue/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="cordova + vue-cli (1)安装首先保证装了node,然后提前下好android开发的那堆东西,jdk,java等等接着安装 vue-cli,cordova npm install -g vue-cli npm install -g cordova 创建创建cordova项目 cordova create MyApp 创建vue项目,注意选项,把不需要的尽量选no. vue init">
-<meta property="og:updated_time" content="2017-05-14T14:47:14.000Z">
+<meta property="og:updated_time" content="2017-05-18T10:57:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cordova-vue">
 <meta name="twitter:description" content="cordova + vue-cli (1)安装首先保证装了node,然后提前下好android开发的那堆东西,jdk,java等等接着安装 vue-cli,cordova npm install -g vue-cli npm install -g cordova 创建创建cordova项目 cordova create MyApp 创建vue项目,注意选项,把不需要的尽量选no. vue init">
@@ -262,7 +262,19 @@ cordova platform add browser,android,ios
 <pre><code>npm run dev // 浏览器运行,一般会一直开启.
 npm run build //在www目录下生成压缩文件,属于第二步,打包
 npm run ios // 用ios虚拟机跑
-npm run android //用android虚拟机跑
+npm run android //用android真机跑
+
+其他命令
+    help：获取帮助
+    create:创建项目
+    platform:管理平台
+    plguin:管理插件
+    perpare:复制cordova/www/下的文件到对应平台的项目文件夹中
+    complie:编译项目
+    build:构建项目
+    Emulate:虚拟机运行
+    run:测试机运行
+    server：开启web服务器运行项目
 </code></pre><blockquote>
 <p>android,有时需要安装android studio,用他打开项目对应的android平台后,然后配置一通虚拟机什么的.配置完成,再执行npm run android,或者直接在adroid studio跑也行.</p>
 <p>如果请求api时,提示<code>Provisional headers are shown</code>,而浏览器上没问题,需要重新装一下android平台,引起原因可能是,在cordova里需要的包版本,比adroid studio里的旧,当用adroid strudio打开后,提示升级别搭理.</p>
@@ -287,6 +299,59 @@ mac+safari浏览器
 <pre><code>npm i vue-cordova --save
 </code></pre><p>添加/卸载cordova插件命令,卸载执行完记得在config.xml里,把这个插件的配置删掉,要不下次cordova build的时候就又加上去了</p>
 <pre><code>cordova plugin add/remove cordova-plugin-device --save
+</code></pre><h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><blockquote>
+<p>android  <a href="https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html#setting-gradle-properties" target="_blank" rel="external">https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html#setting-gradle-properties</a></p>
+</blockquote>
+<p>本来说 cordova build android –release就是打包了,但是,结果生成的一个文件是 <code>android-release-unsigned.apk</code>,这个一看就感觉不像</p>
+<p>继续命令:生成数字签名文件（keystore）。这个文件只需要生成一次。以后每次sign都用它。</p>
+<pre><code>keytool -genkey -v -keystore release-key.keystore -alias bd-app -keyalg RSA -keysize 2048 -validity 10000
+</code></pre><p>上面的命令意思是，生成一个 release-key.keystore 的文件，别名（alias）为 bd-app 。</p>
+<p>过程中会要求设置 keystore 的密码和 key 的密码。我们分别设置为 testt1 和 testt2 (要求6位以上),然后写[是]完成</p>
+<p>这个文件生成在根目录下,然后复制到<code>platforms/android/build/outputs/apk/</code>下来,接下来的命令都在这里执行</p>
+<p>对apk签名,cd到apk的目录下, </p>
+<pre><code>cd platforms/android/build/outputs/apk/
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore release-key.keystore android-release-unsigned.apk bd-app
+</code></pre><p>这个命令中需要传入证书名 release-key.keystore，要签名的 APK android-release-unsigned.apk，和别名 bd-app。签名过程中需要先后输入 keystore 和 key 的密码。命令运行完后，这个 APK 就已经改变了。但是这个过程没有生成新文件。</p>
+<p>最后用 <code>zipalign</code> 压缩和优化APK,先把这个<code>zipalign</code>文件找到 <code>cd /用户/wxj/资源库/Android/sdk/build-tools</code>下, 看使用的哪个版本号,复制出zpialign文件来,放到上面的apk目录下,执行</p>
+<pre><code>./zipalign -v 4 android-release-unsigned.apk bd-app.apk
+</code></pre><p>这样就生成一个叫bd-app.apk的文件,安装就可以了</p>
+<ul>
+<li><p>提示签名不一致的情况,其实就是已经有一个安装了,要覆盖他,结果发现不一致,只要把前面安装的程序卸载了就可以了.</p>
+</li>
+<li><p>以后如何打包 ,如下命令,或者写到npm命令里</p>
+<pre><code>cordova build android --release -- --keystore=&quot;release-key.keystore&quot; --alias=bd-app --storePassword=testt1 --password=testt2
+</code></pre></li>
+<li><p>或者在根目录下写一个配置文件 build.json</p>
+<pre><code>{
+    &quot;android&quot;: {
+        &quot;release&quot;: {
+        &quot;keystore&quot;: &quot;release-key.keystore&quot;,
+        &quot;alias&quot;: &quot;bd-app&quot;,
+        &quot;storePassword&quot;: &quot;testt1&quot;,
+        &quot;password&quot;: &quot;testt2&quot;
+        }
+    }
+}
+</code></pre></li>
+</ul>
+<p>把<code>release-key.keystore</code>文件也放在根目录下,然后每次执行 <code>cordova build android --release</code>,会在apk目录下生成两个文件,其中一个叫 <code>android-release.apk</code>,这个就是新的包了.</p>
+<ul>
+<li><p>可能是更简便的打包方式,使用 Gradle ，一个 Android 的自动化构建工具。cordova build android 在 <code>platforms/android</code>目录下建立<code>release-signing.properties</code>文件，内容类似下面这样：</p>
+<pre><code>storeFile=release-key.keystore // 就是在build.gradle文件同目录下的keystore文件
+storePassword=testt1
+keyAlias=bd-app
+keyPassword=testt2
+</code></pre></li>
+</ul>
+<p>这个文件的名称和位置也是可以通过 Gradle 的配置 <code>cdvReleaseSigningPropertiesFile</code> 修改的<br>最后执行 cordova build android -release</p>
+<blockquote>
+<p>ios</p>
+<ul>
+<li>草鸡多,先在apple上注册个开发者账户,668,然后需要itunes,安装xcode</li>
+</ul>
+</blockquote>
+<pre><code>https://developer.apple.com
+https://itunesconnect.apple.com/
 </code></pre>
       
 

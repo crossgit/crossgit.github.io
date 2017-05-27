@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://crossgit.github.io">
-  <title>走走停停</title>
+  <title>CordovaVue-cordova2 | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="走走停停">
-<meta property="og:url" content="http://crossgit.github.io/index.html">
+  <meta name="description" content="cordova-vue(3)之cordova支付手机网站支付 调用支付宝app,没有安装app就条用支付宝html 在蚂蚁金服开放平台注册应用,创建获取appid 提交审核,通过后获取appid 在开放平台注册,RSA秘钥 ,包含私钥 应用公钥   手机网站支付只支持余额支付，不支持银行卡、余额宝等其他支付方式；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CordovaVue-cordova2">
+<meta property="og:url" content="http://crossgit.github.io/2017/05/15/CordovaVue-cordova2/index.html">
 <meta property="og:site_name" content="走走停停">
+<meta property="og:description" content="cordova-vue(3)之cordova支付手机网站支付 调用支付宝app,没有安装app就条用支付宝html 在蚂蚁金服开放平台注册应用,创建获取appid 提交审核,通过后获取appid 在开放平台注册,RSA秘钥 ,包含私钥 应用公钥   手机网站支付只支持余额支付，不支持银行卡、余额宝等其他支付方式；">
+<meta property="og:updated_time" content="2017-05-15T08:00:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="走走停停">
+<meta name="twitter:title" content="CordovaVue-cordova2">
+<meta name="twitter:description" content="cordova-vue(3)之cordova支付手机网站支付 调用支付宝app,没有安装app就条用支付宝html 在蚂蚁金服开放平台注册应用,创建获取appid 提交审核,通过后获取appid 在开放平台注册,RSA秘钥 ,包含私钥 应用公钥   手机网站支付只支持余额支付，不支持银行卡、余额宝等其他支付方式；">
   
     <link rel="alternative" href="/atom.xml" title="走走停停" type="application/atom+xml">
   
@@ -171,183 +175,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-关于git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-CordovaVue-cordova2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/26/关于git/">关于git</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/26/关于git/" class="archive-article-date">
-  	<time datetime="2017-05-26T04:07:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>就是如何搭建git服务端(centos7)和客户端(mac)</p>
-<h2 id="服务端安装git-先远程仓库-remote-在centos7上操作"><a href="#服务端安装git-先远程仓库-remote-在centos7上操作" class="headerlink" title="服务端安装git,先远程仓库(remote),在centos7上操作"></a>服务端安装git,先远程仓库(remote),在centos7上操作</h2><p>在 <a href="https://www.kernel.org/pub/software/scm/git/" target="_blank" rel="external">https://www.kernel.org/pub/software/scm/git/</a> 找一个合适的,下载和编译</p>
-<pre><code>wget https://www.kernel.org/pub/software/scm/git/git-2.9.4.tar.gz
-tar -zvxf git-2.9.4.tar.gz
-cd git-2.9.4
-./configure 
-maker &amp;&amp; maker install
-
-git config username &quot;&quot;;
-git config email &quot;&quot;;
-</code></pre><blockquote>
-<p>如果在maker的时候报错了,先执行一下安装,按报错提示装就就好</p>
-</blockquote>
-<pre><code>yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel 
-</code></pre><h2 id="设置用户-就是git的登录账户cross"><a href="#设置用户-就是git的登录账户cross" class="headerlink" title="设置用户,就是git的登录账户cross"></a>设置用户,就是git的登录账户cross</h2><pre><code>adduser cross
-passwd 密码
-</code></pre><h2 id="找个地方创建项目目录-我建在-var下-并给cross加上权限"><a href="#找个地方创建项目目录-我建在-var下-并给cross加上权限" class="headerlink" title="找个地方创建项目目录,我建在/var下,并给cross加上权限"></a>找个地方创建项目目录,我建在/var下,并给cross加上权限</h2><pre><code>cd /var
-mkdir githome
-chown cross githome/
-cd githome
-</code></pre><h2 id="开始创建git服务端-加权限"><a href="#开始创建git服务端-加权限" class="headerlink" title="开始创建git服务端,加权限"></a>开始创建git服务端,加权限</h2><pre><code>git init --bare my-project.git
-chown -R cross my-project.git
-</code></pre><p>服务端先就这么多</p>
-<hr>
-<h2 id="创建本地仓库-Repository-mac上操作"><a href="#创建本地仓库-Repository-mac上操作" class="headerlink" title="创建本地仓库(Repository),mac上操作"></a>创建本地仓库(Repository),mac上操作</h2><p>在mac创建一个存放代码的,</p>
-<pre><code>mkdir githome
-cd githome
-mkdir my-project
-cd my-project
-</code></pre><h2 id="设置远程仓库地址"><a href="#设置远程仓库地址" class="headerlink" title="设置远程仓库地址"></a>设置远程仓库地址</h2><pre><code>git init
-git remote add origin cross@服务器ip:/var/githome/my-porject.git
-</code></pre><blockquote>
-<p>测试执行 <code>git remote -v</code>,显示如下就正常了</p>
-</blockquote>
-<pre><code>origin cross@服务器IP:/var/githome/server_sword.git (fetch)
-origin cross@服务器IP:/vorgiar/githome/server_sword.git (push)
-</code></pre><blockquote>
-<p>如果写错了怎么办?先删再加,删除如下</p>
-</blockquote>
-<pre><code>git remote rm  origin 
-</code></pre><h2 id="提交代码"><a href="#提交代码" class="headerlink" title="提交代码"></a>提交代码</h2><pre><code>git add .
-git commit -m &apos;备注&apos;
-git push origin master
-</code></pre><p>然后输入登录密码提交完成.再以后就要看git的命令了.</p>
-<hr>
-<h2 id="接下来的问题是-如何能提交时候不写密码"><a href="#接下来的问题是-如何能提交时候不写密码" class="headerlink" title="接下来的问题是,如何能提交时候不写密码"></a>接下来的问题是,如何能提交时候不写密码</h2><p><code>使用ssh-keygen生成公钥与密钥,将本机的公钥复制到远程机器的authorized_keys文件中,然后ssh user@ip直接登录</code></p>
-<ul>
-<li><p>1 在本机使用ssh-keygen生成公钥密钥对</p>
-<pre><code>➜  .ssh ssh-keygen
-Generating public/private rsa key pair.
-Enter file in which to save the key (/Users/wxj/.ssh/id_rsa): // 直接enter
-Enter passphrase (empty for no passphrase): // 直接enter
-Enter same passphrase again: // 直接enter
-Your identification has been saved in /Users/wxj/.ssh/id_rsa.
-Your public key has been saved in /Users/wxj/.ssh/id_rsa.pub. 
-The key fingerprint is:
-SHA256:EEyAb1rbqtktM493R10Tmjsnq4Z6X7pRYWg7VcskZ/o wxj@bogon
-The key&apos;s randomart image is:
-+---[RSA 2048]----+
-|   ..+o     . =  |
-|  .   ..   . O.. |
-|   .  .   o =oo. |
-|    +  . . +ooo  |
-|   + o  S o..oE. |
-|  . . .   .o= .  |
-|     .   o. .=   |
-|   o=o. + o+.    |
-|  o.o*++ +=o     |
-+----[SHA256]-----+
-
-➜  .ssh ll -a
-total 24
-drwx------    5 wxj  staff   170B  5 26 18:35 .
-drwxr-xr-x+ 157 wxj  staff   5.2K  5 26 18:35 ..
--rw-------    1 wxj  staff   1.7K  5 26 18:35 is_rsa
--rw-r--r--    1 wxj  staff   391B  5 26 18:35 is_rsa.pub 
-...
-</code></pre></li>
-<li><p>2 用ssh-copy-id将公钥复制到远程机器中</p>
-<pre><code>➜  .ssh ssh-copy-id root@59.110.230.99
-/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: &quot;/Users/wxj/.ssh/id_rsa.pub&quot;
-/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
-/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
-root@59.110.230.99&apos;s password: // 登录密码
-
-Number of key(s) added:        1
-
-Now try logging into the machine, with:   &quot;ssh &apos;root@59.110.230.99&apos;&quot;
-and check to make sure that only the key(s) you wanted were added.
-</code></pre></li>
-<li><p>3 直接就可以登录了</p>
-<pre><code>ssh root@59.110.230.99
-</code></pre></li>
-</ul>
-<blockquote>
-<p>总有操作错误的时候</p>
-</blockquote>
-<pre><code>1. 在服务端要先有文件 ~/.ssh/authorized_keys,没有就创建一个,在要isa登录的用户下,执行以下创建,切换用户 `su 用户名`
-
-    mkdir ~/.ssh &amp;&amp; touch ~/.ssh/authorized_keys
-    然后一定要加权限
-    chmod 700 ~/.ssh/
-    chmod 600 ~/.ssh/authorized_keys
-
-2. 在生成公钥密钥的时候输入了key=cross,那就上传的时候这样
-
-    .ssh ssh-copy-id -i ~/.ssh/cross.pub root@59.110.230.99 
-    登录的时候 
-    ssh -i ~/.ssh/root root@59.110.230.99
-
-3. 可能有些错误是这里引起的,在服务器打开ssh的配置文件 `vim /etc/ssh/sshd_config`,检查开启以下内容
-
-    RSAAuthentication yes
-    PubkeyAuthentication yes
-    AuthorizedKeysFile      .ssh/authorized_keys 
-    重启服务
-    systemctl restart sshd
-
-4. 在生成公钥密钥的时候输入了密码,那登录的时候就需要再次输入一遍密码.就是这个设置的密码
-</code></pre><p>那么,cross用户按上述一样的操作,就免去了每次push都要录入密码的痛苦.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/26/关于git/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-CordovaVue-cordova2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/15/CordovaVue-cordova2/">CordovaVue-cordova2</a>
+    <h1 class="article-title" itemprop="name">
+      CordovaVue-cordova2
     </h1>
   
 
@@ -371,138 +206,26 @@ and check to make sure that only the key(s) you wanted were added.
       
 
       
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/15/CordovaVue-cordova2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-CordovaVue-cordova" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/12/CordovaVue-cordova/">CordovaVue-cordova</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/12/CordovaVue-cordova/" class="archive-article-date">
-  	<time datetime="2017-05-12T14:19:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="cordova-vue-3-之cordova插件使用"><a href="#cordova-vue-3-之cordova插件使用" class="headerlink" title="cordova-vue(3)之cordova插件使用"></a>cordova-vue(3)之cordova插件使用</h1><h2 id="不能忘记cordova-js-否则加载的插件就不能用"><a href="#不能忘记cordova-js-否则加载的插件就不能用" class="headerlink" title="不能忘记cordova.js,否则加载的插件就不能用"></a>不能忘记cordova.js,否则加载的插件就不能用</h2><h2 id="白名单cordova-plugin-whitelist"><a href="#白名单cordova-plugin-whitelist" class="headerlink" title="白名单cordova-plugin-whitelist"></a>白名单<code>cordova-plugin-whitelist</code></h2><blockquote>
-<p> 装了cordova就带了的 </p>
-</blockquote>
-<h2 id="我用的是什么设备cordova-plugin-device"><a href="#我用的是什么设备cordova-plugin-device" class="headerlink" title="我用的是什么设备cordova-plugin-device"></a>我用的是什么设备<code>cordova-plugin-device</code></h2><blockquote>
-</blockquote>
-<h2 id="抖动-加速度运动传感器-cordova-plugin-device-motion"><a href="#抖动-加速度运动传感器-cordova-plugin-device-motion" class="headerlink" title="抖动 加速度运动传感器 cordova-plugin-device-motion"></a>抖动 加速度运动传感器 <code>cordova-plugin-device-motion</code></h2><h2 id="通知来了-抖动通知-cordova-plugin-dialogs-cordova-plugin-vibration"><a href="#通知来了-抖动通知-cordova-plugin-dialogs-cordova-plugin-vibration" class="headerlink" title="通知来了,抖动通知 cordova-plugin-dialogs, cordova-plugin-vibration"></a>通知来了,抖动通知 <code>cordova-plugin-dialogs</code>, <code>cordova-plugin-vibration</code></h2><h2 id="网怎么了-cordova-plugin-network-information"><a href="#网怎么了-cordova-plugin-network-information" class="headerlink" title="网怎么了 cordova-plugin-network-information"></a>网怎么了 <code>cordova-plugin-network-information</code></h2><h2 id="没电了-cordova-plugin-battery-status"><a href="#没电了-cordova-plugin-battery-status" class="headerlink" title="没电了 cordova-plugin-battery-status"></a>没电了 <code>cordova-plugin-battery-status</code></h2><h2 id="刚打开不能白屏cordova-plugin-splashscreen"><a href="#刚打开不能白屏cordova-plugin-splashscreen" class="headerlink" title="刚打开不能白屏cordova-plugin-splashscreen"></a>刚打开不能白屏<code>cordova-plugin-splashscreen</code></h2><p>闪个痛快:</p>
-<pre><code>cordova-splashscreen
-com.peerio.cordova.plugin.splashscreen
-cordova-plugin-splashscreen-3
-mp-cordova-plugin-splashscreen
-cordova-plugin-ortoo-splashscreen
-</code></pre><blockquote>
-<h2 id="我想热升级"><a href="#我想热升级" class="headerlink" title="我想热升级"></a>我想热升级</h2><p>微软出的,需要注册云服务 <code>cordova-plugin-code-push</code></p>
-<p>自由自在的,推荐 <code>cordova-hot-code-push-plugin</code></p>
-</blockquote>
-<ul>
-<li><p>先说代码上的设置<br>  安装了cordova插件后,需要安装一个客户端工具,用来生成一些配置文件.</p>
-<pre><code>npm install -g cordova-hot-code-push-cli
-</code></pre><p>  生成一个json模板,当更新www文件夹内容时,更改里面的配置文件</p>
-<pre><code>cordova-hcp init
-写个非中文的名字
-写上android和ios的id
-设置更新方式为 start
-写服务器连接 http://.....,根目录,其他空着.
-最后手工再加一句  ` &quot;min_native_interface&quot;:9 ` ,意思是第9个版本
-</code></pre><p>  根目录的config.xml添加设置服务端比对文件路径</p>
-<pre><code>&lt;chcp&gt;
-    &lt;native-interface version=&quot;9&quot; /&gt; //版本号
-    &lt;auto-download enabled=&quot;false&quot; /&gt; //不自动下载
-    &lt;auto-install enabled=&quot;false&quot; /&gt; //不自定安装  这些可以等到设备加载完以后在操作,js控制的.
-    &lt;config-file url=&quot;http://192.168.1.101:8081/chcp.json&quot;/&gt; // 比对配置文件
-&lt;/chcp&gt;
-</code></pre><p>  当www文件的内容给变后,执行配置文件的更新命令,vue项目就是执行在npm run build之后, 在npm run ios/android之前</p>
-<pre><code>cordova-hcp build
-</code></pre><p>  然后将这个www文件内容复制到服务端目录</p>
-</li>
-<li>服务端,就是用nginx发布一个文件目录,浏览器可以打开就行.</li>
-<li>有一个更新,请重新打开应用就自动升级了.</li>
-<li>如果需要下载版本的升级,这个整理也是很多东西…</li>
-</ul>
-<h2 id="手机拍照上传cordova-plugin-camera"><a href="#手机拍照上传cordova-plugin-camera" class="headerlink" title="手机拍照上传cordova-plugin-camera"></a>手机拍照上传<code>cordova-plugin-camera</code></h2><blockquote>
-<p>我要自定义:<code>cordova-plugin-camera-all-files</code></p>
-</blockquote>
-<h2 id="本地选择图片上传cordova-plugin-imagepicker"><a href="#本地选择图片上传cordova-plugin-imagepicker" class="headerlink" title="本地选择图片上传cordova-plugin-imagepicker"></a>本地选择图片上传<code>cordova-plugin-imagepicker</code></h2><blockquote>
-</blockquote>
-<h2 id="到哪里了–GPScordova-plugin-geolocation"><a href="#到哪里了–GPScordova-plugin-geolocation" class="headerlink" title="到哪里了–GPScordova-plugin-geolocation"></a>到哪里了–GPS<code>cordova-plugin-geolocation</code></h2><blockquote>
-<p> 以上只能获得坐标,那就试试加这个:百度地图 <code>cordova-plugin-geolocation-baidu</code></p>
-</blockquote>
-<h2 id="一路向北–指南针-cordova-plugin-device-orientation"><a href="#一路向北–指南针-cordova-plugin-device-orientation" class="headerlink" title="一路向北–指南针 cordova-plugin-device-orientation"></a>一路向北–指南针 <code>cordova-plugin-device-orientation</code></h2><h2 id="看看他的联系人cordova-plugin-contacts"><a href="#看看他的联系人cordova-plugin-contacts" class="headerlink" title="看看他的联系人cordova-plugin-contacts"></a>看看他的联系人<code>cordova-plugin-contacts</code></h2><blockquote>
-</blockquote>
-<h2 id="本地文件存放"><a href="#本地文件存放" class="headerlink" title="本地文件存放"></a>本地文件存放</h2><blockquote>
-<p>localstorage</p>
-</blockquote>
-<p>其实写错了,应该是window.localStroage,别忘记前面的window,还要注意大小写.</p>
-<blockquote>
-<p>文件存储 <code>cordova-plugin-file</code> ,<code>cordova-plugin-file-transfer</code></p>
-<p>sqlite <code>cordova-sqlite-storage</code></p>
-</blockquote>
-<p>自从执行了sql,一切都放心了,不过可能只能处理android</p>
-<blockquote>
-<p>indexeddb <code>cordova-plugin-indexeddb2</code></p>
-</blockquote>
-<p>对象数据库</p>
-<h2 id="媒体插件-录音与播放"><a href="#媒体插件-录音与播放" class="headerlink" title="媒体插件 录音与播放"></a>媒体插件 录音与播放</h2><pre><code>cordova-plugin-media-capture
-cordova-plugin-media-capture-unofficial
-cordova-plugin-media
-</code></pre><h2 id="多语言全球化-cordova-plugin-globalization"><a href="#多语言全球化-cordova-plugin-globalization" class="headerlink" title="多语言全球化 cordova-plugin-globalization"></a>多语言全球化 <code>cordova-plugin-globalization</code></h2><h2 id="弹出一个提示-cordova-plugin-dialogs"><a href="#弹出一个提示-cordova-plugin-dialogs" class="headerlink" title="弹出一个提示 cordova-plugin-dialogs"></a>弹出一个提示 <code>cordova-plugin-dialogs</code></h2><pre><code>navigator.notification.alert  //弹出一个提示 
-navigator.notification.confirm //弹出一个是,否选择
-navigator.notification.prompt // 输入内容
-navigator.notification.beep(2);  // beep...响几声
-
-navigator.notification.alert(
-    &apos;You are the winner!&apos;,  // message
-    alertDismissed,         // callback
-    &apos;Game Over&apos;,            // title
-    &apos;Done&apos;                  // buttonName
-);
-</code></pre><h2 id="关于支付–花钱也这么难"><a href="#关于支付–花钱也这么难" class="headerlink" title="关于支付–花钱也这么难"></a>关于支付–花钱也这么难</h2><blockquote>
-<p>微信 <code>cordova plugin add cordova-plugin-wechat --variable wechatappid=YOUR_WECHAT_APPID</code></p>
-<p>支付宝 <code>cordova-plugin-alipay-v2</code> </p>
-</blockquote>
-<p>这个可能是比较新的了.</p>
-<p><code>https://github.com/charleyw/cordova-plugin-alipay</code> 有比较详细的参数说明</p>
-<blockquote>
-<p>银联</p>
-</blockquote>
-
-      
-
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -511,575 +234,105 @@ navigator.notification.alert(
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/12/CordovaVue-cordova/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2017/05/15/CordovaVue-cordova2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
-
-
-
   
-    <article id="post-CordovaVue-vue2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
+<nav id="article-nav">
+  
+    <a href="/2017/05/26/关于git/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/12/CordovaVue-vue2/">CordovaVue-vue2</a>
-    </h1>
-  
-
+          关于git
         
-        <a href="/2017/05/12/CordovaVue-vue2/" class="archive-article-date">
-  	<time datetime="2017-05-12T02:26:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="cordova-vue-3-之vue其他"><a href="#cordova-vue-3-之vue其他" class="headerlink" title="cordova-vue(3)之vue其他"></a>cordova-vue(3)之vue其他</h1><h2 id="监控跟踪"><a href="#监控跟踪" class="headerlink" title="监控跟踪"></a>监控跟踪</h2><p>vue里主要有两个watch和compute</p>
-<p>深层监控</p>
-<h2 id="传值"><a href="#传值" class="headerlink" title="传值"></a>传值</h2><blockquote>
-<p>vuex的传值</p>
-<p>组件的传值 prop</p>
-<p>子页面的传值 $parent.$data 和$child</p>
-<p>路由的传值 就是后面带个参数</p>
-</blockquote>
-<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><p>挺有趣的功能,但是一般在json里处理.处理完成再绑定到html上.</p>
-<h2 id="插件开发"><a href="#插件开发" class="headerlink" title="插件开发"></a>插件开发</h2><p>这可是个大文章.在自己的还没写完之前,不如先用别人的吧</p>
-<hr>
-<blockquote>
-<p>说完了吗?</p>
-</blockquote>
-<p>没,只是个开始.更有趣的还有后端渲染,但是和cordova关系不大了.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/12/CordovaVue-vue2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/12/CordovaVue-cordova/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CordovaVue-cordova</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 
 
 
   
-    <article id="post-CordovaVue-vue" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/12/CordovaVue-vue/">CordovaVue-vue</a>
-    </h1>
   
-
-        
-        <a href="/2017/05/12/CordovaVue-vue/" class="archive-article-date">
-  	<time datetime="2017-05-12T01:49:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="cordova-vue-2-之vue基础"><a href="#cordova-vue-2-之vue基础" class="headerlink" title="cordova-vue(2)之vue基础"></a>cordova-vue(2)之vue基础</h1><p>其实是 vue-cli,vue版本在2.3 左右.</p>
-<hr>
-<blockquote>
-<p>不能丢掉隐藏文件.</p>
-<p>当引入一个第三方js文件时,提示不是严格模式的设置,更改.babelrc文件</p>
-</blockquote>
-<pre><code>{
-    &quot;presets&quot;: [
-        [&quot;env&quot;, { &quot;modules&quot;: false }],
-        &quot;stage-2&quot;
-    ],
-    &quot;ignore&quot;: [
-        &quot;./app/assets/js/mui.js&quot; //不是严格模式的js文件
-    ],
-    &quot;plugins&quot;: [&quot;transform-runtime&quot;],
-    &quot;comments&quot;: false,
-    &quot;env&quot;: {
-        &quot;test&quot;: {
-            &quot;presets&quot;: [&quot;env&quot;, &quot;stage-2&quot;],
-            &quot;plugins&quot;: [&quot;istanbul&quot;]
-        }
-    }
-}
-</code></pre><blockquote>
-<p>vue的生命周期,常用的如下,其他的感觉使用vue-router的更合适一些.</p>
-</blockquote>
-<pre><code>created 渲染完成前要实现的
-mounted 渲染完成后要实现的
-</code></pre><h2 id="项目中必不可少的东西"><a href="#项目中必不可少的东西" class="headerlink" title="项目中必不可少的东西"></a>项目中必不可少的东西</h2><pre><code>* vue-router    // 路由,页面跳转,传递参数 https://router.vuejs.org/zh-cn/
-* vuex          // 状态管理,不如叫全局变量管理 https://vuex.vuejs.org/zh-cn/
-* axios         // 请求后端api
-</code></pre><h2 id="vue-router相关"><a href="#vue-router相关" class="headerlink" title="vue-router相关"></a>vue-router相关</h2><blockquote>
-<p>router-view的子页面</p>
-<p>生命中的拦截 meta</p>
-</blockquote>
-<pre><code>meta是一个对象,写在路由中,然后访问时只要 router.meta.value就可以了
-</code></pre><blockquote>
-<p>生命周期的应用</p>
-</blockquote>
-<ul>
-<li><p>打开页面之前判断是否登录</p>
-<pre><code>router.beforeEach(function(to,from,next){...})
-
-其中的next参数: 
-next(): 进行管道中的下一个钩子。如果全部钩子执行完了，则导航的状态就是 confirmed （确认的）。 
-next(false): 中断当前的导航。如果浏览器的 URL 改变了（可能是用户手动或者浏览器后退按钮），那么 URL 地址会重置到 from 路由对应的地址。 
-next(&apos;/&apos;) 或者 next({ path: &apos;/&apos; }): 跳转到一个不同的地址。当前的导航被中断，然后进行一个新的导航。
-</code></pre></li>
-<li><p>某一路由的特别定义</p>
-<pre><code>beforeEnter: (to, from, next) =&gt; {
-    ...
-}
-
-参数和beforeEach一致
-</code></pre></li>
-<li><p>打开页面之前加载完数据</p>
-<pre><code>beforeRouteEnter(to,from,next){...}
-
-next(vm =&gt; {
-    // 通过 `vm` 访问组件实例
-})
-</code></pre></li>
-<li><p>路由的参数变了</p>
-<pre><code>beforeRouteUpdate (to, from, next) {...},
-</code></pre></li>
-<li><p>退出页面之前提示是否退出</p>
-<pre><code>beforeRouteLeave(to,from,next){...}
-</code></pre></li>
-</ul>
-<h2 id="vuex-严格模式与非严格模式"><a href="#vuex-严格模式与非严格模式" class="headerlink" title="vuex 严格模式与非严格模式"></a>vuex 严格模式与非严格模式</h2><blockquote>
-<p>一刷新就没了.</p>
-</blockquote>
-<p>刷新后会执行main.js,可以在这里再次读取存放在localstorage里的数据.</p>
-<blockquote>
-<p>不赋值,就取不到值.</p>
-</blockquote>
-<p>main.js为啥取不到store.state的值</p>
-<ul>
-<li>严格模式</li>
-</ul>
-<p>分为四部分, state,getter,action,mutations,抛开别扭的写法</p>
-<p>state 定义变量<br>getter 准备被调用<br>action 异步的方法<br>mutations 同步方法,根据action来改变state</p>
-<ul>
-<li>非严格模式</li>
-</ul>
-<p>大概分为两部分,state,action</p>
-<p>state 存放全局变量<br>aciton 存放全局方法</p>
-<p>如果之间有了关联,就又到了mutations</p>
-<h2 id="axios的配置的初始与覆盖初始"><a href="#axios的配置的初始与覆盖初始" class="headerlink" title="axios的配置的初始与覆盖初始"></a>axios的配置的初始与覆盖初始</h2><blockquote>
-<p>跨域了</p>
-</blockquote>
-<p>前后只要一分开,肯定会跨域,常用的解决方法也就几种:后端设置cors和</p>
-<pre><code>前端的反向代理,vue目录下打开config/index.js
-
-&apos;/api&apos;: {
-    target: &apos;http://localhost:3000&apos;,
-    changeOrigin: true,
-    pathRewrite: {
-        &apos;^/api&apos;: &apos;/api&apos;
-}
-</code></pre><p>对于后端设置的跨域,前端找个地方写死这个路径或者起一个服务,只要vue能读取到这个api的域名就行了.然后,就用到了axios</p>
-<ul>
-<li>创建</li>
-</ul>
-<p>写死headers的情况</p>
-<pre><code>let rest = axios.create({
-     baseURL: baseURL,
-     timeout: 20000,
-     headers: {
-         &apos;Authorization&apos;: temp.token
-     },
- });
-</code></pre><p>没写死headers或者没headers</p>
-<pre><code>let rest = axios.create({
-    baseURL: baseURL,
-    timeout: 20000
-});
-</code></pre><p>重写headers</p>
-<pre><code>rest.defaults.headers.common[&apos;Authorization&apos;] = &apos;....&apos;;
-</code></pre><ul>
-<li>使用</li>
-</ul>
-<p>日常的</p>
-<pre><code>rest.post(url,[params])
-    .then((res)=&gt;{...})
-    .catch((err)=&gt;{...})
-</code></pre><blockquote>
-<p>同步获取</p>
-</blockquote>
-<pre><code>import axios from &apos;axios&apos;
-...
-let get1 = this.rest.get(&apos;url1&apos;);
-let get2 = this.rest.get(&apos;url&apos;);
-axios.all([get1, get2]).then(res =&gt; {
-    console.log(res);
-})
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/12/CordovaVue-vue/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-CordovaVue" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/11/CordovaVue/">cordova-vue</a>
-    </h1>
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://crossgit.github.io/2017/05/15/CordovaVue-cordova2/", 
+    sourceId: "CordovaVue-cordova2",
+    productKey: "falsexiangce",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-        
-        <a href="/2017/05/11/CordovaVue/" class="archive-article-date">
-  	<time datetime="2017-05-11T15:07:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="cordova-vue-cli-1"><a href="#cordova-vue-cli-1" class="headerlink" title="cordova + vue-cli (1)"></a>cordova + vue-cli (1)</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>首先保证装了node,然后提前下好android开发的那堆东西,jdk,java等等<br>接着安装 vue-cli,cordova</p>
-<pre><code>npm install -g vue-cli
-npm install -g cordova
-</code></pre><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><p>创建cordova项目</p>
-<pre><code>cordova create MyApp
-</code></pre><p>创建vue项目,注意选项,把不需要的尽量选no.</p>
-<pre><code>vue init webpack Myvue
-</code></pre><p>将vue项目的文件目录都复制到MyApp文件里,注意有几个隐藏文件,别落下.<br>或者可以把cordova项目复制到vue项目里.</p>
-<p>在目录下执行   <code>npm i</code> 安装vue需要的包</p>
-<h2 id="对vue项目的一些配置更改"><a href="#对vue项目的一些配置更改" class="headerlink" title="对vue项目的一些配置更改."></a>对vue项目的一些配置更改.</h2><blockquote>
-<p>原来生成路径的dist改成www: 在config/index.js下</p>
-</blockquote>
-<pre><code>build: {
-    env: require(&apos;./prod.env&apos;),
-    index: path.resolve(__dirname, &apos;../www/index.html&apos;),
-    assetsRoot: path.resolve(__dirname, &apos;../www&apos;),
-    assetsSubDirectory: &apos;static&apos;,
-    assetsPublicPath: &apos;./&apos;,
-    productionSourceMap: true, 
-    // ...
-    productionGzip: false,
-    productionGzipExtensions: [&apos;js&apos;, &apos;css&apos;],
-    bundleAnalyzerReport: process.env.npm_config_report
-}
-</code></pre><p>原本cordova项目的www文件,直接删掉也无妨.</p>
-<blockquote>
-<p>文件路径,都改成相对路径. 比如原来的/static/img/xxx.png 需要改成./static/img/xxx.png,如果是样式里写的背景图,需要将样式在template里用:style处理.如下</p>
-</blockquote>
-<pre><code>&lt;div :stype=&quot;backimg&quot;&gt;...&lt;/div&gt;
-...
-data(){
-    return {
-        backimg:{
-            background: &apos;url(&apos; + require(&apos;./static/img/xxx.png&apos;) + &apos;) no-repeat center/cover&apos;
-        }
-    }
-}
-</code></pre><blockquote>
-<p>package.json的配置,把命令简写一下</p>
-</blockquote>
-<pre><code>&quot;scripts&quot;: {
-    &quot;dev&quot;: &quot;node build/dev-server.js&quot;,
-    &quot;build&quot;: &quot;node build/build.js&quot;,
-    &quot;ios&quot;: &quot;cordova prepare ios &amp;&amp; cordova run ios&quot;,
-    &quot;android&quot;: &quot;cordova prepare android &amp;&amp; cordova run android&quot;
-},
-</code></pre><blockquote>
-<p>vue下的main.js,要引入cordova.js,否则加入的cordova插件将没法使用.</p>
-</blockquote>
-<pre><code>if (window.location.protocol === &apos;file:&apos; || window.location.port === &apos;3000&apos;) {
-    var cordovaScript = document.createElement(&apos;script&apos;)
-    cordovaScript.setAttribute(&apos;type&apos;, &apos;text/javascript&apos;)
-    cordovaScript.setAttribute(&apos;src&apos;, &apos;cordova.js&apos;)
-    document.body.appendChild(cordovaScript)
-}
-</code></pre><blockquote>
-<p>需要重装的npm,如果提示什么什么npm的版本号要大于3.0.0,但是实际系统里装的npm已经超过了3.0.0,那么需要把vue项目里的npm卸载了重新装一下,需要时间可能会很长.</p>
-</blockquote>
-<pre><code>手工删除package.json文件里面的相关,大概长这样:npm:^3.0.0 ,然后
-npm uninstall npm
-npm install npm
-</code></pre><h2 id="添加平台"><a href="#添加平台" class="headerlink" title="添加平台"></a>添加平台</h2><pre><code>cd MyApp
-cordova platform add browser,android,ios
-</code></pre><h2 id="试运行"><a href="#试运行" class="headerlink" title="试运行"></a>试运行</h2><p>在MyApp下运行</p>
-<pre><code>npm run dev // 浏览器运行,一般会一直开启.
-npm run build //在www目录下生成压缩文件,属于第二步,打包
-npm run ios // 用ios虚拟机跑
-npm run android //用android真机跑
-
-其他命令
-    help：获取帮助
-    create:创建项目
-    platform:管理平台
-    plguin:管理插件
-    perpare:复制cordova/www/下的文件到对应平台的项目文件夹中
-    complie:编译项目
-    build:构建项目
-    Emulate:虚拟机运行
-    run:测试机运行
-    server：开启web服务器运行项目
-</code></pre><blockquote>
-<p>android,有时需要安装android studio,用他打开项目对应的android平台后,然后配置一通虚拟机什么的.配置完成,再执行npm run android,或者直接在adroid studio跑也行.</p>
-<p>如果请求api时,提示<code>Provisional headers are shown</code>,而浏览器上没问题,需要重新装一下android平台,引起原因可能是,在cordova里需要的包版本,比adroid studio里的旧,当用adroid strudio打开后,提示升级别搭理.</p>
-<p>ios,装xcode,虚拟机. 命令或者在xcode运行都可以.</p>
-</blockquote>
-<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>理论上说只要在npm run dev下运行成功了,打包后在手机上也差不多..但是仅限于理论,如果想看手机上什么情况,就需要如下操作</p>
-<blockquote>
-<p>android</p>
-</blockquote>
-<pre><code>chrome浏览器必须的
-开启手机的USB调试模式
-打开网址 `chrome://inspect/#devices` ,机器慢的多等会.
-其他的就和web调试都一样了
-</code></pre><blockquote>
-<p>ios</p>
-</blockquote>
-<pre><code>暂时买不起iphone,但是安装的app调试如下
-mac+safari浏览器
-【iOS 终端】：设置 → Safari → 高级 → Web 检查器 → 开.
-</code></pre><p>　　【OS X】：Safari → 偏好设置 → 高级 → 在菜单栏中显示“开发”菜单.<br>    safari调试</p>
-<h2 id="添加与使用cordova插件"><a href="#添加与使用cordova插件" class="headerlink" title="添加与使用cordova插件"></a>添加与使用cordova插件</h2><p>先推荐一个插件 vue-cordova,在gayhub上搜一下,能找到使用方法.</p>
-<pre><code>npm i vue-cordova --save
-</code></pre><p>添加/卸载cordova插件命令,卸载执行完记得在config.xml里,把这个插件的配置删掉,要不下次cordova build的时候就又加上去了</p>
-<pre><code>cordova plugin add/remove cordova-plugin-device --save
-</code></pre><h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><blockquote>
-<p>android  <a href="https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html#setting-gradle-properties" target="_blank" rel="external">https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html#setting-gradle-properties</a></p>
-</blockquote>
-<p>本来说 cordova build android –release就是打包了,但是,结果生成的一个文件是 <code>android-release-unsigned.apk</code>,这个一看就感觉不像</p>
-<p>继续命令:生成数字签名文件（keystore）。这个文件只需要生成一次。以后每次sign都用它。</p>
-<pre><code>keytool -genkey -v -keystore release-key.keystore -alias bd-app -keyalg RSA -keysize 2048 -validity 10000
-</code></pre><p>上面的命令意思是，生成一个 release-key.keystore 的文件，别名（alias）为 bd-app 。</p>
-<p>过程中会要求设置 keystore 的密码和 key 的密码。我们分别设置为 testt1 和 testt2 (要求6位以上),然后写[是]完成</p>
-<p>这个文件生成在根目录下,然后复制到<code>platforms/android/build/outputs/apk/</code>下来,接下来的命令都在这里执行</p>
-<p>对apk签名,cd到apk的目录下, </p>
-<pre><code>cd platforms/android/build/outputs/apk/
-jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore release-key.keystore android-release-unsigned.apk bd-app
-</code></pre><p>这个命令中需要传入证书名 release-key.keystore，要签名的 APK android-release-unsigned.apk，和别名 bd-app。签名过程中需要先后输入 keystore 和 key 的密码。命令运行完后，这个 APK 就已经改变了。但是这个过程没有生成新文件。</p>
-<p>最后用 <code>zipalign</code> 压缩和优化APK,先把这个<code>zipalign</code>文件找到 <code>cd /用户/wxj/资源库/Android/sdk/build-tools</code>下, 看使用的哪个版本号,复制出zpialign文件来,放到上面的apk目录下,执行</p>
-<pre><code>./zipalign -v 4 android-release-unsigned.apk bd-app.apk
-</code></pre><p>这样就生成一个叫bd-app.apk的文件,安装就可以了</p>
-<ul>
-<li><p>提示签名不一致的情况,其实就是已经有一个安装了,要覆盖他,结果发现不一致,只要把前面安装的程序卸载了就可以了.</p>
-</li>
-<li><p>以后如何打包 ,如下命令,或者写到npm命令里</p>
-<pre><code>cordova build android --release -- --keystore=&quot;release-key.keystore&quot; --alias=bd-app --storePassword=testt1 --password=testt2
-</code></pre></li>
-<li><p>或者在根目录下写一个配置文件 build.json</p>
-<pre><code>{
-    &quot;android&quot;: {
-        &quot;release&quot;: {
-        &quot;keystore&quot;: &quot;release-key.keystore&quot;,
-        &quot;alias&quot;: &quot;bd-app&quot;,
-        &quot;storePassword&quot;: &quot;testt1&quot;,
-        &quot;password&quot;: &quot;testt2&quot;
-        }
-    }
-}
-</code></pre></li>
-</ul>
-<p>把<code>release-key.keystore</code>文件也放在根目录下,然后每次执行 <code>cordova build android --release</code>,会在apk目录下生成两个文件,其中一个叫 <code>android-release.apk</code>,这个就是新的包了.</p>
-<ul>
-<li><p>可能是更简便的打包方式,使用 Gradle ，一个 Android 的自动化构建工具。cordova build android 在 <code>platforms/android</code>目录下建立<code>release-signing.properties</code>文件，内容类似下面这样：</p>
-<pre><code>storeFile=release-key.keystore // 就是在build.gradle文件同目录下的keystore文件
-storePassword=testt1
-keyAlias=bd-app
-keyPassword=testt2
-</code></pre></li>
-</ul>
-<p>这个文件的名称和位置也是可以通过 Gradle 的配置 <code>cdvReleaseSigningPropertiesFile</code> 修改的<br>最后执行 cordova build android -release</p>
-<blockquote>
-<p>ios</p>
-<ul>
-<li>草鸡多,先在apple上注册个开发者账户,668,然后需要itunes,安装xcode</li>
-</ul>
-</blockquote>
-<pre><code>https://developer.apple.com
-https://itunesconnect.apple.com/
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/11/CordovaVue/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-走走停停" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/07/走走停停/">走走停停</a>
-    </h1>
   
 
-        
-        <a href="/2017/05/07/走走停停/" class="archive-article-date">
-  	<time datetime="2017-05-07T11:25:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>的健康的健康的健康京东快递就看得见肯德基</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/07/走走停停/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/07/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/07/hello-world/" class="archive-article-date">
-  	<time datetime="2017-05-07T11:02:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/07/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
 
 
@@ -1103,8 +356,8 @@ https://itunesconnect.apple.com/
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

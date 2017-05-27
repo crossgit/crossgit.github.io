@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/05/12/CordovaVue-cordova/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="cordova-vue(3)之cordova插件使用不能忘记cordova.js,否则加载的插件就不能用白名单cordova-plugin-whitelist  装了cordova就带了的   我用的是什么设备cordova-plugin-device  抖动 加速度运动传感器 cordova-plugin-device-motion通知来了,抖动通知 cordova-plugin-dialogs">
-<meta property="og:updated_time" content="2017-05-14T15:29:52.000Z">
+<meta property="og:updated_time" content="2017-05-27T06:40:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CordovaVue-cordova">
 <meta name="twitter:description" content="cordova-vue(3)之cordova插件使用不能忘记cordova.js,否则加载的插件就不能用白名单cordova-plugin-whitelist  装了cordova就带了的   我用的是什么设备cordova-plugin-device  抖动 加速度运动传感器 cordova-plugin-device-motion通知来了,抖动通知 cordova-plugin-dialogs">
@@ -207,42 +207,46 @@ cordova-plugin-splashscreen-3
 mp-cordova-plugin-splashscreen
 cordova-plugin-ortoo-splashscreen
 </code></pre><blockquote>
-<h2 id="我想热升级"><a href="#我想热升级" class="headerlink" title="我想热升级"></a>我想热升级</h2><p>微软出的,需要注册云服务 <code>cordova-hot-code-push-plugin</code></p>
+<h2 id="我想热升级"><a href="#我想热升级" class="headerlink" title="我想热升级"></a>我想热升级</h2><p>微软出的,需要注册云服务 <code>cordova-plugin-code-push</code></p>
 <p>自由自在的,推荐 <code>cordova-hot-code-push-plugin</code></p>
-<ul>
-<li>先说代码上的设置<br>  安装了cordova插件后,需要安装一个客户端工具,用来生成一些配置文件.</li>
-</ul>
 </blockquote>
-<pre><code>        npm install -g cordova-hot-code-push-cli
-
-生成一个json模板,当更新www文件夹内容时,更改里面的配置文件
-
-        cordova-hcp init
-        写个非中文的名字
-        设置更新方式为 start
-        写服务器连接 http://.....,根目录,其他空着.
-
-根目录的config.xml添加设置服务端比对文件路径
-
-        &lt;chcp&gt;
-            &lt;config-file url=&quot;http://192.168.1.101:8081/chcp.json&quot;/&gt;
-        &lt;/chcp&gt;
-
-当www文件的内容给变后,执行配置文件的更新命令,vue项目就是执行在npm run build之后, 在npm run ios/android之前
-
-        cordova-hcp build
-
-然后将这个www文件内容复制到服务端目录
-</code></pre><ul>
+<ul>
+<li><p>先说代码上的设置<br>  安装了cordova插件后,需要安装一个客户端工具,用来生成一些配置文件.</p>
+<pre><code>npm install -g cordova-hot-code-push-cli
+</code></pre><p>  生成一个json模板,当更新www文件夹内容时,更改里面的配置文件</p>
+<pre><code>cordova-hcp init
+写个非中文的名字
+写上android和ios的id
+设置更新方式为 start
+写服务器连接 http://.....,根目录,其他空着.
+最后手工再加一句  ` &quot;min_native_interface&quot;:9 ` ,意思是第9个版本
+</code></pre><p>  根目录的config.xml添加设置服务端比对文件路径</p>
+<pre><code>&lt;chcp&gt;
+    &lt;native-interface version=&quot;9&quot; /&gt; //版本号
+    &lt;auto-download enabled=&quot;false&quot; /&gt; //不自动下载
+    &lt;auto-install enabled=&quot;false&quot; /&gt; //不自定安装  这些可以等到设备加载完以后在操作,js控制的.
+    &lt;config-file url=&quot;http://192.168.1.101:8081/chcp.json&quot;/&gt; // 比对配置文件
+&lt;/chcp&gt;
+</code></pre><p>  当www文件的内容给变后,执行配置文件的更新命令,vue项目就是执行在npm run build之后, 在npm run ios/android之前</p>
+<pre><code>cordova-hcp build
+</code></pre><p>  然后将这个www文件内容复制到服务端目录</p>
+</li>
 <li>服务端,就是用nginx发布一个文件目录,浏览器可以打开就行.</li>
-<li>有一个更新,请重新打开应用</li>
+<li>有一个更新,请重新打开应用就自动升级了.</li>
+<li>如果需要下载版本的升级,这个整理也是很多东西…</li>
 </ul>
 <h2 id="手机拍照上传cordova-plugin-camera"><a href="#手机拍照上传cordova-plugin-camera" class="headerlink" title="手机拍照上传cordova-plugin-camera"></a>手机拍照上传<code>cordova-plugin-camera</code></h2><blockquote>
 <p>我要自定义:<code>cordova-plugin-camera-all-files</code></p>
-<h2 id="本地选择图片上传cordova-plugin-imagepicker"><a href="#本地选择图片上传cordova-plugin-imagepicker" class="headerlink" title="本地选择图片上传cordova-plugin-imagepicker"></a>本地选择图片上传<code>cordova-plugin-imagepicker</code></h2><h2 id="到哪里了–GPScordova-plugin-geolocation"><a href="#到哪里了–GPScordova-plugin-geolocation" class="headerlink" title="到哪里了–GPScordova-plugin-geolocation"></a>到哪里了–GPS<code>cordova-plugin-geolocation</code></h2><p> 以上只能获得坐标,那就试试加这个:百度地图 <code>cordova-plugin-geolocation-baidu</code></p>
-<h2 id="一路向北–指南针-cordova-plugin-device-orientation"><a href="#一路向北–指南针-cordova-plugin-device-orientation" class="headerlink" title="一路向北–指南针 cordova-plugin-device-orientation"></a>一路向北–指南针 <code>cordova-plugin-device-orientation</code></h2></blockquote>
-<h2 id="看看他的联系人cordova-plugin-contacts"><a href="#看看他的联系人cordova-plugin-contacts" class="headerlink" title="看看他的联系人cordova-plugin-contacts"></a>看看他的联系人<code>cordova-plugin-contacts</code></h2><blockquote>
-<h2 id="本地文件存放"><a href="#本地文件存放" class="headerlink" title="本地文件存放"></a>本地文件存放</h2><p>localstorage</p>
+</blockquote>
+<h2 id="本地选择图片上传cordova-plugin-imagepicker"><a href="#本地选择图片上传cordova-plugin-imagepicker" class="headerlink" title="本地选择图片上传cordova-plugin-imagepicker"></a>本地选择图片上传<code>cordova-plugin-imagepicker</code></h2><blockquote>
+</blockquote>
+<h2 id="到哪里了–GPScordova-plugin-geolocation"><a href="#到哪里了–GPScordova-plugin-geolocation" class="headerlink" title="到哪里了–GPScordova-plugin-geolocation"></a>到哪里了–GPS<code>cordova-plugin-geolocation</code></h2><blockquote>
+<p> 以上只能获得坐标,那就试试加这个:百度地图 <code>cordova-plugin-geolocation-baidu</code></p>
+</blockquote>
+<h2 id="一路向北–指南针-cordova-plugin-device-orientation"><a href="#一路向北–指南针-cordova-plugin-device-orientation" class="headerlink" title="一路向北–指南针 cordova-plugin-device-orientation"></a>一路向北–指南针 <code>cordova-plugin-device-orientation</code></h2><h2 id="看看他的联系人cordova-plugin-contacts"><a href="#看看他的联系人cordova-plugin-contacts" class="headerlink" title="看看他的联系人cordova-plugin-contacts"></a>看看他的联系人<code>cordova-plugin-contacts</code></h2><blockquote>
+</blockquote>
+<h2 id="本地文件存放"><a href="#本地文件存放" class="headerlink" title="本地文件存放"></a>本地文件存放</h2><blockquote>
+<p>localstorage</p>
 </blockquote>
 <p>其实写错了,应该是window.localStroage,别忘记前面的window,还要注意大小写.</p>
 <blockquote>
@@ -270,8 +274,9 @@ navigator.notification.alert(
 );
 </code></pre><h2 id="关于支付–花钱也这么难"><a href="#关于支付–花钱也这么难" class="headerlink" title="关于支付–花钱也这么难"></a>关于支付–花钱也这么难</h2><blockquote>
 <p>微信 <code>cordova plugin add cordova-plugin-wechat --variable wechatappid=YOUR_WECHAT_APPID</code></p>
-<p>支付宝 <code>cordova-plugin-alipay-v2</code><br>这个可能是比较新的了.</p>
+<p>支付宝 <code>cordova-plugin-alipay-v2</code> </p>
 </blockquote>
+<p>这个可能是比较新的了.</p>
 <p><code>https://github.com/charleyw/cordova-plugin-alipay</code> 有比较详细的参数说明</p>
 <blockquote>
 <p>银联</p>
@@ -368,6 +373,15 @@ navigator.notification.alert(
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/05/15/CordovaVue-cordova2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          CordovaVue-cordova2
+        
+      </div>
+    </a>
   
   
     <a href="/2017/05/12/CordovaVue-vue2/" id="article-nav-older" class="article-nav-link-wrap">

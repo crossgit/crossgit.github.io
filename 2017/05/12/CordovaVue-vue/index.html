@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/05/12/CordovaVue-vue/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="cordova-vue(2)之vue基础其实是 vue-cli,vue版本在2.3 左右.   不能丢掉隐藏文件. 当引入一个第三方js文件时,提示不是严格模式的设置,更改.babelrc文件  {     &amp;quot;presets&amp;quot;: [         [&amp;quot;env&amp;quot;, { &amp;quot;modules&amp;quot;: false }],         &amp;quot;">
-<meta property="og:updated_time" content="2017-05-12T14:15:05.000Z">
+<meta property="og:updated_time" content="2017-05-27T06:59:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CordovaVue-vue">
 <meta name="twitter:description" content="cordova-vue(2)之vue基础其实是 vue-cli,vue版本在2.3 左右.   不能丢掉隐藏文件. 当引入一个第三方js文件时,提示不是严格模式的设置,更改.babelrc文件  {     &amp;quot;presets&amp;quot;: [         [&amp;quot;env&amp;quot;, { &amp;quot;modules&amp;quot;: false }],         &amp;quot;">
@@ -235,36 +235,40 @@ mounted 渲染完成后要实现的
 <p>生命周期的应用</p>
 </blockquote>
 <ul>
-<li><p>打开页面之前判断是否登录</p>
+<li>举例</li>
+</ul>
+<p>打开页面之前判断是否登录</p>
 <pre><code>router.beforeEach(function(to,from,next){...})
 
 其中的next参数: 
 next(): 进行管道中的下一个钩子。如果全部钩子执行完了，则导航的状态就是 confirmed （确认的）。 
 next(false): 中断当前的导航。如果浏览器的 URL 改变了（可能是用户手动或者浏览器后退按钮），那么 URL 地址会重置到 from 路由对应的地址。 
 next(&apos;/&apos;) 或者 next({ path: &apos;/&apos; }): 跳转到一个不同的地址。当前的导航被中断，然后进行一个新的导航。
-</code></pre></li>
-<li><p>某一路由的特别定义</p>
+</code></pre><blockquote>
+<p>某一路由的特别定义</p>
+</blockquote>
 <pre><code>beforeEnter: (to, from, next) =&gt; {
     ...
 }
 
 参数和beforeEach一致
-</code></pre></li>
-<li><p>打开页面之前加载完数据</p>
+</code></pre><blockquote>
+<p>打开页面之前加载完数据</p>
+</blockquote>
 <pre><code>beforeRouteEnter(to,from,next){...}
 
 next(vm =&gt; {
     // 通过 `vm` 访问组件实例
 })
-</code></pre></li>
-<li><p>路由的参数变了</p>
+</code></pre><blockquote>
+<p>路由的参数变了</p>
+</blockquote>
 <pre><code>beforeRouteUpdate (to, from, next) {...},
-</code></pre></li>
-<li><p>退出页面之前提示是否退出</p>
+</code></pre><blockquote>
+<p>退出页面之前提示是否退出</p>
+</blockquote>
 <pre><code>beforeRouteLeave(to,from,next){...}
-</code></pre></li>
-</ul>
-<h2 id="vuex-严格模式与非严格模式"><a href="#vuex-严格模式与非严格模式" class="headerlink" title="vuex 严格模式与非严格模式"></a>vuex 严格模式与非严格模式</h2><blockquote>
+</code></pre><h2 id="vuex-严格模式与非严格模式"><a href="#vuex-严格模式与非严格模式" class="headerlink" title="vuex 严格模式与非严格模式"></a>vuex 严格模式与非严格模式</h2><blockquote>
 <p>一刷新就没了.</p>
 </blockquote>
 <p>刷新后会执行main.js,可以在这里再次读取存放在localstorage里的数据.</p>

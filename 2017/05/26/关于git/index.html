@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/05/26/关于git/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="就是如何搭建git服务端(centos7)和客户端(mac) 服务端安装git,先远程仓库(remote),在centos7上操作在 https://www.kernel.org/pub/software/scm/git/ 找一个合适的,下载和编译 wget https://www.kernel.org/pub/software/scm/git/git-2.9.4.tar.gz tar -zvxf">
-<meta property="og:updated_time" content="2017-05-27T06:52:34.000Z">
+<meta property="og:updated_time" content="2017-05-27T06:54:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于git">
 <meta name="twitter:description" content="就是如何搭建git服务端(centos7)和客户端(mac) 服务端安装git,先远程仓库(remote),在centos7上操作在 https://www.kernel.org/pub/software/scm/git/ 找一个合适的,下载和编译 wget https://www.kernel.org/pub/software/scm/git/git-2.9.4.tar.gz tar -zvxf">
@@ -241,21 +241,56 @@ git push origin master
 </code></pre><p>然后输入登录密码提交完成.再以后就要看git的命令了.</p>
 <hr>
 <h2 id="接下来的问题是-如何能提交时候不写密码"><a href="#接下来的问题是-如何能提交时候不写密码" class="headerlink" title="接下来的问题是,如何能提交时候不写密码"></a>接下来的问题是,如何能提交时候不写密码</h2><p><code>使用ssh-keygen生成公钥与密钥,将本机的公钥复制到远程机器的authorized_keys文件中,然后ssh user@ip直接登录</code></p>
-<ul>
-<li><p>1 在本机使用ssh-keygen生成公钥密钥对</p>
-<p>  ➜  .ssh ssh-keygen<br>  Generating public/private rsa key pair.<br>  Enter file in which to save the key (/Users/wxj/.ssh/id_rsa): // 直接enter<br>  Enter passphrase (empty for no passphrase): // 直接enter<br>  Enter same passphrase again: // 直接enter<br>  Your identification has been saved in /Users/wxj/.ssh/id_rsa.<br>  Your public key has been saved in /Users/wxj/.ssh/id_rsa.pub.<br>  The key fingerprint is:<br>  SHA256:EEyAb1rbqtktM493R10Tmjsnq4Z6X7pRYWg7VcskZ/o wxj@bogon<br>  The key’s randomart image is:<br>  +—[RSA 2048]—-+<br>  |   ..+o     . =  |<br>  |  .   ..   . O.. |<br>  |   .  .   o =oo. |<br>  |    +  . . +ooo  |<br>  |   + o  S o..oE. |<br>  |  . . .   .o= .  |<br>  |     .   o. .=   |<br>  |   o=o. + o+.    |<br>  |  o.o*++ +=o     |<br>  +—-[SHA256]—–+</p>
-<p>  ➜  .ssh ll -a<br>  total 24<br>  drwx——    5 wxj  staff   170B  5 26 18:35 .<br>  drwxr-xr-x+ 157 wxj  staff   5.2K  5 26 18:35 ..<br>  -rw——-    1 wxj  staff   1.7K  5 26 18:35 is_rsa<br>  -rw-r–r–    1 wxj  staff   391B  5 26 18:35 is_rsa.pub<br>  …</p>
-</li>
-<li><p>2 用ssh-copy-id将公钥复制到远程机器中</p>
-<p>  ➜  .ssh ssh-copy-id root@59.110.230.99<br>  /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: “/Users/wxj/.ssh/id_rsa.pub”<br>  /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed<br>  /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed – if you are prompted now it is to install the new keys<br>  root@59.110.230.99’s password: // 登录密码</p>
-<p>  Number of key(s) added:        1</p>
-<p>  Now try logging into the machine, with:   “ssh ‘root@59.110.230.99’”<br>  and check to make sure that only the key(s) you wanted were added.</p>
-</li>
-<li><p>3 直接就可以登录了</p>
-<pre><code>ssh root@59.110.230.99
-</code></pre></li>
-</ul>
 <blockquote>
+<p>1 在本机使用ssh-keygen生成公钥密钥对</p>
+</blockquote>
+<pre><code>➜  .ssh ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/Users/wxj/.ssh/id_rsa): // 直接enter
+Enter passphrase (empty for no passphrase): // 直接enter
+Enter same passphrase again: // 直接enter
+Your identification has been saved in /Users/wxj/.ssh/id_rsa.
+Your public key has been saved in /Users/wxj/.ssh/id_rsa.pub. 
+The key fingerprint is:
+SHA256:EEyAb1rbqtktM493R10Tmjsnq4Z6X7pRYWg7VcskZ/o wxj@bogon
+The key&apos;s randomart image is:
++---[RSA 2048]----+
+|   ..+o     . =  |
+|  .   ..   . O.. |
+|   .  .   o =oo. |
+|    +  . . +ooo  |
+|   + o  S o..oE. |
+|  . . .   .o= .  |
+|     .   o. .=   |
+|   o=o. + o+.    |
+|  o.o*++ +=o     |
++----[SHA256]-----+
+
+➜  .ssh ll -a
+total 24
+drwx------    5 wxj  staff   170B  5 26 18:35 .
+drwxr-xr-x+ 157 wxj  staff   5.2K  5 26 18:35 ..
+-rw-------    1 wxj  staff   1.7K  5 26 18:35 is_rsa
+-rw-r--r--    1 wxj  staff   391B  5 26 18:35 is_rsa.pub 
+...
+</code></pre><blockquote>
+<p>2 用ssh-copy-id将公钥复制到远程机器中</p>
+</blockquote>
+<pre><code>➜  .ssh ssh-copy-id root@59.110.230.99
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: &quot;/Users/wxj/.ssh/id_rsa.pub&quot;
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+root@59.110.230.99&apos;s password: // 登录密码
+
+Number of key(s) added:        1
+
+Now try logging into the machine, with:   &quot;ssh &apos;root@59.110.230.99&apos;&quot;
+and check to make sure that only the key(s) you wanted were added.
+</code></pre><blockquote>
+<p>3 直接就可以登录了</p>
+</blockquote>
+<pre><code>ssh root@59.110.230.99
+</code></pre><blockquote>
 <p>总有操作错误的时候</p>
 </blockquote>
 <pre><code>1. 在服务端要先有文件 ~/.ssh/authorized_keys,没有就创建一个,在要isa登录的用户下,执行以下创建,切换用户 `su 用户名`

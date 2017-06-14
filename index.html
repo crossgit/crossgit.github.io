@@ -195,8 +195,52 @@
       
         <p>关于插件 之android</p>
 <p>继续备注插件相关的.<code>如果想让自己的app看起来像原生,那就用原生开发</code>.</p>
-<p>官网链接 <code>http://cordova.apache.org/docs/en/7.x/guide/hybrid/plugins/index.html</code></p>
-
+<p>官网链接: <code>http://cordova.apache.org/docs/en/7.x/guide/hybrid/plugins/index.html</code><br>参照: <code>http://blog.csdn.net/b2259909/article/details/52471178</code><br>那么开始</p>
+<blockquote>
+<p>安装一个工具 plugman  </p>
+</blockquote>
+<pre><code>sudo npm i -g plugman
+</code></pre><blockquote>
+<p>命令 </p>
+</blockquote>
+<pre><code>plugman create --name AmILate --plugin_id cordova-plugin-am-i-late --plugin_version 0.0.1
+</code></pre><ul>
+<li>–name 插件文件夹名称</li>
+<li>–plugin_id ,就是插件名,会显示plugins目录下的文件夹名</li>
+<li>–plugin_version 就是版本号</li>
+<li>eg: plugman create –name MyMath –plugin_id SimpleMath –plugin_version 1.0.0</li>
+</ul>
+<blockquote>
+<p>cd MyMath</p>
+<p>plugman plagform add –platform_name android</p>
+<p>plugman plagform add –platform_name ios</p>
+<p>关于MyMath目录下,plugin.xml的修改,针对android的</p>
+</blockquote>
+<pre><code>source-file src=”src/android/MyMath.java” target-dir=”src/SimpleMath/MyMath”
+</code></pre><p>改为<br>    source-file src=”src/android/MyMath.java” target-dir=”src/SimpleMath”</p>
+<ul>
+<li>clobbers ： 非常重要。前端工程师在使用的时候通过这个 clobbers 去调用www/MyMath.js的公开方法</li>
+<li>feature 标签定义了 （服务名）name</li>
+<li>param name=”ios-package” value=”MyMath” 定义iOS平台下的底层实现类名为 ： MyMath</li>
+<li>param name=”android-package” value=”SimpleMath.MyMath” 定义Android平台下的底层实现的 包名.类 ： SimpleMath.MyMath</li>
+</ul>
+<p>总结</p>
+<ul>
+<li>js 调用 –&gt; cordova.plugins.MyMath.plus(arg0, success, error)</li>
+<li>cordova的接口exec –&gt; exec(success, error, “MyMath”, “Plus”, arg0);</li>
+<li>调用底层实现各自平台(ios或者Android)下的类MyMath。</li>
+</ul>
+<blockquote>
+<p>实现原生代码…过</p>
+<p>生成package.json,没这个不能过,在MyMath下执行</p>
+</blockquote>
+<pre><code>sudo plugman createpackagejson .
+</code></pre><p>注意要权限sudo;注意最后的点,是路径;按提示的别出错填写就可以了.</p>
+<blockquote>
+<p>发布,这个就上了npm了,不发布就不用执行.</p>
+</blockquote>
+<pre><code>npm publish .
+</code></pre>
       
 
       

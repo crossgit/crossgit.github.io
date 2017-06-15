@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/06/02/关于go/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="关于go没错,说的就是golang…的调试配置,配置完这篇的内容后,又有新的问题,总之是没通,没结果,和原装后自定义的配置有冲突 在mac下的vscode里配置开发环境版本 go 1.8.3;vscode 1.12.2;mac 10.12.5 需要用brew安装一下测试工具 brew install go-delve/delve/delve 手动安装或者在其他系统的安装,看 https://git">
-<meta property="og:updated_time" content="2017-06-15T02:48:45.000Z">
+<meta property="og:updated_time" content="2017-06-15T03:11:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于go">
 <meta name="twitter:description" content="关于go没错,说的就是golang…的调试配置,配置完这篇的内容后,又有新的问题,总之是没通,没结果,和原装后自定义的配置有冲突 在mac下的vscode里配置开发环境版本 go 1.8.3;vscode 1.12.2;mac 10.12.5 需要用brew安装一下测试工具 brew install go-delve/delve/delve 手动安装或者在其他系统的安装,看 https://git">
@@ -58,8 +58,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/cordova">随笔</a></li>
-	        
 				<li><a href="/archives">归档</a></li>
 	        
 				<li><a href="/categories">分类</a></li>
@@ -68,18 +66,12 @@
 	        
 				<li><a href="/about">关于</a></li>
 	        
-				<li><a href="/cordova">cordova</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
     		
     			
     			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
-    			
-            
-    			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
     			
             
     			
@@ -128,10 +120,6 @@
 			
 				
 			
-				
-			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -148,19 +136,15 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 14.285714285714286%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 14.285714285714286%"><a href="/cordova">随笔</a></li>
+					<li style="width: 20%"><a href="/archives">归档</a></li>
 		        
-					<li style="width: 14.285714285714286%"><a href="/archives">归档</a></li>
+					<li style="width: 20%"><a href="/categories">分类</a></li>
 		        
-					<li style="width: 14.285714285714286%"><a href="/categories">分类</a></li>
+					<li style="width: 20%"><a href="/tags">标签</a></li>
 		        
-					<li style="width: 14.285714285714286%"><a href="/tags">标签</a></li>
-		        
-					<li style="width: 14.285714285714286%"><a href="/about">关于</a></li>
-		        
-					<li style="width: 14.285714285714286%"><a href="/cordova">cordova</a></li>
+					<li style="width: 20%"><a href="/about">关于</a></li>
 		        
 				</ul>
 			</nav>
@@ -245,6 +229,17 @@
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/go/" class="article-tag-list-link color3">go</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -400,25 +395,17 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
       
       
     
-      
-      
-      
-    
     
 
     <ul style="width: 70%">
     
     
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
-      
-        
-      
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -448,10 +435,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">plugin</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>
@@ -498,43 +481,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
     
 
     
-    	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-        <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
-            </li>
-          
-        </ul>
-  		
-    	</section>
-    
 
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">欢迎&lt;br&gt;&lt;br&gt;欢迎&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">欢迎&lt;br&gt;&lt;br&gt;欢迎&lt;br&gt;谢谢大家 &lt;br&gt;我邮箱 &lt;br&gt; xhken000@163.com</div>
   	  	
     	</section>
     

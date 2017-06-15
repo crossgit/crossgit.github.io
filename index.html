@@ -54,8 +54,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/cordova">随笔</a></li>
-	        
 				<li><a href="/archives">归档</a></li>
 	        
 				<li><a href="/categories">分类</a></li>
@@ -64,18 +62,12 @@
 	        
 				<li><a href="/about">关于</a></li>
 	        
-				<li><a href="/cordova">cordova</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
     		
     			
     			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
-    			
-            
-    			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
     			
             
     			
@@ -124,10 +116,6 @@
 			
 				
 			
-				
-			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -144,19 +132,15 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 14.285714285714286%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 14.285714285714286%"><a href="/cordova">随笔</a></li>
+					<li style="width: 20%"><a href="/archives">归档</a></li>
 		        
-					<li style="width: 14.285714285714286%"><a href="/archives">归档</a></li>
+					<li style="width: 20%"><a href="/categories">分类</a></li>
 		        
-					<li style="width: 14.285714285714286%"><a href="/categories">分类</a></li>
+					<li style="width: 20%"><a href="/tags">标签</a></li>
 		        
-					<li style="width: 14.285714285714286%"><a href="/tags">标签</a></li>
-		        
-					<li style="width: 14.285714285714286%"><a href="/about">关于</a></li>
-		        
-					<li style="width: 14.285714285714286%"><a href="/cordova">cordova</a></li>
+					<li style="width: 20%"><a href="/about">关于</a></li>
 		        
 				</ul>
 			</nav>
@@ -264,6 +248,17 @@
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/cordova/" class="article-tag-list-link color3">cordova</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -327,6 +322,17 @@
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/go/" class="article-tag-list-link color3">go</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -370,6 +376,17 @@
       
       
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/go/" class="article-tag-list-link color3">go</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -420,181 +437,6 @@
     <div class="article-info article-info-index">
       
       
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-关于git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/26/关于git/">关于git</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/26/关于git/" class="archive-article-date">
-  	<time datetime="2017-05-26T04:07:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>就是如何搭建git服务端(centos7)和客户端(mac)</p>
-<h2 id="服务端安装git-先远程仓库-remote-在centos7上操作"><a href="#服务端安装git-先远程仓库-remote-在centos7上操作" class="headerlink" title="服务端安装git,先远程仓库(remote),在centos7上操作"></a>服务端安装git,先远程仓库(remote),在centos7上操作</h2><p>在 <a href="https://www.kernel.org/pub/software/scm/git/" target="_blank" rel="external">https://www.kernel.org/pub/software/scm/git/</a> 找一个合适的,下载和编译</p>
-<pre><code>wget https://www.kernel.org/pub/software/scm/git/git-2.9.4.tar.gz
-tar -zvxf git-2.9.4.tar.gz
-cd git-2.9.4
-./configure 
-maker &amp;&amp; maker install
-
-git config username &quot;&quot;;
-git config email &quot;&quot;;
-</code></pre><blockquote>
-<p>如果在maker的时候报错了,先执行一下安装,按报错提示装就就好</p>
-</blockquote>
-<pre><code>yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel 
-</code></pre><h2 id="设置用户-就是git的登录账户cross"><a href="#设置用户-就是git的登录账户cross" class="headerlink" title="设置用户,就是git的登录账户cross"></a>设置用户,就是git的登录账户cross</h2><pre><code>adduser cross
-passwd 密码
-</code></pre><h2 id="找个地方创建项目目录-我建在-var下-并给cross加上权限"><a href="#找个地方创建项目目录-我建在-var下-并给cross加上权限" class="headerlink" title="找个地方创建项目目录,我建在/var下,并给cross加上权限"></a>找个地方创建项目目录,我建在/var下,并给cross加上权限</h2><pre><code>cd /var
-mkdir githome
-chown cross githome/
-cd githome
-</code></pre><h2 id="开始创建git服务端-加权限"><a href="#开始创建git服务端-加权限" class="headerlink" title="开始创建git服务端,加权限"></a>开始创建git服务端,加权限</h2><pre><code>git init --bare my-project.git
-chown -R cross my-project.git
-</code></pre><p>服务端先就这么多</p>
-<hr>
-<h2 id="创建本地仓库-Repository-mac上操作"><a href="#创建本地仓库-Repository-mac上操作" class="headerlink" title="创建本地仓库(Repository),mac上操作"></a>创建本地仓库(Repository),mac上操作</h2><p>在mac创建一个存放代码的,</p>
-<pre><code>mkdir githome
-cd githome
-mkdir my-project
-cd my-project
-</code></pre><h2 id="设置远程仓库地址"><a href="#设置远程仓库地址" class="headerlink" title="设置远程仓库地址"></a>设置远程仓库地址</h2><pre><code>git init
-git remote add origin cross@服务器ip:/var/githome/my-porject.git
-</code></pre><blockquote>
-<p>测试执行 <code>git remote -v</code>,显示如下就正常了</p>
-</blockquote>
-<pre><code>origin cross@服务器IP:/var/githome/server_sword.git (fetch)
-origin cross@服务器IP:/vorgiar/githome/server_sword.git (push)
-</code></pre><blockquote>
-<p>如果写错了怎么办?先删再加,删除如下</p>
-</blockquote>
-<pre><code>git remote rm  origin 
-</code></pre><h2 id="提交代码"><a href="#提交代码" class="headerlink" title="提交代码"></a>提交代码</h2><pre><code>git add .
-git commit -m &apos;备注&apos;
-git push origin master
-</code></pre><p>然后输入登录密码提交完成.再以后就要看git的命令了.</p>
-<hr>
-<h2 id="接下来的问题是-如何能提交时候不写密码"><a href="#接下来的问题是-如何能提交时候不写密码" class="headerlink" title="接下来的问题是,如何能提交时候不写密码"></a>接下来的问题是,如何能提交时候不写密码</h2><p><code>使用ssh-keygen生成公钥与密钥,将本机的公钥复制到远程机器的authorized_keys文件中,然后ssh user@ip直接登录</code></p>
-<blockquote>
-<p>1 在本机使用ssh-keygen生成公钥密钥对</p>
-</blockquote>
-<pre><code>➜  .ssh ssh-keygen
-Generating public/private rsa key pair.
-Enter file in which to save the key (/Users/wxj/.ssh/id_rsa): // 直接enter
-Enter passphrase (empty for no passphrase): // 直接enter
-Enter same passphrase again: // 直接enter
-Your identification has been saved in /Users/wxj/.ssh/id_rsa.
-Your public key has been saved in /Users/wxj/.ssh/id_rsa.pub. 
-The key fingerprint is:
-SHA256:EEyAb1rbqtktM493R10Tmjsnq4Z6X7pRYWg7VcskZ/o wxj@bogon
-The key&apos;s randomart image is:
-+---[RSA 2048]----+
-|   ..+o     . =  |
-|  .   ..   . O.. |
-|   .  .   o =oo. |
-|    +  . . +ooo  |
-|   + o  S o..oE. |
-|  . . .   .o= .  |
-|     .   o. .=   |
-|   o=o. + o+.    |
-|  o.o*++ +=o     |
-+----[SHA256]-----+
-
-➜  .ssh ll -a
-total 24
-drwx------    5 wxj  staff   170B  5 26 18:35 .
-drwxr-xr-x+ 157 wxj  staff   5.2K  5 26 18:35 ..
--rw-------    1 wxj  staff   1.7K  5 26 18:35 is_rsa
--rw-r--r--    1 wxj  staff   391B  5 26 18:35 is_rsa.pub 
-...
-</code></pre><blockquote>
-<p>2 用ssh-copy-id将公钥复制到远程机器中</p>
-</blockquote>
-<pre><code>➜  .ssh ssh-copy-id root@59.110.230.99
-/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: &quot;/Users/wxj/.ssh/id_rsa.pub&quot;
-/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
-/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
-root@59.110.230.99&apos;s password: // 登录密码
-
-Number of key(s) added:        1
-
-Now try logging into the machine, with:   &quot;ssh &apos;root@59.110.230.99&apos;&quot;
-and check to make sure that only the key(s) you wanted were added.
-</code></pre><blockquote>
-<p>3 直接就可以登录了</p>
-</blockquote>
-<pre><code>ssh root@59.110.230.99
-</code></pre><blockquote>
-<p>总有操作错误的时候</p>
-</blockquote>
-<pre><code>1. 在服务端要先有文件 ~/.ssh/authorized_keys,没有就创建一个,在要isa登录的用户下,执行以下创建,切换用户 `su 用户名`
-
-    mkdir ~/.ssh &amp;&amp; touch ~/.ssh/authorized_keys
-    然后一定要加权限
-    chmod 700 ~/.ssh/
-    chmod 600 ~/.ssh/authorized_keys
-
-2. 在生成公钥密钥的时候输入了key=cross,那就上传的时候这样
-
-    .ssh ssh-copy-id -i ~/.ssh/cross.pub root@59.110.230.99 
-    登录的时候 
-    ssh -i ~/.ssh/root root@59.110.230.99
-
-3. 可能有些错误是这里引起的,在服务器打开ssh的配置文件 `vim /etc/ssh/sshd_config`,检查开启以下内容
-
-    RSAAuthentication yes
-    PubkeyAuthentication yes
-    AuthorizedKeysFile      .ssh/authorized_keys 
-    重启服务
-    systemctl restart sshd
-
-4. 在生成公钥密钥的时候输入了密码,那登录的时候就需要再次输入一遍密码.就是这个设置的密码
-</code></pre><p>那么,cross用户按上述一样的操作,就免去了每次push都要录入密码的痛苦.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -1311,6 +1153,138 @@ https://itunesconnect.apple.com/
 
 
   
+    <article id="post-index" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/07/index/">cordova相关的</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/07/index/" class="archive-article-date">
+  	<time datetime="2017-05-07T11:25:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="cordova-vue-cli-1"><a href="#cordova-vue-cli-1" class="headerlink" title="cordova + vue-cli (1)"></a>cordova + vue-cli (1)</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><hr>
+<p>首先保证装了node,然后提前下好android开发的那堆东西,jdk,java等等<br>接着安装 vue-cli,cordova</p>
+<pre><code>npm install -g vue-cli
+npm install -g cordova
+</code></pre><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><hr>
+<p>创建cordova项目</p>
+<pre><code>cordova create MyApp
+</code></pre><p>创建vue项目,注意选项,把不需要的尽量选no.</p>
+<pre><code>vue init webpack Myvue
+</code></pre><p>将vue项目的文件目录都复制到MyApp文件里,注意有几个隐藏文件,别落下.<br>或者可以把cordova项目复制到vue项目里.</p>
+<h2 id="对vue项目的一些配置更改"><a href="#对vue项目的一些配置更改" class="headerlink" title="对vue项目的一些配置更改."></a>对vue项目的一些配置更改.</h2><hr>
+<blockquote>
+<p>原来生成路径的dist改成www: 在config/index.js下</p>
+</blockquote>
+<pre><code>build: {
+    env: require(&apos;./prod.env&apos;),
+    index: path.resolve(__dirname, &apos;../www/index.html&apos;),
+    assetsRoot: path.resolve(__dirname, &apos;../www&apos;),
+    assetsSubDirectory: &apos;static&apos;,
+    assetsPublicPath: &apos;./&apos;,
+    productionSourceMap: true, 
+    // ...
+    productionGzip: false,
+    productionGzipExtensions: [&apos;js&apos;, &apos;css&apos;],
+    bundleAnalyzerReport: process.env.npm_config_report
+}
+</code></pre><p>原本cordova项目的www文件,直接删掉也无妨.</p>
+<blockquote>
+<p>文件路径,都改成相对路径. 比如原来的/static/img/xxx.png 需要改成./static/img/xxx.png,如果是样式里写的背景图,需要将样式在template里用:style处理.如下</p>
+</blockquote>
+<pre><code>&lt;div :stype=&quot;backimg&quot;&gt;...&lt;/div&gt;
+...
+data(){
+    return {
+        backimg:{
+            background: &apos;url(&apos; + require(&apos;./static/img/xxx.png&apos;) + &apos;) no-repeat center/cover&apos;
+        }
+    }
+}
+</code></pre><blockquote>
+<p>package.json的配置,把命令简写一下</p>
+</blockquote>
+<pre><code>&quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;node build/dev-server.js&quot;,
+    &quot;build&quot;: &quot;node build/build.js&quot;,
+    &quot;ios&quot;: &quot;cordova prepare ios &amp;&amp; cordova run ios&quot;,
+    &quot;android&quot;: &quot;cordova prepare android &amp;&amp; cordova run android&quot;
+},
+</code></pre><blockquote>
+<p>vue下的main.js,要引入cordova.js</p>
+</blockquote>
+<pre><code>if (window.location.protocol === &apos;file:&apos; || window.location.port === &apos;3000&apos;) {
+    var cordovaScript = document.createElement(&apos;script&apos;)
+    cordovaScript.setAttribute(&apos;type&apos;, &apos;text/javascript&apos;)
+    cordovaScript.setAttribute(&apos;src&apos;, &apos;cordova.js&apos;)
+    document.body.appendChild(cordovaScript)
+}
+</code></pre><h2 id="添加平台"><a href="#添加平台" class="headerlink" title="添加平台"></a>添加平台</h2><hr>
+<pre><code>cd MyApp
+cordova platform add browser,android,ios
+</code></pre><h2 id="试运行"><a href="#试运行" class="headerlink" title="试运行"></a>试运行</h2><hr>
+<p>在MyApp下运行</p>
+<pre><code>npm run dev // 浏览器运行,一般会一直开启.
+npm run build //在www目录下生成压缩文件,属于第二步,打包
+npm run ios // 用ios虚拟机跑
+npm run android //用android虚拟机跑
+</code></pre><blockquote>
+<p>android,有时需要安装android studio,用他打开项目对应的android平台后,然后配置一通虚拟机什么的.配置完成,再执行npm run android,或者直接用adroid studio跑也行.</p>
+</blockquote>
+<h2 id="添加与使用cordova插件"><a href="#添加与使用cordova插件" class="headerlink" title="添加与使用cordova插件"></a>添加与使用cordova插件</h2><hr>
+<p>先推荐一个插件 vue-cordova,在gayhub上搜一下,能找到使用方法.</p>
+<pre><code>npm i vue-cordova --save
+</code></pre><p>添加/卸载cordova插件命令,卸载执行完记得在config.xml里,把这个插件的配置删掉,要不下次cordova build的时候就又加上去了</p>
+<pre><code>cordova plugin add/remove cordova-plugin-device --save
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">cordova</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1369,25 +1343,17 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
       
       
     
-      
-      
-      
-    
     
 
     <ul style="width: 70%">
     
     
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
-      
-        
-      
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -1417,10 +1383,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">plugin</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>
@@ -1467,43 +1429,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
     
 
     
-    	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-        <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
-            </li>
-          
-        </ul>
-  		
-    	</section>
-    
 
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">欢迎&lt;br&gt;&lt;br&gt;欢迎&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">欢迎&lt;br&gt;&lt;br&gt;欢迎&lt;br&gt;谢谢大家 &lt;br&gt;我邮箱 &lt;br&gt; xhken000@163.com</div>
   	  	
     	</section>
     

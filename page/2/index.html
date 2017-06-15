@@ -173,6 +173,138 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-index" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/07/index/">cordova相关的</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/07/index/" class="archive-article-date">
+  	<time datetime="2017-05-07T11:25:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="cordova-vue-cli-1"><a href="#cordova-vue-cli-1" class="headerlink" title="cordova + vue-cli (1)"></a>cordova + vue-cli (1)</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><hr>
+<p>首先保证装了node,然后提前下好android开发的那堆东西,jdk,java等等<br>接着安装 vue-cli,cordova</p>
+<pre><code>npm install -g vue-cli
+npm install -g cordova
+</code></pre><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><hr>
+<p>创建cordova项目</p>
+<pre><code>cordova create MyApp
+</code></pre><p>创建vue项目,注意选项,把不需要的尽量选no.</p>
+<pre><code>vue init webpack Myvue
+</code></pre><p>将vue项目的文件目录都复制到MyApp文件里,注意有几个隐藏文件,别落下.<br>或者可以把cordova项目复制到vue项目里.</p>
+<h2 id="对vue项目的一些配置更改"><a href="#对vue项目的一些配置更改" class="headerlink" title="对vue项目的一些配置更改."></a>对vue项目的一些配置更改.</h2><hr>
+<blockquote>
+<p>原来生成路径的dist改成www: 在config/index.js下</p>
+</blockquote>
+<pre><code>build: {
+    env: require(&apos;./prod.env&apos;),
+    index: path.resolve(__dirname, &apos;../www/index.html&apos;),
+    assetsRoot: path.resolve(__dirname, &apos;../www&apos;),
+    assetsSubDirectory: &apos;static&apos;,
+    assetsPublicPath: &apos;./&apos;,
+    productionSourceMap: true, 
+    // ...
+    productionGzip: false,
+    productionGzipExtensions: [&apos;js&apos;, &apos;css&apos;],
+    bundleAnalyzerReport: process.env.npm_config_report
+}
+</code></pre><p>原本cordova项目的www文件,直接删掉也无妨.</p>
+<blockquote>
+<p>文件路径,都改成相对路径. 比如原来的/static/img/xxx.png 需要改成./static/img/xxx.png,如果是样式里写的背景图,需要将样式在template里用:style处理.如下</p>
+</blockquote>
+<pre><code>&lt;div :stype=&quot;backimg&quot;&gt;...&lt;/div&gt;
+...
+data(){
+    return {
+        backimg:{
+            background: &apos;url(&apos; + require(&apos;./static/img/xxx.png&apos;) + &apos;) no-repeat center/cover&apos;
+        }
+    }
+}
+</code></pre><blockquote>
+<p>package.json的配置,把命令简写一下</p>
+</blockquote>
+<pre><code>&quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;node build/dev-server.js&quot;,
+    &quot;build&quot;: &quot;node build/build.js&quot;,
+    &quot;ios&quot;: &quot;cordova prepare ios &amp;&amp; cordova run ios&quot;,
+    &quot;android&quot;: &quot;cordova prepare android &amp;&amp; cordova run android&quot;
+},
+</code></pre><blockquote>
+<p>vue下的main.js,要引入cordova.js</p>
+</blockquote>
+<pre><code>if (window.location.protocol === &apos;file:&apos; || window.location.port === &apos;3000&apos;) {
+    var cordovaScript = document.createElement(&apos;script&apos;)
+    cordovaScript.setAttribute(&apos;type&apos;, &apos;text/javascript&apos;)
+    cordovaScript.setAttribute(&apos;src&apos;, &apos;cordova.js&apos;)
+    document.body.appendChild(cordovaScript)
+}
+</code></pre><h2 id="添加平台"><a href="#添加平台" class="headerlink" title="添加平台"></a>添加平台</h2><hr>
+<pre><code>cd MyApp
+cordova platform add browser,android,ios
+</code></pre><h2 id="试运行"><a href="#试运行" class="headerlink" title="试运行"></a>试运行</h2><hr>
+<p>在MyApp下运行</p>
+<pre><code>npm run dev // 浏览器运行,一般会一直开启.
+npm run build //在www目录下生成压缩文件,属于第二步,打包
+npm run ios // 用ios虚拟机跑
+npm run android //用android虚拟机跑
+</code></pre><blockquote>
+<p>android,有时需要安装android studio,用他打开项目对应的android平台后,然后配置一通虚拟机什么的.配置完成,再执行npm run android,或者直接用adroid studio跑也行.</p>
+</blockquote>
+<h2 id="添加与使用cordova插件"><a href="#添加与使用cordova插件" class="headerlink" title="添加与使用cordova插件"></a>添加与使用cordova插件</h2><hr>
+<p>先推荐一个插件 vue-cordova,在gayhub上搜一下,能找到使用方法.</p>
+<pre><code>npm i vue-cordova --save
+</code></pre><p>添加/卸载cordova插件命令,卸载执行完记得在config.xml里,把这个插件的配置删掉,要不下次cordova build的时候就又加上去了</p>
+<pre><code>cordova plugin add/remove cordova-plugin-device --save
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">cordova</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-走走停停" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -204,10 +336,6 @@
       
       
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/07/走走停停/">展开全文 >></a>
-        </p>
       
 
       
@@ -260,10 +388,6 @@
       
       
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/07/hello-world/">展开全文 >></a>
-        </p>
       
 
       
@@ -382,11 +506,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>

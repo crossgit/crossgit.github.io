@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/06/19/CordovaVue-Publish-ios/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="关于cordova应用的发布.  android的发布,可以在自己的服务器上发布链接,然后手机能连上下载就好了.如果要运营好,就的找各种渠道了.这篇先不讨论. 在ios上发布,主要有几个部分   钥匙串的设置 在开发者的设置 在iTunes Connect的设置 在xcode的设置.   钥匙串:   钥匙串访问&amp;gt;证书助理&amp;gt;从证书颁发机构请求证书 填写用户电子邮件地址,常用名称,选择存">
-<meta property="og:updated_time" content="2017-06-19T14:58:31.000Z">
+<meta property="og:updated_time" content="2017-06-20T01:42:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CordovaVue-Publish-ios">
 <meta name="twitter:description" content="关于cordova应用的发布.  android的发布,可以在自己的服务器上发布链接,然后手机能连上下载就好了.如果要运营好,就的找各种渠道了.这篇先不讨论. 在ios上发布,主要有几个部分   钥匙串的设置 在开发者的设置 在iTunes Connect的设置 在xcode的设置.   钥匙串:   钥匙串访问&amp;gt;证书助理&amp;gt;从证书颁发机构请求证书 填写用户电子邮件地址,常用名称,选择存">
@@ -203,10 +203,12 @@
 </code></pre></li>
 </ol>
 <blockquote>
-<p>xcode打开cordova应用下<code>platforms&gt;ios</code>.主要有四处配置</p>
+<p>xcode打开cordova应用下<code>platforms&gt;ios</code>.项目名不建议是中文,建议字符+数字,主要有五处配置</p>
 </blockquote>
 <ol>
 <li>菜单里,<code>xcode&gt;preferences&gt;Accounts</code>,下面的<code>+</code>上开发者账户,把没用的账户删掉.</li>
+<li>设置虚拟机的地方选择<code>Generic IOS Device</code>,点击<code>Product&gt;Archive</code>,如果顺利就会生成一个版本选择导出,在弹出的5个选项中选第一个,保存完成.注意这里,用xcode的上传心里没底,所以导出就好了,用applcation loader.</li>
+<li>设置虚拟机的前面,显示项目名的那里,点击选择<code>Edit scheme</code>,确保Archive的BuildConfiguration是<code>Release</code>.通常是默认就可以,生成出错了再检查.</li>
 <li><p>在左侧菜单点击项目名:</p>
 <ul>
 <li>General, <ul>
@@ -216,12 +218,12 @@
 <li>检查图标</li>
 </ul>
 </li>
-<li>info,这里的权限问题</li>
+<li>info,这里的权限问题,相片权限,存储权限,联系人权限等.</li>
 <li>Build Settings,还是 signing的问题.SDK选择iphone distribution; Development Team选择 那个正确的Certficates.</li>
 </ul>
 </li>
-<li>设置虚拟机的地方选择<code>Generic IOS Device</code>,点击<code>Product&gt;Archive</code>,如果顺利就会生成一个版本选择导出,在弹出的5个选项中选第一个,保存完成.注意这里,用xcode的上传心里没底,所以导出就好了,用applcation loader.</li>
-<li>xcode的菜单:<code>xcode&gt;open developer tool&gt;appliction loader</code>,在打开的界面,双击左侧的选择ipa文件.多等会,上传完成.注意这里要看一下注册邮箱,有错误会发邮件,这高科技,每提交一次就麻烦同事一次.</li>
+<li><p>xcode的菜单:<code>xcode&gt;open developer tool&gt;appliction loader</code>,在打开的界面,双击左侧的<code>交付您的应用</code>,选择导出的ipa文件开始上传.多等会.但是上传完成并不表示上传成功.注意这里要看一下注册邮箱,有错误会发邮件,这高科技,每提交一次就麻烦同事一次.</p>
+</li>
 </ol>
 <blockquote>
 <p>到了这里,就剩下提交审核了.在iTunes Connect里的<code>构建应用</code>旁边的加号,选择版本.提交审核后,会有一堆选项,按具体情况选几项完事.</p>

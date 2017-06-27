@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://crossgit.github.io">
   <title>docker_for_centos|mac | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本来是想装一下es,突发奇想,装docker里吧(mac系统,旧版本1.10的docker),  如何删除旧版本,现在看官网都17.x了,差了这么多,都发生了什么?(已经删除了,没抓到图)   找出所有虚拟机 docker-machine ls.  删除虚拟机,有一列叫NAME的,比如叫default,执行docker-machine rm default,这样删除从VirtualBox和~/.d">
+  <meta name="description" content="本来是想装一下es,突发奇想,装docker里吧(mac系统,旧版本1.10的docker),—只是安装,其他在别的页面里介绍  如何删除旧版本,现在看官网都17.x了,差了这么多,都发生了什么?(已经删除了,没抓到图)   找出所有虚拟机 docker-machine ls.  删除虚拟机,有一列叫NAME的,比如叫default,执行docker-machine rm default,这样删除">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker_for_centos|mac">
 <meta property="og:url" content="http://crossgit.github.io/2017/06/18/docker-for-centos/index.html">
 <meta property="og:site_name" content="走走停停">
-<meta property="og:description" content="本来是想装一下es,突发奇想,装docker里吧(mac系统,旧版本1.10的docker),  如何删除旧版本,现在看官网都17.x了,差了这么多,都发生了什么?(已经删除了,没抓到图)   找出所有虚拟机 docker-machine ls.  删除虚拟机,有一列叫NAME的,比如叫default,执行docker-machine rm default,这样删除从VirtualBox和~/.d">
-<meta property="og:updated_time" content="2017-06-18T14:44:30.000Z">
+<meta property="og:description" content="本来是想装一下es,突发奇想,装docker里吧(mac系统,旧版本1.10的docker),—只是安装,其他在别的页面里介绍  如何删除旧版本,现在看官网都17.x了,差了这么多,都发生了什么?(已经删除了,没抓到图)   找出所有虚拟机 docker-machine ls.  删除虚拟机,有一列叫NAME的,比如叫default,执行docker-machine rm default,这样删除">
+<meta property="og:updated_time" content="2017-06-20T07:03:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker_for_centos|mac">
-<meta name="twitter:description" content="本来是想装一下es,突发奇想,装docker里吧(mac系统,旧版本1.10的docker),  如何删除旧版本,现在看官网都17.x了,差了这么多,都发生了什么?(已经删除了,没抓到图)   找出所有虚拟机 docker-machine ls.  删除虚拟机,有一列叫NAME的,比如叫default,执行docker-machine rm default,这样删除从VirtualBox和~/.d">
+<meta name="twitter:description" content="本来是想装一下es,突发奇想,装docker里吧(mac系统,旧版本1.10的docker),—只是安装,其他在别的页面里介绍  如何删除旧版本,现在看官网都17.x了,差了这么多,都发生了什么?(已经删除了,没抓到图)   找出所有虚拟机 docker-machine ls.  删除虚拟机,有一列叫NAME的,比如叫default,执行docker-machine rm default,这样删除">
   
     <link rel="alternative" href="/atom.xml" title="走走停停" type="application/atom+xml">
   
@@ -162,7 +162,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本来是想装一下es,突发奇想,装docker里吧(mac系统,旧版本1.10的docker),</p>
+        <p>本来是想装一下es,突发奇想,装docker里吧(mac系统,旧版本1.10的docker),—只是安装,其他在别的页面里介绍</p>
 <blockquote>
 <p>如何删除旧版本,现在看官网都17.x了,差了这么多,都发生了什么?(已经删除了,没抓到图)</p>
 </blockquote>
@@ -267,7 +267,7 @@ vim deamon.json
 <p>之前旧版本,装的VirtualBox,现在官网上说有新的虚拟化系统<code>HyperKit</code>.</p>
 <blockquote>
 <p>mac环境要求,系统月新越好,10.11版本以后;至少4G内存;4.3.30的virtualBox不能装docker.</p>
-<p>Docker.app启动后，要求使用系统密码进行授权。安装Docker应用的网络组件和链接。看系统的导航条,多了一条蓝鲸.点击下拉里,黄点变成绿点,就表示docker跑起来了.</p>
+<p>Docker.app启动后，要求使用系统密码进行授权。安装Docker应用的网络组件和链接。看系统的导航条,多了一条蓝鲸..黑色的.点击下拉里,黄点变成绿点,就表示docker跑起来了.</p>
 </blockquote>
 <hr>
 <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令:"></a>常用命令:</h2><ol>
@@ -286,7 +286,7 @@ docker-machine version 0.10.0, build 76ed2a6
 </code></pre></li>
 <li><p>nginx安装测试</p>
 <pre><code>docker run -d -p 80:80 --name webserver nginx
-</code></pre><p> 看样子在下载,等会.如果中间ctl+c后,会重新下载.</p>
+</code></pre><p> -d表示在后台运行,-p是端口,把Container的80端口映射到本机的80端口,前面是本机端口,后面是容器端口,这样就直接能访问了.看样子在下载,等会.如果中间ctl+c后,会重新下载.</p>
 <pre><code>➜  ~ docker run -d -p 80:80 --name webserver nginx
 Unable to find image &apos;nginx:latest&apos; locally
 latest: Pulling from library/nginx
@@ -312,6 +312,34 @@ sudo nginx -s stop
 <li><p>删除镜像</p>
 <pre><code>docker rmi 镜像id|镜像名称 
 docker rmi  nginx
+</code></pre></li>
+<li><p>查看日志</p>
+<pre><code>docker logs -f 96e5
+</code></pre></li>
+<li><p>查看web的容器的配置和状态信息….</p>
+<pre><code>docker inspect webserver
+</code></pre></li>
+<li><p>查看进程</p>
+<pre><code>docker top webserver
+</code></pre></li>
+<li><p>列出docker镜像.</p>
+<pre><code>docker images        
+
+REPOSTITORY：表示镜像的仓库源
+TAG：版本
+IMAGE ID：镜像ID
+CREATED：镜像创建时间
+SIZE：镜像大小
+</code></pre></li>
+<li><p>同一个镜像仓库里可以存放多个同一个镜像的不同版本,想使用哪个版本</p>
+<pre><code>docker run -t -i ubuntu:14.04 /bin/bash 
+如果不指定版本,那就是ubuntu:latest版本
+</code></pre></li>
+<li><p>下载一个镜像</p>
+<pre><code>docker pull ubuntu:14.04
+</code></pre></li>
+<li><p>查找官方有什么镜像,OFFICIAL:是否docker官方发布</p>
+<pre><code>docker search httpd
 </code></pre></li>
 </ol>
 <blockquote>
@@ -545,11 +573,15 @@ docker rmi  nginx
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">

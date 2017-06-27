@@ -6,19 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://crossgit.github.io">
-  <title>CordovaVue-vue | 走走停停</title>
+  <title>Tag: 发布ios | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="cordova-vue(2)之vue基础其实是 vue-cli,vue版本在2.3 左右.   不能丢掉隐藏文件. 当引入一个第三方js文件时,提示不是严格模式的设置,更改.babelrc文件  {     &amp;quot;presets&amp;quot;: [         [&amp;quot;env&amp;quot;, { &amp;quot;modules&amp;quot;: false }],         &amp;quot;">
-<meta name="keywords" content="cordova,vue">
-<meta property="og:type" content="article">
-<meta property="og:title" content="CordovaVue-vue">
-<meta property="og:url" content="http://crossgit.github.io/2017/05/12/CordovaVue-vue/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="走走停停">
+<meta property="og:url" content="http://crossgit.github.io/tags/发布ios/index.html">
 <meta property="og:site_name" content="走走停停">
-<meta property="og:description" content="cordova-vue(2)之vue基础其实是 vue-cli,vue版本在2.3 左右.   不能丢掉隐藏文件. 当引入一个第三方js文件时,提示不是严格模式的设置,更改.babelrc文件  {     &amp;quot;presets&amp;quot;: [         [&amp;quot;env&amp;quot;, { &amp;quot;modules&amp;quot;: false }],         &amp;quot;">
-<meta property="og:updated_time" content="2017-06-15T02:49:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CordovaVue-vue">
-<meta name="twitter:description" content="cordova-vue(2)之vue基础其实是 vue-cli,vue版本在2.3 左右.   不能丢掉隐藏文件. 当引入一个第三方js文件时,提示不是严格模式的设置,更改.babelrc文件  {     &amp;quot;presets&amp;quot;: [         [&amp;quot;env&amp;quot;, { &amp;quot;modules&amp;quot;: false }],         &amp;quot;">
+<meta name="twitter:title" content="走走停停">
   
     <link rel="alternative" href="/atom.xml" title="走走停停" type="application/atom+xml">
   
@@ -142,195 +137,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-CordovaVue-vue" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      CordovaVue-vue
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/06/19/CordovaVue-Publish-ios/" class="archive-article-date">
+  	<time datetime="2017-06-19T14:03:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/06/19/CordovaVue-Publish-ios/">CordovaVue-Publish-ios</a>
     </h1>
   
 
-        
-        <a href="/2017/05/12/CordovaVue-vue/" class="archive-article-date">
-  	<time datetime="2017-05-12T01:49:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="cordova-vue-2-之vue基础"><a href="#cordova-vue-2-之vue基础" class="headerlink" title="cordova-vue(2)之vue基础"></a>cordova-vue(2)之vue基础</h1><p>其实是 vue-cli,vue版本在2.3 左右.</p>
-<hr>
-<blockquote>
-<p>不能丢掉隐藏文件.</p>
-<p>当引入一个第三方js文件时,提示不是严格模式的设置,更改.babelrc文件</p>
-</blockquote>
-<pre><code>{
-    &quot;presets&quot;: [
-        [&quot;env&quot;, { &quot;modules&quot;: false }],
-        &quot;stage-2&quot;
-    ],
-    &quot;ignore&quot;: [
-        &quot;./app/assets/js/mui.js&quot; //不是严格模式的js文件
-    ],
-    &quot;plugins&quot;: [&quot;transform-runtime&quot;],
-    &quot;comments&quot;: false,
-    &quot;env&quot;: {
-        &quot;test&quot;: {
-            &quot;presets&quot;: [&quot;env&quot;, &quot;stage-2&quot;],
-            &quot;plugins&quot;: [&quot;istanbul&quot;]
-        }
-    }
-}
-</code></pre><blockquote>
-<p>vue的生命周期,常用的如下,其他的感觉使用vue-router的更合适一些.</p>
-</blockquote>
-<pre><code>created 渲染完成前要实现的
-mounted 渲染完成后要实现的
-</code></pre><h2 id="项目中必不可少的东西"><a href="#项目中必不可少的东西" class="headerlink" title="项目中必不可少的东西"></a>项目中必不可少的东西</h2><pre><code>* vue-router    // 路由,页面跳转,传递参数 https://router.vuejs.org/zh-cn/
-* vuex          // 状态管理,不如叫全局变量管理 https://vuex.vuejs.org/zh-cn/
-* axios         // 请求后端api
-</code></pre><h2 id="vue-router相关"><a href="#vue-router相关" class="headerlink" title="vue-router相关"></a>vue-router相关</h2><blockquote>
-<p>router-view的子页面</p>
-<p>生命中的拦截 meta</p>
-</blockquote>
-<pre><code>meta是一个对象,写在路由中,然后访问时只要 router.meta.value就可以了
-</code></pre><blockquote>
-<p>生命周期的应用</p>
-</blockquote>
-<ul>
-<li>举例</li>
-</ul>
-<p>打开页面之前判断是否登录</p>
-<pre><code>router.beforeEach(function(to,from,next){...})
-
-其中的next参数: 
-next(): 进行管道中的下一个钩子。如果全部钩子执行完了，则导航的状态就是 confirmed （确认的）。 
-next(false): 中断当前的导航。如果浏览器的 URL 改变了（可能是用户手动或者浏览器后退按钮），那么 URL 地址会重置到 from 路由对应的地址。 
-next(&apos;/&apos;) 或者 next({ path: &apos;/&apos; }): 跳转到一个不同的地址。当前的导航被中断，然后进行一个新的导航。
-</code></pre><blockquote>
-<p>某一路由的特别定义</p>
-</blockquote>
-<pre><code>beforeEnter: (to, from, next) =&gt; {
-    ...
-}
-
-参数和beforeEach一致
-</code></pre><blockquote>
-<p>打开页面之前加载完数据</p>
-</blockquote>
-<pre><code>beforeRouteEnter(to,from,next){...}
-
-next(vm =&gt; {
-    // 通过 `vm` 访问组件实例
-})
-</code></pre><blockquote>
-<p>路由的参数变了</p>
-</blockquote>
-<pre><code>beforeRouteUpdate (to, from, next) {...},
-</code></pre><blockquote>
-<p>退出页面之前提示是否退出</p>
-</blockquote>
-<pre><code>beforeRouteLeave(to,from,next){...}
-</code></pre><h2 id="vuex-严格模式与非严格模式"><a href="#vuex-严格模式与非严格模式" class="headerlink" title="vuex 严格模式与非严格模式"></a>vuex 严格模式与非严格模式</h2><blockquote>
-<p>一刷新就没了.</p>
-</blockquote>
-<p>刷新后会执行main.js,可以在这里再次读取存放在localstorage里的数据.</p>
-<blockquote>
-<p>不赋值,就取不到值.</p>
-</blockquote>
-<p>main.js为啥取不到store.state的值</p>
-<ul>
-<li>严格模式</li>
-</ul>
-<p>分为四部分, state,getter,action,mutations,抛开别扭的写法</p>
-<p>state 定义变量<br>getter 准备被调用<br>action 异步的方法<br>mutations 同步方法,根据action来改变state</p>
-<ul>
-<li>非严格模式</li>
-</ul>
-<p>大概分为两部分,state,action</p>
-<p>state 存放全局变量<br>aciton 存放全局方法</p>
-<p>如果之间有了关联,就又到了mutations</p>
-<h2 id="axios的配置的初始与覆盖初始"><a href="#axios的配置的初始与覆盖初始" class="headerlink" title="axios的配置的初始与覆盖初始"></a>axios的配置的初始与覆盖初始</h2><blockquote>
-<p>跨域了</p>
-</blockquote>
-<p>前后只要一分开,肯定会跨域,常用的解决方法也就几种:后端设置cors和</p>
-<pre><code>前端的反向代理,vue目录下打开config/index.js
-
-&apos;/api&apos;: {
-    target: &apos;http://localhost:3000&apos;,
-    changeOrigin: true,
-    pathRewrite: {
-        &apos;^/api&apos;: &apos;/api&apos;
-}
-</code></pre><p>对于后端设置的跨域,前端找个地方写死这个路径或者起一个服务,只要vue能读取到这个api的域名就行了.然后,就用到了axios</p>
-<ul>
-<li>创建</li>
-</ul>
-<p>写死headers的情况</p>
-<pre><code>let rest = axios.create({
-     baseURL: baseURL,
-     timeout: 20000,
-     headers: {
-         &apos;Authorization&apos;: temp.token
-     },
- });
-</code></pre><p>没写死headers或者没headers</p>
-<pre><code>let rest = axios.create({
-    baseURL: baseURL,
-    timeout: 20000
-});
-</code></pre><p>重写headers</p>
-<pre><code>rest.defaults.headers.common[&apos;Authorization&apos;] = &apos;....&apos;;
-</code></pre><ul>
-<li>使用</li>
-</ul>
-<p>日常的</p>
-<pre><code>rest.post(url,[params])
-    .then((res)=&gt;{...})
-    .catch((err)=&gt;{...})
-</code></pre><blockquote>
-<p>同步获取</p>
-</blockquote>
-<pre><code>import axios from &apos;axios&apos;
-...
-let get1 = this.rest.get(&apos;url1&apos;);
-let get2 = this.rest.get(&apos;url&apos;);
-axios.all([get1, get2]).then(res =&gt; {
-    console.log(res);
-})
-</code></pre>
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>凑合看吧,有问题github上见.<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -340,115 +176,25 @@ axios.all([get1, get2]).then(res =&gt; {
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">发布ios</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2017/05/12/CordovaVue-vue/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/05/12/CordovaVue-vue2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          CordovaVue-vue2
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/05/11/CordovaVue/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">cordova-vue</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-  
-  
-  
-  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-<script>
-  var cloudTieConfig = {
-    url: "http://crossgit.github.io/2017/05/12/CordovaVue-vue/", 
-    sourceId: "CordovaVue-vue",
-    productKey: "falsexiangce",
-    target: "cloud-tie-wrapper"
-  };
-</script>
-<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    </div></section>
   
 
-  
-
-  
+    
 
 
           </div>
@@ -472,9 +218,9 @@ axios.all([get1, get2]).then(res =&gt; {
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

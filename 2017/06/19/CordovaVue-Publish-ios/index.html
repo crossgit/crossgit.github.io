@@ -9,13 +9,13 @@
   <title>CordovaVue-Publish-ios | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="关于cordova应用的发布.  android的发布,可以在自己的服务器上发布链接,然后手机能连上下载就好了.如果要运营好,就的找各种渠道了.这篇先不讨论. 在ios上发布,主要有几个部分   钥匙串的设置 在开发者的设置 在iTunes Connect的设置 在xcode的设置.   钥匙串:   钥匙串访问&amp;gt;证书助理&amp;gt;从证书颁发机构请求证书 填写用户电子邮件地址,常用名称,选择存">
-<meta name="keywords" content="cordova">
+<meta name="keywords" content="cordova,发布ios">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CordovaVue-Publish-ios">
 <meta property="og:url" content="http://crossgit.github.io/2017/06/19/CordovaVue-Publish-ios/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="关于cordova应用的发布.  android的发布,可以在自己的服务器上发布链接,然后手机能连上下载就好了.如果要运营好,就的找各种渠道了.这篇先不讨论. 在ios上发布,主要有几个部分   钥匙串的设置 在开发者的设置 在iTunes Connect的设置 在xcode的设置.   钥匙串:   钥匙串访问&amp;gt;证书助理&amp;gt;从证书颁发机构请求证书 填写用户电子邮件地址,常用名称,选择存">
-<meta property="og:updated_time" content="2017-06-20T01:42:28.000Z">
+<meta property="og:updated_time" content="2017-06-27T06:27:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CordovaVue-Publish-ios">
 <meta name="twitter:description" content="关于cordova应用的发布.  android的发布,可以在自己的服务器上发布链接,然后手机能连上下载就好了.如果要运营好,就的找各种渠道了.这篇先不讨论. 在ios上发布,主要有几个部分   钥匙串的设置 在开发者的设置 在iTunes Connect的设置 在xcode的设置.   钥匙串:   钥匙串访问&amp;gt;证书助理&amp;gt;从证书颁发机构请求证书 填写用户电子邮件地址,常用名称,选择存">
@@ -206,7 +206,7 @@
 <p>xcode打开cordova应用下<code>platforms&gt;ios</code>.项目名不建议是中文,建议字符+数字,主要有五处配置</p>
 </blockquote>
 <ol>
-<li>菜单里,<code>xcode&gt;preferences&gt;Accounts</code>,下面的<code>+</code>上开发者账户,把没用的账户删掉.</li>
+<li>菜单里,<code>xcode&gt;preferences&gt;Accounts</code>,下面的<code>+</code>上开发者账户,把没用的账户删掉.点下载<code>Download All Profiles</code>.</li>
 <li>设置虚拟机的地方选择<code>Generic IOS Device</code>,点击<code>Product&gt;Archive</code>,如果顺利就会生成一个版本选择导出,在弹出的5个选项中选第一个,保存完成.注意这里,用xcode的上传心里没底,所以导出就好了,用applcation loader.</li>
 <li>设置虚拟机的前面,显示项目名的那里,点击选择<code>Edit scheme</code>,确保Archive的BuildConfiguration是<code>Release</code>.通常是默认就可以,生成出错了再检查.</li>
 <li><p>在左侧菜单点击项目名:</p>
@@ -228,6 +228,54 @@
 <blockquote>
 <p>到了这里,就剩下提交审核了.在iTunes Connect里的<code>构建应用</code>旁边的加号,选择版本.提交审核后,会有一堆选项,按具体情况选几项完事.</p>
 </blockquote>
+<hr>
+<p>权限的问题</p>
+<table>
+<thead>
+<tr>
+<th>给用户的提示</th>
+<th>Key值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>通讯录</td>
+<td>NSContactsUsageDescription</td>
+</tr>
+<tr>
+<td>麦克风</td>
+<td>NSMicrophoneUsageDescription</td>
+</tr>
+<tr>
+<td>相册</td>
+<td>NSPhotoLibraryUsageDescription</td>
+</tr>
+<tr>
+<td>相机</td>
+<td>NSCameraUsageDescription</td>
+</tr>
+<tr>
+<td>持续获取地理位置</td>
+<td>NSLocationAlwaysUsageDescription</td>
+</tr>
+<tr>
+<td>使用时获取地理位置</td>
+<td>NSLocationWhenInUseUsageDescription</td>
+</tr>
+<tr>
+<td>蓝牙</td>
+<td>NSBluetoothPeripheralUsageDescription</td>
+</tr>
+<tr>
+<td>语音转文字</td>
+<td>NSSpeechRecognitionUsageDescription</td>
+</tr>
+<tr>
+<td>日历</td>
+<td>NSCalendarsUsageDescription</td>
+</tr>
+</tbody>
+</table>
 
       
 
@@ -263,6 +311,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">cordova</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">发布ios</a>
         		</li>
       		
 		</ul>
@@ -447,11 +499,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">

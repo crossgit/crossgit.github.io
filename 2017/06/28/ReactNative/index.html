@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://crossgit.github.io">
-  <title>cordova-vue | 走走停停</title>
+  <title>ReactNative | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="cordova + vue-cli (1)安装首先保证装了node,然后提前下好android开发的那堆东西,jdk,java等等接着安装 vue-cli,cordova npm install -g vue-cli npm install -g cordova 创建创建cordova项目 cordova create MyApp 创建vue项目,注意选项,把不需要的尽量选no. vue init">
-<meta name="keywords" content="cordova,vue,移动端">
+  <meta name="description" content="新版本真不一定就好用,比如现在的0.45.1版本,看了官网0.46版本居然已经是rc了…不过还报错  安装   sudo npm install -g react-native-cli  创建项目,这里需要加一个--version来指定项目创建用的版本号  react-native init demoapp1 --version 0.44.3 如果发现 react-native start能跑起来">
+<meta name="keywords" content="移动端,react">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cordova-vue">
-<meta property="og:url" content="http://crossgit.github.io/2017/05/11/CordovaVue/index.html">
+<meta property="og:title" content="ReactNative">
+<meta property="og:url" content="http://crossgit.github.io/2017/06/28/ReactNative/index.html">
 <meta property="og:site_name" content="走走停停">
-<meta property="og:description" content="cordova + vue-cli (1)安装首先保证装了node,然后提前下好android开发的那堆东西,jdk,java等等接着安装 vue-cli,cordova npm install -g vue-cli npm install -g cordova 创建创建cordova项目 cordova create MyApp 创建vue项目,注意选项,把不需要的尽量选no. vue init">
-<meta property="og:updated_time" content="2017-06-28T04:17:19.000Z">
+<meta property="og:description" content="新版本真不一定就好用,比如现在的0.45.1版本,看了官网0.46版本居然已经是rc了…不过还报错  安装   sudo npm install -g react-native-cli  创建项目,这里需要加一个--version来指定项目创建用的版本号  react-native init demoapp1 --version 0.44.3 如果发现 react-native start能跑起来">
+<meta property="og:updated_time" content="2017-06-28T04:16:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cordova-vue">
-<meta name="twitter:description" content="cordova + vue-cli (1)安装首先保证装了node,然后提前下好android开发的那堆东西,jdk,java等等接着安装 vue-cli,cordova npm install -g vue-cli npm install -g cordova 创建创建cordova项目 cordova create MyApp 创建vue项目,注意选项,把不需要的尽量选no. vue init">
+<meta name="twitter:title" content="ReactNative">
+<meta name="twitter:description" content="新版本真不一定就好用,比如现在的0.45.1版本,看了官网0.46版本居然已经是rc了…不过还报错  安装   sudo npm install -g react-native-cli  创建项目,这里需要加一个--version来指定项目创建用的版本号  react-native init demoapp1 --version 0.44.3 如果发现 react-native start能跑起来">
   
     <link rel="alternative" href="/atom.xml" title="走走停停" type="application/atom+xml">
   
@@ -146,184 +146,37 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-CordovaVue" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-ReactNative" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      cordova-vue
+      ReactNative
     </h1>
   
 
         
-        <a href="/2017/05/11/CordovaVue/" class="archive-article-date">
-  	<time datetime="2017-05-11T15:07:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
+        <a href="/2017/06/28/ReactNative/" class="archive-article-date">
+  	<time datetime="2017-06-28T03:55:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="cordova-vue-cli-1"><a href="#cordova-vue-cli-1" class="headerlink" title="cordova + vue-cli (1)"></a>cordova + vue-cli (1)</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>首先保证装了node,然后提前下好android开发的那堆东西,jdk,java等等<br>接着安装 vue-cli,cordova</p>
-<pre><code>npm install -g vue-cli
-npm install -g cordova
-</code></pre><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><p>创建cordova项目</p>
-<pre><code>cordova create MyApp
-</code></pre><p>创建vue项目,注意选项,把不需要的尽量选no.</p>
-<pre><code>vue init webpack Myvue
-</code></pre><p>将vue项目的文件目录都复制到MyApp文件里,注意有几个隐藏文件,别落下.<br>或者可以把cordova项目复制到vue项目里.</p>
-<p>在目录下执行   <code>npm i</code> 安装vue需要的包</p>
-<h2 id="对vue项目的一些配置更改"><a href="#对vue项目的一些配置更改" class="headerlink" title="对vue项目的一些配置更改."></a>对vue项目的一些配置更改.</h2><blockquote>
-<p>原来生成路径的dist改成www: 在config/index.js下</p>
-</blockquote>
-<pre><code>build: {
-    env: require(&apos;./prod.env&apos;),
-    index: path.resolve(__dirname, &apos;../www/index.html&apos;),
-    assetsRoot: path.resolve(__dirname, &apos;../www&apos;),
-    assetsSubDirectory: &apos;static&apos;,
-    assetsPublicPath: &apos;./&apos;,
-    productionSourceMap: true, 
-    // ...
-    productionGzip: false,
-    productionGzipExtensions: [&apos;js&apos;, &apos;css&apos;],
-    bundleAnalyzerReport: process.env.npm_config_report
-}
-</code></pre><p>原本cordova项目的www文件,直接删掉也无妨.</p>
+        <p>新版本真不一定就好用,比如现在的0.45.1版本,看了官网0.46版本居然已经是rc了…不过还报错</p>
 <blockquote>
-<p>文件路径,都改成相对路径. 比如原来的/static/img/xxx.png 需要改成./static/img/xxx.png,如果是样式里写的背景图,需要将样式在template里用:style处理.如下</p>
+<p>安装 </p>
 </blockquote>
-<pre><code>&lt;div :stype=&quot;backimg&quot;&gt;...&lt;/div&gt;
-...
-data(){
-    return {
-        backimg:{
-            background: &apos;url(&apos; + require(&apos;./static/img/xxx.png&apos;) + &apos;) no-repeat center/cover&apos;
-        }
-    }
-}
+<pre><code>sudo npm install -g react-native-cli
 </code></pre><blockquote>
-<p>package.json的配置,把命令简写一下</p>
+<p>创建项目,这里需要加一个<code>--version</code>来指定项目创建用的版本号</p>
 </blockquote>
-<pre><code>&quot;scripts&quot;: {
-    &quot;dev&quot;: &quot;node build/dev-server.js&quot;,
-    &quot;build&quot;: &quot;node build/build.js&quot;,
-    &quot;ios&quot;: &quot;cordova prepare ios &amp;&amp; cordova run ios&quot;,
-    &quot;android&quot;: &quot;cordova prepare android &amp;&amp; cordova run android&quot;
-},
-</code></pre><blockquote>
-<p>vue下的main.js,要引入cordova.js,否则加入的cordova插件将没法使用.</p>
-</blockquote>
-<pre><code>if (window.location.protocol === &apos;file:&apos; || window.location.port === &apos;3000&apos;) {
-    var cordovaScript = document.createElement(&apos;script&apos;)
-    cordovaScript.setAttribute(&apos;type&apos;, &apos;text/javascript&apos;)
-    cordovaScript.setAttribute(&apos;src&apos;, &apos;cordova.js&apos;)
-    document.body.appendChild(cordovaScript)
-}
-</code></pre><blockquote>
-<p>需要重装的npm,如果提示什么什么npm的版本号要大于3.0.0,但是实际系统里装的npm已经超过了3.0.0,那么需要把vue项目里的npm卸载了重新装一下,需要时间可能会很长.</p>
-</blockquote>
-<pre><code>手工删除package.json文件里面的相关,大概长这样:npm:^3.0.0 ,然后
-npm uninstall npm
-npm install npm
-</code></pre><h2 id="添加平台"><a href="#添加平台" class="headerlink" title="添加平台"></a>添加平台</h2><pre><code>cd MyApp
-cordova platform add browser,android,ios
-</code></pre><h2 id="试运行"><a href="#试运行" class="headerlink" title="试运行"></a>试运行</h2><p>在MyApp下运行</p>
-<pre><code>npm run dev // 浏览器运行,一般会一直开启.
-npm run build //在www目录下生成压缩文件,属于第二步,打包
-npm run ios // 用ios虚拟机跑
-npm run android //用android真机跑
+<pre><code>react-native init demoapp1 --version 0.44.3
+</code></pre><p>如果发现 <code>react-native start</code>能跑起来…也可能跑不起来,但是 <code>react-native run-ios</code>跑不起来,可以先删了那些npm装的包,<code>rm -rf node_modules</code>,重新<code>npm i</code>之后再试可能就好了.</p>
 
-其他命令
-    help：获取帮助
-    create:创建项目
-    platform:管理平台
-    plguin:管理插件
-    perpare:复制cordova/www/下的文件到对应平台的项目文件夹中
-    complie:编译项目
-    build:构建项目
-    Emulate:虚拟机运行
-    run:测试机运行
-    server：开启web服务器运行项目
-</code></pre><blockquote>
-<p>android,有时需要安装android studio,用他打开项目对应的android平台后,然后配置一通虚拟机什么的.配置完成,再执行npm run android,或者直接在adroid studio跑也行.</p>
-<p>如果请求api时,提示<code>Provisional headers are shown</code>,而浏览器上没问题,需要重新装一下android平台,引起原因可能是,在cordova里需要的包版本,比adroid studio里的旧,当用adroid strudio打开后,提示升级别搭理.</p>
-<p>ios,装xcode,虚拟机. 命令或者在xcode运行都可以.</p>
-</blockquote>
-<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>理论上说只要在npm run dev下运行成功了,打包后在手机上也差不多..但是仅限于理论,如果想看手机上什么情况,就需要如下操作</p>
-<blockquote>
-<p>android</p>
-</blockquote>
-<pre><code>chrome浏览器必须的
-开启手机的USB调试模式
-打开网址 `chrome://inspect/#devices` ,机器慢的多等会.
-其他的就和web调试都一样了
-</code></pre><blockquote>
-<p>ios</p>
-</blockquote>
-<pre><code>暂时买不起iphone,但是安装的app调试如下
-mac+safari浏览器
-【iOS 终端】：设置 → Safari → 高级 → Web 检查器 → 开.
-</code></pre><p>　　【OS X】：Safari → 偏好设置 → 高级 → 在菜单栏中显示“开发”菜单.<br>    safari调试</p>
-<h2 id="添加与使用cordova插件"><a href="#添加与使用cordova插件" class="headerlink" title="添加与使用cordova插件"></a>添加与使用cordova插件</h2><p>先推荐一个插件 vue-cordova,在gayhub上搜一下,能找到使用方法.</p>
-<pre><code>npm i vue-cordova --save
-</code></pre><p>添加/卸载cordova插件命令,卸载执行完记得在config.xml里,把这个插件的配置删掉,要不下次cordova build的时候就又加上去了</p>
-<pre><code>cordova plugin add/remove cordova-plugin-device --save
-</code></pre><h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><blockquote>
-<p>android  <a href="https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html#setting-gradle-properties" target="_blank" rel="external">https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html#setting-gradle-properties</a></p>
-</blockquote>
-<p>本来说 cordova build android –release就是打包了,但是,结果生成的一个文件是 <code>android-release-unsigned.apk</code>,这个一看就感觉不像</p>
-<p>继续命令:生成数字签名文件（keystore）。这个文件只需要生成一次。以后每次sign都用它。</p>
-<pre><code>keytool -genkey -v -keystore release-key.keystore -alias bd-app -keyalg RSA -keysize 2048 -validity 10000
-</code></pre><p>上面的命令意思是，生成一个 release-key.keystore 的文件，别名（alias）为 bd-app 。</p>
-<p>过程中会要求设置 keystore 的密码和 key 的密码。我们分别设置为 testt1 和 testt2 (要求6位以上),然后写[是]完成</p>
-<p>这个文件生成在根目录下,然后复制到<code>platforms/android/build/outputs/apk/</code>下来,接下来的命令都在这里执行</p>
-<p>对apk签名,cd到apk的目录下, </p>
-<pre><code>cd platforms/android/build/outputs/apk/
-jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore release-key.keystore android-release-unsigned.apk bd-app
-</code></pre><p>这个命令中需要传入证书名 release-key.keystore，要签名的 APK android-release-unsigned.apk，和别名 bd-app。签名过程中需要先后输入 keystore 和 key 的密码。命令运行完后，这个 APK 就已经改变了。但是这个过程没有生成新文件。</p>
-<p>最后用 <code>zipalign</code> 压缩和优化APK,先把这个<code>zipalign</code>文件找到 <code>cd /用户/wxj/资源库/Android/sdk/build-tools</code>下, 看使用的哪个版本号,复制出zpialign文件来,放到上面的apk目录下,执行</p>
-<pre><code>./zipalign -v 4 android-release-unsigned.apk bd-app.apk
-</code></pre><p>这样就生成一个叫bd-app.apk的文件,安装就可以了</p>
-<ul>
-<li><p>提示签名不一致的情况,其实就是已经有一个安装了,要覆盖他,结果发现不一致,只要把前面安装的程序卸载了就可以了.</p>
-</li>
-<li><p>以后如何打包 ,如下命令,或者写到npm命令里</p>
-<pre><code>cordova build android --release -- --keystore=&quot;release-key.keystore&quot; --alias=bd-app --storePassword=testt1 --password=testt2
-</code></pre></li>
-<li><p>或者在根目录下写一个配置文件 build.json</p>
-<pre><code>{
-    &quot;android&quot;: {
-        &quot;release&quot;: {
-        &quot;keystore&quot;: &quot;release-key.keystore&quot;,
-        &quot;alias&quot;: &quot;bd-app&quot;,
-        &quot;storePassword&quot;: &quot;testt1&quot;,
-        &quot;password&quot;: &quot;testt2&quot;
-        }
-    }
-}
-</code></pre></li>
-</ul>
-<p>把<code>release-key.keystore</code>文件也放在根目录下,然后每次执行 <code>cordova build android --release</code>,会在apk目录下生成两个文件,其中一个叫 <code>android-release.apk</code>,这个就是新的包了.</p>
-<ul>
-<li><p>可能是更简便的打包方式,使用 Gradle ，一个 Android 的自动化构建工具。cordova build android 在 <code>platforms/android</code>目录下建立<code>release-signing.properties</code>文件，内容类似下面这样：</p>
-<pre><code>storeFile=release-key.keystore // 就是在build.gradle文件同目录下的keystore文件
-storePassword=testt1
-keyAlias=bd-app
-keyPassword=testt2
-</code></pre></li>
-</ul>
-<p>这个文件的名称和位置也是可以通过 Gradle 的配置 <code>cdvReleaseSigningPropertiesFile</code> 修改的<br>最后执行 cordova build android -release</p>
-<blockquote>
-<p>ios</p>
-<ul>
-<li>草鸡多,先在apple上注册个开发者账户,668,然后需要itunes,安装xcode</li>
-</ul>
-</blockquote>
-<pre><code>https://developer.apple.com
-https://itunesconnect.apple.com/
-</code></pre>
       
 
       
@@ -357,15 +210,11 @@ https://itunesconnect.apple.com/
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">cordova</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
         		</li>
       		
 		</ul>
@@ -421,7 +270,7 @@ https://itunesconnect.apple.com/
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2017/05/11/CordovaVue/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2017/06/28/ReactNative/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -435,18 +284,18 @@ https://itunesconnect.apple.com/
   
 <nav id="article-nav">
   
-    <a href="/2017/05/12/CordovaVue-vue/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/06/30/angular-cli/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          CordovaVue-vue
+          angular-cli
         
       </div>
     </a>
   
   
-    <a href="/2017/05/07/index/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">cordova相关的</div>
+    <a href="/2017/06/19/CordovaVue-Publish-ios/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CordovaVue-Publish-ios</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -462,8 +311,8 @@ https://itunesconnect.apple.com/
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://crossgit.github.io/2017/05/11/CordovaVue/", 
-    sourceId: "CordovaVue",
+    url: "http://crossgit.github.io/2017/06/28/ReactNative/", 
+    sourceId: "ReactNative",
     productKey: "falsexiangce",
     target: "cloud-tie-wrapper"
   };

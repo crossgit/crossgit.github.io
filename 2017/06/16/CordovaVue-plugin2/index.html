@@ -9,13 +9,13 @@
   <title>cordova plugin ios | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="用swift写cordova在ios下的插件 相关链接  开始配置相关参照: http://blog.csdn.net/b2259909/article/details/52471178 帮助说明: http://moduscreate.com/writing-a-cordova-plugin-in-swift-for-ios/,这个还有个youtube上的视频,直接搜应该就能找到 相关的插件:">
-<meta name="keywords" content="cordova,plugin">
+<meta name="keywords" content="cordova,移动端,plugin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cordova plugin ios">
 <meta property="og:url" content="http://crossgit.github.io/2017/06/16/CordovaVue-plugin2/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="用swift写cordova在ios下的插件 相关链接  开始配置相关参照: http://blog.csdn.net/b2259909/article/details/52471178 帮助说明: http://moduscreate.com/writing-a-cordova-plugin-in-swift-for-ios/,这个还有个youtube上的视频,直接搜应该就能找到 相关的插件:">
-<meta property="og:updated_time" content="2017-06-16T07:29:04.000Z">
+<meta property="og:updated_time" content="2017-06-28T04:16:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cordova plugin ios">
 <meta name="twitter:description" content="用swift写cordova在ios下的插件 相关链接  开始配置相关参照: http://blog.csdn.net/b2259909/article/details/52471178 帮助说明: http://moduscreate.com/writing-a-cordova-plugin-in-swift-for-ios/,这个还有个youtube上的视频,直接搜应该就能找到 相关的插件:">
@@ -67,6 +67,10 @@
     		
     			
     			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友情链接</a>
     			
             
     			
@@ -240,6 +244,10 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">plugin</a>
         		</li>
       		
@@ -399,17 +407,25 @@
       
       
     
+      
+      
+      
+    
     
 
     <ul style="width: 70%">
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友情链接</a></li>
+      
+        
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -434,15 +450,31 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -492,6 +524,18 @@
     	</section>
     
 
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="http://www.xshadow.org/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>ff家</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
     
 
     

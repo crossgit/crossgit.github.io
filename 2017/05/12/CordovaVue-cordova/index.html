@@ -9,13 +9,13 @@
   <title>CordovaVue-cordova | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="cordova-vue(3)之cordova插件使用不能忘记cordova.js,否则加载的插件就不能用白名单cordova-plugin-whitelist  装了cordova就带了的   我用的是什么设备cordova-plugin-device  抖动 加速度运动传感器 cordova-plugin-device-motion通知来了,抖动通知 cordova-plugin-dialogs">
-<meta name="keywords" content="cordova,vue">
+<meta name="keywords" content="cordova,vue,移动端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CordovaVue-cordova">
 <meta property="og:url" content="http://crossgit.github.io/2017/05/12/CordovaVue-cordova/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="cordova-vue(3)之cordova插件使用不能忘记cordova.js,否则加载的插件就不能用白名单cordova-plugin-whitelist  装了cordova就带了的   我用的是什么设备cordova-plugin-device  抖动 加速度运动传感器 cordova-plugin-device-motion通知来了,抖动通知 cordova-plugin-dialogs">
-<meta property="og:updated_time" content="2017-06-15T02:49:23.000Z">
+<meta property="og:updated_time" content="2017-06-30T04:17:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CordovaVue-cordova">
 <meta name="twitter:description" content="cordova-vue(3)之cordova插件使用不能忘记cordova.js,否则加载的插件就不能用白名单cordova-plugin-whitelist  装了cordova就带了的   我用的是什么设备cordova-plugin-device  抖动 加速度运动传感器 cordova-plugin-device-motion通知来了,抖动通知 cordova-plugin-dialogs">
@@ -67,6 +67,10 @@
     		
     			
     			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友情链接</a>
     			
             
     			
@@ -216,7 +220,7 @@ cordova-plugin-ortoo-splashscreen
 <h2 id="到哪里了–GPScordova-plugin-geolocation"><a href="#到哪里了–GPScordova-plugin-geolocation" class="headerlink" title="到哪里了–GPScordova-plugin-geolocation"></a>到哪里了–GPS<code>cordova-plugin-geolocation</code></h2><blockquote>
 <p> 以上只能获得坐标,那就试试加这个:百度地图 <code>cordova-plugin-geolocation-baidu</code></p>
 </blockquote>
-<h2 id="一路向北–指南针-cordova-plugin-device-orientation"><a href="#一路向北–指南针-cordova-plugin-device-orientation" class="headerlink" title="一路向北–指南针 cordova-plugin-device-orientation"></a>一路向北–指南针 <code>cordova-plugin-device-orientation</code></h2><h2 id="看看他的联系人cordova-plugin-contacts"><a href="#看看他的联系人cordova-plugin-contacts" class="headerlink" title="看看他的联系人cordova-plugin-contacts"></a>看看他的联系人<code>cordova-plugin-contacts</code></h2><blockquote>
+<h2 id="一路向南–指南针-cordova-plugin-device-orientation"><a href="#一路向南–指南针-cordova-plugin-device-orientation" class="headerlink" title="一路向南–指南针 cordova-plugin-device-orientation"></a>一路向南–指南针 <code>cordova-plugin-device-orientation</code></h2><h2 id="看看他的联系人cordova-plugin-contacts"><a href="#看看他的联系人cordova-plugin-contacts" class="headerlink" title="看看他的联系人cordova-plugin-contacts"></a>看看他的联系人<code>cordova-plugin-contacts</code></h2><blockquote>
 </blockquote>
 <h2 id="本地文件存放"><a href="#本地文件存放" class="headerlink" title="本地文件存放"></a>本地文件存放</h2><blockquote>
 <p>localstorage</p>
@@ -245,7 +249,9 @@ navigator.notification.alert(
     &apos;Game Over&apos;,            // title
     &apos;Done&apos;                  // buttonName
 );
-</code></pre><h2 id="关于支付–花钱也这么难"><a href="#关于支付–花钱也这么难" class="headerlink" title="关于支付–花钱也这么难"></a>关于支付–花钱也这么难</h2><blockquote>
+</code></pre><h2 id="ios的状态栏挡住了导航-ios7以后的版本会出现这种情况"><a href="#ios的状态栏挡住了导航-ios7以后的版本会出现这种情况" class="headerlink" title="ios的状态栏挡住了导航,ios7以后的版本会出现这种情况"></a>ios的状态栏挡住了导航,ios7以后的版本会出现这种情况</h2><pre><code>cordova-plugin-statusbar
+</code></pre><p>安装以后,啥也别说,ios下,header标签开头的页面会自动隐藏状态栏,android平台不受影响.再详细的情况,可以在github上找.</p>
+<h2 id="关于支付–花钱也这么难"><a href="#关于支付–花钱也这么难" class="headerlink" title="关于支付–花钱也这么难"></a>关于支付–花钱也这么难</h2><blockquote>
 <p>微信 <code>cordova plugin add cordova-plugin-wechat --variable wechatappid=YOUR_WECHAT_APPID</code></p>
 <p>支付宝 <code>cordova-plugin-alipay-v2</code> </p>
 </blockquote>
@@ -293,6 +299,10 @@ navigator.notification.alert(
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
         		</li>
       		
 		</ul>
@@ -451,17 +461,25 @@ navigator.notification.alert(
       
       
     
+      
+      
+      
+    
     
 
     <ul style="width: 70%">
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友情链接</a></li>
+      
+        
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -486,15 +504,31 @@ navigator.notification.alert(
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -544,6 +578,18 @@ navigator.notification.alert(
     	</section>
     
 
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="http://www.xshadow.org/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>ff家</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
     
 
     

@@ -9,13 +9,13 @@
   <title>CordovaVue-vue | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="cordova-vue(2)之vue基础其实是 vue-cli,vue版本在2.3 左右.   不能丢掉隐藏文件. 当引入一个第三方js文件时,提示不是严格模式的设置,更改.babelrc文件  {     &amp;quot;presets&amp;quot;: [         [&amp;quot;env&amp;quot;, { &amp;quot;modules&amp;quot;: false }],         &amp;quot;">
-<meta name="keywords" content="cordova,vue">
+<meta name="keywords" content="cordova,vue,移动端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CordovaVue-vue">
 <meta property="og:url" content="http://crossgit.github.io/2017/05/12/CordovaVue-vue/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="cordova-vue(2)之vue基础其实是 vue-cli,vue版本在2.3 左右.   不能丢掉隐藏文件. 当引入一个第三方js文件时,提示不是严格模式的设置,更改.babelrc文件  {     &amp;quot;presets&amp;quot;: [         [&amp;quot;env&amp;quot;, { &amp;quot;modules&amp;quot;: false }],         &amp;quot;">
-<meta property="og:updated_time" content="2017-06-15T02:49:55.000Z">
+<meta property="og:updated_time" content="2017-06-28T04:17:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CordovaVue-vue">
 <meta name="twitter:description" content="cordova-vue(2)之vue基础其实是 vue-cli,vue版本在2.3 左右.   不能丢掉隐藏文件. 当引入一个第三方js文件时,提示不是严格模式的设置,更改.babelrc文件  {     &amp;quot;presets&amp;quot;: [         [&amp;quot;env&amp;quot;, { &amp;quot;modules&amp;quot;: false }],         &amp;quot;">
@@ -67,6 +67,10 @@
     		
     			
     			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友情链接</a>
     			
             
     			
@@ -342,6 +346,10 @@ axios.all([get1, get2]).then(res =&gt; {
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
         		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
+        		</li>
       		
 		</ul>
 	</div>
@@ -499,17 +507,25 @@ axios.all([get1, get2]).then(res =&gt; {
       
       
     
+      
+      
+      
+    
     
 
     <ul style="width: 70%">
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友情链接</a></li>
+      
+        
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -534,15 +550,31 @@ axios.all([get1, get2]).then(res =&gt; {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,6 +624,18 @@ axios.all([get1, get2]).then(res =&gt; {
     	</section>
     
 
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="http://www.xshadow.org/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>ff家</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
     
 
     

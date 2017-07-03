@@ -9,13 +9,13 @@
   <title>CordovaVue-Publish-ios | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="关于cordova应用的发布.  android的发布,可以在自己的服务器上发布链接,然后手机能连上下载就好了.如果要运营好,就的找各种渠道了.这篇先不讨论. 在ios上发布,主要有几个部分   钥匙串的设置 在开发者的设置 在iTunes Connect的设置 在xcode的设置.   钥匙串:   钥匙串访问&amp;gt;证书助理&amp;gt;从证书颁发机构请求证书 填写用户电子邮件地址,常用名称,选择存">
-<meta name="keywords" content="cordova,发布ios">
+<meta name="keywords" content="cordova,移动端,发布ios">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CordovaVue-Publish-ios">
 <meta property="og:url" content="http://crossgit.github.io/2017/06/19/CordovaVue-Publish-ios/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="关于cordova应用的发布.  android的发布,可以在自己的服务器上发布链接,然后手机能连上下载就好了.如果要运营好,就的找各种渠道了.这篇先不讨论. 在ios上发布,主要有几个部分   钥匙串的设置 在开发者的设置 在iTunes Connect的设置 在xcode的设置.   钥匙串:   钥匙串访问&amp;gt;证书助理&amp;gt;从证书颁发机构请求证书 填写用户电子邮件地址,常用名称,选择存">
-<meta property="og:updated_time" content="2017-06-27T06:27:54.000Z">
+<meta property="og:updated_time" content="2017-06-28T04:17:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CordovaVue-Publish-ios">
 <meta name="twitter:description" content="关于cordova应用的发布.  android的发布,可以在自己的服务器上发布链接,然后手机能连上下载就好了.如果要运营好,就的找各种渠道了.这篇先不讨论. 在ios上发布,主要有几个部分   钥匙串的设置 在开发者的设置 在iTunes Connect的设置 在xcode的设置.   钥匙串:   钥匙串访问&amp;gt;证书助理&amp;gt;从证书颁发机构请求证书 填写用户电子邮件地址,常用名称,选择存">
@@ -67,6 +67,10 @@
     		
     			
     			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友情链接</a>
     			
             
     			
@@ -314,6 +318,10 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">发布ios</a>
         		</li>
       		
@@ -383,6 +391,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/06/28/ReactNative/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          ReactNative
+        
+      </div>
+    </a>
   
   
     <a href="/2017/06/18/docker-for-centos/" id="article-nav-older" class="article-nav-link-wrap">
@@ -464,17 +481,25 @@
       
       
     
+      
+      
+      
+    
     
 
     <ul style="width: 70%">
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友情链接</a></li>
+      
+        
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -499,15 +524,31 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -557,6 +598,18 @@
     	</section>
     
 
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="http://www.xshadow.org/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>ff家</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
     
 
     

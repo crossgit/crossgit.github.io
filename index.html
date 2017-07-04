@@ -76,7 +76,7 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="https://github.com/crossgit" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/crossgit?tab=repositories" title="github"><i class="icon-github"></i></a>
 		        
 					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
 		        
@@ -113,7 +113,7 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="https://github.com/crossgit" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/crossgit?tab=repositories" title="github"><i class="icon-github"></i></a>
 			        
 						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
 			        
@@ -163,16 +163,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>angular-cli相关,以后再具体补充吧….</p>
-<blockquote>
-<p>.angular-cli.json –项目的主要配置文件.</p>
-<ul>
-<li>项目名称</li>
-<li>配置信息,看名字大概能理解,重点是引入js和css<br>tsconfig.json</li>
-</ul>
-<p>tslint.json</p>
-</blockquote>
-
+        <p>angular-cli相关,以后再具体补充吧….<br>
+        
+          <a class="article-more-a" href="/2017/06/30/angular-cli/#more">查看更多...</a>
+        
       
 
       
@@ -230,17 +224,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>新版本真不一定就好用,比如现在的0.45.1版本,看了官网0.46版本居然已经是rc了…不过还报错</p>
-<blockquote>
-<p>安装 </p>
-</blockquote>
-<pre><code>sudo npm install -g react-native-cli
-</code></pre><blockquote>
-<p>创建项目,这里需要加一个<code>--version</code>来指定项目创建用的版本号</p>
-</blockquote>
-<pre><code>react-native init demoapp1 --version 0.44.3
-</code></pre><p>如果发现 <code>react-native start</code>能跑起来…也可能跑不起来,但是 <code>react-native run-ios</code>跑不起来,可以先删了那些npm装的包,<code>rm -rf node_modules</code>,重新<code>npm i</code>之后再试可能就好了.</p>
-
+        <p>新版本真不一定就好用,比如现在的0.45.1版本,看了官网0.46版本居然已经是rc了…不过还报错<br>
+        
+          <a class="article-more-a" href="/2017/06/28/ReactNative/#more">查看更多...</a>
+        
       
 
       
@@ -298,121 +285,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>关于cordova应用的发布.</p>
-<blockquote>
-<p>android的发布,可以在自己的服务器上发布链接,然后手机能连上下载就好了.如果要运营好,就的找各种渠道了.这篇先不讨论.</p>
-<p>在ios上发布,主要有几个部分</p>
-</blockquote>
-<ul>
-<li>钥匙串的设置</li>
-<li>在<a href="https://developer.apple.com/account/" target="_blank" rel="external">开发者</a>的设置</li>
-<li>在<a href="https://itunesconnect.apple.com/" target="_blank" rel="external">iTunes Connect</a>的设置</li>
-<li>在xcode的设置.</li>
-</ul>
-<blockquote>
-<p>钥匙串:</p>
-</blockquote>
-<ol>
-<li>钥匙串访问&gt;证书助理&gt;从证书颁发机构请求证书</li>
-<li>填写<code>用户电子邮件地址</code>,<code>常用名称</code>,选择存<code>储到磁盘</code>,继续. </li>
-<li>保存到电脑上,完事.</li>
-</ol>
-<blockquote>
-<p>打开<a href="https://developer.apple.com/account/" target="_blank" rel="external">开发者</a>,选择<code>Certificates,Identfiers &amp; Profiles</code>,然后要做三件事</p>
-</blockquote>
-<ol>
-<li>Certificates&gt;All ,添加,选择<code>Production&gt;App Store and Ad Hoc</code>,下一步,选择钥匙串生成的证书,导入,然后下载了,准备导入xcode.</li>
-<li>Identifiers&gt;App IDs, 添加,<code>App ID Description</code>随便写个什么,选择<code>Explicit App ID</code>,输入<code>Bundle ID</code>,这里要写cordova的Bundle ID,像这样的<code>com.crossess.xxx</code>,根据情况选择App services,通常就默认了.</li>
-<li>Provisioning Profiles&gt; All ,添加,选择<code>Distribution&gt;App Store</code>,然后选择之前创建的APP IDS,下一步输入应用名字,这个叫<code>SKU</code>,要统一的,然后下载.</li>
-</ol>
-<blockquote>
-<p>返回到<a href="https://developer.apple.com/account/" target="_blank" rel="external">account</a>,选择<code>iTunes Connect</code>,也有三件事,记得每写一处就<code>存储</code>一下.</p>
-</blockquote>
-<ol>
-<li>设置<code>app信息</code>.</li>
-<li>设置<code>价格</code>.</li>
-<li><p>设置<code>1.0版本</code>,这里注意: </p>
-<pre><code>版本信息下的图片,选个5.5英寸的,会自动生成其他尺寸.
-想取消掉ipad版本,只要app在xcode配置时选择只是iphone就可以了.
-准备1024*1024的jpg或者png图标.
-构建版本,要在xcode上传完成后才会有,在`构建版本`旁边多一个`+`号.
-</code></pre></li>
-</ol>
-<blockquote>
-<p>xcode打开cordova应用下<code>platforms&gt;ios</code>.项目名不建议是中文,建议字符+数字,主要有五处配置</p>
-</blockquote>
-<ol>
-<li>菜单里,<code>xcode&gt;preferences&gt;Accounts</code>,下面的<code>+</code>上开发者账户,把没用的账户删掉.点下载<code>Download All Profiles</code>.</li>
-<li>设置虚拟机的地方选择<code>Generic IOS Device</code>,点击<code>Product&gt;Archive</code>,如果顺利就会生成一个版本选择导出,在弹出的5个选项中选第一个,保存完成.注意这里,用xcode的上传心里没底,所以导出就好了,用applcation loader.</li>
-<li>设置虚拟机的前面,显示项目名的那里,点击选择<code>Edit scheme</code>,确保Archive的BuildConfiguration是<code>Release</code>.通常是默认就可以,生成出错了再检查.</li>
-<li><p>在左侧菜单点击项目名:</p>
-<ul>
-<li>General, <ul>
-<li>Identity 的版本问题,每上传成功一个,如果再改动,要记得在这里加一下版本号,version和build都加.</li>
-<li>signing <code>不要选</code>automatically manage signing,接下来的signing(debug/release)都选上SKU值,别选错了.</li>
-<li>选择设备,默认是Universal,只支持iphone,就选iphone.别的不用动,Main Interface就空着.</li>
-<li>检查图标</li>
-</ul>
-</li>
-<li>info,这里的权限问题,相片权限,存储权限,联系人权限等.</li>
-<li>Build Settings,还是 signing的问题.SDK选择iphone distribution; Development Team选择 那个正确的Certficates.</li>
-</ul>
-</li>
-<li><p>xcode的菜单:<code>xcode&gt;open developer tool&gt;appliction loader</code>,在打开的界面,双击左侧的<code>交付您的应用</code>,选择导出的ipa文件开始上传.多等会.但是上传完成并不表示上传成功.注意这里要看一下注册邮箱,有错误会发邮件,这高科技,每提交一次就麻烦同事一次.</p>
-</li>
-</ol>
-<blockquote>
-<p>到了这里,就剩下提交审核了.在iTunes Connect里的<code>构建应用</code>旁边的加号,选择版本.提交审核后,会有一堆选项,按具体情况选几项完事.</p>
-</blockquote>
-<hr>
-<p>权限的问题</p>
-<table>
-<thead>
-<tr>
-<th>给用户的提示</th>
-<th>Key值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>通讯录</td>
-<td>NSContactsUsageDescription</td>
-</tr>
-<tr>
-<td>麦克风</td>
-<td>NSMicrophoneUsageDescription</td>
-</tr>
-<tr>
-<td>相册</td>
-<td>NSPhotoLibraryUsageDescription</td>
-</tr>
-<tr>
-<td>相机</td>
-<td>NSCameraUsageDescription</td>
-</tr>
-<tr>
-<td>持续获取地理位置</td>
-<td>NSLocationAlwaysUsageDescription</td>
-</tr>
-<tr>
-<td>使用时获取地理位置</td>
-<td>NSLocationWhenInUseUsageDescription</td>
-</tr>
-<tr>
-<td>蓝牙</td>
-<td>NSBluetoothPeripheralUsageDescription</td>
-</tr>
-<tr>
-<td>语音转文字</td>
-<td>NSSpeechRecognitionUsageDescription</td>
-</tr>
-<tr>
-<td>日历</td>
-<td>NSCalendarsUsageDescription</td>
-</tr>
-</tbody>
-</table>
-
+        <p>关于cordova应用的发布.<br>
+        
+          <a class="article-more-a" href="/2017/06/19/CordovaVue-Publish-ios/#more">查看更多...</a>
+        
       
 
       
@@ -474,190 +350,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本来是想装一下es,突发奇想,装docker里吧(mac系统,旧版本1.10的docker),—只是安装,其他在别的页面里介绍</p>
-<blockquote>
-<p>如何删除旧版本,现在看官网都17.x了,差了这么多,都发生了什么?(已经删除了,没抓到图)</p>
-</blockquote>
-<ul>
-<li><p>找出所有虚拟机 <code>docker-machine ls</code>.</p>
-</li>
-<li><p>删除虚拟机,有一列叫<code>NAME</code>的,比如叫<code>default</code>,执行<code>docker-machine rm default</code>,这样删除从VirtualBox和~/.docker/machine/machines目录中的虚拟机文件.</p>
-</li>
-<li><p>从应用程序中删除那两应用程序<code>Quickstart Terminal</code>和<code>Kitematic</code>.</p>
-</li>
-<li><p>从/usr/local/bin文件夹中删除docker, docker-compose和 docker-machine命令文件:<code>rm /usr/local/bin/docker</code>.</p>
-</li>
-<li><p>删除 <code>~/.docker</code> </p>
-</li>
-</ul>
-<blockquote>
-<p>连接阿里云上的centos7,…..,一会回来再试mac.<code>需要64位的centos7</code>,删除旧版本docker,前提是yum装的</p>
-</blockquote>
-<pre><code>yum remove docker \
-          docker-common \
-          container-selinux \
-          docker-selinux \
-          docker-engine
-</code></pre><p>同时删除<code>/var/lib/docker</code>的内容</p>
-<blockquote>
-<p>准备安装,之前有个问题,Docker CE(Community Edition)还是EE(Enterprise Edition)?  有几个选择(官网上说的)</p>
-</blockquote>
-<ul>
-<li><p>ee版本比ce安全.从名字上就能看出来:企业版,社区版.</p>
-</li>
-<li><p>看清楚自己的操作系统,支持哪种,<a href="https://docs.docker.com/engine/installation/" target="_blank" rel="external">对比说明</a>,centos都可以支持.</p>
-</li>
-<li><p>联网没? 如果没联网就下载rpm包手动安装.</p>
-</li>
-<li><p>我联网,那就装个社区版吧.因为mac上只能装个ce版.</p>
-</li>
-</ul>
-<ol>
-<li><p>安装需要的包:yum-utils=&gt;yum-config-manager;device-mapper-persistent-data和lvm2=&gt;devicemapper存储驱动程序</p>
-<pre><code>yum install -y yum-utils device-mapper-persistent-data lvm2
-</code></pre></li>
-<li><p>yum源更新</p>
-<pre><code>yum-config-manager  --add-repo  https://download.docker.com/linux/centos/docker-ce.repo
-</code></pre></li>
-<li><p>边缘存储库的启用和禁用</p>
-<pre><code>yum-config-manager --enable docker-ce-edge
-yum-config-manager --disable docker-ce-edge
-</code></pre></li>
-<li><p>更新yum索引包,我是一路y下去的.并没去认真核对<code>Fingerprint</code></p>
-<pre><code>yum makecache fast
-</code></pre></li>
-<li><p>安装 </p>
-<pre><code>yum install docker-ce
-</code></pre></li>
-<li><p>查看,官网说,如果在生产系统上,应该安装特定版本的docker,而不是始终使用最新版本. 下面命令列出可以用的版本.</p>
-<pre><code>yum list docker-ce.x86_64  --showduplicates |sort -r
-</code></pre><p> 如果安装特定版本,版本号是<code>-</code>分割,不是@</p>
-<pre><code>yum install docker-ce-&lt;VERSION&gt;
-</code></pre></li>
-<li><p>配置<code>/etc/docker/daemon.json</code></p>
-<pre><code>mkdir /etc/docker
-cd /etc/docker
-vim deamon.json
-
-{
-    &quot;storage-driver&quot;: &quot;devicemapper&quot;
-}
-</code></pre></li>
-<li><p>生产环境下,必须是direct-lvm模式.在启动之前先看一下<a href="https://docs.docker.com/engine/userguide/storagedriver/device-mapper-driver/#configure-direct-lvm-mode-for-production" target="_blank" rel="external">这个</a>,很重要的样子.</p>
-</li>
-<li><p>运行docker</p>
-<pre><code>sudo systemctl start docker
-</code></pre></li>
-<li><p>测试</p>
-<pre><code>docker run hello-world
-</code></pre></li>
-</ol>
-<p>到此为止,安装上没出现什么问题,很顺利的出现了<code>Hello from docker!...</code></p>
-<blockquote>
-<p>如何从安装包安装.</p>
-</blockquote>
-<ol>
-<li>下载rpm安装包</li>
-<li>yum install /path/to/package.rpm</li>
-</ol>
-<p>其他就一样了.</p>
-<blockquote>
-<p>卸载</p>
-</blockquote>
-<ol>
-<li><p>卸载包</p>
-<pre><code>yum remove docker-ce
-</code></pre></li>
-<li><p>删除文件</p>
-<pre><code>rm -rf /var/lib/docker
-</code></pre></li>
-<li>如有必要,彻底的删除<code>devicemapper</code>,再格式化..</li>
-</ol>
-<blockquote>
-<p>回到mac,继续安装,<a href="https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac" target="_blank" rel="external">下载</a>先.下个稳定版吧,docker.app,110M,双击安装.</p>
-</blockquote>
-<p>之前旧版本,装的VirtualBox,现在官网上说有新的虚拟化系统<code>HyperKit</code>.</p>
-<blockquote>
-<p>mac环境要求,系统月新越好,10.11版本以后;至少4G内存;4.3.30的virtualBox不能装docker.</p>
-<p>Docker.app启动后，要求使用系统密码进行授权。安装Docker应用的网络组件和链接。看系统的导航条,多了一条蓝鲸..黑色的.点击下拉里,黄点变成绿点,就表示docker跑起来了.</p>
-</blockquote>
-<hr>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令:"></a>常用命令:</h2><ol>
-<li><p>检查版本.</p>
-<pre><code>$ docker --version
-Docker version 17.03.0-ce, build 60ccb22
-
-$ docker-compose --version
-docker-compose version 1.11.2, build dfed245
-
-$ docker-machine --version
-docker-machine version 0.10.0, build 76ed2a6
-</code></pre></li>
-<li><p>测试hello-world</p>
-<pre><code>docker run hello-world
-</code></pre></li>
-<li><p>nginx安装测试</p>
-<pre><code>docker run -d -p 80:80 --name webserver nginx
-</code></pre><p> -d表示在后台运行,-p是端口,把Container的80端口映射到本机的80端口,前面是本机端口,后面是容器端口,这样就直接能访问了.看样子在下载,等会.如果中间ctl+c后,会重新下载.</p>
-<pre><code>➜  ~ docker run -d -p 80:80 --name webserver nginx
-Unable to find image &apos;nginx:latest&apos; locally
-latest: Pulling from library/nginx
-ff3d52d8f55f: Downloading [===&gt;                                               ] 1.474 MB/23.28 MB
-226f4ec56ba3: Downloading [====&gt;                                              ] 1.834 MB/21.53 MB
-53d7dd52b97d: Download complete
-</code></pre><p> 浏览器输入 <a href="http://localhost/" target="_blank" rel="external">http://localhost/</a> 就可以看到nginx的主页了…我看到了别的主页,和apache冲突了.把机子上现有的服务都停了.</p>
-<pre><code>sudo /usr/sbin/apachectl stop
-sudo nginx -s stop
-</code></pre><p> 再次执行<br> ➜  ~ docker run -d -p 80:80 –name webserver nginx<br> docker: Error response from daemon: Conflict. The container name “/webserver” is already in use by container 96e54ca074b9bf70b3b31cd580c5066d38562c275b0c99678dff2efc295cd87a. You have to remove (or rename) that container to be able to reuse that name..<br> See ‘docker run –help’.</p>
-<p> 那么直接开始</p>
-<pre><code>docker start webserver
-</code></pre><p> 再浏览器输入 <a href="http://localhost/" target="_blank" rel="external">http://localhost/</a> ,好了.用<code>docker ps</code>查看情况.如果关闭,用</p>
-<pre><code>docker stop webserver
-</code></pre><p> 停止了的服务只能用<code>docker ps -a</code>来查看状态.</p>
-</li>
-<li><p>停止并删除容器</p>
-<pre><code>docker rm -f webserver
-</code></pre></li>
-<li><p>列出镜像</p>
-<pre><code>docker images      
-</code></pre></li>
-<li><p>删除镜像</p>
-<pre><code>docker rmi 镜像id|镜像名称 
-docker rmi  nginx
-</code></pre></li>
-<li><p>查看日志</p>
-<pre><code>docker logs -f 96e5
-</code></pre></li>
-<li><p>查看web的容器的配置和状态信息….</p>
-<pre><code>docker inspect webserver
-</code></pre></li>
-<li><p>查看进程</p>
-<pre><code>docker top webserver
-</code></pre></li>
-<li><p>列出docker镜像.</p>
-<pre><code>docker images        
-
-REPOSTITORY：表示镜像的仓库源
-TAG：版本
-IMAGE ID：镜像ID
-CREATED：镜像创建时间
-SIZE：镜像大小
-</code></pre></li>
-<li><p>同一个镜像仓库里可以存放多个同一个镜像的不同版本,想使用哪个版本</p>
-<pre><code>docker run -t -i ubuntu:14.04 /bin/bash 
-如果不指定版本,那就是ubuntu:latest版本
-</code></pre></li>
-<li><p>下载一个镜像</p>
-<pre><code>docker pull ubuntu:14.04
-</code></pre></li>
-<li><p>查找官方有什么镜像,OFFICIAL:是否docker官方发布</p>
-<pre><code>docker search httpd
-</code></pre></li>
-</ol>
-<blockquote>
-<p>以后的事情,看官网吧,反正经常会变.</p>
-</blockquote>
-
+        <p>本来是想装一下es,突发奇想,装docker里吧(mac系统,旧版本1.10的docker),—只是安装,其他在别的页面里介绍<br>
+        
+          <a class="article-more-a" href="/2017/06/18/docker-for-centos/#more">查看更多...</a>
+        
       
 
       
@@ -711,47 +407,10 @@ SIZE：镜像大小
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>用swift写cordova在ios下的插件</p>
-<p>相关链接</p>
-<ul>
-<li>开始配置相关参照: <code>http://blog.csdn.net/b2259909/article/details/52471178</code></li>
-<li>帮助说明: <code>http://moduscreate.com/writing-a-cordova-plugin-in-swift-for-ios/</code>,这个还有个youtube上的视频,直接搜应该就能找到</li>
-<li>相关的插件: <code>https://github.com/akofman/cordova-plugin-add-swift-support</code></li>
-<li>参考: <code>http://www.lownmower.com/news/Writing-A-Cordova-Plugin-In-Swift-For-iOS/</code></li>
-<li>demo地址: <code>https://github.com/crossgit/cordova-plugin-demo1.git</code><blockquote>
-<p>插件的作用: 可以自动桥接.h和.swift文件</p>
-</blockquote>
-</li>
-</ul>
-<p>然后开始:</p>
-<blockquote>
-<p>安装插件</p>
-</blockquote>
-<pre><code>cordova plugin add cordova-plugin-add-swift-support --save
-</code></pre><p>然后在MyMath文件夹的ios下,添加一个文件 叫 <code>xxxPlugin-Bridging-Header.h</code>,然后包含进 <code>plugin.xml</code>里来</p>
-<pre><code>&lt;header-file src=&quot;src/ios/demo1Plugin-Bridging-Header.h&quot; /&gt;
-&lt;source-file src=&quot;src/ios/MyMath.swift&quot; /&gt;
-</code></pre><p>是<code>header-file</code>,别看错了,在这个文件里写入这个关键的引用,或许不止这一个!</p>
-<pre><code>#import &lt;Cordova/CDV.h&gt;
-</code></pre><blockquote>
-<p>再添加ios平台,也可能颠倒一下也没问题,如果有问题就先remove了再装一遍.</p>
-</blockquote>
-<pre><code>cordova platform add ios
-</code></pre><blockquote>
-<p>然后就可以了…</p>
-</blockquote>
-<pre><code>cordova plugin add ./MyMath
-</code></pre><blockquote>
-<p>运行</p>
-</blockquote>
-<pre><code>cordova run|emulate ios
-</code></pre><blockquote>
-<p>有个问题,执行上一句可能会红字提示(cordova7.0.1版本) <code>cordova Error: Cannot read property &#39;replace&#39; of undefined</code></p>
-</blockquote>
-<p>解决办法就是 在 platforms/ios/cordova/这个路径下执行</p>
-<pre><code>npm i ios-sim
-</code></pre><p>就可以了;或者,全局安装这个ios-sim. 也许一下个版本就更新了.</p>
-
+        <p>用swift写cordova在ios下的插件<br>
+        
+          <a class="article-more-a" href="/2017/06/16/CordovaVue-plugin2/#more">查看更多...</a>
+        
       
 
       
@@ -814,49 +473,10 @@ SIZE：镜像大小
     <div class="article-entry" itemprop="articleBody">
       
         <p>继续备注插件相关的.<code>如果想让自己的app看起来像原生,那就用原生开发</code>.</p>
-<p>官网链接: <code>http://cordova.apache.org/docs/en/7.x/guide/hybrid/plugins/index.html</code><br>参照: <code>http://blog.csdn.net/b2259909/article/details/52471178</code><br>那么开始</p>
-<blockquote>
-<p>安装一个工具 plugman  我的版本是1.4.1</p>
-</blockquote>
-<pre><code>sudo npm i -g plugman
-</code></pre><blockquote>
-<p>命令 </p>
-</blockquote>
-<pre><code>plugman create --name AmILate --plugin_id cordova-plugin-am-i-late --plugin_version 0.0.1
-</code></pre><ul>
-<li>–name 插件文件夹名称</li>
-<li>–plugin_id ,就是插件名,会显示plugins目录下的文件夹名</li>
-<li>–plugin_version 就是版本号</li>
-<li>eg: plugman create –name MyMath –plugin_id SimpleMath –plugin_version 1.0.0</li>
-</ul>
-<blockquote>
-<p>cd MyMath</p>
-<p>plugman plagform add –platform_name android</p>
-<p>plugman plagform add –platform_name ios </p>
-</blockquote>
-<ul>
-<li>clobbers ： 非常重要。前端工程师在使用的时候通过这个 clobbers 去调用www/MyMath.js的公开方法</li>
-<li>feature 标签定义了 （服务名）name</li>
-<li>param name=”ios-package” value=”MyMath” 定义iOS平台下的底层实现类名为 ： MyMath</li>
-<li>param name=”android-package” value=”SimpleMath.MyMath” 定义Android平台下的底层实现的 包名.类 ： SimpleMath.MyMath</li>
-</ul>
-<p>总结</p>
-<ul>
-<li>js 调用 –&gt; cordova.plugins.MyMath.plus(arg0, success, error)</li>
-<li>cordova的接口exec –&gt; exec(success, error, “MyMath”, “Plus”, arg0);</li>
-<li>调用底层实现各自平台(ios或者Android)下的类MyMath。</li>
-</ul>
-<blockquote>
-<p>实现原生代码…过</p>
-<p>生成package.json,没这个不能过,在MyMath下执行</p>
-</blockquote>
-<pre><code>sudo plugman createpackagejson .
-</code></pre><p>注意要权限sudo;注意最后的点,是路径;按提示的别出错填写就可以了.</p>
-<blockquote>
-<p>发布,这个就上了npm了,不发布就不用执行.</p>
-</blockquote>
-<pre><code>npm publish .
-</code></pre>
+<p>官网链接: <code>http://cordova.apache.org/docs/en/7.x/guide/hybrid/plugins/index.html</code><br>参照: <code>http://blog.csdn.net/b2259909/article/details/52471178</code><br>那么开始<br>
+        
+          <a class="article-more-a" href="/2017/06/10/CordovaVue-plugin/#more">查看更多...</a>
+        
       
 
       
@@ -929,29 +549,10 @@ SIZE：镜像大小
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="关于go"><a href="#关于go" class="headerlink" title="关于go"></a>关于go</h2><p>没错,说的就是golang…的<code>调试</code>配置,配置完这篇的内容后,又有新的问题,总之是<code>没通,没结果,和原装后自定义的配置有冲突</code></p>
-<h2 id="在mac下的vscode里配置开发环境"><a href="#在mac下的vscode里配置开发环境" class="headerlink" title="在mac下的vscode里配置开发环境"></a>在mac下的vscode里配置开发环境</h2><p>版本 go 1.8.3;vscode 1.12.2;mac 10.12.5</p>
-<p>需要用brew安装一下测试工具</p>
-<pre><code>brew install go-delve/delve/delve
-</code></pre><p>手动安装或者在其他系统的安装,看 <code>https://github.com/derekparker/delve</code></p>
-<blockquote>
-<p>vscode调试可能会遇见的错误</p>
-</blockquote>
-<p><code>could not launch process: exec: &quot;lldb-server&quot;: executable file not found in $PATH Process exiting with code: 1</code></p>
-<ul>
-<li><p>下载最新版本的delve,然后在launch.js文件里写入</p>
-<p>   “backend”:”native”</p>
-</li>
-<li><p>或者更新xcode-select</p>
-<p>  xcode-select –install</p>
-</li>
-</ul>
-<blockquote>
-<p>vscode相关的gopath goroot 等等的配置</p>
-</blockquote>
-<h2 id="到底怎么办-用gogland开发吧-webstorm那家出的工具"><a href="#到底怎么办-用gogland开发吧-webstorm那家出的工具" class="headerlink" title="到底怎么办? 用gogland开发吧,webstorm那家出的工具."></a>到底怎么办? 用gogland开发吧,webstorm那家出的工具.</h2><hr>
-<p>后来,一直用的vscode,把这些东西都卸载了,然后把第三方包放在了src的上一级,还不错.<br>主要用gin框架来发布api,供前段调用.</p>
-
+        <h2 id="关于go"><a href="#关于go" class="headerlink" title="关于go"></a>关于go</h2><p>没错,说的就是golang…的<code>调试</code>配置,配置完这篇的内容后,又有新的问题,总之是<code>没通,没结果,和原装后自定义的配置有冲突</code><br>
+        
+          <a class="article-more-a" href="/2017/06/02/关于go/#more">查看更多...</a>
+        
       
 
       
@@ -1046,28 +647,10 @@ SIZE：镜像大小
       
         <hr>
 <p>title: mysql1<br>date: 2017-05-30 21:57:27</p>
-<h2 id="tags-mysql"><a href="#tags-mysql" class="headerlink" title="tags: mysql"></a>tags: mysql</h2><p>mysql 日常记录</p>
-<blockquote>
-<p>执行更改密码,结果提示</p>
-</blockquote>
-<p><code>Error Code: 1175. You are using safe update mode and you tried to update a table without a WHERE that uses a KEY column To disable safe mode, toggle the option in Preferences -&gt; SQL Editor and reconnect.</code></p>
-<pre><code>SET SQL_SAFE_UPDATES = 0;
-</code></pre><p>执行完记得改回去 <code>SET SQL_SAFE_UPDATES = 1;</code></p>
-<blockquote>
-<p>忘记了root密码怎么办?</p>
-</blockquote>
-<ul>
-<li><p>停止 mysql server. 通常是在 ‘系统偏好设置’ &gt; MySQL &gt; ‘Stop MySQL Server’<br>打开终端，输入：</p>
-<p>  sudo /usr/local/mysql/bin/mysqld_safe –skip-grant-tables</p>
-</li>
-<li><p>打开另一个新终端，输入:</p>
-<p>  sudo /usr/local/mysql/bin/mysql -u root<br>  UPDATE mysql.user SET authentication_string=PASSWORD(‘新密码’) WHERE User=’root’;</p>
-</li>
-<li><p>重启MySQL.</p>
-<p>以上方法针对 MySQL V5.7.9, 旧版的mysql请使用：UPDATE mysql.user SET Password=PASSWORD(‘新密码’) WHERE User=’root’;</p>
-</li>
-</ul>
-
+<h2 id="tags-mysql"><a href="#tags-mysql" class="headerlink" title="tags: mysql"></a>tags: mysql</h2><p>mysql 日常记录<br>
+        
+          <a class="article-more-a" href="/2017/05/30/mysql1/#more">查看更多...</a>
+        
       
 
       
@@ -1111,127 +694,9 @@ SIZE：镜像大小
     <div class="article-entry" itemprop="articleBody">
       
         <p>就是如何搭建git服务端(centos7)和客户端(mac)</p>
-<h2 id="服务端安装git-先远程仓库-remote-在centos7上操作"><a href="#服务端安装git-先远程仓库-remote-在centos7上操作" class="headerlink" title="服务端安装git,先远程仓库(remote),在centos7上操作"></a>服务端安装git,先远程仓库(remote),在centos7上操作</h2><p>在 <a href="https://www.kernel.org/pub/software/scm/git/" target="_blank" rel="external">https://www.kernel.org/pub/software/scm/git/</a> 找一个合适的,下载和编译</p>
-<pre><code>wget https://www.kernel.org/pub/software/scm/git/git-2.9.4.tar.gz
-tar -zvxf git-2.9.4.tar.gz
-cd git-2.9.4
-./configure 
-maker &amp;&amp; maker install
-
-git config username &quot;&quot;;
-git config email &quot;&quot;;
-</code></pre><blockquote>
-<p>如果在maker的时候报错了,先执行一下安装,按报错提示装就就好</p>
-</blockquote>
-<pre><code>yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel 
-</code></pre><h2 id="设置用户-就是git的登录账户cross"><a href="#设置用户-就是git的登录账户cross" class="headerlink" title="设置用户,就是git的登录账户cross"></a>设置用户,就是git的登录账户cross</h2><pre><code>adduser cross
-passwd 密码
-</code></pre><h2 id="找个地方创建项目目录-我建在-var下-并给cross加上权限"><a href="#找个地方创建项目目录-我建在-var下-并给cross加上权限" class="headerlink" title="找个地方创建项目目录,我建在/var下,并给cross加上权限"></a>找个地方创建项目目录,我建在/var下,并给cross加上权限</h2><pre><code>cd /var
-mkdir githome
-chown cross githome/
-cd githome
-</code></pre><h2 id="开始创建git服务端-加权限"><a href="#开始创建git服务端-加权限" class="headerlink" title="开始创建git服务端,加权限"></a>开始创建git服务端,加权限</h2><pre><code>git init --bare my-project.git
-chown -R cross my-project.git
-</code></pre><p>服务端先就这么多</p>
-<hr>
-<h2 id="创建本地仓库-Repository-mac上操作"><a href="#创建本地仓库-Repository-mac上操作" class="headerlink" title="创建本地仓库(Repository),mac上操作"></a>创建本地仓库(Repository),mac上操作</h2><p>在mac创建一个存放代码的,</p>
-<pre><code>mkdir githome
-cd githome
-mkdir my-project
-cd my-project
-</code></pre><h2 id="设置远程仓库地址"><a href="#设置远程仓库地址" class="headerlink" title="设置远程仓库地址"></a>设置远程仓库地址</h2><pre><code>git init
-git remote add origin cross@服务器ip:/var/githome/my-porject.git
-</code></pre><blockquote>
-<p>测试执行 <code>git remote -v</code>,显示如下就正常了</p>
-</blockquote>
-<pre><code>origin cross@服务器IP:/var/githome/server_sword.git (fetch)
-origin cross@服务器IP:/vorgiar/githome/server_sword.git (push)
-</code></pre><blockquote>
-<p>如果写错了怎么办?先删再加,删除如下</p>
-</blockquote>
-<pre><code>git remote rm  origin 
-</code></pre><h2 id="提交代码"><a href="#提交代码" class="headerlink" title="提交代码"></a>提交代码</h2><pre><code>git add .
-git commit -m &apos;备注&apos;
-git push origin master
-</code></pre><p>然后输入登录密码提交完成.再以后就要看git的命令了.</p>
-<hr>
-<h2 id="接下来的问题是-如何能提交时候不写密码"><a href="#接下来的问题是-如何能提交时候不写密码" class="headerlink" title="接下来的问题是,如何能提交时候不写密码"></a>接下来的问题是,如何能提交时候不写密码</h2><p><code>使用ssh-keygen生成公钥与密钥,将本机的公钥复制到远程机器的authorized_keys文件中,然后ssh user@ip直接登录</code></p>
-<blockquote>
-<p>1 在本机使用ssh-keygen生成公钥密钥对</p>
-</blockquote>
-<pre><code>➜  .ssh ssh-keygen
-Generating public/private rsa key pair.
-Enter file in which to save the key (/Users/wxj/.ssh/id_rsa): // 直接enter
-Enter passphrase (empty for no passphrase): // 直接enter
-Enter same passphrase again: // 直接enter
-Your identification has been saved in /Users/wxj/.ssh/id_rsa.
-Your public key has been saved in /Users/wxj/.ssh/id_rsa.pub. 
-The key fingerprint is:
-SHA256:EEyAb1rbqtktM493R10Tmjsnq4Z6X7pRYWg7VcskZ/o wxj@bogon
-The key&apos;s randomart image is:
-+---[RSA 2048]----+
-|   ..+o     . =  |
-|  .   ..   . O.. |
-|   .  .   o =oo. |
-|    +  . . +ooo  |
-|   + o  S o..oE. |
-|  . . .   .o= .  |
-|     .   o. .=   |
-|   o=o. + o+.    |
-|  o.o*++ +=o     |
-+----[SHA256]-----+
-
-➜  .ssh ll -a
-total 24
-drwx------    5 wxj  staff   170B  5 26 18:35 .
-drwxr-xr-x+ 157 wxj  staff   5.2K  5 26 18:35 ..
--rw-------    1 wxj  staff   1.7K  5 26 18:35 is_rsa
--rw-r--r--    1 wxj  staff   391B  5 26 18:35 is_rsa.pub 
-...
-</code></pre><blockquote>
-<p>2 用ssh-copy-id将公钥复制到远程机器中</p>
-</blockquote>
-<pre><code>➜  .ssh ssh-copy-id root@59.110.230.99
-/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: &quot;/Users/wxj/.ssh/id_rsa.pub&quot;
-/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
-/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
-root@59.110.230.99&apos;s password: // 登录密码
-
-Number of key(s) added:        1
-
-Now try logging into the machine, with:   &quot;ssh &apos;root@59.110.230.99&apos;&quot;
-and check to make sure that only the key(s) you wanted were added.
-</code></pre><blockquote>
-<p>3 直接就可以登录了</p>
-</blockquote>
-<pre><code>ssh root@59.110.230.99
-</code></pre><blockquote>
-<p>总有操作错误的时候</p>
-</blockquote>
-<pre><code>1. 在服务端要先有文件 ~/.ssh/authorized_keys,没有就创建一个,在要isa登录的用户下,执行以下创建,切换用户 `su 用户名`
-
-    mkdir ~/.ssh &amp;&amp; touch ~/.ssh/authorized_keys
-    然后一定要加权限
-    chmod 700 ~/.ssh/
-    chmod 600 ~/.ssh/authorized_keys
-
-2. 在生成公钥密钥的时候输入了key=cross,那就上传的时候这样
-
-    .ssh ssh-copy-id -i ~/.ssh/cross.pub root@59.110.230.99 
-    登录的时候 
-    ssh -i ~/.ssh/root root@59.110.230.99
-
-3. 可能有些错误是这里引起的,在服务器打开ssh的配置文件 `vim /etc/ssh/sshd_config`,检查开启以下内容
-
-    RSAAuthentication yes
-    PubkeyAuthentication yes
-    AuthorizedKeysFile      .ssh/authorized_keys 
-    重启服务
-    systemctl restart sshd
-
-4. 在生成公钥密钥的时候输入了密码,那登录的时候就需要再次输入一遍密码.就是这个设置的密码
-</code></pre><p>那么,cross用户按上述一样的操作,就免去了每次push都要录入密码的痛苦.</p>
-
+        
+          <a class="article-more-a" href="/2017/05/26/关于git/#more">查看更多...</a>
+        
       
 
       
@@ -1371,10 +836,6 @@ and check to make sure that only the key(s) you wanted were added.
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">plugin</a>
               </li>
              
@@ -1396,6 +857,10 @@ and check to make sure that only the key(s) you wanted were added.
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
             
             <div class="clearfix"></div>
@@ -1447,7 +912,7 @@ and check to make sure that only the key(s) you wanted were added.
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://www.xshadow.org/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>ff家</a>
+              <a href="http://www.xshadow.org/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>ff家_厉害的游戏渲染</a>
             </li>
           
         </ul>

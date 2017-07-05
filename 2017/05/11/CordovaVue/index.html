@@ -9,13 +9,13 @@
   <title>cordova-vue | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="cordova + vue-cli (1)">
-<meta name="keywords" content="cordova,vue,移动端">
+<meta name="keywords" content="cordova,移动端,vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cordova-vue">
 <meta property="og:url" content="http://crossgit.github.io/2017/05/11/CordovaVue/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="cordova + vue-cli (1)">
-<meta property="og:updated_time" content="2017-07-04T05:36:25.000Z">
+<meta property="og:updated_time" content="2017-07-05T07:45:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cordova-vue">
 <meta name="twitter:description" content="cordova + vue-cli (1)">
@@ -211,9 +211,16 @@ data(){
     &quot;dev&quot;: &quot;node build/dev-server.js&quot;,
     &quot;build&quot;: &quot;node build/build.js&quot;,
     &quot;ios&quot;: &quot;cordova prepare ios &amp;&amp; cordova run ios&quot;,
-    &quot;android&quot;: &quot;cordova prepare android &amp;&amp; cordova run android&quot;
+    &quot;android&quot;: &quot;cordova prepare android &amp;&amp; cordova run android&quot;,
+    &quot;_ios&quot;: &quot;cordova prepare ios &amp;&amp; cordova emulate ios&quot;,
+    &quot;_android&quot;: &quot;cordova prepare android &amp;&amp; cordova emulate android&quot;
 },
-</code></pre><blockquote>
+</code></pre><ul>
+<li><p>注释</p>
+<p>  npm run dev // 浏览器运行,一般会一直开启.<br>  npm run build //在www目录下生成压缩文件,属于第二步,打包<br>  npm run ios // 用ios真机跑<br>  npm run android //用android真机跑<br>  npm run _ios // 用ios虚拟机跑<br>  npm run _android //用android虚拟机跑</p>
+</li>
+</ul>
+<blockquote>
 <p>vue下的main.js,要引入cordova.js,否则加入的cordova插件将没法使用.</p>
 </blockquote>
 <pre><code>if (window.location.protocol === &apos;file:&apos; || window.location.port === &apos;3000&apos;) {
@@ -230,23 +237,17 @@ npm uninstall npm
 npm install npm
 </code></pre><h2 id="添加平台"><a href="#添加平台" class="headerlink" title="添加平台"></a>添加平台</h2><pre><code>cd MyApp
 cordova platform add browser,android,ios
-</code></pre><h2 id="试运行"><a href="#试运行" class="headerlink" title="试运行"></a>试运行</h2><p>在MyApp下运行</p>
-<pre><code>npm run dev // 浏览器运行,一般会一直开启.
-npm run build //在www目录下生成压缩文件,属于第二步,打包
-npm run ios // 用ios虚拟机跑
-npm run android //用android真机跑
-
-其他命令
-    help：获取帮助
-    create:创建项目
-    platform:管理平台
-    plguin:管理插件
-    perpare:复制cordova/www/下的文件到对应平台的项目文件夹中
-    complie:编译项目
-    build:构建项目
-    Emulate:虚拟机运行
-    run:测试机运行
-    server：开启web服务器运行项目
+</code></pre><h2 id="试运行"><a href="#试运行" class="headerlink" title="试运行"></a>试运行</h2><p>在MyApp下运行, 其他命令</p>
+<pre><code>help：获取帮助
+create:创建项目
+platform:管理平台
+plguin:管理插件
+perpare:复制cordova/www/下的文件到对应平台的项目文件夹中
+complie:编译项目
+build:构建项目
+Emulate:虚拟机运行
+run:测试机运行
+server：开启web服务器运行项目
 </code></pre><blockquote>
 <p>android,有时需要安装android studio,用他打开项目对应的android平台后,然后配置一通虚拟机什么的.配置完成,再执行npm run android,或者直接在adroid studio跑也行.</p>
 <p>如果请求api时,提示<code>Provisional headers are shown</code>,而浏览器上没问题,需要重新装一下android平台,引起原因可能是,在cordova里需要的包版本,比adroid studio里的旧,当用adroid strudio打开后,提示升级别搭理.</p>
@@ -362,11 +363,11 @@ https://itunesconnect.apple.com/
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
         		</li>
       		
 		</ul>
@@ -579,7 +580,7 @@ https://itunesconnect.apple.com/
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -587,7 +588,7 @@ https://itunesconnect.apple.com/
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -599,19 +600,19 @@ https://itunesconnect.apple.com/
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">

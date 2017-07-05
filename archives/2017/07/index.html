@@ -6,18 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://crossgit.github.io">
-  <title>关于go | 走走停停</title>
+  <title>Archives: 2017/7 | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于go没错,说的就是golang…的调试配置,配置完这篇的内容后,又有新的问题,总之是没通,没结果,和原装后自定义的配置有冲突">
-<meta property="og:type" content="article">
-<meta property="og:title" content="关于go">
-<meta property="og:url" content="http://crossgit.github.io/2017/06/02/关于go/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="走走停停">
+<meta property="og:url" content="http://crossgit.github.io/archives/2017/07/index.html">
 <meta property="og:site_name" content="走走停停">
-<meta property="og:description" content="关于go没错,说的就是golang…的调试配置,配置完这篇的内容后,又有新的问题,总之是没通,没结果,和原装后自定义的配置有冲突">
-<meta property="og:updated_time" content="2017-07-04T05:12:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于go">
-<meta name="twitter:description" content="关于go没错,说的就是golang…的调试配置,配置完这篇的内容后,又有新的问题,总之是没通,没结果,和原装后自定义的配置有冲突">
+<meta name="twitter:title" content="走走停停">
   
     <link rel="alternative" href="/atom.xml" title="走走停停" type="application/atom+xml">
   
@@ -145,191 +141,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-关于go" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      关于go
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/07/04/Karma-关于vue的测试/" class="archive-article-date">
+  	<time datetime="2017-07-04T09:21:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-04</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/07/04/Karma-关于vue的测试/">Karma-关于vue的测试</a>
     </h1>
   
 
-        
-        <a href="/2017/06/02/关于go/" class="archive-article-date">
-  	<time datetime="2017-06-02T03:50:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="关于go"><a href="#关于go" class="headerlink" title="关于go"></a>关于go</h2><p>没错,说的就是golang…的<code>调试</code>配置,配置完这篇的内容后,又有新的问题,总之是<code>没通,没结果,和原装后自定义的配置有冲突</code><br><a id="more"></a></p>
-<h2 id="在mac下的vscode里配置开发环境"><a href="#在mac下的vscode里配置开发环境" class="headerlink" title="在mac下的vscode里配置开发环境"></a>在mac下的vscode里配置开发环境</h2><p>版本 go 1.8.3;vscode 1.12.2;mac 10.12.5</p>
-<p>需要用brew安装一下测试工具</p>
-<pre><code>brew install go-delve/delve/delve
-</code></pre><p>手动安装或者在其他系统的安装,看 <code>https://github.com/derekparker/delve</code></p>
-<blockquote>
-<p>vscode调试可能会遇见的错误</p>
-</blockquote>
-<p><code>could not launch process: exec: &quot;lldb-server&quot;: executable file not found in $PATH Process exiting with code: 1</code></p>
-<ul>
-<li><p>下载最新版本的delve,然后在launch.js文件里写入</p>
-<p>   “backend”:”native”</p>
-</li>
-<li><p>或者更新xcode-select</p>
-<p>  xcode-select –install</p>
-</li>
-</ul>
-<blockquote>
-<p>vscode相关的gopath goroot 等等的配置</p>
-</blockquote>
-<h2 id="到底怎么办-用gogland开发吧-webstorm那家出的工具"><a href="#到底怎么办-用gogland开发吧-webstorm那家出的工具" class="headerlink" title="到底怎么办? 用gogland开发吧,webstorm那家出的工具."></a>到底怎么办? 用gogland开发吧,webstorm那家出的工具.</h2><hr>
-<p>后来,一直用的vscode,把这些东西都卸载了,然后把第三方包放在了src的上一级,还不错.<br>主要用gin框架来发布api,供前段调用.</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>凑合看吧,有问题github上见.<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/go/" class="article-tag-list-link color3">go</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">测试</a>
         		</li>
       		
 		</ul>
 	</div>
 
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2017/06/02/关于go/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/06/10/CordovaVue-plugin/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          cordova plugin android
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/06/02/go1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">go1</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-  
-  
-  
-  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-<script>
-  var cloudTieConfig = {
-    url: "http://crossgit.github.io/2017/06/02/关于go/", 
-    sourceId: "关于go",
-    productKey: "falsexiangce",
-    target: "cloud-tie-wrapper"
-  };
-</script>
-<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    </div></section>
   
 
-  
-
-  
+    
 
 
           </div>
@@ -353,8 +222,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

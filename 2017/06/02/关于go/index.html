@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/06/02/关于go/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="关于go没错,说的就是golang…的调试配置,配置完这篇的内容后,又有新的问题,总之是没通,没结果,和原装后自定义的配置有冲突">
-<meta property="og:updated_time" content="2017-07-04T05:12:33.000Z">
+<meta property="og:updated_time" content="2017-07-10T03:12:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于go">
 <meta name="twitter:description" content="关于go没错,说的就是golang…的调试配置,配置完这篇的内容后,又有新的问题,总之是没通,没结果,和原装后自定义的配置有冲突">
@@ -186,7 +186,10 @@
 <p>vscode相关的gopath goroot 等等的配置</p>
 </blockquote>
 <h2 id="到底怎么办-用gogland开发吧-webstorm那家出的工具"><a href="#到底怎么办-用gogland开发吧-webstorm那家出的工具" class="headerlink" title="到底怎么办? 用gogland开发吧,webstorm那家出的工具."></a>到底怎么办? 用gogland开发吧,webstorm那家出的工具.</h2><hr>
-<p>后来,一直用的vscode,把这些东西都卸载了,然后把第三方包放在了src的上一级,还不错.<br>主要用gin框架来发布api,供前段调用.</p>
+<p>后来,一直用的vscode,把这些东西都卸载了,然后把第三方包放在了src的上一级,还不错.</p>
+<p>主要用gin框架来发布api,供前端调用.</p>
+<p>gopath路径配置到了codego 这个go代码文件夹的目录里,在这个目录里再创建多个go项目,每个go项目在执行<code>go get xxx</code>得的的包,将放在上一级目录的src文件夹内.</p>
+<p>也就是说,这些下载的包是共享的,在codego下的别的项目直接使用就可以了.</p>
 
       
 
@@ -423,15 +426,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">移动端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -447,10 +446,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">typescript</a>
               </li>
              
@@ -459,7 +454,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
             
             <div class="clearfix"></div>

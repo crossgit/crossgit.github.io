@@ -9,13 +9,13 @@
   <title>cordova plugin ios | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="用swift写cordova在ios下的插件">
-<meta name="keywords" content="cordova,plugin,移动端">
+<meta name="keywords" content="cordova,移动端,plugin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cordova plugin ios">
 <meta property="og:url" content="http://crossgit.github.io/2017/06/16/CordovaVue-plugin2/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="用swift写cordova在ios下的插件">
-<meta property="og:updated_time" content="2017-07-04T05:35:59.000Z">
+<meta property="og:updated_time" content="2017-07-30T14:26:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cordova plugin ios">
 <meta name="twitter:description" content="用swift写cordova在ios下的插件">
@@ -178,7 +178,7 @@
 </li>
 </ul>
 <p>然后开始:</p>
-<blockquote>
+<h2 id="在项目中创建自定义插件"><a href="#在项目中创建自定义插件" class="headerlink" title="在项目中创建自定义插件"></a>在项目中创建自定义插件</h2><blockquote>
 <p>安装插件</p>
 </blockquote>
 <pre><code>cordova plugin add cordova-plugin-add-swift-support --save
@@ -205,6 +205,14 @@
 <p>解决办法就是 在 platforms/ios/cordova/这个路径下执行</p>
 <pre><code>npm i ios-sim
 </code></pre><p>就可以了;或者,全局安装这个ios-sim. 也许一下个版本就更新了.</p>
+<hr>
+<h2 id="像SimpleMath那样自定义插件"><a href="#像SimpleMath那样自定义插件" class="headerlink" title="像SimpleMath那样自定义插件"></a>像SimpleMath那样自定义插件</h2><blockquote>
+<p>按安卓的操作设置好后,打开<code>plugin.xml</code>,添加如下,表示这个自定义插件,依赖下面这个插件,更多详情,去github上搜索</p>
+</blockquote>
+<pre><code>&lt;dependency id=&quot;cordova-plugin-add-swift-support&quot; version=&quot;1.6.1&quot;/&gt;
+</code></pre><blockquote>
+<p>然后和上面的方法类似,添加 叫 <code>xxxPlugin-Bridging-Header.h</code>,然后包含进 <code>plugin.xml</code>里来,并创建文件等…</p>
+</blockquote>
 
       
 
@@ -243,11 +251,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">plugin</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">plugin</a>
         		</li>
       		
 		</ul>
@@ -460,7 +468,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -468,19 +476,11 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -492,15 +492,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">go</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">go部署</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">

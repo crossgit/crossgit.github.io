@@ -9,13 +9,13 @@
   <title>cordova plugin android | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="继续备注插件相关的.如果想让自己的app看起来像原生,那就用原生开发. 官网链接: http://cordova.apache.org/docs/en/7.x/guide/hybrid/plugins/index.html参照: http://blog.csdn.net/b2259909/article/details/52471178那么开始">
-<meta name="keywords" content="cordova,plugin,移动端">
+<meta name="keywords" content="cordova,移动端,plugin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cordova plugin android">
 <meta property="og:url" content="http://crossgit.github.io/2017/06/10/CordovaVue-plugin/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="继续备注插件相关的.如果想让自己的app看起来像原生,那就用原生开发. 官网链接: http://cordova.apache.org/docs/en/7.x/guide/hybrid/plugins/index.html参照: http://blog.csdn.net/b2259909/article/details/52471178那么开始">
-<meta property="og:updated_time" content="2017-07-30T03:44:54.000Z">
+<meta property="og:updated_time" content="2017-07-30T14:22:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cordova plugin android">
 <meta name="twitter:description" content="继续备注插件相关的.如果想让自己的app看起来像原生,那就用原生开发. 官网链接: http://cordova.apache.org/docs/en/7.x/guide/hybrid/plugins/index.html参照: http://blog.csdn.net/b2259909/article/details/52471178那么开始">
@@ -180,22 +180,30 @@
 <li>–name 插件文件夹名称</li>
 <li>–plugin_id ,就是插件名,会显示plugins目录下的文件夹名</li>
 <li>–plugin_version 就是版本号</li>
-<li><p>eg: plugman create –name MyMath –plugin_id SimpleMath –plugin_version 1.0.0</p>
+<li><p>eg: plugman create --name MyMath --plugin_id SimpleMath --plugin_version 1.0.0</p>
 </li>
 <li><p>eg: plugman create --name SimpleMath --plugin_id cordova-plugin-mymath --plugin_version 1.0.0</p>
 </li>
+<li><p>注意: .java文件的包名不能是<code>-</code>,要中间是点<code>.</code>,所以改掉package名后,要对应的更改plugin.xml中的 (SimpleMath大概在12行.)</p>
+  <param name="android-package" value="cordova.plugin.mymath.SimpleMath">
+
+</li>
 </ul>
 <blockquote>
-<p>cd MyMath</p>
-<p>plugman plagform add –platform_name android</p>
-<p>plugman plagform add –platform_name ios </p>
+<p>添加设备</p>
 </blockquote>
+<pre><code>cd MyMath
+plugman plagform add \--platform_name android
+plugman plagform add \--platform_name ios 
+</code></pre><blockquote>
+<p>plugin.xml 文件说明,格式化一下</p>
 <ul>
-<li>clobbers ： 非常重要。前端工程师在使用的时候通过这个 clobbers 去调用www/MyMath.js的公开方法</li>
+<li>clobbers ： 非常重要。前端工程师在使用的时候通过这个 clobbers 去调用www/SimpleMath.js的公开方法.并且在项目中调用后,按<code>cordova.plugins.SimpleMath</code>访问.</li>
 <li>feature 标签定义了 （服务名）name</li>
-<li>param name=”ios-package” value=”MyMath” 定义iOS平台下的底层实现类名为 ： MyMath</li>
-<li>param name=”android-package” value=”SimpleMath.MyMath” 定义Android平台下的底层实现的 包名.类 ： SimpleMath.MyMath</li>
+<li>param name=”ios-package” value=”SimpleMath” 定义iOS平台下的底层实现类名为 ： MyMath</li>
+<li>param name=”android-package” value=cordova.plugin.mymath.SimpleMath 定义Android平台下的底层实现的 包名.类 ： cordova.plugin.mymath.SimpleMath</li>
 </ul>
+</blockquote>
 <p>总结</p>
 <ul>
 <li>js 调用 –&gt; cordova.plugins.MyMath.plus(arg0, success, error)</li>
@@ -212,6 +220,10 @@
 <p>发布,这个就上了npm了,不发布就不用执行.</p>
 </blockquote>
 <pre><code>npm publish .
+</code></pre><blockquote>
+<p>可以发布至github,调用时</p>
+</blockquote>
+<pre><code>cordova plugin add github的全路径.git
 </code></pre>
       
 
@@ -250,11 +262,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">plugin</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">plugin</a>
         		</li>
       		
 		</ul>
@@ -467,7 +479,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -475,19 +487,11 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -499,15 +503,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">go</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">go部署</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">

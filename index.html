@@ -143,6 +143,89 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-关于threejs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/09/关于threejs/">关于threejs</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/09/关于threejs/" class="archive-article-date">
+  	<time datetime="2017-08-09T02:45:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这篇里,想要用json创建一个web的3d展示,要逐个解决以下问题</p>
+<ul>
+<li>如何把别的文件导入到blender,</li>
+<li>如何从blender导出json</li>
+<li>three如何加载模型</li>
+<li>如何给模型贴图</li>
+<li>如何让模型自己旋转和鼠标控制放到缩小和转动</li>
+<li>加天空盒的问题</li>
+</ul>
+<ol>
+<li>maya导出的obj+mtl+jpg文件,实际上是可以直接用的,这篇就是处理json,如果maya没有装three的插件,那就只能再转一下,官网有一个editor,但是没看懂如何用使用.</li>
+</ol>
+<p>导入很简单,把obj文件拖放进blender,然后把jpg文件盖到刚拖进的obj文件就好了,然后打开右侧,点”多从纹理&gt;实色纹理”,这样就显示出了和maya一样的场景.</p>
+<ol>
+<li><p>导出json,安装了插件后,直接导出,注意选项 ,<code>几何图形</code>,<code>纹理</code></p>
+</li>
+<li><p>那么现在需要的是一个json文件和若干jpg/bmp文件,看实际给的什么图. 如果少这个参数,那需要再看下导出时的选项.</p>
+<p>  “materials”:[{ </p>
+<pre><code> ...
+&quot;mapDiffuse&quot;:&quot;tietu&quot;, // 图片名,和图片要一致.不一致就改图片名,删后缀.
+</code></pre></li>
+<li></li>
+<li></li>
+<li></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">three.js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">webGL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-Karma-关于vue的测试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -811,39 +894,6 @@ supervisorctl&gt; reload
 
 
   
-    <article id="post-mysql1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>title: mysql1<br>date: 2017-05-30 21:57:27</p>
-<h2 id="tags-mysql"><a href="#tags-mysql" class="headerlink" title="tags: mysql"></a>tags: mysql</h2><p>mysql 日常记录<br>
-        
-          <a class="article-more-a" href="/2017/05/30/mysql1/#more">查看更多...</a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -950,19 +1000,11 @@ supervisorctl&gt; reload
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -971,6 +1013,14 @@ supervisorctl&gt; reload
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -987,6 +1037,14 @@ supervisorctl&gt; reload
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">three.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">webGL</a>
               </li>
             
             <div class="clearfix"></div>

@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://crossgit.github.io">
-  <title>Tag: react | 走走停停</title>
+  <title>关于threejs | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="走走停停">
-<meta property="og:url" content="http://crossgit.github.io/tags/react/index.html">
+  <meta name="description" content="这篇里,想要用json创建一个web的3d展示,要逐个解决以下问题  如何把别的文件导入到blender, 如何从blender导出json three如何加载模型 如何给模型贴图 如何让模型自己旋转和鼠标控制放到缩小和转动 加天空盒的问题   maya导出的obj+mtl+jpg文件,实际上是可以直接用的,这篇就是处理json,如果maya没有装three的插件,那就只能再转一下,官网有一个ed">
+<meta name="keywords" content="three.js,webGL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于threejs">
+<meta property="og:url" content="http://crossgit.github.io/2017/08/09/关于threejs/index.html">
 <meta property="og:site_name" content="走走停停">
+<meta property="og:description" content="这篇里,想要用json创建一个web的3d展示,要逐个解决以下问题  如何把别的文件导入到blender, 如何从blender导出json three如何加载模型 如何给模型贴图 如何让模型自己旋转和鼠标控制放到缩小和转动 加天空盒的问题   maya导出的obj+mtl+jpg文件,实际上是可以直接用的,这篇就是处理json,如果maya没有装three的插件,那就只能再转一下,官网有一个ed">
+<meta property="og:updated_time" content="2017-08-09T02:45:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="走走停停">
+<meta name="twitter:title" content="关于threejs">
+<meta name="twitter:description" content="这篇里,想要用json创建一个web的3d展示,要逐个解决以下问题  如何把别的文件导入到blender, 如何从blender导出json three如何加载模型 如何给模型贴图 如何让模型自己旋转和鼠标控制放到缩小和转动 加天空盒的问题   maya导出的obj+mtl+jpg文件,实际上是可以直接用的,这篇就是处理json,如果maya没有装three的插件,那就只能再转一下,官网有一个ed">
   
     <link rel="alternative" href="/atom.xml" title="走走停停" type="application/atom+xml">
   
@@ -141,75 +146,189 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-关于threejs" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/28/ReactNative/" class="archive-article-date">
-  	<time datetime="2017-06-28T03:55:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-28</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/28/ReactNative/">ReactNative</a>
+    <h1 class="article-title" itemprop="name">
+      关于threejs
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/08/09/关于threejs/" class="archive-article-date">
+  	<time datetime="2017-08-09T02:45:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这篇里,想要用json创建一个web的3d展示,要逐个解决以下问题</p>
+<ul>
+<li>如何把别的文件导入到blender,</li>
+<li>如何从blender导出json</li>
+<li>three如何加载模型</li>
+<li>如何给模型贴图</li>
+<li>如何让模型自己旋转和鼠标控制放到缩小和转动</li>
+<li>加天空盒的问题</li>
+</ul>
+<ol>
+<li>maya导出的obj+mtl+jpg文件,实际上是可以直接用的,这篇就是处理json,如果maya没有装three的插件,那就只能再转一下,官网有一个editor,但是没看懂如何用使用.</li>
+</ol>
+<p>导入很简单,把obj文件拖放进blender,然后把jpg文件盖到刚拖进的obj文件就好了,然后打开右侧,点”多从纹理&gt;实色纹理”,这样就显示出了和maya一样的场景.</p>
+<ol>
+<li><p>导出json,安装了插件后,直接导出,注意选项 ,<code>几何图形</code>,<code>纹理</code></p>
+</li>
+<li><p>那么现在需要的是一个json文件和若干jpg/bmp文件,看实际给的什么图. 如果少这个参数,那需要再看下导出时的选项.</p>
+<p>  “materials”:[{ </p>
+<pre><code> ...
+&quot;mapDiffuse&quot;:&quot;tietu&quot;, // 图片名,和图片要一致.不一致就改图片名,删后缀.
+</code></pre></li>
+<li></li>
+<li></li>
+<li></li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>凑合看吧,有问题github上见.<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">three.js</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">webGL</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/cordova/" class="article-tag-list-link color3">cordova</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2017/08/09/关于threejs/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/07/04/Karma-关于vue的测试/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Karma-关于vue的测试</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://crossgit.github.io/2017/08/09/关于threejs/", 
+    sourceId: "关于threejs",
+    productKey: "falsexiangce",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -233,9 +352,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

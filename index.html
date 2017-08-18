@@ -772,58 +772,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="关于发布-mac开发-部署到centos7-我的测试是在src下-一个单main-go文件和一个静态文件夹-步骤如下"><a href="#关于发布-mac开发-部署到centos7-我的测试是在src下-一个单main-go文件和一个静态文件夹-步骤如下" class="headerlink" title="关于发布,mac开发,部署到centos7 我的测试是在src下,一个单main.go文件和一个静态文件夹,步骤如下"></a>关于发布,mac开发,部署到centos7 我的测试是在src下,一个单main.go文件和一个静态文件夹,步骤如下</h2><blockquote>
-<p>src下的build,生成了可以在64位的linux下跑的二进制文件,这<code>只是打包了.go文件</code>.</p>
-</blockquote>
-<pre><code>CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go
-</code></pre><blockquote>
-<p>静态文件的处理,无论如何,静态文件目录需要<code>绝对路径</code>,这样就需要在开发环境调试通以后,把路径改成绝对路径.这个获取绝对路径的代码是这样的:</p>
-</blockquote>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取绝对路径</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">getPath</span><span class="params">()</span> <span class="title">string</span></span> &#123;</div><div class="line">	file, _ := exec.LookPath(os.Args[<span class="number">0</span>])</div><div class="line">	path, _ := filepath.Abs(file)</div><div class="line">	index := strings.LastIndex(path, <span class="keyword">string</span>(os.PathSeparator))</div><div class="line">	ret := path[:index]</div><div class="line">	<span class="keyword">return</span> ret</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>再记录个获取随机数<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// RandomInt 0~5的随机数</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">RandomInt</span><span class="params">()</span> <span class="title">int</span></span> &#123;</div><div class="line">	o := rand.New(rand.NewSource(time.Now().UnixNano()))</div><div class="line">	num := o.Intn(<span class="number">6</span>)</div><div class="line">	<span class="keyword">return</span> num</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<ul>
-<li><p>go run main.go 执行生成的二进制文件在一个随机目录里,停了就删掉了…所以静态文件目录只能是相对路径.</p>
-</li>
-<li><p>…. go build main.go 之后,静态文件的目录应该scp到服务器上.目录要一致.</p>
-</li>
-</ul>
-<blockquote>
-<p>再下来运行,后台运行.. </p>
-</blockquote>
-<pre><code>nohup ./main &amp;
-</code></pre><blockquote>
-<p>再下来是ningx的代理….就这样.</p>
-</blockquote>
-<hr>
-<h2 id="关于守护进程的工具-supervisor-安装后-有一个echo-supervisord-conf-的工具-命令生成一个配置文件-安装要py2-7-看官网吧"><a href="#关于守护进程的工具-supervisor-安装后-有一个echo-supervisord-conf-的工具-命令生成一个配置文件-安装要py2-7-看官网吧" class="headerlink" title="关于守护进程的工具 supervisor,安装后,有一个echo_supervisord_conf 的工具,命令生成一个配置文件,(安装要py2.7,看官网吧)"></a>关于守护进程的工具 supervisor,安装后,有一个echo_supervisord_conf 的工具,命令生成一个配置文件,(安装要py2.7,看官网吧)</h2><pre><code>echo_supervisord_conf &gt; supervisord.conf
-</code></pre><ol>
-<li>到这个配置文件所在目录,<code>cd \etc\supervisor\</code></li>
-<li>mkdir conf.d</li>
-<li>cd conf.d </li>
-<li>创建自己需要启动的.ini文件,一个启动一个文件</li>
-<li>cd.. ,打开supervisord.conf,取消最后的 <code>[include]</code> 和 <code>files=xxx</code>的注释,把4创建的ini文件路径写进来</li>
-<li>启动 supervisord -c supervisord.conf</li>
-<li>查看状态:执行 supervisorctl ,status,重启:reload</li>
-<li><p>报错:基本上都是自己的错.也可能是端口被占,如下</p>
-<pre><code>错误提示
-
-[root@xxxxx supervisor]# supervisord -c supervisord.conf
-Unlinking stale socket /tmp/supervisor.sock
-或者
-Error: Another program is already listening on a port that one of our HTTP servers is configured to use.   Shut this program down first before starting supervisord.
-
-执行
-unlink /tmp/supervisor.sock
-
-状态提示
-
-BACKOFF   Exited too quickly (process log may have details)
-
-supervisorctl
-supervisorctl&gt; reload
-</code></pre></li>
-</ol>
-
+        <h2 id="关于发布-mac开发-部署到centos7-我的测试是在src下-一个单main-go文件和一个静态文件夹-步骤如下"><a href="#关于发布-mac开发-部署到centos7-我的测试是在src下-一个单main-go文件和一个静态文件夹-步骤如下" class="headerlink" title="关于发布,mac开发,部署到centos7 我的测试是在src下,一个单main.go文件和一个静态文件夹,步骤如下"></a>关于发布,mac开发,部署到centos7 我的测试是在src下,一个单main.go文件和一个静态文件夹,步骤如下</h2>
+        
+          <a class="article-more-a" href="/2017/06/02/go1/#more">查看更多...</a>
+        
       
 
       
@@ -990,6 +942,14 @@ supervisorctl&gt; reload
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">go</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">go部署</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
@@ -1006,23 +966,15 @@ supervisorctl&gt; reload
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">go</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">go部署</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">three.js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">webGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>

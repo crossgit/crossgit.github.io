@@ -6,19 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://crossgit.github.io">
-  <title>go1 | 走走停停</title>
+  <title>Tag: pgsql | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于发布,mac开发,部署到centos7 我的测试是在src下,一个单main.go文件和一个静态文件夹,步骤如下">
-<meta name="keywords" content="go,go部署">
-<meta property="og:type" content="article">
-<meta property="og:title" content="go1">
-<meta property="og:url" content="http://crossgit.github.io/2017/06/02/go1/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="走走停停">
+<meta property="og:url" content="http://crossgit.github.io/tags/pgsql/index.html">
 <meta property="og:site_name" content="走走停停">
-<meta property="og:description" content="关于发布,mac开发,部署到centos7 我的测试是在src下,一个单main.go文件和一个静态文件夹,步骤如下">
-<meta property="og:updated_time" content="2017-08-18T14:47:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="go1">
-<meta name="twitter:description" content="关于发布,mac开发,部署到centos7 我的测试是在src下,一个单main.go文件和一个静态文件夹,步骤如下">
+<meta name="twitter:title" content="走走停停">
   
     <link rel="alternative" href="/atom.xml" title="走走停停" type="application/atom+xml">
   
@@ -146,236 +141,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-go1" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      go1
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/08/27/关于pgsql/" class="archive-article-date">
+  	<time datetime="2017-08-27T12:37:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-27</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/08/27/关于pgsql/">关于pgsql</a>
     </h1>
   
 
-        
-        <a href="/2017/06/02/go1/" class="archive-article-date">
-  	<time datetime="2017-06-02T03:49:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="关于发布-mac开发-部署到centos7-我的测试是在src下-一个单main-go文件和一个静态文件夹-步骤如下"><a href="#关于发布-mac开发-部署到centos7-我的测试是在src下-一个单main-go文件和一个静态文件夹-步骤如下" class="headerlink" title="关于发布,mac开发,部署到centos7 我的测试是在src下,一个单main.go文件和一个静态文件夹,步骤如下"></a>关于发布,mac开发,部署到centos7 我的测试是在src下,一个单main.go文件和一个静态文件夹,步骤如下</h2><a id="more"></a>
-<blockquote>
-<p>src下的build,生成了可以在64位的linux下跑的二进制文件,这<code>只是打包了.go文件</code>.</p>
-</blockquote>
-<pre><code>CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go
-</code></pre><blockquote>
-<p>静态文件的处理,无论如何,静态文件目录需要<code>绝对路径</code>,这样就需要在开发环境调试通以后,把路径改成绝对路径.这个获取绝对路径的代码是这样的:</p>
-</blockquote>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取绝对路径</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">getPath</span><span class="params">()</span> <span class="title">string</span></span> &#123;</div><div class="line">	file, _ := exec.LookPath(os.Args[<span class="number">0</span>])</div><div class="line">	path, _ := filepath.Abs(file)</div><div class="line">	index := strings.LastIndex(path, <span class="keyword">string</span>(os.PathSeparator))</div><div class="line">	ret := path[:index]</div><div class="line">	<span class="keyword">return</span> ret</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>再记录个获取随机数<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// RandomInt 0~5的随机数</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">RandomInt</span><span class="params">()</span> <span class="title">int</span></span> &#123;</div><div class="line">	o := rand.New(rand.NewSource(time.Now().UnixNano()))</div><div class="line">	num := o.Intn(<span class="number">6</span>)</div><div class="line">	<span class="keyword">return</span> num</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<ul>
-<li><p>go run main.go 执行生成的二进制文件在一个随机目录里,停了就删掉了…所以静态文件目录只能是相对路径.</p>
-</li>
-<li><p>…. go build main.go 之后,静态文件的目录应该scp到服务器上.目录要一致.</p>
-</li>
-</ul>
-<blockquote>
-<p>再下来运行,后台运行.. </p>
-</blockquote>
-<pre><code>nohup ./main &amp;
-</code></pre><blockquote>
-<p>再下来是ningx的代理….就这样.</p>
-</blockquote>
-<hr>
-<h2 id="关于守护进程的工具-supervisor-安装后-有一个echo-supervisord-conf-的工具-命令生成一个配置文件-安装要py2-7-看官网吧"><a href="#关于守护进程的工具-supervisor-安装后-有一个echo-supervisord-conf-的工具-命令生成一个配置文件-安装要py2-7-看官网吧" class="headerlink" title="关于守护进程的工具 supervisor,安装后,有一个echo_supervisord_conf 的工具,命令生成一个配置文件,(安装要py2.7,看官网吧)"></a>关于守护进程的工具 supervisor,安装后,有一个echo_supervisord_conf 的工具,命令生成一个配置文件,(安装要py2.7,看官网吧)</h2><pre><code>echo_supervisord_conf &gt; supervisord.conf
-</code></pre><ol>
-<li>到这个配置文件所在目录,<code>cd \etc\supervisor\</code></li>
-<li>mkdir conf.d</li>
-<li>cd conf.d </li>
-<li>创建自己需要启动的.ini文件,一个启动一个文件</li>
-<li>cd.. ,打开supervisord.conf,取消最后的 <code>[include]</code> 和 <code>files=xxx</code>的注释,把4创建的ini文件路径写进来</li>
-<li>启动 supervisord -c supervisord.conf</li>
-<li>查看状态:执行 supervisorctl ,status,重启:reload</li>
-<li><p>报错:基本上都是自己的错.也可能是端口被占,如下</p>
-<pre><code>错误提示
-
-[root@xxxxx supervisor]# supervisord -c supervisord.conf
-Unlinking stale socket /tmp/supervisor.sock
-或者
-Error: Another program is already listening on a port that one of our HTTP servers is configured to use.   Shut this program down first before starting supervisord.
-
-执行
-unlink /tmp/supervisor.sock
-
-状态提示
-
-BACKOFF   Exited too quickly (process log may have details)
-
-supervisorctl
-supervisorctl&gt; reload
-</code></pre></li>
-</ol>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>凑合看吧,有问题github上见.<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">go</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">go部署</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">pgsql</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/go/" class="article-tag-list-link color3">go</a>
-        		</li>
-      		
-		</ul>
-	</div>
+          
 
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2017/06/02/go1/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/06/02/关于go/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          关于go
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/05/30/mysql1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title"></div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-  
-  
-  
-  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-<script>
-  var cloudTieConfig = {
-    url: "http://crossgit.github.io/2017/06/02/go1/", 
-    sourceId: "go1",
-    productKey: "falsexiangce",
-    target: "cloud-tie-wrapper"
-  };
-</script>
-<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    </div></section>
   
 
-  
-
-  
+    
 
 
           </div>
@@ -399,9 +218,9 @@ supervisorctl&gt; reload
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

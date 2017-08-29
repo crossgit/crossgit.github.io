@@ -163,7 +163,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一个<code>api 网关</code></p>
+        <p>mac上装一个<code>api 网关</code> kong!</p>
 <blockquote>
 <p>安装准备</p>
 </blockquote>
@@ -212,22 +212,22 @@ kong-dashboard start
 <tr>
 <td>hosts</td>
 <td>semi-optional</td>
-<td>A comma-separated list of domain names that point to your API. For example: example.com. At least one of hosts, uris, or methods should be specified. 指向您的API的域名的逗号分隔列表。例如：example.com。的至少一个hosts，uris或methods应符合规定。</td>
+<td>A comma-separated list of domain names that point to your API. For example: example.com. At least one of hosts, uris, or methods should be specified. 指向您的API的域名的逗号分隔列表。例如：example.com。的至少一个hosts，uris或methods应符合规定。 本地服务IP</td>
 </tr>
 <tr>
 <td>uris</td>
 <td>semi-optional</td>
-<td>A comma-separated list of URIs prefixes that point to your API. For example: /my-path. At least one of hosts, uris, or methods should be specified. 以逗号分隔的URI列表，指向您的API。例如：/my-path。的至少一个hosts，uris或methods应符合规定。</td>
+<td>A comma-separated list of URIs prefixes that point to your API. For example: /my-path. At least one of hosts, uris, or methods should be specified. 以逗号分隔的URI列表，指向您的API。例如：/my-path。的至少一个hosts，uris或methods应符合规定。 本地后缀</td>
 </tr>
 <tr>
 <td>methods</td>
 <td>semi-optional</td>
-<td>A comma-separated list of HTTP methods that point to your API. For example: GET,POST. At least one of hosts, uris, or methods should be specified. 指向您的API的HTTP方法的逗号分隔列表。例如：GET,POST。的至少一个hosts，uris或methods应符合规定。</td>
+<td>A comma-separated list of HTTP methods that point to your API. For example: GET,POST. At least one of hosts, uris, or methods should be specified. 指向您的API的HTTP方法的逗号分隔列表。例如：GET,POST。的至少一个hosts，uris或methods应符合规定。 请求方式</td>
 </tr>
 <tr>
 <td>upstream_url</td>
 <td></td>
-<td>The base target URL that points to your API server. This URL will be used for proxying requests. For example: <a href="https://example.com" target="_blank" rel="external">https://example.com</a>. 指向您的API服务器的基本目标网址。此URL将用于代理请求。例如：<a href="https://example.com。" target="_blank" rel="external">https://example.com。</a></td>
+<td>The base target URL that points to your API server. This URL will be used for proxying requests. For example: <a href="https://example.com" target="_blank" rel="external">https://example.com</a>. 指向您的API服务器的基本目标网址。此URL将用于代理请求。例如：<a href="https://example.com。" target="_blank" rel="external">https://example.com。</a> api全url</td>
 </tr>
 <tr>
 <td>strip_uri</td>
@@ -277,7 +277,7 @@ kong-dashboard start
 <tr>
 <th>#</th>
 <th>optional</th>
-<th>eg</th>
+<th>e.g.</th>
 </tr>
 </thead>
 <tbody>
@@ -289,7 +289,7 @@ kong-dashboard start
 <tr>
 <td>2</td>
 <td>hosts</td>
-<td>shiw.crossess.com</td>
+<td>127.0.0.1</td>
 </tr>
 <tr>
 <td>3</td>
@@ -308,6 +308,61 @@ kong-dashboard start
 </tr>
 </tbody>
 </table>
+<hr>
+<h2 id="kong"><a href="#kong" class="headerlink" title="kong"></a>kong</h2><blockquote>
+<p>相关的端口</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>端口</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8000</td>
+<td>客户端调用api端口，网关对外开放端口。</td>
+<td>新建一个api，访问path= /test，则访问 <a href="http://10.110.2.3:8000/test" target="_blank" rel="external">http://10.110.2.3:8000/test</a>  </td>
+</tr>
+<tr>
+<td>8001</td>
+<td>kong admin api管理端口，可以通过该端口对api、consumer、plugin进行管理，</td>
+<td>查看名字叫test 这个api配置信息，访问 <a href="http://10.110.2.3:8001/apis/test，查看所有api信息，访问" target="_blank" rel="external">http://10.110.2.3:8001/apis/test，查看所有api信息，访问</a> <a href="http://10.110.2.3:8001/apis" target="_blank" rel="external">http://10.110.2.3:8001/apis</a> </td>
+</tr>
+<tr>
+<td>8443</td>
+<td>kong https url https</td>
+</tr>
+<tr>
+<td>5000</td>
+<td>kong dashboard ui</td>
+</tr>
+<tr>
+<td>8080/api/persons</td>
+<td>user api url</td>
+</tr>
+<tr>
+<td>8080/api/newinfos</td>
+<td>newinfo api url</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>新增一个api</p>
+</blockquote>
+<pre><code>$ curl -i -X POST --url http://127.0.0.1:8001/apis/ --data &apos;name=person2api&apos; --data &apos;methods=GET&apos; --data &apos;uris=/testUser&apos; --data &apos;hosts=127.0.0.1&apos; --data &apos;upstream_url=http://10.110.2.54:8040/metrics&apos;
+</code></pre><ul>
+<li>HTTP/1.1 201 Created</li>
+<li>Date: Thu, 27 Jul 2017 11:24:09 GMT</li>
+<li>Content-Type: application/json; charset=utf-8</li>
+<li>Transfer-Encoding: chunked</li>
+<li>Connection: keep-alive</li>
+<li>Access-Control-Allow-Origin: *</li>
+<li>Server: kong/0.10.3</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;<span class="attr">"methods"</span>:[<span class="string">"GET"</span>],<span class="attr">"http_if_terminated"</span>:<span class="literal">true</span>,<span class="attr">"id"</span>:<span class="string">"dffb6cbb-1a0d-4a1f-aff8-72b7a2aad586"</span>,<span class="attr">"retries"</span>:<span class="number">5</span>,<span class="attr">"preserve_host"</span>:<span class="literal">false</span>,<span class="attr">"created_at"</span>:<span class="number">1501154650000</span>,<span class="attr">"upstream_connect_timeout"</span>:<span class="number">60000</span>,<span class="attr">"upstream_url"</span>:<span class="string">"http:\/\/10.110.2.54:8040\/metrics"</span>,<span class="attr">"upstream_read_timeout"</span>:<span class="number">60000</span>,<span class="attr">"upstream_send_timeout"</span>:<span class="number">60000</span>,<span class="attr">"https_only"</span>:<span class="literal">false</span>,<span class="attr">"strip_uri"</span>:<span class="literal">true</span>,<span class="attr">"uris"</span>:[<span class="string">"\/testUser"</span>],<span class="attr">"name"</span>:<span class="string">"person2api"</span>,<span class="attr">"hosts"</span>:[<span class="string">"127.0.0.1"</span>]&#125;</div></pre></td></tr></table></figure>
 
       
 
@@ -764,11 +819,11 @@ psql | 链接(linux)
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">发布ios</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">发布ios</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
         		</li>
       		
 		</ul>
@@ -1119,7 +1174,7 @@ psql | 链接(linux)
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1127,15 +1182,11 @@ psql | 链接(linux)
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">plugin</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1147,11 +1198,15 @@ psql | 链接(linux)
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">

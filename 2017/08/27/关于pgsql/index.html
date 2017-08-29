@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/08/27/关于pgsql/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="mac环境下的问题  安装   分两种,1 是 brew install postgresql,目录在 brew的通常目录下 /usr/local/Celler 2 是按官网的下载安装.安装完如何使用命令? 安装目录在 /Library/PostgreSQL/9.5/bin vim ~/.bash_profile 写入保存: export PATH=$PATH:/Library/PostgreSQ">
-<meta property="og:updated_time" content="2017-08-27T12:43:53.000Z">
+<meta property="og:updated_time" content="2017-08-29T06:29:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于pgsql">
 <meta name="twitter:description" content="mac环境下的问题  安装   分两种,1 是 brew install postgresql,目录在 brew的通常目录下 /usr/local/Celler 2 是按官网的下载安装.安装完如何使用命令? 安装目录在 /Library/PostgreSQL/9.5/bin vim ~/.bash_profile 写入保存: export PATH=$PATH:/Library/PostgreSQ">
@@ -175,6 +175,80 @@
 <pre><code>vim ~/.bash_profile
 写入保存: export PATH=$PATH:/Library/PostgreSQL/9.5/bin
 source .bash_profile
+</code></pre><p>3 卸载..其实我觉得不如用brew安装</p>
+<pre><code>1、如果是postgresql.app的形式，这个简单，跟其他app一样，删除app即可。
+
+2、如果是使用installer图形界面方式安装的。则需要打开终端命令行。
+
+3、执行
+
+open /Library/PostgreSQL/9.2/uninstall-postgresql.app      可能会提示你输入密码。
+4、等待上一步执行完成后，删除postgresql文件夹       
+
+sudo rm -rf /Library/PostgreSQL      可能会提示你输入密码
+5、删除配置文件
+
+sudo rm /etc/postgres-reg.ini      可能会提示你输入密码
+6、在用户管理中删除postgresql的用户， 系统偏好设置－－》用户及用户组。
+7、删除共享内存设置 （我没有做过特殊设置，所以我本机是没有这个文件的，如果有，可以删除。）
+sudo rm /etc/sysctl.conf
+</code></pre><hr>
+<pre><code>/usr/bin/sandbox-exec -f /tmp/homebrew20170827-3909-1l497p3.sb nice /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/bin/ruby -W0 -I /usr/local/Homebrew/Library/Homebrew -- /usr/local/Homebrew/Library/Homebrew/postinstall.rb /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/postgresql.rb -v
+==&gt; Caveats
+If builds of PostgreSQL 9 are failing and you have version 8.x installed,
+you may need to remove the previous version first. See:
+https://github.com/Homebrew/legacy-homebrew/issues/2510
+
+To migrate existing data from a previous major version (pre-9.0) of PostgreSQL, see:
+https://www.postgresql.org/docs/9.6/static/upgrading.html
+
+To migrate existing data from a previous minor version (9.0-9.5) of PostgreSQL, see:
+https://www.postgresql.org/docs/9.6/static/pgupgrade.html
+
+You will need your previous PostgreSQL installation from brew to perform `pg_upgrade`.
+Do not run `brew cleanup postgresql` until you have performed the migration.
+
+To have launchd start postgresql now and restart at login:
+brew services start postgresql
+Or, if you don&apos;t want/need a background service you can just run:
+pg_ctl -D /usr/local/var/postgres start
+==&gt; Summary
+🍺  /usr/local/Cellar/postgresql/9.6.4: 3,264 files, 36.6MB
+
+
+依次执行
+    -- 初始化
+    initdb /usr/local/var/postgres -E utf8 
+    -- 开服务
+    ~   pg_ctl -D /usr/local/var/postgres -l logfile start 
+    pg_ctl: another server might be running; trying to start server anyway
+    server starting
+    -- 创建用户
+    ➜  ~ createuser kong -P
+    Enter password for new role:
+    Enter it again:
+    -- 创建数据库,并属于这个用户
+    ➜  ~ createdb kong -O kong -E UTF8 -e
+    CREATE DATABASE kong OWNER kong ENCODING &apos;UTF8&apos;;
+    -- 连接数据库
+    ➜  ~ psql -U kong -d kong -h 127.0.0.1
+    psql (9.6.4)
+    Type &quot;help&quot; for help.
+
+    kong=&gt;
+</code></pre><hr>
+<p>4 常用命令</p>
+<pre><code>命令|说明
+----|----
+psql -V  |版本
+\q | 退出
+\l | 显示所有数据库
+\c schema_name | 选择数据库(不是use db)
+\dt | 显示所有表 
+\d schema_name.tablename | 查看表结构
+select * from pg_indexes where tablename=&apos;log&apos;; | 查索引
+su postgres | 切换用户(linux)
+psql | 链接(linux)
 </code></pre><p>先在kong上使用一下,他是一个 <code>api网关</code></p>
 
       
@@ -279,6 +353,15 @@ source .bash_profile
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/08/29/关于kong/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          关于kong
+        
+      </div>
+    </a>
   
   
     <a href="/2017/08/09/关于threejs/" id="article-nav-older" class="article-nav-link-wrap">
@@ -419,10 +502,6 @@ source .bash_profile
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
@@ -435,6 +514,14 @@ source .bash_profile
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">go</a>
               </li>
              
@@ -443,11 +530,11 @@ source .bash_profile
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -456,10 +543,6 @@ source .bash_profile
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">webGL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
               </li>
             
             <div class="clearfix"></div>

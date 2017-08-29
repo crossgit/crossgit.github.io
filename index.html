@@ -143,6 +143,194 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-关于kong" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/29/关于kong/">关于kong</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/29/关于kong/" class="archive-article-date">
+  	<time datetime="2017-08-29T09:53:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一个<code>api 网关</code></p>
+<blockquote>
+<p>安装准备</p>
+</blockquote>
+<ul>
+<li>pgsql 9.4+,或者一个对象数据库,CASSANDRA</li>
+</ul>
+<p>我选择的是pqsql,可以见 <code>关于pgsql</code>这篇</p>
+<blockquote>
+<p>安装</p>
+</blockquote>
+<p>0.11以后的版本可能是docker的了,之前的可以用安装包,下载地址</p>
+<pre><code>https://github.com/Mashape/kong/releases/
+</code></pre><p>安装后,命令</p>
+<pre><code>kong --help
+</code></pre><p>启动</p>
+<pre><code>kong start
+</code></pre><blockquote>
+<p>客户端</p>
+</blockquote>
+<ol>
+<li>客户端版本的 <a href="https://github.com/ajaysreedhar/kongdash" target="_blank" rel="external">kongDash</a></li>
+<li>web版本 <a href="https://github.com/PGBI/kong-dashboard" target="_blank" rel="external">kong-dashboard</a></li>
+</ol>
+<pre><code>sudo npm install -g kong-dashboard
+kong-dashboard start 
+默认端口 8080
+</code></pre><p>现在主要说 web版本的客户端</p>
+<blockquote>
+<p>添加一个api</p>
+</blockquote>
+<p>有一个<a href="https://getkong.org/docs/0.11.x/admin-api/#add-api" target="_blank" rel="external">kong的文档</a>,有个说明</p>
+<table>
+<thead>
+<tr>
+<th>ATTRIBUTE</th>
+<th>xxx</th>
+<th>DESCRIPTION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td></td>
+<td>The API name. 名称</td>
+</tr>
+<tr>
+<td>hosts</td>
+<td>semi-optional</td>
+<td>A comma-separated list of domain names that point to your API. For example: example.com. At least one of hosts, uris, or methods should be specified. 指向您的API的域名的逗号分隔列表。例如：example.com。的至少一个hosts，uris或methods应符合规定。</td>
+</tr>
+<tr>
+<td>uris</td>
+<td>semi-optional</td>
+<td>A comma-separated list of URIs prefixes that point to your API. For example: /my-path. At least one of hosts, uris, or methods should be specified. 以逗号分隔的URI列表，指向您的API。例如：/my-path。的至少一个hosts，uris或methods应符合规定。</td>
+</tr>
+<tr>
+<td>methods</td>
+<td>semi-optional</td>
+<td>A comma-separated list of HTTP methods that point to your API. For example: GET,POST. At least one of hosts, uris, or methods should be specified. 指向您的API的HTTP方法的逗号分隔列表。例如：GET,POST。的至少一个hosts，uris或methods应符合规定。</td>
+</tr>
+<tr>
+<td>upstream_url</td>
+<td></td>
+<td>The base target URL that points to your API server. This URL will be used for proxying requests. For example: <a href="https://example.com" target="_blank" rel="external">https://example.com</a>. 指向您的API服务器的基本目标网址。此URL将用于代理请求。例如：<a href="https://example.com。" target="_blank" rel="external">https://example.com。</a></td>
+</tr>
+<tr>
+<td>strip_uri</td>
+<td>optional</td>
+<td>When matching an API via one of the uris prefixes, strip that matching prefix from the upstream URI to be requested. Default: true. 通过其中一个uris前缀匹配API时，从上游URI中删除匹配的前缀。默认值：true。</td>
+</tr>
+<tr>
+<td>preserve_host</td>
+<td>optional</td>
+<td>When matching an API via one of the hosts domain names, make sure the request Host header is forwarded to the upstream service. By default, this is false, and the upstream Host header will be extracted from the configured upstream_url. 通过其中一个hosts域名匹配API时，请确保将请求Host头转发到上游服务。默认情况下，将从配置中提取false上游标Host头upstream_url。</td>
+</tr>
+<tr>
+<td>retries</td>
+<td>optional</td>
+<td>The number of retries to execute upon failure to proxy. The default is 5. 无法代理时执行的重试次数。默认是5。</td>
+</tr>
+<tr>
+<td>upstream_connect_timeout</td>
+<td>optional</td>
+<td>The timeout in milliseconds for establishing a connection to your upstream service. Defaults to 60000. 建立与上游服务连接的超时时间（以毫秒为单位）。默认为60000。</td>
+</tr>
+<tr>
+<td>upstream_send_timeout</td>
+<td>optional</td>
+<td>The timeout in milliseconds between two successive write operations for transmitting a request to your upstream service Defaults to 60000. 用于将请求发送到上游服务的两个连续写操作之间的超时（以毫秒为单位）默认为60000。</td>
+</tr>
+<tr>
+<td>upstream_read_timeout</td>
+<td>optional</td>
+<td>The timeout in milliseconds between two successive read operations for transmitting a request to your upstream service Defaults to 60000. 两个连续读取操作之间以超过毫秒的速度发送请求到您的上游服务默认为60000。</td>
+</tr>
+<tr>
+<td>https_only</td>
+<td>optional</td>
+<td>To be enabled if you wish to only serve an API through HTTPS, on the appropriate port (8443 by default). Default: false. 如果您希望通过HTTPS仅在适当的端口（8443默认情况下）通过HTTPS提供API来启用。默认值：false。</td>
+</tr>
+<tr>
+<td>http_if_terminated</td>
+<td>optional</td>
+<td>Consider the X-Forwarded-Proto header when enforcing HTTPS only traffic. Default: true. X-Forwarded-Proto在实施仅HTTPS流量时考虑头。默认值：true。</td>
+</tr>
+</tbody>
+</table>
+<p>实际上就添加5项目</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>optional</th>
+<th>eg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>name</td>
+<td>xyinfo</td>
+</tr>
+<tr>
+<td>2</td>
+<td>hosts</td>
+<td>shiw.crossess.com</td>
+</tr>
+<tr>
+<td>3</td>
+<td>uris</td>
+<td>/views/page/demo.html</td>
+</tr>
+<tr>
+<td>4</td>
+<td>methods</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>5</td>
+<td>upstream url</td>
+<td><a href="http://shiw.crossess.com/api/xyinfo" target="_blank" rel="external">http://shiw.crossess.com/api/xyinfo</a></td>
+</tr>
+</tbody>
+</table>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-关于pgsql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -172,6 +360,80 @@
 <pre><code>vim ~/.bash_profile
 写入保存: export PATH=$PATH:/Library/PostgreSQL/9.5/bin
 source .bash_profile
+</code></pre><p>3 卸载..其实我觉得不如用brew安装</p>
+<pre><code>1、如果是postgresql.app的形式，这个简单，跟其他app一样，删除app即可。
+
+2、如果是使用installer图形界面方式安装的。则需要打开终端命令行。
+
+3、执行
+
+open /Library/PostgreSQL/9.2/uninstall-postgresql.app      可能会提示你输入密码。
+4、等待上一步执行完成后，删除postgresql文件夹       
+
+sudo rm -rf /Library/PostgreSQL      可能会提示你输入密码
+5、删除配置文件
+
+sudo rm /etc/postgres-reg.ini      可能会提示你输入密码
+6、在用户管理中删除postgresql的用户， 系统偏好设置－－》用户及用户组。
+7、删除共享内存设置 （我没有做过特殊设置，所以我本机是没有这个文件的，如果有，可以删除。）
+sudo rm /etc/sysctl.conf
+</code></pre><hr>
+<pre><code>/usr/bin/sandbox-exec -f /tmp/homebrew20170827-3909-1l497p3.sb nice /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/bin/ruby -W0 -I /usr/local/Homebrew/Library/Homebrew -- /usr/local/Homebrew/Library/Homebrew/postinstall.rb /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula/postgresql.rb -v
+==&gt; Caveats
+If builds of PostgreSQL 9 are failing and you have version 8.x installed,
+you may need to remove the previous version first. See:
+https://github.com/Homebrew/legacy-homebrew/issues/2510
+
+To migrate existing data from a previous major version (pre-9.0) of PostgreSQL, see:
+https://www.postgresql.org/docs/9.6/static/upgrading.html
+
+To migrate existing data from a previous minor version (9.0-9.5) of PostgreSQL, see:
+https://www.postgresql.org/docs/9.6/static/pgupgrade.html
+
+You will need your previous PostgreSQL installation from brew to perform `pg_upgrade`.
+Do not run `brew cleanup postgresql` until you have performed the migration.
+
+To have launchd start postgresql now and restart at login:
+brew services start postgresql
+Or, if you don&apos;t want/need a background service you can just run:
+pg_ctl -D /usr/local/var/postgres start
+==&gt; Summary
+🍺  /usr/local/Cellar/postgresql/9.6.4: 3,264 files, 36.6MB
+
+
+依次执行
+    -- 初始化
+    initdb /usr/local/var/postgres -E utf8 
+    -- 开服务
+    ~   pg_ctl -D /usr/local/var/postgres -l logfile start 
+    pg_ctl: another server might be running; trying to start server anyway
+    server starting
+    -- 创建用户
+    ➜  ~ createuser kong -P
+    Enter password for new role:
+    Enter it again:
+    -- 创建数据库,并属于这个用户
+    ➜  ~ createdb kong -O kong -E UTF8 -e
+    CREATE DATABASE kong OWNER kong ENCODING &apos;UTF8&apos;;
+    -- 连接数据库
+    ➜  ~ psql -U kong -d kong -h 127.0.0.1
+    psql (9.6.4)
+    Type &quot;help&quot; for help.
+
+    kong=&gt;
+</code></pre><hr>
+<p>4 常用命令</p>
+<pre><code>命令|说明
+----|----
+psql -V  |版本
+\q | 退出
+\l | 显示所有数据库
+\c schema_name | 选择数据库(不是use db)
+\dt | 显示所有表 
+\d schema_name.tablename | 查看表结构
+select * from pg_indexes where tablename=&apos;log&apos;; | 查索引
+su postgres | 切换用户(linux)
+psql | 链接(linux)
 </code></pre><p>先在kong上使用一下,他是一个 <code>api网关</code></p>
 
       
@@ -759,63 +1021,6 @@ source .bash_profile
 
 
   
-    <article id="post-关于go" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/02/关于go/">关于go</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/02/关于go/" class="archive-article-date">
-  	<time datetime="2017-06-02T03:50:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="关于go"><a href="#关于go" class="headerlink" title="关于go"></a>关于go</h2><p>没错,说的就是golang…的<code>调试</code>配置,配置完这篇的内容后,又有新的问题,总之是<code>没通,没结果,和原装后自定义的配置有冲突</code><br>
-        
-          <a class="article-more-a" href="/2017/06/02/关于go/#more">查看更多...</a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/go/" class="article-tag-list-link color3">go</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -930,10 +1135,6 @@ source .bash_profile
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
@@ -946,6 +1147,14 @@ source .bash_profile
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">go</a>
               </li>
              
@@ -954,11 +1163,11 @@ source .bash_profile
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -967,10 +1176,6 @@ source .bash_profile
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">webGL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
               </li>
             
             <div class="clearfix"></div>

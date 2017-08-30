@@ -8,16 +8,17 @@
   <link rel="dns-prefetch" href="http://crossgit.github.io">
   <title>关于kong | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="mac上装一个api 网关 kong!  安装准备   pgsql 9.4+,或者一个对象数据库,CASSANDRA  我选择的是pqsql,可以见 关于pgsql这篇  安装  0.11以后的版本可能是docker的了,之前的可以用安装包,下载地址 https://github.com/Mashape/kong/releases/ 安装后,命令 kong --help 启动 kong start">
+  <meta name="description" content="mac上装一个api 网关 kong!">
+<meta name="keywords" content="kong">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于kong">
 <meta property="og:url" content="http://crossgit.github.io/2017/08/29/关于kong/index.html">
 <meta property="og:site_name" content="走走停停">
-<meta property="og:description" content="mac上装一个api 网关 kong!  安装准备   pgsql 9.4+,或者一个对象数据库,CASSANDRA  我选择的是pqsql,可以见 关于pgsql这篇  安装  0.11以后的版本可能是docker的了,之前的可以用安装包,下载地址 https://github.com/Mashape/kong/releases/ 安装后,命令 kong --help 启动 kong start">
-<meta property="og:updated_time" content="2017-08-29T13:39:09.000Z">
+<meta property="og:description" content="mac上装一个api 网关 kong!">
+<meta property="og:updated_time" content="2017-08-30T03:50:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于kong">
-<meta name="twitter:description" content="mac上装一个api 网关 kong!  安装准备   pgsql 9.4+,或者一个对象数据库,CASSANDRA  我选择的是pqsql,可以见 关于pgsql这篇  安装  0.11以后的版本可能是docker的了,之前的可以用安装包,下载地址 https://github.com/Mashape/kong/releases/ 安装后,命令 kong --help 启动 kong start">
+<meta name="twitter:description" content="mac上装一个api 网关 kong!">
   
     <link rel="alternative" href="/atom.xml" title="走走停停" type="application/atom+xml">
   
@@ -165,7 +166,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>mac上装一个<code>api 网关</code> kong!</p>
+        <p>mac上装一个<code>api 网关</code> kong!<br><a id="more"></a></p>
 <blockquote>
 <p>安装准备</p>
 </blockquote>
@@ -338,16 +339,9 @@ kong-dashboard start
 <td>kong https url https</td>
 </tr>
 <tr>
-<td>5000</td>
+<td>8080</td>
 <td>kong dashboard ui</td>
-</tr>
-<tr>
-<td>8080/api/persons</td>
-<td>user api url</td>
-</tr>
-<tr>
-<td>8080/api/newinfos</td>
-<td>newinfo api url</td>
+<td>一个web客户端</td>
 </tr>
 </tbody>
 </table>
@@ -365,6 +359,19 @@ kong-dashboard start
 <li>Server: kong/0.10.3</li>
 </ul>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;<span class="attr">"methods"</span>:[<span class="string">"GET"</span>],<span class="attr">"http_if_terminated"</span>:<span class="literal">true</span>,<span class="attr">"id"</span>:<span class="string">"dffb6cbb-1a0d-4a1f-aff8-72b7a2aad586"</span>,<span class="attr">"retries"</span>:<span class="number">5</span>,<span class="attr">"preserve_host"</span>:<span class="literal">false</span>,<span class="attr">"created_at"</span>:<span class="number">1501154650000</span>,<span class="attr">"upstream_connect_timeout"</span>:<span class="number">60000</span>,<span class="attr">"upstream_url"</span>:<span class="string">"http:\/\/10.110.2.54:8040\/metrics"</span>,<span class="attr">"upstream_read_timeout"</span>:<span class="number">60000</span>,<span class="attr">"upstream_send_timeout"</span>:<span class="number">60000</span>,<span class="attr">"https_only"</span>:<span class="literal">false</span>,<span class="attr">"strip_uri"</span>:<span class="literal">true</span>,<span class="attr">"uris"</span>:[<span class="string">"\/testUser"</span>],<span class="attr">"name"</span>:<span class="string">"person2api"</span>,<span class="attr">"hosts"</span>:[<span class="string">"127.0.0.1"</span>]&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>插件的问题(<a href="https://mp.weixin.qq.com/s/LIq2CiXJQmmjBC0yvYLY5A" target="_blank" rel="external">内容来源</a>)</p>
+</blockquote>
+<p>Kong默认插件</p>
+<ul>
+<li>身份认证：Kong提供了Basic Authentication、Key authentication、OAuth2.0 authentication、HMAC authentication、JWT、LDAP authentication认证实现。</li>
+<li>安全：ACL（访问控制）、CORS（跨域资源共享）、动态SSL、IP限制、爬虫检测实现。</li>
+<li>流量控制：请求限流（基于请求计数限流）、上游响应限流（根据upstream响应计数限流）、请求大小限制。限流支持本地、Redis和集群限流模式。</li>
+<li>分析监控：Galileo（记录请求和响应数据，实现API分析）、Datadog（记录API Metric如请求次数、请求大小、响应状态和延迟，可视化API Metric）、Runscope（记录请求和响应数据，实现API性能测试和监控）。</li>
+<li>转换：请求转换（在转发到upstream之前修改请求）、响应转换（在upstream响应返回给客户端之前修改响应）。</li>
+<li>日志：TCP、UDP、HTTP、File、Syslog、StatsD、Loggly等。</li>
+</ul>
+<p>可能需要扩展的插件: API级别的超时、重试、fallback策略、缓存、API聚合、ABTest等.</p>
 
       
 
@@ -394,6 +401,17 @@ kong-dashboard start
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">kong</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -581,7 +599,7 @@ kong-dashboard start
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,11 +607,11 @@ kong-dashboard start
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -609,10 +627,6 @@ kong-dashboard start
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
@@ -625,7 +639,7 @@ kong-dashboard start
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color5">kong</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -638,6 +652,14 @@ kong-dashboard start
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">webGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>

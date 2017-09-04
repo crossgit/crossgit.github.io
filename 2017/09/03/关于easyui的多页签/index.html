@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://crossgit.github.io">
-  <title>cordova plugin ios | 走走停停</title>
+  <title>关于easyui的多页签 | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="用swift写cordova在ios下的插件">
-<meta name="keywords" content="cordova,移动端,plugin">
+  <meta name="description" content="绕了一大圈,后端管理的界面,还是希望支持IE8,和多页签,于是整理easyui的多页签使用">
+<meta name="keywords" content="easyui">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cordova plugin ios">
-<meta property="og:url" content="http://crossgit.github.io/2017/06/16/CordovaVue-plugin2/index.html">
+<meta property="og:title" content="关于easyui的多页签">
+<meta property="og:url" content="http://crossgit.github.io/2017/09/03/关于easyui的多页签/index.html">
 <meta property="og:site_name" content="走走停停">
-<meta property="og:description" content="用swift写cordova在ios下的插件">
-<meta property="og:updated_time" content="2017-07-30T14:26:38.000Z">
+<meta property="og:description" content="绕了一大圈,后端管理的界面,还是希望支持IE8,和多页签,于是整理easyui的多页签使用">
+<meta property="og:updated_time" content="2017-09-03T07:25:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cordova plugin ios">
-<meta name="twitter:description" content="用swift写cordova在ios下的插件">
+<meta name="twitter:title" content="关于easyui的多页签">
+<meta name="twitter:description" content="绕了一大圈,后端管理的界面,还是希望支持IE8,和多页签,于是整理easyui的多页签使用">
   
     <link rel="alternative" href="/atom.xml" title="走走停停" type="application/atom+xml">
   
@@ -146,74 +146,65 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-CordovaVue-plugin2" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-关于easyui的多页签" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      cordova plugin ios
+      关于easyui的多页签
     </h1>
   
 
         
-        <a href="/2017/06/16/CordovaVue-plugin2/" class="archive-article-date">
-  	<time datetime="2017-06-16T07:03:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-16</time>
+        <a href="/2017/09/03/关于easyui的多页签/" class="archive-article-date">
+  	<time datetime="2017-09-03T05:18:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>用swift写cordova在ios下的插件<br><a id="more"></a><br>相关链接</p>
-<ul>
-<li>开始配置相关参照: <code>http://blog.csdn.net/b2259909/article/details/52471178</code></li>
-<li>帮助说明: <code>http://moduscreate.com/writing-a-cordova-plugin-in-swift-for-ios/</code>,这个还有个youtube上的视频,直接搜应该就能找到</li>
-<li>相关的插件: <code>https://github.com/akofman/cordova-plugin-add-swift-support</code></li>
-<li>参考: <code>http://www.lownmower.com/news/Writing-A-Cordova-Plugin-In-Swift-For-iOS/</code></li>
-<li>demo地址: <code>https://github.com/crossgit/cordova-plugin-demo1.git</code><blockquote>
-<p>插件的作用: 可以自动桥接.h和.swift文件</p>
+        <p>绕了一大圈,后端管理的界面,还是希望支持IE8,和多页签,于是整理easyui的多页签使用<br><a id="more"></a></p>
+<blockquote>
+<p>简述</p>
 </blockquote>
-</li>
-</ul>
-<p>然后开始:</p>
-<h2 id="在项目中创建自定义插件"><a href="#在项目中创建自定义插件" class="headerlink" title="在项目中创建自定义插件"></a>在项目中创建自定义插件</h2><blockquote>
-<p>安装插件</p>
-</blockquote>
-<pre><code>cordova plugin add cordova-plugin-add-swift-support --save
-</code></pre><p>然后在MyMath文件夹的ios下,添加一个文件 叫 <code>xxxPlugin-Bridging-Header.h</code>,然后包含进 <code>plugin.xml</code>里来</p>
-<pre><code>&lt;header-file src=&quot;src/ios/demo1Plugin-Bridging-Header.h&quot; /&gt;
-&lt;source-file src=&quot;src/ios/MyMath.swift&quot; /&gt;
-</code></pre><p>是<code>header-file</code>,别看错了,在这个文件里写入这个关键的引用,或许不止这一个!</p>
-<pre><code>#import &lt;Cordova/CDV.h&gt;
-</code></pre><blockquote>
-<p>再添加ios平台,也可能颠倒一下也没问题,如果有问题就先remove了再装一遍.</p>
-</blockquote>
-<pre><code>cordova platform add ios
-</code></pre><blockquote>
-<p>然后就可以了…</p>
-</blockquote>
-<pre><code>cordova plugin add ./MyMath
-</code></pre><blockquote>
-<p>运行</p>
-</blockquote>
-<pre><code>cordova run|emulate ios
-</code></pre><blockquote>
-<p>有个问题,执行上一句可能会红字提示(cordova7.0.1版本) <code>cordova Error: Cannot read property &#39;replace&#39; of undefined</code></p>
-</blockquote>
-<p>解决办法就是 在 platforms/ios/cordova/这个路径下执行</p>
-<pre><code>npm i ios-sim
-</code></pre><p>就可以了;或者,全局安装这个ios-sim. 也许一下个版本就更新了.</p>
-<hr>
-<h2 id="像SimpleMath那样自定义插件"><a href="#像SimpleMath那样自定义插件" class="headerlink" title="像SimpleMath那样自定义插件"></a>像SimpleMath那样自定义插件</h2><blockquote>
-<p>按安卓的操作设置好后,打开<code>plugin.xml</code>,添加如下,表示这个自定义插件,依赖下面这个插件,更多详情,去github上搜索</p>
-</blockquote>
-<pre><code>&lt;dependency id=&quot;cordova-plugin-add-swift-support&quot; version=&quot;1.6.1&quot;/&gt;
-</code></pre><blockquote>
-<p>然后和上面的方法类似,添加 叫 <code>xxxPlugin-Bridging-Header.h</code>,然后包含进 <code>plugin.xml</code>里来,并创建文件等…</p>
-</blockquote>
+<pre><code>easyui需要依赖jquery,所以第一步应该引入jquery.
 
+tabs是最简引入代码
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(function()&#123;</div><div class="line">    $("#div").tabs(&#123;&#125;); // &#123;&#125;里可以设置参数,工具条的类型等.</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</code></pre><blockquote>
+<p>依赖 plane与linkbutton</p>
+</blockquote>
+<p>所以如果在不该代码的情况下,使用tabs,还需要加入这两个的js和样式</p>
+<blockquote>
+<p>easyui的多页签分4种情况</p>
+</blockquote>
+<ol>
+<li><p>将一段代码嵌入到当前页签</p>
+</li>
+<li><p>Ajax形式将一个html界面引入到当前页签,可以缓存,但是需要发布后才可以使用.跨域问题.</p>
+</li>
+<li><p>iframe形式,将一个html引入到当前页签的iframe里.iframe会自己保留打开的页面.当然如果<code>cache:false</code>,也已经失去了作用.</p>
+</li>
+</ol>
+<blockquote>
+<p>实现动态添加</p>
+</blockquote>
+<ol>
+<li>添加一段代码嵌入当前页签</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#tt'</span>).tabs(<span class="string">'add'</span>, &#123;</div><div class="line">    <span class="attr">title</span>: <span class="string">'New Tab '</span> + index,</div><div class="line">    <span class="attr">content</span>: <span class="string">'Tab Body '</span> + index,</div><div class="line">    <span class="attr">iconCls</span>: <span class="string">'icon-save'</span>,</div><div class="line">    <span class="attr">closable</span>: <span class="literal">true</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol>
+<li>ajax形式加载一个页面,可以加cache</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#tt'</span>).tabs(<span class="string">'add'</span>, &#123;</div><div class="line">    <span class="attr">title</span>: <span class="string">'New Tab '</span> + index,</div><div class="line">    <span class="attr">href</span>: <span class="string">'page1.html'</span>,</div><div class="line">    <span class="attr">content</span>:<span class="string">'loading'</span>, </div><div class="line">    <span class="attr">iconCls</span>: <span class="string">'icon-save'</span>,</div><div class="line">    <span class="attr">closable</span>: <span class="literal">true</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol>
+<li>在iframe中添加</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#tt'</span>).tabs(<span class="string">'add'</span>, &#123;</div><div class="line">    <span class="attr">title</span>: <span class="string">'New Tab '</span> + index,</div><div class="line">    <span class="attr">content</span>:   <span class="string">'&lt;iframe scrolling="yes" frameborder="0" src="http://www.baidu.com" style="width:100%;height:100%;"&gt;&lt;/iframe&gt;'</span>,</div><div class="line">    <span class="attr">iconCls</span>: <span class="string">'icon-save'</span>,</div><div class="line">    <span class="attr">closable</span>: <span class="literal">true</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
       
 
       
@@ -247,32 +238,13 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">cordova</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">plugin</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">easyui</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/cordova/" class="article-tag-list-link color3">cordova</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -322,7 +294,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2017/06/16/CordovaVue-plugin2/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2017/09/03/关于easyui的多页签/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -336,18 +308,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/06/18/docker-for-centos/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          docker_for_centos|mac
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/06/10/CordovaVue-plugin/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">cordova plugin android</div>
+    <a href="/2017/09/01/关于gin/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于gin</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -363,8 +326,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://crossgit.github.io/2017/06/16/CordovaVue-plugin2/", 
-    sourceId: "CordovaVue-plugin2",
+    url: "http://crossgit.github.io/2017/09/03/关于easyui的多页签/", 
+    sourceId: "关于easyui的多页签",
     productKey: "falsexiangce",
     target: "cloud-tie-wrapper"
   };

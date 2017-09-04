@@ -6,19 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://crossgit.github.io">
-  <title>cordova plugin ios | 走走停停</title>
+  <title>Tag: easyui | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="用swift写cordova在ios下的插件">
-<meta name="keywords" content="cordova,移动端,plugin">
-<meta property="og:type" content="article">
-<meta property="og:title" content="cordova plugin ios">
-<meta property="og:url" content="http://crossgit.github.io/2017/06/16/CordovaVue-plugin2/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="走走停停">
+<meta property="og:url" content="http://crossgit.github.io/tags/easyui/index.html">
 <meta property="og:site_name" content="走走停停">
-<meta property="og:description" content="用swift写cordova在ios下的插件">
-<meta property="og:updated_time" content="2017-07-30T14:26:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cordova plugin ios">
-<meta name="twitter:description" content="用swift写cordova在ios下的插件">
+<meta name="twitter:title" content="走走停停">
   
     <link rel="alternative" href="/atom.xml" title="走走停停" type="application/atom+xml">
   
@@ -146,235 +141,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-CordovaVue-plugin2" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      cordova plugin ios
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/09/03/关于easyui的多页签/" class="archive-article-date">
+  	<time datetime="2017-09-03T05:18:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-03</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/09/03/关于easyui的多页签/">关于easyui的多页签</a>
     </h1>
   
 
-        
-        <a href="/2017/06/16/CordovaVue-plugin2/" class="archive-article-date">
-  	<time datetime="2017-06-16T07:03:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>用swift写cordova在ios下的插件<br><a id="more"></a><br>相关链接</p>
-<ul>
-<li>开始配置相关参照: <code>http://blog.csdn.net/b2259909/article/details/52471178</code></li>
-<li>帮助说明: <code>http://moduscreate.com/writing-a-cordova-plugin-in-swift-for-ios/</code>,这个还有个youtube上的视频,直接搜应该就能找到</li>
-<li>相关的插件: <code>https://github.com/akofman/cordova-plugin-add-swift-support</code></li>
-<li>参考: <code>http://www.lownmower.com/news/Writing-A-Cordova-Plugin-In-Swift-For-iOS/</code></li>
-<li>demo地址: <code>https://github.com/crossgit/cordova-plugin-demo1.git</code><blockquote>
-<p>插件的作用: 可以自动桥接.h和.swift文件</p>
-</blockquote>
-</li>
-</ul>
-<p>然后开始:</p>
-<h2 id="在项目中创建自定义插件"><a href="#在项目中创建自定义插件" class="headerlink" title="在项目中创建自定义插件"></a>在项目中创建自定义插件</h2><blockquote>
-<p>安装插件</p>
-</blockquote>
-<pre><code>cordova plugin add cordova-plugin-add-swift-support --save
-</code></pre><p>然后在MyMath文件夹的ios下,添加一个文件 叫 <code>xxxPlugin-Bridging-Header.h</code>,然后包含进 <code>plugin.xml</code>里来</p>
-<pre><code>&lt;header-file src=&quot;src/ios/demo1Plugin-Bridging-Header.h&quot; /&gt;
-&lt;source-file src=&quot;src/ios/MyMath.swift&quot; /&gt;
-</code></pre><p>是<code>header-file</code>,别看错了,在这个文件里写入这个关键的引用,或许不止这一个!</p>
-<pre><code>#import &lt;Cordova/CDV.h&gt;
-</code></pre><blockquote>
-<p>再添加ios平台,也可能颠倒一下也没问题,如果有问题就先remove了再装一遍.</p>
-</blockquote>
-<pre><code>cordova platform add ios
-</code></pre><blockquote>
-<p>然后就可以了…</p>
-</blockquote>
-<pre><code>cordova plugin add ./MyMath
-</code></pre><blockquote>
-<p>运行</p>
-</blockquote>
-<pre><code>cordova run|emulate ios
-</code></pre><blockquote>
-<p>有个问题,执行上一句可能会红字提示(cordova7.0.1版本) <code>cordova Error: Cannot read property &#39;replace&#39; of undefined</code></p>
-</blockquote>
-<p>解决办法就是 在 platforms/ios/cordova/这个路径下执行</p>
-<pre><code>npm i ios-sim
-</code></pre><p>就可以了;或者,全局安装这个ios-sim. 也许一下个版本就更新了.</p>
-<hr>
-<h2 id="像SimpleMath那样自定义插件"><a href="#像SimpleMath那样自定义插件" class="headerlink" title="像SimpleMath那样自定义插件"></a>像SimpleMath那样自定义插件</h2><blockquote>
-<p>按安卓的操作设置好后,打开<code>plugin.xml</code>,添加如下,表示这个自定义插件,依赖下面这个插件,更多详情,去github上搜索</p>
-</blockquote>
-<pre><code>&lt;dependency id=&quot;cordova-plugin-add-swift-support&quot; version=&quot;1.6.1&quot;/&gt;
-</code></pre><blockquote>
-<p>然后和上面的方法类似,添加 叫 <code>xxxPlugin-Bridging-Header.h</code>,然后包含进 <code>plugin.xml</code>里来,并创建文件等…</p>
-</blockquote>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>凑合看吧,有问题github上见.<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">cordova</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">plugin</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">easyui</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/cordova/" class="article-tag-list-link color3">cordova</a>
-        		</li>
-      		
-		</ul>
-	</div>
+          
 
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2017/06/16/CordovaVue-plugin2/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/06/18/docker-for-centos/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          docker_for_centos|mac
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/06/10/CordovaVue-plugin/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">cordova plugin android</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-  
-  
-  
-  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-<script>
-  var cloudTieConfig = {
-    url: "http://crossgit.github.io/2017/06/16/CordovaVue-plugin2/", 
-    sourceId: "CordovaVue-plugin2",
-    productKey: "falsexiangce",
-    target: "cloud-tie-wrapper"
-  };
-</script>
-<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    </div></section>
   
 
-  
-
-  
+    
 
 
           </div>
@@ -398,9 +218,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

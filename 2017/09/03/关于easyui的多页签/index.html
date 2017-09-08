@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/09/03/关于easyui的多页签/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="绕了一大圈,后端管理的界面,还是希望支持IE8,和多页签,于是整理easyui的多页签使用">
-<meta property="og:updated_time" content="2017-09-03T07:25:03.000Z">
+<meta property="og:updated_time" content="2017-09-04T02:14:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于easyui的多页签">
 <meta name="twitter:description" content="绕了一大圈,后端管理的界面,还是希望支持IE8,和多页签,于是整理easyui的多页签使用">
@@ -198,7 +198,7 @@ tabs是最简引入代码
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#tt'</span>).tabs(<span class="string">'add'</span>, &#123;</div><div class="line">    <span class="attr">title</span>: <span class="string">'New Tab '</span> + index,</div><div class="line">    <span class="attr">content</span>: <span class="string">'Tab Body '</span> + index,</div><div class="line">    <span class="attr">iconCls</span>: <span class="string">'icon-save'</span>,</div><div class="line">    <span class="attr">closable</span>: <span class="literal">true</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <ol>
-<li>ajax形式加载一个页面,可以加cache</li>
+<li>ajax形式加载一个页面,可以加cache,加载也是仅加载body里的,那么如果页面有什么引用,最好</li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#tt'</span>).tabs(<span class="string">'add'</span>, &#123;</div><div class="line">    <span class="attr">title</span>: <span class="string">'New Tab '</span> + index,</div><div class="line">    <span class="attr">href</span>: <span class="string">'page1.html'</span>,</div><div class="line">    <span class="attr">content</span>:<span class="string">'loading'</span>, </div><div class="line">    <span class="attr">iconCls</span>: <span class="string">'icon-save'</span>,</div><div class="line">    <span class="attr">closable</span>: <span class="literal">true</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <ol>
@@ -307,6 +307,15 @@ tabs是最简引入代码
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/09/08/vue-cli调用微信分享的jssdk可能的问题/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          vue-cli调用微信分享的jssdk可能的问题
+        
+      </div>
+    </a>
   
   
     <a href="/2017/09/01/关于gin/" id="article-nav-older" class="article-nav-link-wrap">
@@ -431,7 +440,7 @@ tabs是最简引入代码
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -439,7 +448,7 @@ tabs是最简引入代码
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -447,7 +456,7 @@ tabs是最简引入代码
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -463,7 +472,19 @@ tabs是最简引入代码
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kong</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -475,15 +496,15 @@ tabs是最简引入代码
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">gin</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kong</a>
+                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">gin</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -492,14 +513,6 @@ tabs是最简引入代码
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">webGL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
               </li>
             
             <div class="clearfix"></div>

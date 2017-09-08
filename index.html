@@ -143,6 +143,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-vue-cli调用微信分享的jssdk可能的问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/08/vue-cli调用微信分享的jssdk可能的问题/">vue-cli调用微信分享的jssdk可能的问题</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/08/vue-cli调用微信分享的jssdk可能的问题/" class="archive-article-date">
+  	<time datetime="2017-09-08T03:59:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>是2017年9月7号解决的问题,时间太久可能就又被腾讯偷偷改掉了.</p>
+<p>插件引用了 <code>weixin-js-sdk</code></p>
+<blockquote>
+<p>1 history模式下,android上的分享和ios上是不一样的</p>
+</blockquote>
+<p>由于ios走路由跳转,路径一直是历史记录,想传参数必须是首页的地址,或者地址跳转走的不是路由,用a标签;所以针对前一种,直接写死第一页就行了</p>
+<p>这里不是<code>app.vue</code>,而是网站的第一页,通常是<code>index.vue</code>或者<code>home.vue</code> 等.</p>
+<p>在分享的页面处理wx.config,wx.ready等就可以了.</p>
+<blockquote>
+<p>2 android的处理</p>
+</blockquote>
+<p>android的路由处理不是历史记录,是真的页面跳转,所有要获取当前页 <code>windows.location.href.spit(&#39;#&#39;)[0]</code>, 如果是hash模式,或者带个锚点什么的有用.</p>
+<p>然后,这个就是在需要分享的页面单独这只wx.config,wx.ready 这些..</p>
+<blockquote>
+<p>3 <code>wx.onfig</code>不能只放在<code>首页</code>,因为只处理了ios</p>
+<p>4 代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mounted: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.getConfig();</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div></pre></td><td class="code"><pre><div class="line">methods: &#123;</div><div class="line">     getConfig() &#123;</div><div class="line">        <span class="keyword">let</span> self = <span class="keyword">this</span>;</div><div class="line">        <span class="keyword">let</span> url = <span class="built_in">window</span>.location.href.split(<span class="string">'#'</span>)[<span class="number">0</span>];</div><div class="line"></div><div class="line">        <span class="keyword">let</span> paramUrl = self.$store.state.phone_device == <span class="number">0</span> ? <span class="string">'http://首页域名.com/home'</span> : url;</div><div class="line">        rest.post(<span class="string">'/wxapi/base/getWxConfig'</span>, &#123; <span class="string">'url'</span>: paramUrl &#125;)</div><div class="line">            .then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">                <span class="keyword">let</span> res = response.data.data;</div><div class="line">                self.wxInit(res);</div><div class="line">            &#125;)</div><div class="line">    &#125;,</div><div class="line">    wxInit(res) &#123;</div><div class="line">        <span class="keyword">let</span> links = <span class="string">'http://分享跳转地址'</span>;</div><div class="line">        <span class="keyword">let</span> linkUrl = <span class="string">'http://微信以外的跳转地址/static/shareqq.html'</span>; <span class="comment">// 微信以外的</span></div><div class="line">        <span class="keyword">let</span> title = <span class="string">'名字'</span>;</div><div class="line">        <span class="keyword">let</span> desc = <span class="string">'简介.'</span>;</div><div class="line">        <span class="keyword">let</span> imgUrl = <span class="string">'分享图标/sharelogo.png'</span>;</div><div class="line">        wx.config(&#123;</div><div class="line">            <span class="attr">debug</span>: <span class="literal">false</span>,</div><div class="line">            <span class="attr">appId</span>: res.appId,</div><div class="line">            <span class="attr">timestamp</span>: res.timestamp,</div><div class="line">            <span class="attr">nonceStr</span>: res.nonceStr,</div><div class="line">            <span class="attr">signature</span>: res.signature,</div><div class="line">            <span class="attr">jsApiList</span>: [<span class="string">'onMenuShareTimeline'</span>, <span class="string">'onMenuShareAppMessage'</span>, <span class="string">'onMenuShareQQ'</span>, <span class="string">'onMenuShareWeibo'</span>, <span class="string">'onMenuShareQZone'</span>]</div><div class="line">        &#125;);</div><div class="line">        wx.ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            wx.onMenuShareTimeline(&#123;</div><div class="line">                <span class="attr">title</span>: title, <span class="comment">// 分享标题</span></div><div class="line">                desc: desc, <span class="comment">// 分享描述</span></div><div class="line">                link: linkUrl, <span class="comment">// 分享链接</span></div><div class="line">                imgUrl: imgUrl, <span class="comment">// 分享图标</span></div><div class="line">                success: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="comment">// alert("分享到朋友圈成功")</span></div><div class="line">                    Toast(&#123;</div><div class="line">                        <span class="attr">message</span>: <span class="string">"成功分享到朋友圈"</span></div><div class="line">                    &#125;);</div><div class="line">                &#125;,</div><div class="line">                <span class="attr">cancel</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="comment">// alert("分享失败,您取消了分享!")</span></div><div class="line">                    Toast(&#123;</div><div class="line">                        <span class="attr">message</span>: <span class="string">"分享失败,您取消了分享!"</span></div><div class="line">                    &#125;);</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line">            <span class="comment">//微信分享菜单测试</span></div><div class="line">            wx.onMenuShareAppMessage(&#123;</div><div class="line">                <span class="attr">title</span>: title, <span class="comment">// 分享标题</span></div><div class="line">                desc: desc, <span class="comment">// 分享描述</span></div><div class="line">                link: links, <span class="comment">// 分享链接</span></div><div class="line">                imgUrl: imgUrl, <span class="comment">// 分享图标</span></div><div class="line">                success: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="comment">// alert("成功分享给朋友")</span></div><div class="line">                    Toast(&#123;</div><div class="line">                        <span class="attr">message</span>: <span class="string">"成功分享给朋友"</span></div><div class="line">                    &#125;);</div><div class="line">                &#125;,</div><div class="line">                <span class="attr">cancel</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="comment">// alert("分享失败,您取消了分享!")</span></div><div class="line">                    Toast(&#123;</div><div class="line">                        <span class="attr">message</span>: <span class="string">"分享失败,您取消了分享!"</span></div><div class="line">                    &#125;);</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line"></div><div class="line">            wx.onMenuShareQQ(&#123;</div><div class="line">                <span class="attr">title</span>: title, <span class="comment">// 分享标题</span></div><div class="line">                desc: desc, <span class="comment">// 分享描述</span></div><div class="line">                link: linkUrl, <span class="comment">// 分享链接</span></div><div class="line">                imgUrl: imgUrl, <span class="comment">// 分享图标</span></div><div class="line">                success: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="comment">// alert("成功分享给QQ")</span></div><div class="line">                    Toast(&#123;</div><div class="line">                        <span class="attr">message</span>: <span class="string">"成功分享到QQ"</span></div><div class="line">                    &#125;);</div><div class="line">                &#125;,</div><div class="line">                <span class="attr">cancel</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="comment">// alert("分享失败,您取消了分享!")</span></div><div class="line">                    Toast(&#123;</div><div class="line">                        <span class="attr">message</span>: <span class="string">"分享失败,您取消了分享!"</span></div><div class="line">                    &#125;);</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line">            wx.onMenuShareWeibo(&#123;</div><div class="line">                <span class="attr">title</span>: title, <span class="comment">// 分享标题</span></div><div class="line">                desc: desc, <span class="comment">// 分享描述</span></div><div class="line">                link: linkUrl, <span class="comment">// 分享链接</span></div><div class="line">                imgUrl: imgUrl, <span class="comment">// 分享图标</span></div><div class="line">                success: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="comment">// alert("成功分享给朋友")</span></div><div class="line">                    Toast(&#123;</div><div class="line">                        <span class="attr">message</span>: <span class="string">"成功分享到腾讯微博"</span></div><div class="line">                    &#125;);</div><div class="line">                &#125;,</div><div class="line">                <span class="attr">cancel</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="comment">// alert("分享失败,您取消了分享!")</span></div><div class="line">                    Toast(&#123;</div><div class="line">                        <span class="attr">message</span>: <span class="string">"分享失败,您取消了分享!"</span></div><div class="line">                    &#125;);</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line">            wx.onMenuShareQZone(&#123;</div><div class="line">                <span class="attr">title</span>: title, <span class="comment">// 分享标题</span></div><div class="line">                desc: desc, <span class="comment">// 分享描述</span></div><div class="line">                link: linkUrl, <span class="comment">// 分享链接</span></div><div class="line">                imgUrl: imgUrl, <span class="comment">// 分享图标</span></div><div class="line">                success: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="comment">// alert("成功分享给朋友")</span></div><div class="line">                    Toast(&#123;</div><div class="line">                        <span class="attr">message</span>: <span class="string">"成功分享到QQ空间"</span></div><div class="line">                    &#125;);</div><div class="line">                &#125;,</div><div class="line">                <span class="attr">cancel</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="comment">// alert("分享失败,您取消了分享!")</span></div><div class="line">                    Toast(&#123;</div><div class="line">                        <span class="attr">message</span>: <span class="string">"分享失败,您取消了分享!"</span></div><div class="line">                    &#125;);</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line"></div><div class="line">        &#125;);</div><div class="line">        wx.error(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">            alert(<span class="built_in">JSON</span>.stringify(err))</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>感觉还可以</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">jssdk</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-关于easyui的多页签" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -670,11 +749,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">发布ios</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">发布ios</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
         		</li>
       		
 		</ul>
@@ -687,74 +766,6 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="/categories/cordova/" class="article-tag-list-link color3">cordova</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-docker-for-centos" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/18/docker-for-centos/">docker_for_centos|mac</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/18/docker-for-centos/" class="archive-article-date">
-  	<time datetime="2017-06-18T09:47:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本来是想装一下es,突发奇想,装docker里吧(mac系统,旧版本1.10的docker),—只是安装,其他在别的页面里介绍<br>
-        
-          <a class="article-more-a" href="/2017/06/18/docker-for-centos/#more">查看更多...</a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/docker/" class="article-tag-list-link color2">docker</a>
         		</li>
       		
 		</ul>
@@ -872,7 +883,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -880,7 +891,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -888,7 +899,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -904,7 +915,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kong</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -916,15 +939,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">gin</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kong</a>
+                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">gin</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -933,14 +956,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">webGL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
               </li>
             
             <div class="clearfix"></div>

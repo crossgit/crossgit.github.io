@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://crossgit.github.io">
-  <title>Archives | 走走停停</title>
+  <title>vim插件管理 | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="走走停停">
-<meta property="og:url" content="http://crossgit.github.io/archives/index.html">
+  <meta name="description" content="阿里云的centos7下使用vundle管理vim插件,我在这个环境做的测试">
+<meta name="keywords" content="vim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim插件管理">
+<meta property="og:url" content="http://crossgit.github.io/2017/09/26/vim插件管理/index.html">
 <meta property="og:site_name" content="走走停停">
+<meta property="og:description" content="阿里云的centos7下使用vundle管理vim插件,我在这个环境做的测试">
+<meta property="og:updated_time" content="2017-09-26T06:13:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="走走停停">
+<meta name="twitter:title" content="vim插件管理">
+<meta name="twitter:description" content="阿里云的centos7下使用vundle管理vim插件,我在这个环境做的测试">
   
     <link rel="alternative" href="/atom.xml" title="走走停停" type="application/atom+xml">
   
@@ -141,36 +146,124 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-vim插件管理" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/26/vim插件管理/" class="archive-article-date">
-  	<time datetime="2017-09-26T05:50:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/26/vim插件管理/">vim插件管理</a>
+    <h1 class="article-title" itemprop="name">
+      vim插件管理
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/09/26/vim插件管理/" class="archive-article-date">
+  	<time datetime="2017-09-26T05:50:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>阿里云的centos7下使用vundle管理vim插件,我在这个环境做的测试<br><a id="more"></a></p>
+<blockquote>
+<p>安装</p>
+</blockquote>
+<pre><code>git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+</code></pre><blockquote>
+<p>配置</p>
+</blockquote>
+<pre><code>在用户的根目录下,创建一个文件 .vimrc
+~:vim .vimrc
+想办法把以下这些写入  
+</code></pre><p><a href="https://github.com/beiyuu/vimfiles/blob/master/_vimrc" target="_blank" rel="external">抄别人家的</a></p>
+<blockquote>
+<p>命令</p>
+</blockquote>
+<pre><code>vim 输入以下
+&quot;安装插件:
+:BundleInstall
+&quot;更新插件:
+:BundleInstall!
+&quot;卸载不在列表中的插件:
+:BundleClean
+</code></pre><blockquote>
+<p>其他</p>
+</blockquote>
+<p><a href="http://vim-scripts.org/vim/scripts.html" target="_blank" rel="external">插件目录地址</a></p>
+<p><a href="http://beiyuu.com/git-vim-tutorial" target="_blank" rel="external">相关参照</a></p>
+<blockquote>
+<p>插件介绍</p>
+</blockquote>
+<pre><code>#相较于Command-T等查找文件的插件，ctrlp.vim最大的好处在于没有依赖，干净利落
+Bundle &apos;ctrlp.vim&apos;
+#在输入()，&quot;&quot;等需要配对的符号时，自动帮你补全剩余半个
+Bundle &apos;AutoClose&apos;
+#神级插件，ZenCoding可以让你以一种神奇而无比爽快的感觉写HTML、CSS
+Bundle &apos;ZenCoding.vim&apos;
+#在()、&quot;&quot;、甚至HTML标签之间快速跳转；
+Bundle &apos;matchit.zip&apos;
+#显示行末的空格；
+Bundle &apos;ShowTrailingWhitespace&apos;
+#JS代码格式化插件；
+Bundle &apos;_jsbeautify&apos;
+#用全新的方式在文档中高效的移动光标，革命性的突破
+Bundle &apos;EasyMotion&apos;
+#自动识别文件编码；
+Bundle &apos;FencView.vim&apos;
+#必不可少，在VIM的编辑窗口树状显示文件目录
+Bundle &apos;The-NERD-tree&apos;
+#NERD出品的快速给代码加注释插件，选中，`ctrl+h`即可注释多种语言代码；
+Bundle &apos;The-NERD-Commenter&apos;
+#解放生产力的神器，简单配置，就可以按照自己的风格快速输入大段代码。
+Bundle &apos;UltiSnips&apos;
+#让代码更加易于纵向排版，以=或,符号对齐
+Bundle &apos;Tabular&apos;
+#迄今位置最好的自动VIM自动补全插件了吧
+#Vundle的这个写法，是直接取该插件在Github上的repo
+Bundle &apos;Valloric/YouCompleteMe&apos;
+</code></pre><hr>
+<p>一个中文版的帮助<a href="https://sourceforge.net/projects/vimcdoc/files/" target="_blank" rel="external">vimdoc</a></p>
+<blockquote>
+<p>下载安装 </p>
+</blockquote>
+<p>wget下载后,解压 <code>tar -xzvf vimcdoc-2.1.0.tar.gz.tar.gz</code></p>
+<p>进入目录执行 <code>./vimcdoc.sh -i</code></p>
+<p>然后在vim里<code>:help</code>就看到中文帮助了</p>
+<blockquote>
+<p>卸载</p>
+</blockquote>
+<p>./vimcdoc.sh -u</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>凑合看吧,有问题github上见.<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -182,399 +275,99 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2017/09/26/vim插件管理/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/08/vue-cli调用微信分享的jssdk可能的问题/" class="archive-article-date">
-  	<time datetime="2017-09-08T03:59:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/08/vue-cli调用微信分享的jssdk可能的问题/">vue-cli调用微信分享的jssdk可能的问题</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">jssdk</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/03/关于easyui的多页签/" class="archive-article-date">
-  	<time datetime="2017-09-03T05:18:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-03</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/03/关于easyui的多页签/">关于easyui的多页签</a>
-    </h1>
   
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">easyui</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2017/09/08/vue-cli调用微信分享的jssdk可能的问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue-cli调用微信分享的jssdk可能的问题</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/01/关于gin/" class="archive-article-date">
-  	<time datetime="2017-09-01T04:20:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/01/关于gin/">关于gin</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">go</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">gin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/29/关于kong/" class="archive-article-date">
-  	<time datetime="2017-08-29T09:53:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/29/关于kong/">关于kong</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">kong</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/27/关于pgsql/" class="archive-article-date">
-  	<time datetime="2017-08-27T12:37:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/27/关于pgsql/">关于pgsql</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">pgsql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/09/关于threejs/" class="archive-article-date">
-  	<time datetime="2017-08-09T02:45:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/09/关于threejs/">关于threejs</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">three.js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">webGL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/04/Karma-关于vue的测试/" class="archive-article-date">
-  	<time datetime="2017-07-04T09:21:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/04/Karma-关于vue的测试/">Karma-关于vue的测试</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/30/angular-cli/" class="archive-article-date">
-  	<time datetime="2017-06-30T06:11:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/30/angular-cli/">angular-cli</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">typescript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">angular</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/28/ReactNative/" class="archive-article-date">
-  	<time datetime="2017-06-28T03:55:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/28/ReactNative/">ReactNative</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/cordova/" class="article-tag-list-link color3">cordova</a>
-        		</li>
-      		
-		</ul>
-	</div>
+</nav>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
+
+
   
   
-    </div></section>
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://crossgit.github.io/2017/09/26/vim插件管理/", 
+    sourceId: "vim插件管理",
+    productKey: "falsexiangce",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
+  
+
   
 
 
@@ -599,8 +392,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

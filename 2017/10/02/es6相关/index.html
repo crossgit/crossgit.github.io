@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://crossgit.github.io">
-  <title>cordova plugin ios | 走走停停</title>
+  <title>es6相关 | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="用swift写cordova在ios下的插件">
-<meta name="keywords" content="cordova,移动端,plugin">
+  <meta name="description" content="功能点">
+<meta name="keywords" content="es6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cordova plugin ios">
-<meta property="og:url" content="http://crossgit.github.io/2017/06/16/CordovaVue-plugin2/index.html">
+<meta property="og:title" content="es6相关">
+<meta property="og:url" content="http://crossgit.github.io/2017/10/02/es6相关/index.html">
 <meta property="og:site_name" content="走走停停">
-<meta property="og:description" content="用swift写cordova在ios下的插件">
-<meta property="og:updated_time" content="2017-07-30T14:26:38.000Z">
+<meta property="og:description" content="功能点">
+<meta property="og:updated_time" content="2017-10-02T13:10:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cordova plugin ios">
-<meta name="twitter:description" content="用swift写cordova在ios下的插件">
+<meta name="twitter:title" content="es6相关">
+<meta name="twitter:description" content="功能点">
   
     <link rel="alternative" href="/atom.xml" title="走走停停" type="application/atom+xml">
   
@@ -146,72 +146,269 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-CordovaVue-plugin2" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-es6相关" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      cordova plugin ios
+      es6相关
     </h1>
   
 
         
-        <a href="/2017/06/16/CordovaVue-plugin2/" class="archive-article-date">
-  	<time datetime="2017-06-16T07:03:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-16</time>
+        <a href="/2017/10/02/es6相关/" class="archive-article-date">
+  	<time datetime="2017-10-02T02:58:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>用swift写cordova在ios下的插件<br><a id="more"></a><br>相关链接</p>
-<ul>
-<li>开始配置相关参照: <code>http://blog.csdn.net/b2259909/article/details/52471178</code></li>
-<li>帮助说明: <code>http://moduscreate.com/writing-a-cordova-plugin-in-swift-for-ios/</code>,这个还有个youtube上的视频,直接搜应该就能找到</li>
-<li>相关的插件: <code>https://github.com/akofman/cordova-plugin-add-swift-support</code></li>
-<li>参考: <code>http://www.lownmower.com/news/Writing-A-Cordova-Plugin-In-Swift-For-iOS/</code></li>
-<li>demo地址: <code>https://github.com/crossgit/cordova-plugin-demo1.git</code><blockquote>
-<p>插件的作用: 可以自动桥接.h和.swift文件</p>
+        <p>功能点<br><a id="more"></a></p>
+<blockquote>
+<p>var let const 声明变量</p>
 </blockquote>
+<ul>
+<li><p>var 可以重复声明,私有可能与全局冲突,并不提示错误; 函数级作用域.</p>
+</li>
+<li><p>let 块级,函数内重名的不会覆盖父级.</p>
+</li>
+<li><p>const 静态赋值,不能改变直接const直接申明的变量,但是可以更改声明的对象的属性值,如果强制限制不更改,使用如下,限制了更改.</p>
+<pre><code>const obj = {a:1,b:2}
+Object.freeze(obj);
+</code></pre></li>
+</ul>
+<blockquote>
+<p>箭头函数下的this</p>
+</blockquote>
+<ul>
+<li>在箭头函数下,this指向不在上一层,只在父级的this</li>
+</ul>
+<blockquote>
+<p>函数参数默认值</p>
+</blockquote>
+<ul>
+<li>以前 a || 5; 现在,在参数中 function(a=5){..}</li>
+</ul>
+<blockquote>
+<p>箭头函数不适用场景</p>
+</blockquote>
+<ul>
+<li><p>作为构造函数,或一个方法需要绑定到原型对象 prototype</p>
+</li>
+<li><p>需要上级this的时候</p>
+</li>
+<li><p>需要使用arguments对象</p>
 </li>
 </ul>
-<p>然后开始:</p>
-<h2 id="在项目中创建自定义插件"><a href="#在项目中创建自定义插件" class="headerlink" title="在项目中创建自定义插件"></a>在项目中创建自定义插件</h2><blockquote>
-<p>安装插件</p>
+<blockquote>
+<p>字符串模板</p>
 </blockquote>
-<pre><code>cordova plugin add cordova-plugin-add-swift-support --save
-</code></pre><p>然后在MyMath文件夹的ios下,添加一个文件 叫 <code>xxxPlugin-Bridging-Header.h</code>,然后包含进 <code>plugin.xml</code>里来</p>
-<pre><code>&lt;header-file src=&quot;src/ios/demo1Plugin-Bridging-Header.h&quot; /&gt;
-&lt;source-file src=&quot;src/ios/MyMath.swift&quot; /&gt;
-</code></pre><p>是<code>header-file</code>,别看错了,在这个文件里写入这个关键的引用,或许不止这一个!</p>
-<pre><code>#import &lt;Cordova/CDV.h&gt;
+<ul>
+<li><p>关键符号  `` ,${..}</p>
+</li>
+<li><p>反引号可以嵌套,变量可以加入函数</p>
+</li>
+</ul>
+<blockquote>
+<p>标签模板字符串</p>
+</blockquote>
+<ul>
+<li><p>在字符串前面加函数来定制</p>
+</li>
+<li><p>根据函数的返回,来指定返回的内容.替换掉不该有的字符串.</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> sentence = tmp<span class="string">`abc<span class="subst">$&#123;ef&#125;</span>gh<span class="subst">$&#123;ij&#125;</span>`</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">tmp</span>(<span class="params">string,...arg</span>)</span>&#123;</div><div class="line">    <span class="comment">// string表示中间的字符串 abc,gh . 以变量开头的,会留下空的值</span></div><div class="line">    <span class="comment">// arg 表示所有的变量 ef,ij</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>template string 中转译标签</p>
+</blockquote>
+<ul>
+<li>DOMPurify 一个验证插件</li>
+</ul>
+<blockquote>
+<p>es6新增的字符串函数</p>
+</blockquote>
+<ul>
+<li><p>.startsWith(str,start)</p>
+</li>
+<li><p>.endsWith(str,start)</p>
+</li>
+<li><p>.idcludes(str,strat)</p>
+</li>
+<li><p>.repeat(times)</p>
+</li>
+</ul>
+<blockquote>
+<p>对象解构</p>
+</blockquote>
+<ul>
+<li>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> tom = &#123;</div><div class="line">    <span class="attr">a</span>:<span class="number">1</span></div><div class="line">    b:<span class="number">2</span></div><div class="line">    c:<span class="number">3</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// 结构,a重命名aa; 增加d,默认值123</span></div><div class="line"><span class="keyword">const</span> &#123;<span class="attr">a</span>:aa,b,c,d = <span class="number">123</span>&#125; = tom;</div><div class="line"><span class="built_in">console</span>.log(aa,b,c1);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>数组解构</p>
+</blockquote>
+<ul>
+<li>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> tom=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</div><div class="line"><span class="keyword">const</span> [a,b]=tom; <span class="comment">// 1</span></div><div class="line"><span class="keyword">const</span> [a,b,,c] = tom; <span class="comment">//2</span></div><div class="line"><span class="keyword">const</span> [a,...arg] = tom; <span class="comment">// 3</span></div><div class="line"><span class="keyword">const</span> [a,b,c,d,e,f,e=<span class="number">7</span>] = tom <span class="comment">//4</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>for of</p>
+</blockquote>
+<ul>
+<li><p>es下的循环</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">comst doms = [1,2,3]; </div><div class="line">for(let i = 0; i &lt; 5; i++)&#123;&#125;  // 1</div><div class="line">doms.forEach(dom=&gt;&#123;...&#125;) // 2</div><div class="line">for(let i in doms)&#123;&#125; // 3 可跳出 continue | break</div><div class="line">for(let dom of doms)&#123;&#125; // 4</div><div class="line">for(let array of doms.entries())&#123;</div><div class="line">    // down 是否完成</div><div class="line">    //  value &#123;key:值&#125;</div><div class="line">&#125; // 5</div><div class="line">for(let [i,dom] of doms.entries())&#123;&#125; // 6</div></pre></td></tr></table></figure>
+</li>
+<li><p>仅支持 arguments 对象.   </p>
+</li>
+</ul>
+<blockquote>
+<p>Array .from() 和Array .of()</p>
+</blockquote>
+<ul>
+<li><p>.from() 将不是数组原型的数组 nodelist|object 等,转换成数组原型.</p>
+<p>  Array.from(nodelist,list=&gt;list.textContent);</p>
+<p>  数组原型可以使用的方法textcontent,reduce 等</p>
+</li>
+<li><p>.of() 保证数组的一致性. </p>
+<p>  Array.of(1,2) // 组成由传入的参数构成的数组</p>
+</li>
+</ul>
+<blockquote>
+<p>Array其他用法</p>
+</blockquote>
+<ul>
+<li><p>.find(element,index,array) 返回对象.</p>
+</li>
+<li><p>.findIndex() 返回所在位置..索引</p>
+</li>
+<li><p>.same() 如果数组至少一个元素满足条件,就退出,并返回true</p>
+</li>
+<li><p>.every() 如果数组有一个没满足条件,就退出,并返回false;同意,只有全部满足条件才能返回true</p>
+</li>
+</ul>
+<blockquote>
+<p>剩余参数</p>
+</blockquote>
+<ul>
+<li>…args  将剩余参数放到一个数组里.</li>
+</ul>
+<blockquote>
+<p>扩展运算符</p>
+</blockquote>
+<ul>
+<li><p>concat //两个数组连在一起.</p>
+</li>
+<li><p>扩展到数组里.</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> a=[<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>]</div><div class="line"><span class="keyword">const</span> b=[<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>]</div><div class="line"></div><div class="line"><span class="keyword">const</span> r = [...a,...b] <span class="comment">//1</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> todos=[..document.querySelectorAll(<span class="string">'li'</span>)]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>对象字面量的扩展</p>
+</blockquote>
+<ul>
+<li><p>导出同名属性,方法省略function,</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.export=&#123;</div><div class="line">    a,b,c,</div><div class="line">    func()&#123;...&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>计算属性 可在对象内使用函数</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> keys = [a,b,c]</div><div class="line"><span class="keyword">const</span> values = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>Ï]</div><div class="line"></div><div class="line"><span class="keyword">const</span> r = &#123;</div><div class="line">    [keys.shift()]:values.shift(),</div><div class="line">    [keys.shift()]:values.shift(),</div><div class="line">    [keys.shift()]:values.shift(),</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>Promise</p>
+</blockquote>
+<ul>
+<li><p>常用库 axios</p>
+</li>
+<li> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> p =  <span class="keyword">new</span> promise(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</div><div class="line">    resolve(<span class="string">'成功信息'</span>);</div><div class="line">    reject(<span class="built_in">Error</span>(<span class="string">'失败信息'</span>));</div><div class="line"></div><div class="line">&#125;)</div><div class="line">p.then(<span class="function"><span class="params">data</span>=&gt;</span>&#123;</div><div class="line">    ...</div><div class="line">&#125;)</div><div class="line">p.catch(<span class="function"><span class="params">err</span>=&gt;</span>&#123;</div><div class="line">    ...</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>链式调用</p>
+</li>
+<li><p>同步调用</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Promise</span></div><div class="line">    .all([obj1,obj2])</div><div class="line">    .then(</div><div class="line">        <span class="function"><span class="params">res</span>=&gt;</span>&#123;</div><div class="line">            <span class="keyword">const</span> &#123;o1,o2&#125; = res;</div><div class="line">            <span class="built_in">console</span>.log(o1,o2);</div><div class="line">        &#125;</div><div class="line">    )</div><div class="line">    .catch(<span class="function"><span class="params">err</span>=&gt;</span>&#123;..&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>race 返回最先返回的结果.</p>
+</li>
+</ul>
+<blockquote>
+<p>Symbol</p>
+</blockquote>
+<ul>
+<li><p>第7种数据类型 ,生成唯一的标识符</p>
+</li>
+<li><p>解决对象中key一样的问题.</p>
+</li>
+<li><p>不能遍历,统称用做私有属性.</p>
+</li>
+<li><p>获取对象 <code>Object.getOwnPropertySymbols(obj).map(sbl=&gt;{..})</code></p>
+</li>
+</ul>
+<blockquote>
+<p>构建模块</p>
+</blockquote>
+<ul>
+<li><p>用nodejs构建</p>
+</li>
+<li><p>引入与导出</p>
+<p>  export default<br>  import name from ‘..js’<br>  // 只能有一个默认导出</p>
+<p>  export const api = ‘abc’<br>  export {api} from ‘..js’<br>  // 命名导出可以多个.</p>
+</li>
+</ul>
+<blockquote>
+<p>原型继承和class</p>
+<p>类的扩展</p>
+<p>遍历器:Iterator</p>
+<p>生成器:Generator</p>
+<p>Proxy</p>
+<p>set</p>
+</blockquote>
+<ul>
+<li><p>不能重复</p>
+</li>
+<li><p>不能通过索引来获取值</p>
+</li>
+<li><p>去除数组重复.</p>
+<p>  const array = [2,3,5,4,3,2,5];<br>  const numberSet =  new Set(array);<br>  const uniqueNumber = […numberSet];</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> colors = <span class="keyword">new</span> <span class="built_in">Set</span>();</div><div class="line"></div><div class="line">colors.add(<span class="string">'red'</span>);</div><div class="line"></div><div class="line">colors.size;</div><div class="line"></div><div class="line">colors.delete(<span class="string">'red'</span>);</div><div class="line"></div><div class="line">colors.has(<span class="string">'red'</span>);</div><div class="line"></div><div class="line">colors.clear();</div><div class="line"></div><div class="line">color.values(); </div><div class="line"></div><div class="line"><span class="keyword">for</span> <span class="keyword">of</span> </div><div class="line"></div><div class="line">forEach</div></pre></td></tr></table></figure>
+<blockquote>
+<p>weakSet</p>
+</blockquote>
+<ul>
+<li><p>const peope = new WeakSet([obj1,obj2])</p>
+</li>
+<li><p>必须对象</p>
+</li>
+<li><p>不能for of | forEach循环</p>
+</li>
+<li><p>不能clear(); 自己clear</p>
+</li>
+</ul>
+<blockquote>
+<p>Map</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> people = <span class="keyword">new</span> <span class="built_in">Map</span>();</div><div class="line">people.set(<span class="string">'a'</span>,<span class="number">1</span>);</div><div class="line">people.set(<span class="string">'b'</span>,<span class="number">2</span>);</div><div class="line"></div><div class="line">people.get(<span class="string">'a'</span>);</div><div class="line"></div><div class="line">people.size</div><div class="line"></div><div class="line">people.has(<span class="string">'a'</span>)</div><div class="line"></div><div class="line">people.delete(<span class="string">'a'</span>)</div><div class="line"></div><div class="line">people.clear();</div><div class="line"></div><div class="line">people.forEach</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> [key,vale] <span class="keyword">of</span> people )&#123;&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>weakMap</p>
+</blockquote>
+<p>const people = new weakMap();</p>
+<pre><code>键是对象
+people.set(obj,1); 
+people.get(obj);
+
+不用会清除
+不能循环
+不能size
+不能has
+不能delete 
 </code></pre><blockquote>
-<p>再添加ios平台,也可能颠倒一下也没问题,如果有问题就先remove了再装一遍.</p>
-</blockquote>
-<pre><code>cordova platform add ios
-</code></pre><blockquote>
-<p>然后就可以了…</p>
-</blockquote>
-<pre><code>cordova plugin add ./MyMath
-</code></pre><blockquote>
-<p>运行</p>
-</blockquote>
-<pre><code>cordova run|emulate ios
-</code></pre><blockquote>
-<p>有个问题,执行上一句可能会红字提示(cordova7.0.1版本) <code>cordova Error: Cannot read property &#39;replace&#39; of undefined</code></p>
-</blockquote>
-<p>解决办法就是 在 platforms/ios/cordova/这个路径下执行</p>
-<pre><code>npm i ios-sim
-</code></pre><p>就可以了;或者,全局安装这个ios-sim. 也许一下个版本就更新了.</p>
-<hr>
-<h2 id="像SimpleMath那样自定义插件"><a href="#像SimpleMath那样自定义插件" class="headerlink" title="像SimpleMath那样自定义插件"></a>像SimpleMath那样自定义插件</h2><blockquote>
-<p>按安卓的操作设置好后,打开<code>plugin.xml</code>,添加如下,表示这个自定义插件,依赖下面这个插件,更多详情,去github上搜索</p>
-</blockquote>
-<pre><code>&lt;dependency id=&quot;cordova-plugin-add-swift-support&quot; version=&quot;1.6.1&quot;/&gt;
-</code></pre><blockquote>
-<p>然后和上面的方法类似,添加 叫 <code>xxxPlugin-Bridging-Header.h</code>,然后包含进 <code>plugin.xml</code>里来,并创建文件等…</p>
+<p>arguments</p>
+<p>this.setState()</p>
+<p>slug包</p>
 </blockquote>
 
       
@@ -247,32 +444,13 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">cordova</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">plugin</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/cordova/" class="article-tag-list-link color3">cordova</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -322,7 +500,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2017/06/16/CordovaVue-plugin2/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2017/10/02/es6相关/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -336,18 +514,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/06/18/docker-for-centos/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          docker_for_centos|mac
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/06/10/CordovaVue-plugin/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">cordova plugin android</div>
+    <a href="/2017/09/26/vim插件管理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vim插件管理</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -363,8 +532,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://crossgit.github.io/2017/06/16/CordovaVue-plugin2/", 
-    sourceId: "CordovaVue-plugin2",
+    url: "http://crossgit.github.io/2017/10/02/es6相关/", 
+    sourceId: "es6相关",
     productKey: "falsexiangce",
     target: "cloud-tie-wrapper"
   };

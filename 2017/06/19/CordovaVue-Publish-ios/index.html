@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/06/19/CordovaVue-Publish-ios/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="关于cordova应用的发布.">
-<meta property="og:updated_time" content="2017-09-13T09:23:26.000Z">
+<meta property="og:updated_time" content="2017-09-30T06:56:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CordovaVue-Publish-ios">
 <meta name="twitter:description" content="关于cordova应用的发布.">
@@ -198,9 +198,9 @@
 </blockquote>
 <ol>
 <li>设置<code>app信息</code>.</li>
-<li>设置<code>价格</code>.</li>
+<li>设置<code>价格</code>和<code>地区</code>.</li>
 <li><p>设置<code>1.0版本</code>,这里注意: </p>
-<pre><code>版本信息下的图片,选个5.5英寸(1242x2208)的,会自动生成其他尺寸.
+<pre><code>版本信息下的图片,选个5.5英寸(1242x2208)的,会自动生成其他尺寸.3~5张图.
 想取消掉ipad版本,只要app在xcode配置时选择只是iphone就可以了.
 准备1024*1024的jpg或者png图标.
 构建版本,要在xcode上传完成后才会有,在`构建版本`旁边多一个`+`号.
@@ -231,7 +231,16 @@
 </ol>
 <blockquote>
 <p>到了这里,就剩下提交审核了.在iTunes Connect里的<code>构建应用</code>旁边的加号,选择版本.提交审核后,会有一堆选项,按具体情况选几项完事.</p>
+<h2 id="如果提示可供销售-但是在store里还是找不到app-不要急-等一段时间-最多24小时"><a href="#如果提示可供销售-但是在store里还是找不到app-不要急-等一段时间-最多24小时" class="headerlink" title="如果提示可供销售,但是在store里还是找不到app,不要急,等一段时间,最多24小时."></a>如果提示<code>可供销售</code>,但是在store里还是找不到app,不要急,等一段时间,最多24小时.</h2><p>关于调试</p>
 </blockquote>
+<ul>
+<li><p>首先的有手机.</p>
+</li>
+<li><p>这个手机信任这个电脑,一连线就有的提示,如果不小心选择了不信任,那就在手机里打开<code>设置</code>&gt;<code>通用</code>&gt;~&gt;<code>恢复初始信任</code>,再连线一次,就看到提示框,重新选就可以了.</p>
+</li>
+<li><p>需要在…</p>
+</li>
+</ul>
 <hr>
 <p>权限的问题</p>
 <table>
@@ -280,7 +289,16 @@
 </tr>
 </tbody>
 </table>
-
+<hr>
+<blockquote>
+<p>Q&amp;R</p>
+<ul>
+<li>一些插件装好后,展示出来是英文..比如相机插件,保存照片是英文</li>
+</ul>
+</blockquote>
+<p><code>xcode</code>里,打开<code>plist</code>文件,在目录里设置</p>
+<pre><code>Localization native development region 设置为 China
+</code></pre>
       
 
       
@@ -543,11 +561,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -559,15 +577,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">typescript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -579,7 +597,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">gin</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -588,10 +614,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">easyui</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">gin</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,11 +629,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
+                <a href="javascript:void(0)" class="js-tag color5">kong</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kong</a>
+                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
               </li>
             
             <div class="clearfix"></div>

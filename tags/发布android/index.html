@@ -6,19 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://crossgit.github.io">
-  <title>Karma-关于vue的测试 | 走走停停</title>
+  <title>Tag: 发布android | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前端开发,为了稳定,需要写个测试. 这里说一些基础概念.">
-<meta name="keywords" content="vue,测试">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Karma-关于vue的测试">
-<meta property="og:url" content="http://crossgit.github.io/2017/07/04/Karma-关于vue的测试/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="走走停停">
+<meta property="og:url" content="http://crossgit.github.io/tags/发布android/index.html">
 <meta property="og:site_name" content="走走停停">
-<meta property="og:description" content="前端开发,为了稳定,需要写个测试. 这里说一些基础概念.">
-<meta property="og:updated_time" content="2017-07-05T03:32:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Karma-关于vue的测试">
-<meta name="twitter:description" content="前端开发,为了稳定,需要写个测试. 这里说一些基础概念.">
+<meta name="twitter:title" content="走走停停">
   
     <link rel="alternative" href="/atom.xml" title="走走停停" type="application/atom+xml">
   
@@ -146,224 +141,79 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Karma-关于vue的测试" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Karma-关于vue的测试
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/10/10/CordovaVue-Publish-android/" class="archive-article-date">
+  	<time datetime="2017-10-10T03:56:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/10/10/CordovaVue-Publish-android/">CordovaVue-Publish-android</a>
     </h1>
   
 
-        
-        <a href="/2017/07/04/Karma-关于vue的测试/" class="archive-article-date">
-  	<time datetime="2017-07-04T09:21:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前端开发,为了稳定,需要写个测试. 这里说一些基础概念.<br><a id="more"></a></p>
-<blockquote>
-<p>概念</p>
-<ul>
-<li>Karma: google的一套前端测试运行框架.主要工作<ol>
-<li>Karma启动一个web服务,生成包含js源代码和测试脚本的页面.</li>
-<li>运行浏览器加载页面,并显示测试结果.</li>
-<li>如果开启测试,当文件有修改时,继续执行以上过程.</li>
-</ol>
-</li>
-</ul>
-</blockquote>
-<ul>
-<li><p>mocha js测试框架. 测试代码的语法就是这个. 别的还有Jasmine,Tape,总之好多都不认识..😂</p>
-</li>
-<li><p>PlantomJs 基于WebKit的服务器端JavaScript API。它全面支持web而不需浏览器支持，其快速，原生支持各种Web标准：DOM处理,CSS选择器,JSON,Canvas,可以用于<code>页面自动化</code>,<code>网络监测</code>，<code>网页截屏</code>，以及<code>无界面测试</code>等。 抄的,那么简单讲,就是不用浏览器显示测试结果的服务端.</p>
-</li>
-<li><p>Coverage 代码覆盖率,衡量测试脚本的质量</p>
-</li>
-</ul>
-<blockquote>
-<p><code>vue-cli 的测试就是单元测试,和计算单元测试的覆盖率</code></p>
-<p>mocha 简单教程</p>
-</blockquote>
-<ol>
-<li>大致的最简单写法<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 写引用 </span></div><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span> </div><div class="line"><span class="keyword">import</span> MyComponent <span class="keyword">from</span> <span class="string">'~/hello/hello.vue'</span></div><div class="line"></div><div class="line"><span class="comment">// 写函数,官网上抄的</span></div><div class="line"></div><div class="line"><span class="comment">// helper function that mounts and returns the rendered text</span></div><div class="line"><span class="comment">// 挂载元素并返回已渲染的文本</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRenderedText</span> (<span class="params">Component, propsData</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> Ctor = Vue.extend(Component)</div><div class="line">  <span class="keyword">const</span> vm = <span class="keyword">new</span> Ctor(&#123; <span class="attr">propsData</span>: propsData &#125;).$mount()</div><div class="line">  <span class="keyword">return</span> vm.$el.textContent</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 写test suite, 就是这个describe</span></div><div class="line"><span class="comment">// 嵌套写test case, 就是it</span></div><div class="line"><span class="comment">// 嵌套里写断言 expect </span></div><div class="line"><span class="comment">// 大概意思就是,断言里的结果要和toBe里的一致才算测试通过.</span></div><div class="line">describe(<span class="string">'这里写一个说明'</span>, () =&gt; &#123;</div><div class="line">  it(<span class="string">'renders correctly with different props'</span>, () =&gt; &#123;</div><div class="line">    expect(getRenderedText(MyComponent, &#123;</div><div class="line">      <span class="attr">msg</span>: <span class="string">'Hello'</span></div><div class="line">    &#125;)).toBe(<span class="string">'Hello'</span>)</div><div class="line">    expect(getRenderedText(MyComponent, &#123;</div><div class="line">      <span class="attr">msg</span>: <span class="string">'Bye'</span></div><div class="line">    &#125;)).toBe(<span class="string">'Bye'</span>)</div><div class="line">  &#125;)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">describe(<span class="string">'这里是另一个说明'</span>, () =&gt; &#123;</div><div class="line">  <span class="comment">// 检查原始组件选项</span></div><div class="line">  it(<span class="string">'has a created hook'</span>, () =&gt; &#123;</div><div class="line">    expect(<span class="keyword">typeof</span> MyComponent.created).toBe(<span class="string">'function'</span>)</div><div class="line">  &#125;)</div><div class="line">  <span class="comment">// 评估原始组件选项中的函数的结果</span></div><div class="line">  it(<span class="string">'sets the correct default data'</span>, () =&gt; &#123;</div><div class="line">    expect(<span class="keyword">typeof</span> MyComponent.data).toBe(<span class="string">'function'</span>)</div><div class="line">    <span class="keyword">const</span> defaultData = MyComponent.data()</div><div class="line">    expect(defaultData.message).toBe(<span class="string">'hello!'</span>)</div><div class="line">  &#125;)</div><div class="line">  <span class="comment">// 检查mount中的组件实例</span></div><div class="line">  it(<span class="string">'correctly sets the message when created'</span>, () =&gt; &#123;</div><div class="line">    <span class="keyword">const</span> vm = <span class="keyword">new</span> Vue(MyComponent).$mount()</div><div class="line">    expect(vm.message).toBe(<span class="string">'bye!'</span>)</div><div class="line">  &#125;)</div><div class="line">  <span class="comment">// 创建一个实例并检查渲染输出</span></div><div class="line">  it(<span class="string">'renders the correct message'</span>, () =&gt; &#123;</div><div class="line">    <span class="keyword">const</span> Ctor = Vue.extend(MyComponent)</div><div class="line">    <span class="keyword">const</span> vm = <span class="keyword">new</span> Ctor().$mount()</div><div class="line">    expect(vm.$el.textContent).toBe(<span class="string">'bye!'</span>)</div><div class="line">  &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>然而这是错的,也不知道是版本还是什么,toBe要写成to.equal,不是toBe,也不是to.be.equal,这样就通过了</p>
-<blockquote>
-<p>覆盖率 Coverage,主要考虑四项,vue-cli里是全自动的,不用什么操作. <code>看不懂到底要说明啥</code></p>
-<ol>
-<li>Statements  //声明</li>
-<li>Branches //分支</li>
-<li>Functions // 函数</li>
-<li>Lines //线</li>
-</ol>
-<p>总结vue要测试的地方</p>
-<ol>
-<li>检查是否函数</li>
-<li>检查函数结果</li>
-<li>检查组件实例</li>
-<li>检查渲染输出</li>
-</ol>
-</blockquote>
-<p>另外:$mount() 的功能,是手动挂载,就是当vue实例没有el属性时,该实例就没有挂载到dom中.大概也就在测试里用了.</p>
-<p>假如需要延迟挂载,可以在之后手动调用vm.$mount()来挂载.例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;app&quot;&gt;  </div><div class="line">    &#123;&#123;a&#125;&#125;  </div><div class="line">&lt;/div&gt;  </div><div class="line">&lt;button onclick=&quot;test()&quot;&gt;挂载&lt;/button&gt;  </div><div class="line">&lt;script&gt;  </div><div class="line">    var obj = &#123;a: 1&#125;  </div><div class="line">    var vm = new Vue(&#123;  </div><div class="line">        data: obj  </div><div class="line">    &#125;)  </div><div class="line">    function test() &#123;  </div><div class="line">        vm.$mount(&quot;#app&quot;);  </div><div class="line">    &#125;  </div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
-<hr>
-<blockquote>
-<p>输出html的报告 mochawesome</p>
-</blockquote>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>凑合看吧,有问题github上见.<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">cordova</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">测试</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">发布android</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/cordova/" class="article-tag-list-link color3">cordova</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
 
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2017/07/04/Karma-关于vue的测试/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/08/09/关于threejs/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          关于threejs
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/06/30/angular-cli/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">angular-cli</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-  
-  
-  
-  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-<script>
-  var cloudTieConfig = {
-    url: "http://crossgit.github.io/2017/07/04/Karma-关于vue的测试/", 
-    sourceId: "Karma-关于vue的测试",
-    productKey: "falsexiangce",
-    target: "cloud-tie-wrapper"
-  };
-</script>
-<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    </div></section>
   
 
-  
-
-  
+    
 
 
           </div>
@@ -387,9 +237,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://crossgit.github.io">
-  <title>关于gin | 走走停停</title>
+  <title>go的net/http | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个go的框架">
-<meta name="keywords" content="go,gin">
+  <meta name="description" content="net/http包">
+<meta name="keywords" content="go">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于gin">
-<meta property="og:url" content="http://crossgit.github.io/2017/09/01/关于gin/index.html">
+<meta property="og:title" content="go的net&#x2F;http">
+<meta property="og:url" content="http://crossgit.github.io/2017/10/31/go的net-http/index.html">
 <meta property="og:site_name" content="走走停停">
-<meta property="og:description" content="一个go的框架">
-<meta property="og:updated_time" content="2017-09-01T06:38:49.000Z">
+<meta property="og:description" content="net/http包">
+<meta property="og:updated_time" content="2017-10-31T08:09:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于gin">
-<meta name="twitter:description" content="一个go的框架">
+<meta name="twitter:title" content="go的net&#x2F;http">
+<meta name="twitter:description" content="net/http包">
   
     <link rel="alternative" href="/atom.xml" title="走走停停" type="application/atom+xml">
   
@@ -146,235 +146,90 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-关于gin" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-go的net-http" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      关于gin
+      go的net/http
     </h1>
   
 
         
-        <a href="/2017/09/01/关于gin/" class="archive-article-date">
-  	<time datetime="2017-09-01T04:20:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-01</time>
+        <a href="/2017/10/31/go的net-http/" class="archive-article-date">
+  	<time datetime="2017-10-31T06:18:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-31</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一个go的框架<br><a id="more"></a></p>
-<blockquote>
-<p>跳过简单介绍</p>
-</blockquote>
-<p>是<a href="http://gopkg.in/gin-gonic/gin.v1" target="_blank" rel="external">gin.v1</a> <code>gopkg.in/gin-gonic/gin.v1</code></p>
-<blockquote>
-<p>对前后数据交互的使用</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>后端接收</th>
-<th>传递方式</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>c.Param</td>
-<td>路由参数 <code>url/:params</code></td>
-<td>返回url参数的值,是c.Params.ByName(key)的简写</td>
-</tr>
-<tr>
-<td>c.DefaultParam</td>
-<td>url/*params</td>
-<td>c.DefaultParam(“params”, “Guest”) 如果没参数,给默认值</td>
-</tr>
-<tr>
-<td>c.PostForm</td>
-<td>form提交</td>
-<td>从post urlencoded 表单或多表单返回指定的键.</td>
-</tr>
-<tr>
-<td>c.DefaultPostForm</td>
-<td>form提交</td>
-<td>c.DefaultPostForm(“nick”, “anonymous”) 给默认值</td>
-</tr>
-<tr>
-<td>c.PostFormArray</td>
-<td>form提交</td>
-<td>返回切片,长度取决于参数数量</td>
-</tr>
-<tr>
-<td>c.Query</td>
-<td>url?part1=1&amp;part2=2</td>
-<td>url? 后面的参数</td>
-</tr>
-<tr>
-<td>c.DefaultQuery</td>
-<td>url?part1=1&amp;part2=2</td>
-<td>c.DefaultQuery(“part3”, “Guest”) 如果没这参数,给默认值</td>
-</tr>
-<tr>
-<td>c.QueryArray</td>
-<td>url?part1=1&amp;part2=2</td>
-<td>url? 后面的切片参数</td>
-</tr>
-<tr>
-<td>c.Request.FormFile(“upload”)</td>
-<td>文件上传</td>
-<td>file, header , err := c.Request.FormFile(“upload”) …</td>
-</tr>
-<tr>
-<td>c.Request.FormValue</td>
-<td>post的json参数</td>
-</tr>
-<tr>
-<td>c.Bind</td>
-<td>form绑定,用于验证</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>后端发布</th>
-<th>解释</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>c.String</td>
-<td>发布字符串</td>
-<td>c.String(http.StatusOK,”HELLO!”)</td>
-</tr>
-<tr>
-<td>c.JSON</td>
-<td>发布json格式</td>
-<td>c.JSON(HTTP.StatusOK,gin.H{“rows”,rows}) // rows,随意</td>
-</tr>
-<tr>
-<td>c.XML</td>
-<td>发布xml格式</td>
-<td>c.XML(http.StatusOK, gin.H{“message”: “hey”, “status”: http.StatusOK})</td>
-</tr>
-<tr>
-<td>c.YAML</td>
-<td>发布yaml格式</td>
-<td>c.YAML(http.StatusOK, gin.H{“message”: “hey”})</td>
-</tr>
-<tr>
-<td>c.HTML</td>
-<td>模板渲染</td>
-<td>c.HTML(http.StatusOK, “posts/index.tmpl”, gin.H{“title”: “Posts”})</td>
-</tr>
-<tr>
-<td>c.Redirect</td>
-<td>重定向</td>
-<td>c.Redirect(http.StatusMovedPermanently, “<a href="https://www.google.com/" target="_blank" rel="external">https://www.google.com/</a>“)</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>中间件相关</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>c.Set</td>
-<td>c.Set(“example”, “12345”)</td>
-</tr>
-<tr>
-<td>c.Next</td>
-<td>c.Next() request前后分割点</td>
-</tr>
-<tr>
-<td>c.Writer</td>
-<td>c.Writer.Status() 状态</td>
-</tr>
-<tr>
-<td>c.MustGet</td>
-<td>是否存在键</td>
-</tr>
-<tr>
-<td>c.Copy</td>
-<td>c.Copy()</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>可能的请求方式</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>路由的请求方式</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Use(…HandlerFunc) IRoutes</td>
-<td>中间件</td>
-</tr>
-<tr>
-<td>Handle(string, string, …HandlerFunc) IRoutes</td>
-<td></td>
-</tr>
-<tr>
-<td>Any(string, …HandlerFunc) IRoutes</td>
-<td>接收任意的请求类型 <code>GET, POST, PUT, PATCH, HEAD, OPTIONS, DELETE, CONNECT, TRACE</code></td>
-</tr>
-<tr>
-<td>GET(string, …HandlerFunc) IRoutes</td>
-<td>类似<code>router.Handle(&quot;GET&quot;, path, handle)</code></td>
-</tr>
-<tr>
-<td>POST(string, …HandlerFunc) IRoutes</td>
-<td></td>
-</tr>
-<tr>
-<td>DELETE(string, …HandlerFunc) IRoutes</td>
-<td></td>
-</tr>
-<tr>
-<td>PATCH(string, …HandlerFunc) IRoutes</td>
-<td></td>
-</tr>
-<tr>
-<td>PUT(string, …HandlerFunc) IRoutes</td>
-<td></td>
-</tr>
-<tr>
-<td>OPTIONS(string, …HandlerFunc) IRoutes</td>
-<td></td>
-</tr>
-<tr>
-<td>HEAD(string, …HandlerFunc) IRoutes</td>
-<td></td>
-</tr>
-<tr>
-<td>StaticFile(string, string) IRoutes</td>
-<td>静态<code>文件</code>路由 <code>router.StaticFile(&quot;favicon.ico&quot;, &quot;./resources/favicon.ico&quot;)</code></td>
-</tr>
-<tr>
-<td>Static(string, string) IRoutes</td>
-<td>静态<code>文件夹</code>路由 <code>router.Static(&quot;/路由&quot;,&quot;./文件夹目录&quot;)</code></td>
-</tr>
-<tr>
-<td>StaticFS(string, http.FileSystem) IRoutes</td>
-<td>静态<code>文件</code>路由 <code>router.Static(&quot;/路由&quot;,gin.Dir(&quot;FileSystem&quot;))</code></td>
-</tr>
-</tbody>
-</table>
+        <p>net/http包</p>
+<a id="more"></a>
+<h2 id="概念的问题"><a href="#概念的问题" class="headerlink" title="概念的问题"></a>概念的问题</h2><ul>
+<li><p>Request:用户请求的信息，用来解析用户的请求信息，包括post、get、cookie、url等信息</p>
+</li>
+<li><p>Response:服务器需要反馈给客户端的信息</p>
+</li>
+<li><p>Conn:用户的每次请求链接</p>
+</li>
+<li><p>Handler:处理请求和生成返回信息的处理逻辑</p>
+</li>
+</ul>
+<h2 id="http服务端"><a href="#http服务端" class="headerlink" title="http服务端"></a>http服务端</h2><h3 id="处理http与https"><a href="#处理http与https" class="headerlink" title="处理http与https"></a>处理http与https</h3><ul>
+<li>处理http请求 http.ListenAndServe(addr,handler) error</li>
+</ul>
+<p>第一个参数监听地址<br>第二个参数服务端处理程序<br>或<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">s := &amp;http.Server&#123;</div><div class="line">    Addr:           <span class="string">":8080"</span>,</div><div class="line">    Handler:        myHander,</div><div class="line">    ReadTimeout:    <span class="number">10</span> * time.Second,</div><div class="line">    WriteTimeout:   <span class="number">10</span> * time.Second,</div><div class="line">    MaxHeaderBytes: <span class="number">1</span> &lt;&lt; <span class="number">20</span>,</div><div class="line">&#125;</div><div class="line"></div><div class="line">log.Fatal(s.ListenAndServe())</div></pre></td></tr></table></figure></p>
+<ul>
+<li>处理https请求 http.ListenAndServeTLS()<figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">http.Handle(<span class="string">"/foo"</span>, fooHandler)</div><div class="line">http.HandleFunc(<span class="string">"/bar"</span>, <span class="function"><span class="keyword">func</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</div><div class="line">fmt.Fprintf(w, <span class="string">"Hello, %q"</span>, html.EscapeString(r.URL.Path)) &#125;)</div><div class="line">log.Fatal(http.ListenAndServeTLS(<span class="string">":10443"</span>, <span class="string">"cert.pem"</span>, <span class="string">"key.pem"</span>, <span class="literal">nil</span>))</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>或者是:<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ss := &amp;http.Server&#123;</div><div class="line">    Addr:           <span class="string">":10443"</span>,</div><div class="line">    Handler:        myHandler, </div><div class="line">    ReadTimeout:    <span class="number">10</span> * time.Second,</div><div class="line">    WriteTimeout:   <span class="number">10</span> * time.Second,</div><div class="line">    MaxHeaderBytes: <span class="number">1</span> &lt;&lt; <span class="number">20</span>,</div><div class="line"> &#125;</div><div class="line">log.Fatal(ss.ListenAndServeTLS(<span class="string">"cert.pem"</span>, <span class="string">"key.pem"</span>))</div></pre></td></tr></table></figure></p>
+<h2 id="http客户端"><a href="#http客户端" class="headerlink" title="http客户端"></a>http客户端</h2><h3 id="基本方法-实现http请求"><a href="#基本方法-实现http请求" class="headerlink" title="基本方法,实现http请求"></a>基本方法,实现http请求</h3><ul>
+<li><p>func (c <em>Client) Get(url string) (r </em>Response, err error)</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">resp,err := http.Get(<span class="string">"http://example.com/"</span>)</div><div class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">    <span class="comment">// 错误</span></div><div class="line">    <span class="keyword">return</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">defer</span> resp.Body.<span class="built_in">close</span>()</div><div class="line">io.Copy(os.Stdout,resp.Body)</div></pre></td></tr></table></figure>
+</li>
+<li><p>func (c <em>Client) Post(url string, bodyType string, body io.Reader) (r </em>Response, err error)</p>
+</li>
+</ul>
+<p>第二个参数是<code>MIMEType</code><br>第三个参数以<code>[]byte</code>形式<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">resp.err := http.Post(<span class="string">"http://example.com/upload"</span>,<span class="string">"image/jpeg"</span>,&amp;imageDataBuf)</div><div class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">    <span class="comment">//错误</span></div><div class="line">    <span class="keyword">return</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span> resp.StatusCode != http.StatusOK&#123;</div><div class="line">    <span class="comment">//错误</span></div><div class="line">    <span class="keyword">return</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>func (c <em>Client) PostForm(url string, data url.Values) (r </em>Response, err error) func (c <em>Client) Head(url string) (r </em>Response, err error)</li>
+</ul>
+<p>实现标准编码格式为<code>application/x-www-form-urlencoded</code>的表单提交.<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">resp,err := http.PostForm(<span class="string">"http://example.com/posts"</span>,url.Values&#123;<span class="string">"title"</span>:&#123;<span class="string">"article title"</span>&#125;,<span class="string">"content"</span>:&#123;<span class="string">"article body"</span>&#125;&#125;)</div><div class="line"><span class="keyword">if</span> err != <span class="literal">nil</span>&#123;</div><div class="line">    <span class="comment">// 错误</span></div><div class="line">    <span class="keyword">return</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>func (c <em>Client) Head(url string) (r </em>Response, err error)</li>
+</ul>
+<p>只请求目标url的头部,不返回http的body<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">resp,err := http.Head(<span class="string">"http://example.com"</span>)</div></pre></td></tr></table></figure></p>
+<ul>
+<li>func (c <em>Client) Do(req </em>Request) (resp *Response, err error)</li>
+</ul>
+<p>自定义”User-Agent”,不是默认的”go http package”<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">req,err := http.NewRequest(<span class="string">"Get"</span>,<span class="string">"http://example.com"</span>,<span class="literal">nil</span>)</div><div class="line">req.Header.Add(<span class="string">"User-Agent"</span>,<span class="string">"Custom User-Agent"</span>)</div><div class="line"></div><div class="line">client := $http.Client&#123;<span class="comment">//...&#125;</span></div><div class="line">resp,err !=client.Do(req)</div></pre></td></tr></table></figure></p>
+<p>传递cookie</p>
+<h3 id="高级封装"><a href="#高级封装" class="headerlink" title="高级封装"></a>高级封装</h3><ul>
+<li><p>自定义的http.Client</p>
+</li>
+<li><p>自定义的http.Transport</p>
+</li>
+<li><p>灵活的 http.RoundTripper 接口</p>
+</li>
+<li><p>http client包含</p>
+<ul>
+<li><p>http底层传输细节</p>
+</li>
+<li><p>http代理</p>
+</li>
+<li><p>gzip压缩</p>
+</li>
+<li><p>连接池及管理</p>
+</li>
+<li><p>认证(ssl或其他认证方式)</p>
+</li>
+</ul>
+</li>
+</ul>
 
       
 
@@ -410,10 +265,6 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">go</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">gin</a>
         		</li>
       		
 		</ul>
@@ -469,7 +320,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2017/09/01/关于gin/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2017/10/31/go的net-http/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -483,18 +334,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/09/03/关于easyui的多页签/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/10/31/go的session/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          关于easyui的多页签
+          go的session
         
       </div>
     </a>
   
   
-    <a href="/2017/08/29/关于kong/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">关于kong</div>
+    <a href="/2017/10/26/go微服务参考/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">go微服务参考</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -510,8 +361,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://crossgit.github.io/2017/09/01/关于gin/", 
-    sourceId: "关于gin",
+    url: "http://crossgit.github.io/2017/10/31/go的net-http/", 
+    sourceId: "go的net-http",
     productKey: "falsexiangce",
     target: "cloud-tie-wrapper"
   };

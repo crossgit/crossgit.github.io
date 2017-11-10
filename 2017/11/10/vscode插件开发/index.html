@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/11/10/vscode插件开发/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="根据命令(shift+cmd+p)触发 根据输入内容触发 根据配置文件(.json)触发 右键处理 其他说明 配置文件 …没有些完">
-<meta property="og:updated_time" content="2017-11-10T09:01:18.000Z">
+<meta property="og:updated_time" content="2017-11-10T09:40:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vscode插件开发">
 <meta name="twitter:description" content="根据命令(shift+cmd+p)触发 根据输入内容触发 根据配置文件(.json)触发 右键处理 其他说明 配置文件 …没有些完">
@@ -180,7 +180,7 @@
 <li><p>关键代码</p>
 </li>
 </ul>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> CssRemProvider <span class="keyword">implements</span> vscode.CompletionItemProvider &#123;</div><div class="line"></div><div class="line">    <span class="keyword">constructor</span>(<span class="params"></span>) &#123; &#125;</div><div class="line">    <span class="keyword">public</span> provideCompletionItems(<span class="built_in">document</span>: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken): Thenable&lt;vscode.CompletionItem[]&gt; &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">let</span> item = <span class="keyword">new</span> vscode.CompletionItem(<span class="string">'这里就是提示框出现的内容,一行记录'</span>, vscode.CompletionItemKind.Snippet);</div><div class="line">            item.detail = <span class="string">'说明内容'</span>;</div><div class="line"></div><div class="line">            <span class="comment">// filterText 完全输入这个的时候会触发.</span></div><div class="line">            <span class="comment">// 如果不设置,需要自己实现触发条件,例如根据 document.getText来判断输入的内容</span></div><div class="line">            <span class="comment">//  const lineText = document.getText(new vscode.Range(position.with(undefined, 0), position)); // 获取行内容</span></div><div class="line">            item.filterText = <span class="string">'过滤文本'</span>;  </div><div class="line">            <span class="comment">// 替换内容,点击提示内容后</span></div><div class="line">            item.insertText = <span class="string">'新的内容'</span>; <span class="comment">// 替换内容 </span></div><div class="line">            <span class="keyword">return</span> resolve([item]);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> CssRemProvider <span class="keyword">implements</span> vscode.CompletionItemProvider &#123;</div><div class="line"></div><div class="line">    <span class="keyword">constructor</span>(<span class="params"></span>) &#123; &#125;</div><div class="line">    <span class="keyword">public</span> provideCompletionItems(<span class="built_in">document</span>: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken): Thenable&lt;vscode.CompletionItem[]&gt; &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">let</span> item = <span class="keyword">new</span> vscode.CompletionItem(<span class="string">'这里就是提示框出现的内容,一行记录'</span>, vscode.CompletionItemKind.Snippet);</div><div class="line">            item.detail = <span class="string">'说明内容'</span>;</div><div class="line"></div><div class="line">            <span class="comment">// filterText 完全输入这个的时候会触发.</span></div><div class="line">            <span class="comment">// 如果不设置,需要自己实现触发条件,例如根据 document.getText来判断输入的内容</span></div><div class="line">            <span class="comment">// 以下是一位朋友写的代码,获取当前行的内容,很厉害</span></div><div class="line">            <span class="comment">//  const lineText = document.getText(new vscode.Range(position.with(undefined, 0), position)); // 获取行内容</span></div><div class="line">            item.filterText = <span class="string">'过滤文本'</span>;  </div><div class="line">            <span class="comment">// 替换内容,点击提示内容后</span></div><div class="line">            item.insertText = <span class="string">'新的内容'</span>; <span class="comment">// 替换内容 </span></div><div class="line">            <span class="keyword">return</span> resolve([item]);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li><p>调用,关键一点,什么文件触发! 在<code>activate</code>内</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> provider = <span class="keyword">new</span> CssRemProvider(); </div><div class="line"><span class="comment">// 当在css文件里是触发</span></div><div class="line"><span class="keyword">let</span> disposable0 = vscode.languages.registerCompletionItemProvider(<span class="string">'css'</span>, provider);</div><div class="line"><span class="comment">// 加入总线</span></div><div class="line">context.subscriptions.push(disposable0);</div></pre></td></tr></table></figure>
@@ -197,8 +197,15 @@
 </li>
 </ul>
 <h2 id="根据配置文件-json-的触发-一般用于对语言提示的支持-着色等-关键在json文件"><a href="#根据配置文件-json-的触发-一般用于对语言提示的支持-着色等-关键在json文件" class="headerlink" title="根据配置文件(json)的触发,一般用于对语言提示的支持,着色等,关键在json文件"></a>根据配置文件(json)的触发,一般用于对语言提示的支持,着色等,关键在<code>json</code>文件</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">"contributes": &#123;</div><div class="line">    "languages": [</div><div class="line">        &#123;</div><div class="line">            "id": "typescript",</div><div class="line">            ...</div><div class="line">            "configuration": "./language-configuration.json"  // 语言文件</div><div class="line">        &#125;, ...</div><div class="line">    ]</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="右键-配置文件里的功能-可以省去在命令框中输入内容"><a href="#右键-配置文件里的功能-可以省去在命令框中输入内容" class="headerlink" title="右键 配置文件里的功能,可以省去在命令框中输入内容."></a>右键 配置文件里的功能,可以省去在命令框中输入内容.</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">"menus": &#123;</div><div class="line">    "editor/context": [&#123;</div><div class="line">        "when": "resourceLangId == css", </div><div class="line">        "command": "extension.demoCmd",</div><div class="line">        "group": "navigation"</div><div class="line">    &#125;],</div><div class="line">    "editor/title": [&#123;</div><div class="line">        "when": "resourceLangId == css",</div><div class="line">        "command": "extension.demoCmd",</div><div class="line">        "group": "navigation"</div><div class="line">    &#125;]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2>
+<h2 id="右键-配置文件里的功能-可以省去在命令框中输入内容"><a href="#右键-配置文件里的功能-可以省去在命令框中输入内容" class="headerlink" title="右键 配置文件里的功能,可以省去在命令框中输入内容."></a>右键 配置文件里的功能,可以省去在命令框中输入内容.</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">"menus": &#123;</div><div class="line">    // 右键</div><div class="line">    "editor/context": [&#123;</div><div class="line">        "when": "resourceLangId == css", </div><div class="line">        "command": "extension.demoCmd",</div><div class="line">        "group": "navigation"</div><div class="line">    &#125;],</div><div class="line">    // 菜单</div><div class="line">    "editor/title": [&#123;</div><div class="line">        "when": "resourceLangId == css",</div><div class="line">        "command": "extension.demoCmd",</div><div class="line">        "group": "navigation"</div><div class="line">    &#125;]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="从配置文件引入参数"><a href="#从配置文件引入参数" class="headerlink" title="从配置文件引入参数"></a>从配置文件引入参数</h2><ul>
+<li><p>配置文件</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">"configuration": &#123;</div><div class="line">            "type": "object",</div><div class="line">            "title": "demoCmd configuration",</div><div class="line">            "properties": &#123;</div><div class="line">                "demoCmd.encoding": &#123; // demoCmd事件,encoding参数</div><div class="line">                    "type": "string", // 类型</div><div class="line">                    "default": "utf-8", // 值</div><div class="line">                    "description": "default file encoding" // 说明</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;,</div></pre></td></tr></table></figure>
+</li>
+<li><p>接..</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> cog = vscode.workspace.getConfiguration(<span class="string">'demoCmd'</span>);</div><div class="line">cog.encoding;<span class="comment">// 获得的参数</span></div></pre></td></tr></table></figure></li>
+</ul>
+
       
 
       
@@ -429,7 +436,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -441,7 +448,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -453,15 +460,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">typescript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -485,10 +496,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
@@ -501,10 +508,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
@@ -513,15 +516,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
+                <a href="javascript:void(0)" class="js-tag color2">easyui</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">easyui</a>
+                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,6 +544,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kong</a>
               </li>
              
@@ -549,18 +560,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">d3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -570,6 +569,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">d3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">echarts</a>
               </li>
             
             <div class="clearfix"></div>

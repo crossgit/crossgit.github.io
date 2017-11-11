@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/11/10/vscode插件开发/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="根据命令(shift+cmd+p)触发 根据输入内容触发 根据配置文件(.json)触发 右键处理 其他说明 配置文件 …没有些完">
-<meta property="og:updated_time" content="2017-11-10T09:40:26.000Z">
+<meta property="og:updated_time" content="2017-11-11T00:55:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vscode插件开发">
 <meta name="twitter:description" content="根据命令(shift+cmd+p)触发 根据输入内容触发 根据配置文件(.json)触发 右键处理 其他说明 配置文件 …没有些完">
@@ -203,9 +203,10 @@
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">"configuration": &#123;</div><div class="line">            "type": "object",</div><div class="line">            "title": "demoCmd configuration",</div><div class="line">            "properties": &#123;</div><div class="line">                "demoCmd.encoding": &#123; // demoCmd事件,encoding参数</div><div class="line">                    "type": "string", // 类型</div><div class="line">                    "default": "utf-8", // 值</div><div class="line">                    "description": "default file encoding" // 说明</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;,</div></pre></td></tr></table></figure>
 </li>
 <li><p>接..</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> cog = vscode.workspace.getConfiguration(<span class="string">'demoCmd'</span>);</div><div class="line">cog.encoding;<span class="comment">// 获得的参数</span></div></pre></td></tr></table></figure></li>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> cog = vscode.workspace.getConfiguration(<span class="string">'demoCmd'</span>);</div><div class="line">cog.encoding;<span class="comment">// 获得的参数</span></div></pre></td></tr></table></figure>
+</li>
 </ul>
-
+<h2 id="配置文件简单说明-转的"><a href="#配置文件简单说明-转的" class="headerlink" title="配置文件简单说明 转的"></a>配置文件简单说明 转的</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    "name": "vscode-view-readme",</div><div class="line">    "displayName": "view-readme",</div><div class="line">    "description": "Open readme.md at nearly path of node_modules quickly. ",</div><div class="line">    "version": "0.1.3",</div><div class="line">    "publisher": "ansenhuang",</div><div class="line">    "icon": "images/logo128.png",</div><div class="line">    "engines": &#123;</div><div class="line">        "vscode": "^1.10.0"</div><div class="line">    &#125;,</div><div class="line">    "galleryBanner": &#123;                     // 发布后的预览页配置</div><div class="line">        "color": "#eff1f3",                // banner颜色</div><div class="line">        "theme": "light"                   // 主题（light, dark）</div><div class="line">    &#125;,</div><div class="line">    "categories": [</div><div class="line">        "Other"                            // 插件分类,这里可能要多谢几个,比如 "Formatters","Snippets",</div><div class="line">    ],</div><div class="line">    "activationEvents": [                  // 启动项</div><div class="line">        "onCommand:viewReadme.showLocal"   // 触发这个命令时启动,也可能是 文件类型 比如  "onLanguage:css"</div><div class="line">    ],</div><div class="line">    "main": "./src/extension",             // 插件入口</div><div class="line">    "contributes": &#123;                       // 配置</div><div class="line">        "configuration": &#123;                 // 定义默认参数</div><div class="line">            "type": "object",</div><div class="line">            "title": "View readme configuration",</div><div class="line">            "properties": &#123;                // 这里定义的参数可以在vscode中取到,具体的说是 vscode.workspace.getConfiguration('view-readme');</div><div class="line">                "view-readme.savePath": &#123;</div><div class="line">                    "type": "string",</div><div class="line">                    "default": "",</div><div class="line">                    "description": "Save in local path when request remote."</div><div class="line">                &#125;,</div><div class="line">                "view-readme.npmUrl": &#123;</div><div class="line">                    "type": "string",</div><div class="line">                    "default": "https://registry.npmjs.org/",</div><div class="line">                    "description": "Get data from remote url."</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        "commands": [                                 // 命令配置</div><div class="line">            &#123;</div><div class="line">                "command": "viewReadme.showLocal",    // 注册的命令</div><div class="line">                "title": "Readme: Open markdown file" // 命令显示在面板的标题</div><div class="line">            &#125;</div><div class="line">        ],</div><div class="line">        "keybindings": [                              // 快捷键配置</div><div class="line">            &#123;</div><div class="line">                "command": "viewReadme.showLocal",    // 要触发的命令</div><div class="line">                "key": "ctrl+shift+l",                // windows系统的快捷键</div><div class="line">                "mac": "cmd+shift+l"                  // mac系统的快捷键</div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">    "scripts": &#123;</div><div class="line">        "postinstall": "node ./node_modules/vscode/bin/install"</div><div class="line">    &#125;,</div><div class="line">    "devDependencies": &#123;</div><div class="line">        "@types/mocha": "^2.2.32",</div><div class="line">        "@types/node": "^6.0.40",</div><div class="line">        "eslint": "^3.6.0",</div><div class="line">        "mocha": "^2.3.3",</div><div class="line">        "typescript": "^2.0.3",</div><div class="line">        "vscode": "^1.0.0"</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
 
       
@@ -436,7 +437,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -444,11 +445,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,6 +509,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
@@ -516,19 +521,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">easyui</a>
+                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
+                <a href="javascript:void(0)" class="js-tag color2">easyui</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -544,10 +545,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kong</a>
               </li>
              
@@ -560,6 +557,18 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">d3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">echarts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -569,14 +578,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">d3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">echarts</a>
               </li>
             
             <div class="clearfix"></div>

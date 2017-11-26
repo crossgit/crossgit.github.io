@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://crossgit.github.io">
-  <title>go的oauth2-server配置说明 | 走走停停</title>
+  <title>新浪微博的oauth2_authorize说明 | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="package server import (    “gopkg.in/oauth2.v3”)">
-<meta name="keywords" content="go">
+  <meta name="description" content="OAuth2的authorize接口">
+<meta name="keywords" content="oauth2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="go的oauth2-server配置说明">
-<meta property="og:url" content="http://crossgit.github.io/2017/11/25/go的oauth2-server配置说明/index.html">
+<meta property="og:title" content="新浪微博的oauth2_authorize说明">
+<meta property="og:url" content="http://crossgit.github.io/2017/11/26/新浪微博的oauth2-authorize说明/index.html">
 <meta property="og:site_name" content="走走停停">
-<meta property="og:description" content="package server import (    “gopkg.in/oauth2.v3”)">
-<meta property="og:updated_time" content="2017-11-25T13:47:34.000Z">
+<meta property="og:description" content="OAuth2的authorize接口">
+<meta property="og:updated_time" content="2017-11-26T02:06:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="go的oauth2-server配置说明">
-<meta name="twitter:description" content="package server import (    “gopkg.in/oauth2.v3”)">
+<meta name="twitter:title" content="新浪微博的oauth2_authorize说明">
+<meta name="twitter:description" content="OAuth2的authorize接口">
   
     <link rel="alternative" href="/atom.xml" title="走走停停" type="application/atom+xml">
   
@@ -146,30 +146,153 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-go的oauth2-server配置说明" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-新浪微博的oauth2-authorize说明" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      go的oauth2-server配置说明
+      新浪微博的oauth2_authorize说明
     </h1>
   
 
         
-        <a href="/2017/11/25/go的oauth2-server配置说明/" class="archive-article-date">
-  	<time datetime="2017-11-25T11:57:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-25</time>
+        <a href="/2017/11/26/新浪微博的oauth2-authorize说明/" class="archive-article-date">
+  	<time datetime="2017-11-26T02:02:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>package server</p>
-<p>import (<br>    “gopkg.in/oauth2.v3”<br>)</p>
+        <p>OAuth2的authorize接口</p>
 <a id="more"></a>
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// SetTokenType token type</span></div><div class="line"><span class="comment">// token 类型</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Server)</span> <span class="title">SetTokenType</span><span class="params">(tokenType <span class="keyword">string</span>)</span></span> &#123;</div><div class="line">	s.Config.TokenType = tokenType</div><div class="line">&#125;</div><div class="line"><span class="comment">// SetAllowGetAccessRequest to allow GET requests for the token</span></div><div class="line"><span class="comment">// 允许get请求token</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Server)</span> <span class="title">SetAllowGetAccessRequest</span><span class="params">(allow <span class="keyword">bool</span>)</span></span> &#123;</div><div class="line">	s.Config.AllowGetAccessRequest = allow</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// SetAllowedResponseType allow the authorization types</span></div><div class="line"><span class="comment">// 允许 授权 类型 code,token</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Server)</span> <span class="title">SetAllowedResponseType</span><span class="params">(types ...oauth2.ResponseType)</span></span> &#123;</div><div class="line">	s.Config.AllowedResponseTypes = types</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// SetAllowedGrantType allow the grant types</span></div><div class="line"><span class="comment">// 允许 授权类型</span></div><div class="line"><span class="comment">/*</span></div><div class="line">// GrantType authorization model</div><div class="line">type GrantType string</div><div class="line"></div><div class="line">// define authorization model</div><div class="line">const (</div><div class="line">	AuthorizationCode   GrantType = "authorization_code"</div><div class="line">	PasswordCredentials GrantType = "password"</div><div class="line">	ClientCredentials   GrantType = "client_credentials"</div><div class="line">	Refreshing          GrantType = "refresh_token"</div><div class="line">	Implicit            GrantType = "__implicit"</div><div class="line">)</div><div class="line">*/</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Server)</span> <span class="title">SetAllowedGrantType</span><span class="params">(types ...oauth2.GrantType)</span></span> &#123;</div><div class="line">	s.Config.AllowedGrantTypes = types</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// SetClientInfoHandler get client info from request</span></div><div class="line"><span class="comment">// 从request获取客户端信息</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Server)</span> <span class="title">SetClientInfoHandler</span><span class="params">(handler ClientInfoHandler)</span></span> &#123;</div><div class="line">	s.ClientInfoHandler = handler</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// SetClientAuthorizedHandler check the client allows to use this authorization grant type</span></div><div class="line"><span class="comment">// 检查客户端是否允许使用此授权类型。</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Server)</span> <span class="title">SetClientAuthorizedHandler</span><span class="params">(handler ClientAuthorizedHandler)</span></span> &#123;</div><div class="line">	s.ClientAuthorizedHandler = handler</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// SetClientScopeHandler check the client allows to use scope</span></div><div class="line"><span class="comment">// 检查客户端是否允许使用scope</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Server)</span> <span class="title">SetClientScopeHandler</span><span class="params">(handler ClientScopeHandler)</span></span> &#123;</div><div class="line">	s.ClientScopeHandler = handler</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// SetUserAuthorizationHandler get user id from request authorization</span></div><div class="line"><span class="comment">// 从request获取用户id</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Server)</span> <span class="title">SetUserAuthorizationHandler</span><span class="params">(handler UserAuthorizationHandler)</span></span> &#123;</div><div class="line">	s.UserAuthorizationHandler = handler</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// SetPasswordAuthorizationHandler get user id from username and password</span></div><div class="line"><span class="comment">// 根据用户名和密码获取userid</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Server)</span> <span class="title">SetPasswordAuthorizationHandler</span><span class="params">(handler PasswordAuthorizationHandler)</span></span> &#123;</div><div class="line">	s.PasswordAuthorizationHandler = handler</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// SetRefreshingScopeHandler check the scope of the refreshing token</span></div><div class="line"><span class="comment">// 检查scope,刷新token</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Server)</span> <span class="title">SetRefreshingScopeHandler</span><span class="params">(handler RefreshingScopeHandler)</span></span> &#123;</div><div class="line">	s.RefreshingScopeHandler = handler</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// SetResponseErrorHandler response error handling</span></div><div class="line"><span class="comment">// response 响应的错误处理</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Server)</span> <span class="title">SetResponseErrorHandler</span><span class="params">(handler ResponseErrorHandler)</span></span> &#123;</div><div class="line">	s.ResponseErrorHandler = handler</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// SetInternalErrorHandler internal error handling</span></div><div class="line"><span class="comment">// 内部错误处理</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Server)</span> <span class="title">SetInternalErrorHandler</span><span class="params">(handler InternalErrorHandler)</span></span> &#123;</div><div class="line">	s.InternalErrorHandler = handler</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// SetExtensionFieldsHandler in response to the access token with the extension of the field</span></div><div class="line"><span class="comment">// 响应字段扩展的访问令牌</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Server)</span> <span class="title">SetExtensionFieldsHandler</span><span class="params">(handler ExtensionFieldsHandler)</span></span> &#123;</div><div class="line">	s.ExtensionFieldsHandler = handler</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// SetAccessTokenExpHandler set expiration date for the access token</span></div><div class="line"><span class="comment">// 为accesstoken设置更新时间</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Server)</span> <span class="title">SetAccessTokenExpHandler</span><span class="params">(handler AccessTokenExpHandler)</span></span> &#123;</div><div class="line">	s.AccessTokenExpHandler = handler</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// SetAuthorizeScopeHandler set scope for the access token</span></div><div class="line"><span class="comment">// 为accesstoken设置scope</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Server)</span> <span class="title">SetAuthorizeScopeHandler</span><span class="params">(handler AuthorizeScopeHandler)</span></span> &#123;</div><div class="line">	s.AuthorizeScopeHandler = handler</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>URL</p>
+</blockquote>
+<p><a href="https://api.weibo.com/oauth2/authorize" target="_blank" rel="external">https://api.weibo.com/oauth2/authorize</a></p>
+<blockquote>
+<p>HTTP请求方式</p>
+</blockquote>
+<p>GET/POST </p>
+<table>
+<thead>
+<tr>
+<th>请求参数</th>
+<th>必选</th>
+<th>类型及范围</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>client_id</td>
+<td>true</td>
+<td>string</td>
+<td>申请应用时分配的AppKey。</td>
+</tr>
+<tr>
+<td>redirect_uri</td>
+<td>true</td>
+<td>string</td>
+<td>授权回调地址，站外应用需与设置的回调地址一致，站内应用需填写canvas page的地址。</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>false</td>
+<td>string</td>
+<td>申请scope权限所需参数，可一次申请多个scope权限，用逗号分隔。使用文档</td>
+</tr>
+<tr>
+<td>state</td>
+<td>false</td>
+<td>string</td>
+<td>用于保持请求和回调的状态，在回调时，会在Query Parameter中回传该参数。开发者可以用这个参数验证请求有效性，也可以记录用户请求授权页前的位置。这个参数可用于防止跨站请求伪造（CSRF）攻击</td>
+</tr>
+<tr>
+<td>display</td>
+<td>false</td>
+<td>string</td>
+<td>授权页面的终端类型，取值见下面的说明。</td>
+</tr>
+<tr>
+<td>forcelogin</td>
+<td>false</td>
+<td>boolean</td>
+<td>是否强制用户重新登录，true：是，false：否。默认false。</td>
+</tr>
+<tr>
+<td>language</td>
+<td>false</td>
+<td>string</td>
+<td>授权页语言，缺省为中文简体版，en为英文版。英文版测试中，开发者任何意见可反馈至 @微博API</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>display说明：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数取值</th>
+<th>类型说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>默认的授权页面，适用于web浏览器。</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>移动终端的授权页面，适用于支持html5的手机。注：使用此版授权页请用 <a href="https://open.weibo.cn/oauth2/authorize" target="_blank" rel="external">https://open.weibo.cn/oauth2/authorize</a> 授权接口</td>
+</tr>
+<tr>
+<td>wap</td>
+<td>wap版授权页面，适用于非智能手机。</td>
+</tr>
+<tr>
+<td>client</td>
+<td>客户端版本授权页面，适用于PC桌面应用。</td>
+</tr>
+<tr>
+<td>apponweibo</td>
+<td>默认的站内应用授权页，授权后不返回access_token，只刷新站内应用父框架。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>返回数据</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>返回值字段</th>
+<th>字段类型</th>
+<th>字段说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>用于第二步调用oauth2/access_token接口，获取授权后的access token。</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>如果传递参数，会回传该参数。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>示例</p>
+</blockquote>
+<p>//请求<br><a href="https://api.weibo.com/oauth2/authorize?client_id=123050457758183&amp;redirect_uri=http://www.example.com/response&amp;response_type=code" target="_blank" rel="external">https://api.weibo.com/oauth2/authorize?client_id=123050457758183&amp;redirect_uri=http://www.example.com/response&amp;response_type=code</a></p>
+<p>//同意授权后会重定向<br><a href="http://www.example.com/response&amp;code=CODE" target="_blank" rel="external">http://www.example.com/response&amp;code=CODE</a></p>
+
       
 
       
@@ -203,7 +326,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">go</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">oauth2</a>
         		</li>
       		
 		</ul>
@@ -259,7 +382,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2017/11/25/go的oauth2-server配置说明/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2017/11/26/新浪微博的oauth2-authorize说明/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -273,18 +396,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/11/26/新浪微博的oauth2-authorize说明/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          新浪微博的oauth2_authorize说明
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/11/24/http的header/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">http的header</div>
+    <a href="/2017/11/25/go的oauth2-server配置说明/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">go的oauth2-server配置说明</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -300,8 +414,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://crossgit.github.io/2017/11/25/go的oauth2-server配置说明/", 
-    sourceId: "go的oauth2-server配置说明",
+    url: "http://crossgit.github.io/2017/11/26/新浪微博的oauth2-authorize说明/", 
+    sourceId: "新浪微博的oauth2-authorize说明",
     productKey: "falsexiangce",
     target: "cloud-tie-wrapper"
   };

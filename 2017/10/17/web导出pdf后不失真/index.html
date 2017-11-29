@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/10/17/web导出pdf后不失真/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="主要用到的工具是pdfmaker,官网 针对纯文本,可以支持目录/排版/表格/图片等">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-10-18T09:31:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="web导出pdf后不失真">
@@ -166,15 +167,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>主要用到的工具是<a href="https://github.com/bpampuch/pdfmake" target="_blank" rel="external">pdfmaker</a>,<a href="http://pdfmake.org/" target="_blank" rel="external">官网</a></p>
+        <p>主要用到的工具是<a href="https://github.com/bpampuch/pdfmake" target="_blank" rel="noopener">pdfmaker</a>,<a href="http://pdfmake.org/" target="_blank" rel="noopener">官网</a></p>
 <p>针对纯文本,可以支持目录/排版/表格/图片等</p>
 <a id="more"></a>
 <h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>如果一个字体是乱码,那这个工具是没法用的.</p>
-<p>有个插件叫 <a href="https://github.com/MrRio/jsPDF" target="_blank" rel="external">jspdf</a> + <a href="https://github.com/niklasvh/html2canvas" target="_blank" rel="external">html2canvas</a>,思路就是先把html转成canvas,再把canvas转成pdf. 但是这个pdf放大会失真原因就是canvas的位图.</p>
-<p>如果不用转图片,直接html转pdf,那就只能是英文的,这里也有个插件叫<a href="https://github.com/sphilee/jsPDF-CustomFonts-support" target="_blank" rel="external">jsPDF-CustomFonts-support</a>,大概看需要坐标给汉字定位.同时也是需要二进制字体.</p>
+<p>有个插件叫 <a href="https://github.com/MrRio/jsPDF" target="_blank" rel="noopener">jspdf</a> + <a href="https://github.com/niklasvh/html2canvas" target="_blank" rel="noopener">html2canvas</a>,思路就是先把html转成canvas,再把canvas转成pdf. 但是这个pdf放大会失真原因就是canvas的位图.</p>
+<p>如果不用转图片,直接html转pdf,那就只能是英文的,这里也有个插件叫<a href="https://github.com/sphilee/jsPDF-CustomFonts-support" target="_blank" rel="noopener">jsPDF-CustomFonts-support</a>,大概看需要坐标给汉字定位.同时也是需要二进制字体.</p>
 <p>现在用 pdfmaker …的前端处理 </p>
 <blockquote>
-<p>到gayhub上<a href="https://github.com/bpampuch/pdfmake" target="_blank" rel="external">下载代码</a></p>
+<p>到gayhub上<a href="https://github.com/bpampuch/pdfmake" target="_blank" rel="noopener">下载代码</a></p>
 <p>全局安装gulp,因为要用他生成 <code>vfs_fonts.json</code></p>
 </blockquote>
 <p>这个是字体的二进制文件.如果不想用官方的办法,也可以想办法生成二进制代码,按这个文件的格式组成.最后会成为一个20M左右的文件.</p>
@@ -187,21 +188,21 @@ gulp buildFonts // 具体看根目录下的gulpfile.js文件配置.
 </ul>
 <p>因为有大小字体颜色等因素,这玩意要一段一段的搞.</p>
 <p>先覆盖一下默认字体</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 针对ttf文件的字体</span></div><div class="line"></div><div class="line"><span class="comment">// pdfMake.fonts = &#123;</span></div><div class="line"><span class="comment">//     "Roboto": &#123;</span></div><div class="line"><span class="comment">//         normal: 'Roboto-Regular.ttf', // 这不是路径,应该是和vfs_fonts里的对应.</span></div><div class="line"><span class="comment">//         bold: 'Roboto-Medium.ttf',</span></div><div class="line"><span class="comment">//         italics: 'Roboto-Italic.ttf', // 斜体 </span></div><div class="line"><span class="comment">//         bolditalics: 'Roboto-MediumItalic.ttf'</span></div><div class="line"><span class="comment">//     &#125;,</span></div><div class="line"><span class="comment">//     other:&#123;...&#125;</span></div><div class="line"><span class="comment">// &#125;;</span></div><div class="line"></div><div class="line"><span class="comment">// 针对ttc的</span></div><div class="line"></div><div class="line">pdfMake.fonts = &#123;</div><div class="line">    <span class="attr">msyh</span>: &#123;</div><div class="line">        <span class="attr">normal</span>: [<span class="string">'msyh.ttc'</span>, <span class="string">'MicrosoftYaHei'</span>], <span class="comment">// 普通</span></div><div class="line">        bold: [<span class="string">'msyhbd.ttc'</span>, <span class="string">'MicrosoftYaHei-Bold'</span>], <span class="comment">// 粗</span></div><div class="line">        light: [<span class="string">'msyhl.ttc'</span>, <span class="string">'MicrosoftYaHeiLight'</span>]  <span class="comment">// 细</span></div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 文字内容.</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> docDefinition = &#123;</div><div class="line">    <span class="attr">content</span>: [</div><div class="line">        &#123; <span class="attr">text</span>: <span class="string">'打开首页'</span>, <span class="attr">style</span>: [<span class="string">'header'</span>] &#125;,</div><div class="line">        <span class="string">'Another paragraph, this time a littl这是个中文文档测试使用.e bit longer to make sure, this line will be divided into at least two lines'</span>,</div><div class="line">        &#123; <span class="string">'text'</span>: <span class="string">'此段将具有更大的字体'</span>, <span class="attr">style</span>: <span class="string">'light'</span> &#125;,</div><div class="line">       </div><div class="line">        &#123; <span class="string">'text'</span>: <span class="string">'变化字体'</span>, <span class="attr">style</span>: <span class="string">'anotherStyle'</span> &#125;</div><div class="line">    ],</div><div class="line">    <span class="comment">// 全局申明用什么字体.</span></div><div class="line">    defaultStyle: &#123;</div><div class="line">        <span class="attr">font</span>: <span class="string">'msyh'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 样式 对应content里的style</span></div><div class="line">    styles: &#123;</div><div class="line">        <span class="attr">header</span>: &#123;</div><div class="line">            <span class="attr">bold</span>: <span class="literal">true</span>,  <span class="comment">// 使用bold,与上面的pdfmaker.fonts对应.</span></div><div class="line">            alignment: <span class="string">'right'</span> <span class="comment">// 靠右</span></div><div class="line">        &#125;,</div><div class="line">        <span class="attr">anotherStyle</span>: &#123;</div><div class="line">            <span class="attr">normal</span>: <span class="literal">true</span>, </div><div class="line">            <span class="attr">alignment</span>: <span class="string">'center'</span> <span class="comment">// 居中</span></div><div class="line">        &#125;,</div><div class="line">        <span class="attr">light</span>: &#123;</div><div class="line">            <span class="attr">light</span>: <span class="literal">true</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="comment">// console.log(pdfMake.vfs); </span></div><div class="line">pdfMake.createPdf(docDefinition).download(); <span class="comment">// 下载</span></div><div class="line"><span class="comment">// pdfMake.createPdf(docDefinition).open(); // 打开,通常会被屏蔽.</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 针对ttf文件的字体</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// pdfMake.fonts = &#123;</span></span><br><span class="line"><span class="comment">//     "Roboto": &#123;</span></span><br><span class="line"><span class="comment">//         normal: 'Roboto-Regular.ttf', // 这不是路径,应该是和vfs_fonts里的对应.</span></span><br><span class="line"><span class="comment">//         bold: 'Roboto-Medium.ttf',</span></span><br><span class="line"><span class="comment">//         italics: 'Roboto-Italic.ttf', // 斜体 </span></span><br><span class="line"><span class="comment">//         bolditalics: 'Roboto-MediumItalic.ttf'</span></span><br><span class="line"><span class="comment">//     &#125;,</span></span><br><span class="line"><span class="comment">//     other:&#123;...&#125;</span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 针对ttc的</span></span><br><span class="line"></span><br><span class="line">pdfMake.fonts = &#123;</span><br><span class="line">    msyh: &#123;</span><br><span class="line">        normal: [<span class="string">'msyh.ttc'</span>, <span class="string">'MicrosoftYaHei'</span>], <span class="comment">// 普通</span></span><br><span class="line">        bold: [<span class="string">'msyhbd.ttc'</span>, <span class="string">'MicrosoftYaHei-Bold'</span>], <span class="comment">// 粗</span></span><br><span class="line">        light: [<span class="string">'msyhl.ttc'</span>, <span class="string">'MicrosoftYaHeiLight'</span>]  <span class="comment">// 细</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 文字内容.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> docDefinition = &#123;</span><br><span class="line">    content: [</span><br><span class="line">        &#123; <span class="attr">text</span>: <span class="string">'打开首页'</span>, <span class="attr">style</span>: [<span class="string">'header'</span>] &#125;,</span><br><span class="line">        <span class="string">'Another paragraph, this time a littl这是个中文文档测试使用.e bit longer to make sure, this line will be divided into at least two lines'</span>,</span><br><span class="line">        &#123; <span class="string">'text'</span>: <span class="string">'此段将具有更大的字体'</span>, <span class="attr">style</span>: <span class="string">'light'</span> &#125;,</span><br><span class="line">       </span><br><span class="line">        &#123; <span class="string">'text'</span>: <span class="string">'变化字体'</span>, <span class="attr">style</span>: <span class="string">'anotherStyle'</span> &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="comment">// 全局申明用什么字体.</span></span><br><span class="line">    defaultStyle: &#123;</span><br><span class="line">        font: <span class="string">'msyh'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 样式 对应content里的style</span></span><br><span class="line">    styles: &#123;</span><br><span class="line">        header: &#123;</span><br><span class="line">            bold: <span class="literal">true</span>,  <span class="comment">// 使用bold,与上面的pdfmaker.fonts对应.</span></span><br><span class="line">            alignment: <span class="string">'right'</span> <span class="comment">// 靠右</span></span><br><span class="line">        &#125;,</span><br><span class="line">        anotherStyle: &#123;</span><br><span class="line">            normal: <span class="literal">true</span>, </span><br><span class="line">            alignment: <span class="string">'center'</span> <span class="comment">// 居中</span></span><br><span class="line">        &#125;,</span><br><span class="line">        light: &#123;</span><br><span class="line">            light: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// console.log(pdfMake.vfs); </span></span><br><span class="line">pdfMake.createPdf(docDefinition).download(); <span class="comment">// 下载</span></span><br><span class="line"><span class="comment">// pdfMake.createPdf(docDefinition).open(); // 打开,通常会被屏蔽.</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>问题</p>
 </blockquote>
 <ul>
 <li><p>tip:ttc 和 ttf是什么? ttc有多个字体,ttf有一个字体,可以理解成ttc包含多个ttf. 有个转换工具叫 <code>TTCTOOLS</code>,应该是windows的.</p>
 </li>
-<li><p>如何判断ttc里的ttf叫什么名字?  这里有一个可以将ttc转ttf的<a href="https://transfonter.org/ttc-unpack" target="_blank" rel="external">网站</a>,只要把ttc文件上传,就可以分析出叫什么名字.</p>
+<li><p>如何判断ttc里的ttf叫什么名字?  这里有一个可以将ttc转ttf的<a href="https://transfonter.org/ttc-unpack" target="_blank" rel="noopener">网站</a>,只要把ttc文件上传,就可以分析出叫什么名字.</p>
 </li>
 <li><p>这里还有个问题,有些地方报错,大概是<code>找不到msyh.ttc</code>这样的,那么断点下padmaker.vfs是否加载,如果没加载就去<code>vfs_fonts.js</code>里把<code>this</code>去掉,没指进去.</p>
 </li>
 <li><p>关于样式的函数,除了定义字体,例如 <code>bold:true</code> 外</p>
 </li>
 </ul>
-<h1 id="解释-举例"><a href="#解释-举例" class="headerlink" title="| 解释| 举例"></a>| 解释| 举例</h1><p>—-|—-|—-<br>font|单独定义字体|’msyh’<br>fontSize|字号|18<br>margin|外边距,数组|[0,0,0,10]<br>alignment|位置|left/right/center<br>color|字色|’black’<br>foreground|前景色|’red’<br>background|字背景色,可能是背景层水印等|’yellow’/在content之前赋值就可以.<br>lineHeight|行高|1<br>decoration|下划线/删除线/上划线|underline/lineThrough/overline<br>decorationColor|和decoration,给线配色|green<br>decorationStyle|和decoration,虚线/点/双线/波浪线|dashed/dotted/double/wavy<br>characterSpacing|字母间距|<br>image|图片|base64字符串/url<br>width|图宽|200<br>height|图高|100<br>fit|图片位置适应|[100,100]<br>toc|目录<br>tocItem|目录|true,id数组<br>numberStyle|目录页数样式|{bold:true}<br>pageSize|pdf成尺寸|’A4’/‘B5’/‘C5’/‘2A0’/‘RA3’/‘SRA2’/‘LETTER’/‘LEGAL’…<br>pageMargins|pdf外边框,数组|[40,60,40,60]<br>pageBreak|内容在上一页或者下一页|’before’/‘after’<br>pageOrientation|文档方向,横向/纵向|landscape/portrait<br>link|超链接|’<a href="http://xxx.com" target="_blank" rel="external">http://xxx.com</a>‘<br>linkToPage|页面跳转,跳转到第二页|2<br>noWrap|单元格不换行|true/false<br>preserveLeadingSpaces|段落|true<br>‘font’|<br>‘fontSize’|<br>‘bold’|<br>‘italics’|<br>‘alignment’|<br>‘color’|<br>‘columnGap’|<br>‘fillColor’|<br>‘decoration’|<br>‘decorationStyle’|<br>‘decorationColor’|<br>‘background’|<br>‘lineHeight’|<br>‘characterSpacing’|<br>‘noWrap’|<br>‘markerColor’|<br>‘leadingIndent’|<br>//‘tableCellPadding’|未实现<br>// ‘cellBorder’|未实现<br>// ‘headerCellBorder’|未实现<br>// ‘oddRowCellBorder’|未实现<br>// ‘evenRowCellBorder’|未实现<br>// ‘tableBorder’|未实现</p>
+<h1 id="解释-举例"><a href="#解释-举例" class="headerlink" title="| 解释| 举例"></a>| 解释| 举例</h1><p>—-|—-|—-<br>font|单独定义字体|’msyh’<br>fontSize|字号|18<br>margin|外边距,数组|[0,0,0,10]<br>alignment|位置|left/right/center<br>color|字色|’black’<br>foreground|前景色|’red’<br>background|字背景色,可能是背景层水印等|’yellow’/在content之前赋值就可以.<br>lineHeight|行高|1<br>decoration|下划线/删除线/上划线|underline/lineThrough/overline<br>decorationColor|和decoration,给线配色|green<br>decorationStyle|和decoration,虚线/点/双线/波浪线|dashed/dotted/double/wavy<br>characterSpacing|字母间距|<br>image|图片|base64字符串/url<br>width|图宽|200<br>height|图高|100<br>fit|图片位置适应|[100,100]<br>toc|目录<br>tocItem|目录|true,id数组<br>numberStyle|目录页数样式|{bold:true}<br>pageSize|pdf成尺寸|’A4’/‘B5’/‘C5’/‘2A0’/‘RA3’/‘SRA2’/‘LETTER’/‘LEGAL’…<br>pageMargins|pdf外边框,数组|[40,60,40,60]<br>pageBreak|内容在上一页或者下一页|’before’/‘after’<br>pageOrientation|文档方向,横向/纵向|landscape/portrait<br>link|超链接|’<a href="http://xxx.com" target="_blank" rel="noopener">http://xxx.com</a>‘<br>linkToPage|页面跳转,跳转到第二页|2<br>noWrap|单元格不换行|true/false<br>preserveLeadingSpaces|段落|true<br>‘font’|<br>‘fontSize’|<br>‘bold’|<br>‘italics’|<br>‘alignment’|<br>‘color’|<br>‘columnGap’|<br>‘fillColor’|<br>‘decoration’|<br>‘decorationStyle’|<br>‘decorationColor’|<br>‘background’|<br>‘lineHeight’|<br>‘characterSpacing’|<br>‘noWrap’|<br>‘markerColor’|<br>‘leadingIndent’|<br>//‘tableCellPadding’|未实现<br>// ‘cellBorder’|未实现<br>// ‘headerCellBorder’|未实现<br>// ‘oddRowCellBorder’|未实现<br>// ‘evenRowCellBorder’|未实现<br>// ‘tableBorder’|未实现</p>
 <ul>
 <li>docDefinition可能出现的内容</li>
 </ul>
@@ -210,7 +211,7 @@ gulp buildFonts // 具体看根目录下的gulpfile.js文件配置.
 <li>pdf 的信息</li>
 </ul>
 <p>在docContent里加 info</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> docDefinition = &#123;</div><div class="line">  <span class="attr">info</span>: &#123;</div><div class="line">	<span class="attr">title</span>: <span class="string">'awesome Document'</span>,</div><div class="line">	<span class="attr">author</span>: <span class="string">'john doe'</span>,</div><div class="line">	<span class="attr">subject</span>: <span class="string">'subject of document'</span>,</div><div class="line">	<span class="attr">keywords</span>: <span class="string">'keywords for document'</span>,</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">content</span>:  <span class="string">'This is an sample PDF printed with pdfMake'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> docDefinition = &#123;</span><br><span class="line">  info: &#123;</span><br><span class="line">	title: <span class="string">'awesome Document'</span>,</span><br><span class="line">	author: <span class="string">'john doe'</span>,</span><br><span class="line">	subject: <span class="string">'subject of document'</span>,</span><br><span class="line">	keywords: <span class="string">'keywords for document'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  content:  <span class="string">'This is an sample PDF printed with pdfMake'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
 <p>本来再想什么办法可以保证图片不失真,但是就这个vftfonts.js文件就放弃了,没人愿意下载20m的文件的,还是在后端处理吧.</p>
 <h2 id="nodejs插件html-pdf-不推荐"><a href="#nodejs插件html-pdf-不推荐" class="headerlink" title="nodejs插件html-pdf,不推荐"></a>nodejs插件html-pdf,不推荐</h2><blockquote>
@@ -225,12 +226,12 @@ html-pdf index.html abc.pdf
 express htmltoapp // 项目名htmltoapp
 cd htmlapp
 npm i html-pdf --save
-</code></pre><p>然后找个地方写代码.比如在routes/index.js里<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</div><div class="line"><span class="keyword">var</span> router = express.Router();</div><div class="line"><span class="keyword">var</span> pdf = <span class="built_in">require</span>(<span class="string">'html-pdf'</span>);</div><div class="line"></div><div class="line">router.get(<span class="string">'/url'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</div><div class="line"> res.render(<span class="string">'html'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,html</span>)</span>&#123;</div><div class="line">  html2Pdf(html,<span class="string">'html.pdf'</span>);</div><div class="line">  <span class="comment">//........</span></div><div class="line"> &#125;);</div><div class="line">&#125;)；</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 这种方法没有渲染样式和图片</div><div class="line"> * @param url</div><div class="line"> * @param pdfName</div><div class="line"> */</div><div class="line">exports.html2Pdf = <span class="function"><span class="keyword">function</span>(<span class="params">html,pdfName</span>)</span>&#123;</div><div class="line"> <span class="keyword">var</span> options = &#123;<span class="attr">format</span>:<span class="literal">true</span>&#125;;</div><div class="line"> pdf.create(html,options).toFile(__dirname+<span class="string">'/'</span>+pdfName,<span class="function"><span class="keyword">function</span>(<span class="params">err,res</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> <span class="built_in">console</span>.log(err);</div><div class="line">  <span class="built_in">console</span>.log(res);</div><div class="line"> &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+</code></pre><p>然后找个地方写代码.比如在routes/index.js里<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> router = express.Router();</span><br><span class="line"><span class="keyword">var</span> pdf = <span class="built_in">require</span>(<span class="string">'html-pdf'</span>);</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/url'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line"> res.render(<span class="string">'html'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,html</span>)</span>&#123;</span><br><span class="line">  html2Pdf(html,<span class="string">'html.pdf'</span>);</span><br><span class="line">  <span class="comment">//........</span></span><br><span class="line"> &#125;);</span><br><span class="line">&#125;)；</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 这种方法没有渲染样式和图片</span></span><br><span class="line"><span class="comment"> * @param url</span></span><br><span class="line"><span class="comment"> * @param pdfName</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">exports.html2Pdf = <span class="function"><span class="keyword">function</span>(<span class="params">html,pdfName</span>)</span>&#123;</span><br><span class="line"> <span class="keyword">var</span> options = &#123;<span class="attr">format</span>:<span class="literal">true</span>&#125;;</span><br><span class="line"> pdf.create(html,options).toFile(__dirname+<span class="string">'/'</span>+pdfName,<span class="function"><span class="keyword">function</span>(<span class="params">err,res</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> <span class="built_in">console</span>.log(err);</span><br><span class="line">  <span class="built_in">console</span>.log(res);</span><br><span class="line"> &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <p><code>会丢掉样式和图片</code>…这也没什么用.</p>
-<h2 id="nodejs插件wkhtmltopdf"><a href="#nodejs插件wkhtmltopdf" class="headerlink" title="nodejs插件wkhtmltopdf"></a>nodejs插件<a href="https://github.com/wkhtmltopdf/wkhtmltopdf" target="_blank" rel="external">wkhtmltopdf</a></h2><p>也可以全局转换,安装比较麻烦,看<a href="https://wkhtmltopdf.org/downloads.html" target="_blank" rel="external">官网</a>,先装一个环境,然后就可以用命令操作了</p>
+<h2 id="nodejs插件wkhtmltopdf"><a href="#nodejs插件wkhtmltopdf" class="headerlink" title="nodejs插件wkhtmltopdf"></a>nodejs插件<a href="https://github.com/wkhtmltopdf/wkhtmltopdf" target="_blank" rel="noopener">wkhtmltopdf</a></h2><p>也可以全局转换,安装比较麻烦,看<a href="https://wkhtmltopdf.org/downloads.html" target="_blank" rel="noopener">官网</a>,先装一个环境,然后就可以用命令操作了</p>
 <pre><code>wkhtmltopdf http://baidu.com/ out.pdf
 </code></pre><p>再看代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> wkhtmltopdf = <span class="built_in">require</span>(<span class="string">'wkhtmltopdf'</span>);  </div><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);  </div><div class="line">  </div><div class="line"><span class="comment">// URL  </span></div><div class="line">wkhtmltopdf(<span class="string">'http://huqiji.iteye.com/'</span>, &#123; <span class="attr">pageSize</span>: <span class="string">'letter'</span> &#125;)  </div><div class="line">  .pipe(fs.createWriteStream(<span class="string">'out.pdf'</span>));  </div><div class="line">  </div><div class="line"><span class="comment">// HTML  </span></div><div class="line">wkhtmltopdf(<span class="string">'&lt;h1&gt;Test&lt;/h1&gt;&lt;p&gt;Hello world&lt;/p&gt;'</span>)  </div><div class="line">  .pipe(res);  </div><div class="line">  </div><div class="line"><span class="comment">// output to a file directly  </span></div><div class="line">wkhtmltopdf(<span class="string">'http://huqiji.iteye.com/'</span>, &#123; <span class="attr">output</span>: <span class="string">'out.pdf'</span> &#125;);  </div><div class="line">  </div><div class="line"><span class="comment">// Optional callback  </span></div><div class="line">wkhtmltopdf(<span class="string">'http://huqiji.iteye.com/'</span>, &#123; <span class="attr">pageSize</span>: <span class="string">'letter'</span> &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">code, signal</span>) </span>&#123;  </div><div class="line">&#125;);  </div><div class="line">wkhtmltopdf(<span class="string">'http://huqiji.iteye.com/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">code, signal</span>) </span>&#123;  </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> wkhtmltopdf = <span class="built_in">require</span>(<span class="string">'wkhtmltopdf'</span>);  </span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// URL  </span></span><br><span class="line">wkhtmltopdf(<span class="string">'http://huqiji.iteye.com/'</span>, &#123; <span class="attr">pageSize</span>: <span class="string">'letter'</span> &#125;)  </span><br><span class="line">  .pipe(fs.createWriteStream(<span class="string">'out.pdf'</span>));  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// HTML  </span></span><br><span class="line">wkhtmltopdf(<span class="string">'&lt;h1&gt;Test&lt;/h1&gt;&lt;p&gt;Hello world&lt;/p&gt;'</span>)  </span><br><span class="line">  .pipe(res);  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// output to a file directly  </span></span><br><span class="line">wkhtmltopdf(<span class="string">'http://huqiji.iteye.com/'</span>, &#123; <span class="attr">output</span>: <span class="string">'out.pdf'</span> &#125;);  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// Optional callback  </span></span><br><span class="line">wkhtmltopdf(<span class="string">'http://huqiji.iteye.com/'</span>, &#123; <span class="attr">pageSize</span>: <span class="string">'letter'</span> &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">code, signal</span>) </span>&#123;  </span><br><span class="line">&#125;);  </span><br><span class="line">wkhtmltopdf(<span class="string">'http://huqiji.iteye.com/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">code, signal</span>) </span>&#123;  </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>可以了..github上有多语言的版本</p>
 <blockquote>
 <p>nodejs插件 Phantomjs</p>
@@ -242,7 +243,7 @@ node版本5.X的：
 npm install phantom@3 –save
 node版本4.X及以下的：
 npm install phantom@2 –save
-</code></pre><p><a href="http://www.cnblogs.com/whitewolf/p/3468120.html" target="_blank" rel="external">看这里</a></p>
+</code></pre><p><a href="http://www.cnblogs.com/whitewolf/p/3468120.html" target="_blank" rel="noopener">看这里</a></p>
 
       
 
@@ -483,11 +484,15 @@ npm install phantom@2 –save
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -499,11 +504,19 @@ npm install phantom@2 –save
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -519,19 +532,11 @@ npm install phantom@2 –save
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -547,7 +552,11 @@ npm install phantom@2 –save
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">template</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -559,11 +568,11 @@ npm install phantom@2 –save
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,7 +584,7 @@ npm install phantom@2 –save
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
+                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,11 +592,19 @@ npm install phantom@2 –save
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">gin</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -632,10 +649,6 @@ npm install phantom@2 –save
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>

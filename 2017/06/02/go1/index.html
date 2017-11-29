@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/06/02/go1/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="关于发布,mac开发,部署到centos7 我的测试是在src下,一个单main.go文件和一个静态文件夹,步骤如下">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-11-03T02:43:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go1">
@@ -176,8 +177,8 @@ CGO_ENABLED=0 GOOS=windows GOARCH=386 go build main.go // 打包win环境 32位
 </code></pre><blockquote>
 <p>静态文件的处理,无论如何,静态文件目录需要<code>绝对路径</code>,这样就需要在开发环境调试通以后,把路径改成绝对路径.这个获取绝对路径的代码是这样的:</p>
 </blockquote>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取绝对路径</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">getPath</span><span class="params">()</span> <span class="title">string</span></span> &#123;</div><div class="line">	file, _ := exec.LookPath(os.Args[<span class="number">0</span>])</div><div class="line">	path, _ := filepath.Abs(file)</div><div class="line">	index := strings.LastIndex(path, <span class="keyword">string</span>(os.PathSeparator))</div><div class="line">	ret := path[:index]</div><div class="line">	<span class="keyword">return</span> ret</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>再记录个获取随机数<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// RandomInt 0~5的随机数</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">RandomInt</span><span class="params">()</span> <span class="title">int</span></span> &#123;</div><div class="line">	o := rand.New(rand.NewSource(time.Now().UnixNano()))</div><div class="line">	num := o.Intn(<span class="number">6</span>)</div><div class="line">	<span class="keyword">return</span> num</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取绝对路径</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getPath</span><span class="params">()</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	file, _ := exec.LookPath(os.Args[<span class="number">0</span>])</span><br><span class="line">	path, _ := filepath.Abs(file)</span><br><span class="line">	index := strings.LastIndex(path, <span class="keyword">string</span>(os.PathSeparator))</span><br><span class="line">	ret := path[:index]</span><br><span class="line">	<span class="keyword">return</span> ret</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再记录个获取随机数<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// RandomInt 0~5的随机数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">RandomInt</span><span class="params">()</span> <span class="title">int</span></span> &#123;</span><br><span class="line">	o := rand.New(rand.NewSource(time.Now().UnixNano()))</span><br><span class="line">	num := o.Intn(<span class="number">6</span>)</span><br><span class="line">	<span class="keyword">return</span> num</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li><p>go run main.go 执行生成的二进制文件在一个随机目录里,停了就删掉了…所以静态文件目录只能是相对路径.</p>
 </li>
@@ -471,11 +472,15 @@ supervisorctl&gt; reload
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -487,11 +492,19 @@ supervisorctl&gt; reload
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -507,19 +520,11 @@ supervisorctl&gt; reload
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -535,7 +540,11 @@ supervisorctl&gt; reload
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">template</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -547,11 +556,11 @@ supervisorctl&gt; reload
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -563,7 +572,7 @@ supervisorctl&gt; reload
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
+                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,11 +580,19 @@ supervisorctl&gt; reload
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">gin</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -620,10 +637,6 @@ supervisorctl&gt; reload
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>

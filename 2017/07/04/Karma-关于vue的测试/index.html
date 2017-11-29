@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/07/04/Karma-关于vue的测试/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="前端开发,为了稳定,需要写个测试. 这里说一些基础概念.">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-07-05T03:32:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Karma-关于vue的测试">
@@ -191,7 +192,7 @@
 <p>mocha 简单教程</p>
 </blockquote>
 <ol>
-<li>大致的最简单写法<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 写引用 </span></div><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span> </div><div class="line"><span class="keyword">import</span> MyComponent <span class="keyword">from</span> <span class="string">'~/hello/hello.vue'</span></div><div class="line"></div><div class="line"><span class="comment">// 写函数,官网上抄的</span></div><div class="line"></div><div class="line"><span class="comment">// helper function that mounts and returns the rendered text</span></div><div class="line"><span class="comment">// 挂载元素并返回已渲染的文本</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRenderedText</span> (<span class="params">Component, propsData</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> Ctor = Vue.extend(Component)</div><div class="line">  <span class="keyword">const</span> vm = <span class="keyword">new</span> Ctor(&#123; <span class="attr">propsData</span>: propsData &#125;).$mount()</div><div class="line">  <span class="keyword">return</span> vm.$el.textContent</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 写test suite, 就是这个describe</span></div><div class="line"><span class="comment">// 嵌套写test case, 就是it</span></div><div class="line"><span class="comment">// 嵌套里写断言 expect </span></div><div class="line"><span class="comment">// 大概意思就是,断言里的结果要和toBe里的一致才算测试通过.</span></div><div class="line">describe(<span class="string">'这里写一个说明'</span>, () =&gt; &#123;</div><div class="line">  it(<span class="string">'renders correctly with different props'</span>, () =&gt; &#123;</div><div class="line">    expect(getRenderedText(MyComponent, &#123;</div><div class="line">      <span class="attr">msg</span>: <span class="string">'Hello'</span></div><div class="line">    &#125;)).toBe(<span class="string">'Hello'</span>)</div><div class="line">    expect(getRenderedText(MyComponent, &#123;</div><div class="line">      <span class="attr">msg</span>: <span class="string">'Bye'</span></div><div class="line">    &#125;)).toBe(<span class="string">'Bye'</span>)</div><div class="line">  &#125;)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">describe(<span class="string">'这里是另一个说明'</span>, () =&gt; &#123;</div><div class="line">  <span class="comment">// 检查原始组件选项</span></div><div class="line">  it(<span class="string">'has a created hook'</span>, () =&gt; &#123;</div><div class="line">    expect(<span class="keyword">typeof</span> MyComponent.created).toBe(<span class="string">'function'</span>)</div><div class="line">  &#125;)</div><div class="line">  <span class="comment">// 评估原始组件选项中的函数的结果</span></div><div class="line">  it(<span class="string">'sets the correct default data'</span>, () =&gt; &#123;</div><div class="line">    expect(<span class="keyword">typeof</span> MyComponent.data).toBe(<span class="string">'function'</span>)</div><div class="line">    <span class="keyword">const</span> defaultData = MyComponent.data()</div><div class="line">    expect(defaultData.message).toBe(<span class="string">'hello!'</span>)</div><div class="line">  &#125;)</div><div class="line">  <span class="comment">// 检查mount中的组件实例</span></div><div class="line">  it(<span class="string">'correctly sets the message when created'</span>, () =&gt; &#123;</div><div class="line">    <span class="keyword">const</span> vm = <span class="keyword">new</span> Vue(MyComponent).$mount()</div><div class="line">    expect(vm.message).toBe(<span class="string">'bye!'</span>)</div><div class="line">  &#125;)</div><div class="line">  <span class="comment">// 创建一个实例并检查渲染输出</span></div><div class="line">  it(<span class="string">'renders the correct message'</span>, () =&gt; &#123;</div><div class="line">    <span class="keyword">const</span> Ctor = Vue.extend(MyComponent)</div><div class="line">    <span class="keyword">const</span> vm = <span class="keyword">new</span> Ctor().$mount()</div><div class="line">    expect(vm.$el.textContent).toBe(<span class="string">'bye!'</span>)</div><div class="line">  &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<li>大致的最简单写法<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 写引用 </span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span> </span><br><span class="line"><span class="keyword">import</span> MyComponent <span class="keyword">from</span> <span class="string">'~/hello/hello.vue'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 写函数,官网上抄的</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// helper function that mounts and returns the rendered text</span></span><br><span class="line"><span class="comment">// 挂载元素并返回已渲染的文本</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRenderedText</span> (<span class="params">Component, propsData</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> Ctor = Vue.extend(Component)</span><br><span class="line">  <span class="keyword">const</span> vm = <span class="keyword">new</span> Ctor(&#123; <span class="attr">propsData</span>: propsData &#125;).$mount()</span><br><span class="line">  <span class="keyword">return</span> vm.$el.textContent</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 写test suite, 就是这个describe</span></span><br><span class="line"><span class="comment">// 嵌套写test case, 就是it</span></span><br><span class="line"><span class="comment">// 嵌套里写断言 expect </span></span><br><span class="line"><span class="comment">// 大概意思就是,断言里的结果要和toBe里的一致才算测试通过.</span></span><br><span class="line">describe(<span class="string">'这里写一个说明'</span>, () =&gt; &#123;</span><br><span class="line">  it(<span class="string">'renders correctly with different props'</span>, () =&gt; &#123;</span><br><span class="line">    expect(getRenderedText(MyComponent, &#123;</span><br><span class="line">      msg: <span class="string">'Hello'</span></span><br><span class="line">    &#125;)).toBe(<span class="string">'Hello'</span>)</span><br><span class="line">    expect(getRenderedText(MyComponent, &#123;</span><br><span class="line">      msg: <span class="string">'Bye'</span></span><br><span class="line">    &#125;)).toBe(<span class="string">'Bye'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">describe(<span class="string">'这里是另一个说明'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="comment">// 检查原始组件选项</span></span><br><span class="line">  it(<span class="string">'has a created hook'</span>, () =&gt; &#123;</span><br><span class="line">    expect(<span class="keyword">typeof</span> MyComponent.created).toBe(<span class="string">'function'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="comment">// 评估原始组件选项中的函数的结果</span></span><br><span class="line">  it(<span class="string">'sets the correct default data'</span>, () =&gt; &#123;</span><br><span class="line">    expect(<span class="keyword">typeof</span> MyComponent.data).toBe(<span class="string">'function'</span>)</span><br><span class="line">    <span class="keyword">const</span> defaultData = MyComponent.data()</span><br><span class="line">    expect(defaultData.message).toBe(<span class="string">'hello!'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="comment">// 检查mount中的组件实例</span></span><br><span class="line">  it(<span class="string">'correctly sets the message when created'</span>, () =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> vm = <span class="keyword">new</span> Vue(MyComponent).$mount()</span><br><span class="line">    expect(vm.message).toBe(<span class="string">'bye!'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="comment">// 创建一个实例并检查渲染输出</span></span><br><span class="line">  it(<span class="string">'renders the correct message'</span>, () =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> Ctor = Vue.extend(MyComponent)</span><br><span class="line">    <span class="keyword">const</span> vm = <span class="keyword">new</span> Ctor().$mount()</span><br><span class="line">    expect(vm.$el.textContent).toBe(<span class="string">'bye!'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>然而这是错的,也不知道是版本还是什么,toBe要写成to.equal,不是toBe,也不是to.be.equal,这样就通过了</p>
@@ -212,7 +213,7 @@
 </ol>
 </blockquote>
 <p>另外:$mount() 的功能,是手动挂载,就是当vue实例没有el属性时,该实例就没有挂载到dom中.大概也就在测试里用了.</p>
-<p>假如需要延迟挂载,可以在之后手动调用vm.$mount()来挂载.例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;app&quot;&gt;  </div><div class="line">    &#123;&#123;a&#125;&#125;  </div><div class="line">&lt;/div&gt;  </div><div class="line">&lt;button onclick=&quot;test()&quot;&gt;挂载&lt;/button&gt;  </div><div class="line">&lt;script&gt;  </div><div class="line">    var obj = &#123;a: 1&#125;  </div><div class="line">    var vm = new Vue(&#123;  </div><div class="line">        data: obj  </div><div class="line">    &#125;)  </div><div class="line">    function test() &#123;  </div><div class="line">        vm.$mount(&quot;#app&quot;);  </div><div class="line">    &#125;  </div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>假如需要延迟挂载,可以在之后手动调用vm.$mount()来挂载.例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;  </span><br><span class="line">    &#123;&#123;a&#125;&#125;  </span><br><span class="line">&lt;/div&gt;  </span><br><span class="line">&lt;button onclick=&quot;test()&quot;&gt;挂载&lt;/button&gt;  </span><br><span class="line">&lt;script&gt;  </span><br><span class="line">    var obj = &#123;a: 1&#125;  </span><br><span class="line">    var vm = new Vue(&#123;  </span><br><span class="line">        data: obj  </span><br><span class="line">    &#125;)  </span><br><span class="line">    function test() &#123;  </span><br><span class="line">        vm.$mount(&quot;#app&quot;);  </span><br><span class="line">    &#125;  </span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
 <hr>
 <blockquote>
 <p>输出html的报告 mochawesome</p>
@@ -457,11 +458,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -473,11 +478,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,19 +506,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -521,7 +526,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">template</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -533,11 +542,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -549,7 +558,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
+                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -557,11 +566,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">gin</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,10 +623,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>

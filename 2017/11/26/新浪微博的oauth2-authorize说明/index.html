@@ -15,7 +15,8 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/11/26/新浪微博的oauth2-authorize说明/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="OAuth2的authorize接口">
-<meta property="og:updated_time" content="2017-11-26T02:06:18.000Z">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-26T02:19:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="新浪微博的oauth2_authorize说明">
 <meta name="twitter:description" content="OAuth2的authorize接口">
@@ -171,7 +172,7 @@
 <blockquote>
 <p>URL</p>
 </blockquote>
-<p><a href="https://api.weibo.com/oauth2/authorize" target="_blank" rel="external">https://api.weibo.com/oauth2/authorize</a></p>
+<p><a href="https://api.weibo.com/oauth2/authorize" target="_blank" rel="noopener">https://api.weibo.com/oauth2/authorize</a></p>
 <blockquote>
 <p>HTTP请求方式</p>
 </blockquote>
@@ -202,7 +203,7 @@
 <td>scope</td>
 <td>false</td>
 <td>string</td>
-<td>申请scope权限所需参数，可一次申请多个scope权限，用逗号分隔。使用文档</td>
+<td>申请scope权限所需参数，可一次申请多个scope权限，用逗号分隔。</td>
 </tr>
 <tr>
 <td>state</td>
@@ -247,7 +248,7 @@
 </tr>
 <tr>
 <td>mobile</td>
-<td>移动终端的授权页面，适用于支持html5的手机。注：使用此版授权页请用 <a href="https://open.weibo.cn/oauth2/authorize" target="_blank" rel="external">https://open.weibo.cn/oauth2/authorize</a> 授权接口</td>
+<td>移动终端的授权页面，适用于支持html5的手机。注：使用此版授权页请用 <a href="https://open.weibo.cn/oauth2/authorize" target="_blank" rel="noopener">https://open.weibo.cn/oauth2/authorize</a> 授权接口</td>
 </tr>
 <tr>
 <td>wap</td>
@@ -290,8 +291,106 @@
 <blockquote>
 <p>示例</p>
 </blockquote>
-<p>//请求<br><a href="https://api.weibo.com/oauth2/authorize?client_id=123050457758183&amp;redirect_uri=http://www.example.com/response&amp;response_type=code" target="_blank" rel="external">https://api.weibo.com/oauth2/authorize?client_id=123050457758183&amp;redirect_uri=http://www.example.com/response&amp;response_type=code</a></p>
-<p>//同意授权后会重定向<br><a href="http://www.example.com/response&amp;code=CODE" target="_blank" rel="external">http://www.example.com/response&amp;code=CODE</a></p>
+<p>//请求<br><a href="https://api.weibo.com/oauth2/authorize?client_id=123050457758183&amp;redirect_uri=http://www.example.com/response&amp;response_type=code" target="_blank" rel="noopener">https://api.weibo.com/oauth2/authorize?client_id=123050457758183&amp;redirect_uri=http://www.example.com/response&amp;response_type=code</a></p>
+<p>//同意授权后会重定向<br><a href="http://www.example.com/response&amp;code=CODE" target="_blank" rel="noopener">http://www.example.com/response&amp;code=CODE</a></p>
+<hr>
+<blockquote>
+<p>参数 scope 说明 </p>
+</blockquote>
+<p>scope是OAuth2.0授权机制中authorize接口的一个参数。</p>
+<p>通过scope，平台将开放更多的微博核心功能给开发者，同时也加强用户隐私保护，提升了用户体验，用户在新OAuth2.0授权页中有权利选择赋予应用的功能。</p>
+<blockquote>
+<p>注意事项</p>
+</blockquote>
+<ul>
+<li><p>1:开发者需要先在应用控制台的接口管理中申请到相关的接口，才能使用scope功能，如果没有接口权限，调用时候会遇到10014错误。</p>
+</li>
+<li><p>2:满足上一条后，开发者向用户请求scope权限，就会出现高级授权页面(如下图)，当用户允许后就能正常使用接口，反之会遇到10032错误。</p>
+</li>
+</ul>
+<blockquote>
+<p>scope权限接口</p>
+</blockquote>
+<p>可一次申请多个scope权限，用逗号分隔。</p>
+<table>
+<thead>
+<tr>
+<th>scope参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>all</td>
+<td>请求下列所有scope权限</td>
+</tr>
+<tr>
+<td>email</td>
+<td>用户的联系邮箱，接口文档</td>
+</tr>
+<tr>
+<td>direct_messages_write</td>
+<td>私信发送接口，接口文档</td>
+</tr>
+<tr>
+<td>direct_messages_read</td>
+<td>私信读取接口，接口文档</td>
+</tr>
+<tr>
+<td>invitation_write</td>
+<td>邀请发送接口，接口文档</td>
+</tr>
+<tr>
+<td>friendships_groups_read</td>
+<td>好友分组读取接口组，接口文档</td>
+</tr>
+<tr>
+<td>friendships_groups_write</td>
+<td>好友分组写入接口组，接口文档</td>
+</tr>
+<tr>
+<td>statuses_to_me_read</td>
+<td>定向微博读取接口组，接口文档</td>
+</tr>
+<tr>
+<td>follow_app_official_microblog</td>
+<td>关注应用官方微博，该参数不对应具体接口，只需在应用控制台填写官方帐号即可。填写的路径：我的应用-选择自己的应用-应用信息-基本信息-官方运营账号（默认值是应用开发者帐号）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>相关错误代码</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>错误码(error)</th>
+<th>错误编号(error_code)</th>
+<th>错误描述(error_description)</th>
+<th>解决方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Insufficient app permissions</td>
+<td>10014</td>
+<td>第三方应用访问api接口权限受限制</td>
+<td>应用没有接口的权限，需要在应用控制台接口管理那在线申请</td>
+</tr>
+<tr>
+<td>access_denied</td>
+<td>10032</td>
+<td>用户或授权服务器拒绝授予数据访问权限</td>
+<td>重新向用户申请scope权限</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<blockquote>
+<p>相关地址</p>
+</blockquote>
+<p><a href="http://open.weibo.com/wiki/Oauth2/authorize" target="_blank" rel="noopener">http://open.weibo.com/wiki/Oauth2/authorize</a></p>
+<p><a href="http://open.weibo.com/wiki/Scope" target="_blank" rel="noopener">http://open.weibo.com/wiki/Scope</a></p>
 
       
 
@@ -395,6 +494,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/11/29/关于html5的动画/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          关于html5的动画
+        
+      </div>
+    </a>
   
   
     <a href="/2017/11/25/go的oauth2-server配置说明/" id="article-nav-older" class="article-nav-link-wrap">
@@ -519,11 +627,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -535,11 +647,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,19 +675,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,7 +695,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">template</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -595,11 +711,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,7 +727,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
+                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,11 +735,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">gin</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -668,10 +792,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>

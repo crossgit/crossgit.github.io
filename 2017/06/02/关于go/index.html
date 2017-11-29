@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/06/02/关于go/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="关于go没错,说的就是golang…的调试配置,配置完这篇的内容后,又有新的问题,总之是没通,没结果,和原装后自定义的配置有冲突">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-08-30T03:49:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于go">
@@ -192,7 +193,7 @@
 <p>gopath路径配置到了codego 这个go代码文件夹的目录里,在这个目录里再创建多个go项目,每个go项目在执行<code>go get xxx</code>得的的包,将放在上一级目录的src文件夹内.</p>
 <p>也就是说,这些下载的包是共享的,在codego下的别的项目直接使用就可以了.</p>
 <p>记录下vscode的settings.json</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"files.autoSave"</span>: <span class="string">"onFocusChange"</span>,</div><div class="line">    <span class="attr">"go.buildOnSave"</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">"go.lintOnSave"</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">"go.vetOnSave"</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">"go.buildFlags"</span>: [],</div><div class="line">    <span class="attr">"go.lintFlags"</span>: [],</div><div class="line">    <span class="attr">"go.vetFlags"</span>: [],</div><div class="line">    <span class="attr">"go.useCodeSnippetsOnFunctionSuggest"</span>: <span class="literal">false</span>,</div><div class="line">    <span class="attr">"go.formatOnSave"</span>: <span class="literal">false</span>,</div><div class="line">    <span class="attr">"go.formatTool"</span>: <span class="string">"goreturns"</span>,</div><div class="line">    <span class="attr">"go.goroot"</span>: <span class="string">"/usr/local/go"</span>,</div><div class="line">    <span class="attr">"go.gopath"</span>: <span class="string">"/Users/wxj/codego"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"files.autoSave"</span>: <span class="string">"onFocusChange"</span>,</span><br><span class="line">    <span class="attr">"go.buildOnSave"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"go.lintOnSave"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"go.vetOnSave"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"go.buildFlags"</span>: [],</span><br><span class="line">    <span class="attr">"go.lintFlags"</span>: [],</span><br><span class="line">    <span class="attr">"go.vetFlags"</span>: [],</span><br><span class="line">    <span class="attr">"go.useCodeSnippetsOnFunctionSuggest"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"go.formatOnSave"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"go.formatTool"</span>: <span class="string">"goreturns"</span>,</span><br><span class="line">    <span class="attr">"go.goroot"</span>: <span class="string">"/usr/local/go"</span>,</span><br><span class="line">    <span class="attr">"go.gopath"</span>: <span class="string">"/Users/wxj/codego"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其中:formatOnSave 保存格式化有点缺陷,因为习惯了写几句代码就保存,如果格式化,会把引用的但是没来得及用的包,所以把这个改成false,等全部写好,再格式化 <code>shift+cmd+f</code></p>
 
       
@@ -441,11 +442,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -457,11 +462,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -477,19 +490,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,7 +510,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">template</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -517,11 +526,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -533,7 +542,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
+                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -541,11 +550,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">gin</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,10 +607,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>

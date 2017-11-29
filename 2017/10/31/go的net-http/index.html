@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/10/31/go的net-http/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="net/http包">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-10-31T08:09:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go的net&#x2F;http">
@@ -181,32 +182,32 @@
 <h2 id="http服务端"><a href="#http服务端" class="headerlink" title="http服务端"></a>http服务端</h2><h3 id="处理http与https"><a href="#处理http与https" class="headerlink" title="处理http与https"></a>处理http与https</h3><ul>
 <li>处理http请求 http.ListenAndServe(addr,handler) error</li>
 </ul>
-<p>第一个参数监听地址<br>第二个参数服务端处理程序<br>或<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">s := &amp;http.Server&#123;</div><div class="line">    Addr:           <span class="string">":8080"</span>,</div><div class="line">    Handler:        myHander,</div><div class="line">    ReadTimeout:    <span class="number">10</span> * time.Second,</div><div class="line">    WriteTimeout:   <span class="number">10</span> * time.Second,</div><div class="line">    MaxHeaderBytes: <span class="number">1</span> &lt;&lt; <span class="number">20</span>,</div><div class="line">&#125;</div><div class="line"></div><div class="line">log.Fatal(s.ListenAndServe())</div></pre></td></tr></table></figure></p>
+<p>第一个参数监听地址<br>第二个参数服务端处理程序<br>或<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">s := &amp;http.Server&#123;</span><br><span class="line">    Addr:           <span class="string">":8080"</span>,</span><br><span class="line">    Handler:        myHander,</span><br><span class="line">    ReadTimeout:    <span class="number">10</span> * time.Second,</span><br><span class="line">    WriteTimeout:   <span class="number">10</span> * time.Second,</span><br><span class="line">    MaxHeaderBytes: <span class="number">1</span> &lt;&lt; <span class="number">20</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">log.Fatal(s.ListenAndServe())</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li>处理https请求 http.ListenAndServeTLS()<figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">http.Handle(<span class="string">"/foo"</span>, fooHandler)</div><div class="line">http.HandleFunc(<span class="string">"/bar"</span>, <span class="function"><span class="keyword">func</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</div><div class="line">fmt.Fprintf(w, <span class="string">"Hello, %q"</span>, html.EscapeString(r.URL.Path)) &#125;)</div><div class="line">log.Fatal(http.ListenAndServeTLS(<span class="string">":10443"</span>, <span class="string">"cert.pem"</span>, <span class="string">"key.pem"</span>, <span class="literal">nil</span>))</div></pre></td></tr></table></figure>
+<li>处理https请求 http.ListenAndServeTLS()<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http.Handle(<span class="string">"/foo"</span>, fooHandler)</span><br><span class="line">http.HandleFunc(<span class="string">"/bar"</span>, <span class="function"><span class="keyword">func</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">fmt.Fprintf(w, <span class="string">"Hello, %q"</span>, html.EscapeString(r.URL.Path)) &#125;)</span><br><span class="line">log.Fatal(http.ListenAndServeTLS(<span class="string">":10443"</span>, <span class="string">"cert.pem"</span>, <span class="string">"key.pem"</span>, <span class="literal">nil</span>))</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>或者是:<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ss := &amp;http.Server&#123;</div><div class="line">    Addr:           <span class="string">":10443"</span>,</div><div class="line">    Handler:        myHandler, </div><div class="line">    ReadTimeout:    <span class="number">10</span> * time.Second,</div><div class="line">    WriteTimeout:   <span class="number">10</span> * time.Second,</div><div class="line">    MaxHeaderBytes: <span class="number">1</span> &lt;&lt; <span class="number">20</span>,</div><div class="line"> &#125;</div><div class="line">log.Fatal(ss.ListenAndServeTLS(<span class="string">"cert.pem"</span>, <span class="string">"key.pem"</span>))</div></pre></td></tr></table></figure></p>
+<p>或者是:<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ss := &amp;http.Server&#123;</span><br><span class="line">    Addr:           <span class="string">":10443"</span>,</span><br><span class="line">    Handler:        myHandler, </span><br><span class="line">    ReadTimeout:    <span class="number">10</span> * time.Second,</span><br><span class="line">    WriteTimeout:   <span class="number">10</span> * time.Second,</span><br><span class="line">    MaxHeaderBytes: <span class="number">1</span> &lt;&lt; <span class="number">20</span>,</span><br><span class="line"> &#125;</span><br><span class="line">log.Fatal(ss.ListenAndServeTLS(<span class="string">"cert.pem"</span>, <span class="string">"key.pem"</span>))</span><br></pre></td></tr></table></figure></p>
 <h2 id="http客户端"><a href="#http客户端" class="headerlink" title="http客户端"></a>http客户端</h2><h3 id="基本方法-实现http请求"><a href="#基本方法-实现http请求" class="headerlink" title="基本方法,实现http请求"></a>基本方法,实现http请求</h3><ul>
 <li><p>func (c <em>Client) Get(url string) (r </em>Response, err error)</p>
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">resp,err := http.Get(<span class="string">"http://example.com/"</span>)</div><div class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">    <span class="comment">// 错误</span></div><div class="line">    <span class="keyword">return</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">defer</span> resp.Body.<span class="built_in">close</span>()</div><div class="line">io.Copy(os.Stdout,resp.Body)</div></pre></td></tr></table></figure>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">resp,err := http.Get(<span class="string">"http://example.com/"</span>)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="comment">// 错误</span></span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">defer</span> resp.Body.<span class="built_in">close</span>()</span><br><span class="line">io.Copy(os.Stdout,resp.Body)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>func (c <em>Client) Post(url string, bodyType string, body io.Reader) (r </em>Response, err error)</p>
 </li>
 </ul>
-<p>第二个参数是<code>MIMEType</code><br>第三个参数以<code>[]byte</code>形式<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">resp.err := http.Post(<span class="string">"http://example.com/upload"</span>,<span class="string">"image/jpeg"</span>,&amp;imageDataBuf)</div><div class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">    <span class="comment">//错误</span></div><div class="line">    <span class="keyword">return</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span> resp.StatusCode != http.StatusOK&#123;</div><div class="line">    <span class="comment">//错误</span></div><div class="line">    <span class="keyword">return</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>第二个参数是<code>MIMEType</code><br>第三个参数以<code>[]byte</code>形式<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">resp.err := http.Post(<span class="string">"http://example.com/upload"</span>,<span class="string">"image/jpeg"</span>,&amp;imageDataBuf)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="comment">//错误</span></span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> resp.StatusCode != http.StatusOK&#123;</span><br><span class="line">    <span class="comment">//错误</span></span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>func (c <em>Client) PostForm(url string, data url.Values) (r </em>Response, err error) func (c <em>Client) Head(url string) (r </em>Response, err error)</li>
 </ul>
-<p>实现标准编码格式为<code>application/x-www-form-urlencoded</code>的表单提交.<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">resp,err := http.PostForm(<span class="string">"http://example.com/posts"</span>,url.Values&#123;<span class="string">"title"</span>:&#123;<span class="string">"article title"</span>&#125;,<span class="string">"content"</span>:&#123;<span class="string">"article body"</span>&#125;&#125;)</div><div class="line"><span class="keyword">if</span> err != <span class="literal">nil</span>&#123;</div><div class="line">    <span class="comment">// 错误</span></div><div class="line">    <span class="keyword">return</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>实现标准编码格式为<code>application/x-www-form-urlencoded</code>的表单提交.<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">resp,err := http.PostForm(<span class="string">"http://example.com/posts"</span>,url.Values&#123;<span class="string">"title"</span>:&#123;<span class="string">"article title"</span>&#125;,<span class="string">"content"</span>:&#123;<span class="string">"article body"</span>&#125;&#125;)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span>&#123;</span><br><span class="line">    <span class="comment">// 错误</span></span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>func (c <em>Client) Head(url string) (r </em>Response, err error)</li>
 </ul>
-<p>只请求目标url的头部,不返回http的body<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">resp,err := http.Head(<span class="string">"http://example.com"</span>)</div></pre></td></tr></table></figure></p>
+<p>只请求目标url的头部,不返回http的body<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resp,err := http.Head(<span class="string">"http://example.com"</span>)</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>func (c <em>Client) Do(req </em>Request) (resp *Response, err error)</li>
 </ul>
-<p>自定义”User-Agent”,不是默认的”go http package”<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">req,err := http.NewRequest(<span class="string">"Get"</span>,<span class="string">"http://example.com"</span>,<span class="literal">nil</span>)</div><div class="line">req.Header.Add(<span class="string">"User-Agent"</span>,<span class="string">"Custom User-Agent"</span>)</div><div class="line"></div><div class="line">client := $http.Client&#123;<span class="comment">//...&#125;</span></div><div class="line">resp,err !=client.Do(req)</div></pre></td></tr></table></figure></p>
+<p>自定义”User-Agent”,不是默认的”go http package”<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">req,err := http.NewRequest(<span class="string">"Get"</span>,<span class="string">"http://example.com"</span>,<span class="literal">nil</span>)</span><br><span class="line">req.Header.Add(<span class="string">"User-Agent"</span>,<span class="string">"Custom User-Agent"</span>)</span><br><span class="line"></span><br><span class="line">client := $http.Client&#123;<span class="comment">//...&#125;</span></span><br><span class="line">resp,err !=client.Do(req)</span><br></pre></td></tr></table></figure></p>
 <p>传递cookie</p>
 <h3 id="高级封装"><a href="#高级封装" class="headerlink" title="高级封装"></a>高级封装</h3><ul>
 <li><p>自定义的http.Client</p>
@@ -466,11 +467,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -482,11 +487,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,19 +515,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -530,7 +535,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">template</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -542,11 +551,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -558,7 +567,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
+                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -566,11 +575,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">gin</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -615,10 +632,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>

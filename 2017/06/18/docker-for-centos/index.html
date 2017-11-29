@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/06/18/docker-for-centos/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="本来是想装一下es,突发奇想,装docker里吧(mac系统,旧版本1.10的docker),—只是安装,其他在别的页面里介绍">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-07-04T05:36:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker_for_centos|mac">
@@ -197,7 +198,7 @@
 <ul>
 <li><p>ee版本比ce安全.从名字上就能看出来:企业版,社区版.</p>
 </li>
-<li><p>看清楚自己的操作系统,支持哪种,<a href="https://docs.docker.com/engine/installation/" target="_blank" rel="external">对比说明</a>,centos都可以支持.</p>
+<li><p>看清楚自己的操作系统,支持哪种,<a href="https://docs.docker.com/engine/installation/" target="_blank" rel="noopener">对比说明</a>,centos都可以支持.</p>
 </li>
 <li><p>联网没? 如果没联网就下载rpm包手动安装.</p>
 </li>
@@ -235,7 +236,7 @@ vim deamon.json
     &quot;storage-driver&quot;: &quot;devicemapper&quot;
 }
 </code></pre></li>
-<li><p>生产环境下,必须是direct-lvm模式.在启动之前先看一下<a href="https://docs.docker.com/engine/userguide/storagedriver/device-mapper-driver/#configure-direct-lvm-mode-for-production" target="_blank" rel="external">这个</a>,很重要的样子.</p>
+<li><p>生产环境下,必须是direct-lvm模式.在启动之前先看一下<a href="https://docs.docker.com/engine/userguide/storagedriver/device-mapper-driver/#configure-direct-lvm-mode-for-production" target="_blank" rel="noopener">这个</a>,很重要的样子.</p>
 </li>
 <li><p>运行docker</p>
 <pre><code>sudo systemctl start docker
@@ -266,7 +267,7 @@ vim deamon.json
 <li>如有必要,彻底的删除<code>devicemapper</code>,再格式化..</li>
 </ol>
 <blockquote>
-<p>回到mac,继续安装,<a href="https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac" target="_blank" rel="external">下载</a>先.下个稳定版吧,docker.app,110M,双击安装.</p>
+<p>回到mac,继续安装,<a href="https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac" target="_blank" rel="noopener">下载</a>先.下个稳定版吧,docker.app,110M,双击安装.</p>
 </blockquote>
 <p>之前旧版本,装的VirtualBox,现在官网上说有新的虚拟化系统<code>HyperKit</code>.</p>
 <blockquote>
@@ -297,13 +298,13 @@ latest: Pulling from library/nginx
 ff3d52d8f55f: Downloading [===&gt;                                               ] 1.474 MB/23.28 MB
 226f4ec56ba3: Downloading [====&gt;                                              ] 1.834 MB/21.53 MB
 53d7dd52b97d: Download complete
-</code></pre><p> 浏览器输入 <a href="http://localhost/" target="_blank" rel="external">http://localhost/</a> 就可以看到nginx的主页了…我看到了别的主页,和apache冲突了.把机子上现有的服务都停了.</p>
+</code></pre><p> 浏览器输入 <a href="http://localhost/" target="_blank" rel="noopener">http://localhost/</a> 就可以看到nginx的主页了…我看到了别的主页,和apache冲突了.把机子上现有的服务都停了.</p>
 <pre><code>sudo /usr/sbin/apachectl stop
 sudo nginx -s stop
 </code></pre><p> 再次执行<br> ➜  ~ docker run -d -p 80:80 –name webserver nginx<br> docker: Error response from daemon: Conflict. The container name “/webserver” is already in use by container 96e54ca074b9bf70b3b31cd580c5066d38562c275b0c99678dff2efc295cd87a. You have to remove (or rename) that container to be able to reuse that name..<br> See ‘docker run –help’.</p>
 <p> 那么直接开始</p>
 <pre><code>docker start webserver
-</code></pre><p> 再浏览器输入 <a href="http://localhost/" target="_blank" rel="external">http://localhost/</a> ,好了.用<code>docker ps</code>查看情况.如果关闭,用</p>
+</code></pre><p> 再浏览器输入 <a href="http://localhost/" target="_blank" rel="noopener">http://localhost/</a> ,好了.用<code>docker ps</code>查看情况.如果关闭,用</p>
 <pre><code>docker stop webserver
 </code></pre><p> 停止了的服务只能用<code>docker ps -a</code>来查看状态.</p>
 </li>
@@ -596,11 +597,15 @@ SIZE：镜像大小
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -612,11 +617,19 @@ SIZE：镜像大小
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -632,19 +645,11 @@ SIZE：镜像大小
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -660,7 +665,11 @@ SIZE：镜像大小
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">template</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -672,11 +681,11 @@ SIZE：镜像大小
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -688,7 +697,7 @@ SIZE：镜像大小
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
+                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -696,11 +705,19 @@ SIZE：镜像大小
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">gin</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -745,10 +762,6 @@ SIZE：镜像大小
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>

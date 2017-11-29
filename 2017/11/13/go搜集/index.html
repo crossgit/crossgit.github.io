@@ -14,6 +14,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/11/13/go搜集/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="go语言的网络搜集代码段">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-11-23T09:39:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go搜集">
@@ -168,11 +169,11 @@
         <p>go语言的网络搜集代码段</p>
 <a id="more"></a>
 <hr>
-<h2 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h2><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"> </div><div class="line"><span class="keyword">import</span> (</div><div class="line">        <span class="string">"net/http"</span></div><div class="line">)</div><div class="line"><span class="comment">// http://localhost:3000/static.html</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">        http.Handle(<span class="string">"/"</span>, http.FileServer(http.Dir(<span class="string">"./static"</span>)))</div><div class="line">        http.ListenAndServe(<span class="string">":3000"</span>, <span class="literal">nil</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h2><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">        <span class="string">"net/http"</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">// http://localhost:3000/static.html</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">        http.Handle(<span class="string">"/"</span>, http.FileServer(http.Dir(<span class="string">"./static"</span>)))</span><br><span class="line">        http.ListenAndServe(<span class="string">":3000"</span>, <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="读取文件目录"><a href="#读取文件目录" class="headerlink" title="读取文件目录"></a>读取文件目录</h2><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"> </div><div class="line"><span class="keyword">import</span> (</div><div class="line">        <span class="string">"net/http"</span></div><div class="line">)</div><div class="line"><span class="comment">// http://localhost:3000/static</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">        http.Handle(<span class="string">"/static/"</span>, http.StripPrefix(<span class="string">"/static/"</span>, http.FileServer(http.Dir(<span class="string">"./public"</span>))))</div><div class="line">        http.ListenAndServe(<span class="string">":3000"</span>, <span class="literal">nil</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="读取文件目录"><a href="#读取文件目录" class="headerlink" title="读取文件目录"></a>读取文件目录</h2><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">        <span class="string">"net/http"</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">// http://localhost:3000/static</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">        http.Handle(<span class="string">"/static/"</span>, http.StripPrefix(<span class="string">"/static/"</span>, http.FileServer(http.Dir(<span class="string">"./public"</span>))))</span><br><span class="line">        http.ListenAndServe(<span class="string">":3000"</span>, <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="默认的时间"><a href="#默认的时间" class="headerlink" title="默认的时间"></a>默认的时间</h2><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">time := time.Now()</div><div class="line"><span class="comment">// 默认UTC    </span></div><div class="line">loc, err := time.LoadLocation(<span class="string">""</span>) </div><div class="line"><span class="comment">// 一般为CST</span></div><div class="line">loc, err := time.LoadLocation(<span class="string">"Local"</span>)</div><div class="line"><span class="comment">// 美国洛杉矶PDT</span></div><div class="line">loc, err := time.LoadLocation(<span class="string">"America/Los_Angeles"</span>)</div><div class="line"><span class="comment">// CST</span></div><div class="line">loc, _:= time.LoadLocation(<span class="string">"Asia/Chongqing"</span>)</div></pre></td></tr></table></figure>
+<h2 id="默认的时间"><a href="#默认的时间" class="headerlink" title="默认的时间"></a>默认的时间</h2><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">time := time.Now()</span><br><span class="line"><span class="comment">// 默认UTC    </span></span><br><span class="line">loc, err := time.LoadLocation(<span class="string">""</span>) </span><br><span class="line"><span class="comment">// 一般为CST</span></span><br><span class="line">loc, err := time.LoadLocation(<span class="string">"Local"</span>)</span><br><span class="line"><span class="comment">// 美国洛杉矶PDT</span></span><br><span class="line">loc, err := time.LoadLocation(<span class="string">"America/Los_Angeles"</span>)</span><br><span class="line"><span class="comment">// CST</span></span><br><span class="line">loc, _:= time.LoadLocation(<span class="string">"Asia/Chongqing"</span>)</span><br></pre></td></tr></table></figure>
 
       
 
@@ -398,11 +399,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -414,11 +419,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -434,19 +447,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -462,7 +467,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">template</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -474,11 +483,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -490,7 +499,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
+                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -498,11 +507,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">gin</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -547,10 +564,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>

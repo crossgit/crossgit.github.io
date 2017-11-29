@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/08/29/关于kong/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="mac上装一个api 网关 kong!">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-11-01T02:36:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于kong">
@@ -187,8 +188,8 @@
 <p>客户端</p>
 </blockquote>
 <ol>
-<li>客户端版本的 <a href="https://github.com/ajaysreedhar/kongdash" target="_blank" rel="external">kongDash</a></li>
-<li><p>web版本 <a href="https://github.com/PGBI/kong-dashboard" target="_blank" rel="external">kong-dashboard</a></p>
+<li>客户端版本的 <a href="https://github.com/ajaysreedhar/kongdash" target="_blank" rel="noopener">kongDash</a></li>
+<li><p>web版本 <a href="https://github.com/PGBI/kong-dashboard" target="_blank" rel="noopener">kong-dashboard</a></p>
 <pre><code>sudo npm install -g kong-dashboard
 kong-dashboard start 
 默认端口 8080,或者指定端口
@@ -199,7 +200,7 @@ kong-dashboard start -p 9000
 <blockquote>
 <p>添加一个api</p>
 </blockquote>
-<p>有一个<a href="https://getkong.org/docs/0.11.x/admin-api/#add-api" target="_blank" rel="external">kong的文档</a>,有个说明</p>
+<p>有一个<a href="https://getkong.org/docs/0.11.x/admin-api/#add-api" target="_blank" rel="noopener">kong的文档</a>,有个说明</p>
 <table>
 <thead>
 <tr>
@@ -232,7 +233,7 @@ kong-dashboard start -p 9000
 <tr>
 <td>upstream_url</td>
 <td></td>
-<td>The base target URL that points to your API server. This URL will be used for proxying requests. For example: <a href="https://example.com" target="_blank" rel="external">https://example.com</a>. 指向您的API服务器的基本目标网址。此URL将用于代理请求。例如：<a href="https://example.com。" target="_blank" rel="external">https://example.com。</a> api全url</td>
+<td>The base target URL that points to your API server. This URL will be used for proxying requests. For example: <a href="https://example.com" target="_blank" rel="noopener">https://example.com</a>. 指向您的API服务器的基本目标网址。此URL将用于代理请求。例如：<a href="https://example.com。" target="_blank" rel="noopener">https://example.com。</a> api全url</td>
 </tr>
 <tr>
 <td>strip_uri</td>
@@ -309,7 +310,7 @@ kong-dashboard start -p 9000
 <tr>
 <td>5</td>
 <td>upstream url</td>
-<td><a href="http://shiw.crossess.com/api/xyinfo" target="_blank" rel="external">http://shiw.crossess.com/api/xyinfo</a></td>
+<td><a href="http://shiw.crossess.com/api/xyinfo" target="_blank" rel="noopener">http://shiw.crossess.com/api/xyinfo</a></td>
 </tr>
 </tbody>
 </table>
@@ -329,12 +330,12 @@ kong-dashboard start -p 9000
 <tr>
 <td>8000</td>
 <td>客户端调用api端口，网关对外开放端口。</td>
-<td>新建一个api，访问path= /test，则访问 <a href="http://10.110.2.3:8000/test" target="_blank" rel="external">http://10.110.2.3:8000/test</a>  </td>
+<td>新建一个api，访问path= /test，则访问 <a href="http://10.110.2.3:8000/test" target="_blank" rel="noopener">http://10.110.2.3:8000/test</a>  </td>
 </tr>
 <tr>
 <td>8001</td>
 <td>kong admin api管理端口，可以通过该端口对api、consumer、plugin进行管理，</td>
-<td>查看名字叫test 这个api配置信息，访问 <a href="http://10.110.2.3:8001/apis/test，查看所有api信息，访问" target="_blank" rel="external">http://10.110.2.3:8001/apis/test，查看所有api信息，访问</a> <a href="http://10.110.2.3:8001/apis" target="_blank" rel="external">http://10.110.2.3:8001/apis</a> </td>
+<td>查看名字叫test 这个api配置信息，访问 <a href="http://10.110.2.3:8001/apis/test，查看所有api信息，访问" target="_blank" rel="noopener">http://10.110.2.3:8001/apis/test，查看所有api信息，访问</a> <a href="http://10.110.2.3:8001/apis" target="_blank" rel="noopener">http://10.110.2.3:8001/apis</a> </td>
 </tr>
 <tr>
 <td>8443</td>
@@ -360,9 +361,9 @@ kong-dashboard start -p 9000
 <li>Access-Control-Allow-Origin: *</li>
 <li>Server: kong/0.10.3</li>
 </ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;<span class="attr">"methods"</span>:[<span class="string">"GET"</span>],<span class="attr">"http_if_terminated"</span>:<span class="literal">true</span>,<span class="attr">"id"</span>:<span class="string">"dffb6cbb-1a0d-4a1f-aff8-72b7a2aad586"</span>,<span class="attr">"retries"</span>:<span class="number">5</span>,<span class="attr">"preserve_host"</span>:<span class="literal">false</span>,<span class="attr">"created_at"</span>:<span class="number">1501154650000</span>,<span class="attr">"upstream_connect_timeout"</span>:<span class="number">60000</span>,<span class="attr">"upstream_url"</span>:<span class="string">"http:\/\/10.110.2.54:8040\/metrics"</span>,<span class="attr">"upstream_read_timeout"</span>:<span class="number">60000</span>,<span class="attr">"upstream_send_timeout"</span>:<span class="number">60000</span>,<span class="attr">"https_only"</span>:<span class="literal">false</span>,<span class="attr">"strip_uri"</span>:<span class="literal">true</span>,<span class="attr">"uris"</span>:[<span class="string">"\/testUser"</span>],<span class="attr">"name"</span>:<span class="string">"person2api"</span>,<span class="attr">"hosts"</span>:[<span class="string">"127.0.0.1"</span>]&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"methods"</span>:[<span class="string">"GET"</span>],<span class="attr">"http_if_terminated"</span>:<span class="literal">true</span>,<span class="attr">"id"</span>:<span class="string">"dffb6cbb-1a0d-4a1f-aff8-72b7a2aad586"</span>,<span class="attr">"retries"</span>:<span class="number">5</span>,<span class="attr">"preserve_host"</span>:<span class="literal">false</span>,<span class="attr">"created_at"</span>:<span class="number">1501154650000</span>,<span class="attr">"upstream_connect_timeout"</span>:<span class="number">60000</span>,<span class="attr">"upstream_url"</span>:<span class="string">"http:\/\/10.110.2.54:8040\/metrics"</span>,<span class="attr">"upstream_read_timeout"</span>:<span class="number">60000</span>,<span class="attr">"upstream_send_timeout"</span>:<span class="number">60000</span>,<span class="attr">"https_only"</span>:<span class="literal">false</span>,<span class="attr">"strip_uri"</span>:<span class="literal">true</span>,<span class="attr">"uris"</span>:[<span class="string">"\/testUser"</span>],<span class="attr">"name"</span>:<span class="string">"person2api"</span>,<span class="attr">"hosts"</span>:[<span class="string">"127.0.0.1"</span>]&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>插件的问题(<a href="https://mp.weixin.qq.com/s/LIq2CiXJQmmjBC0yvYLY5A" target="_blank" rel="external">内容来源</a>)</p>
+<p>插件的问题(<a href="https://mp.weixin.qq.com/s/LIq2CiXJQmmjBC0yvYLY5A" target="_blank" rel="noopener">内容来源</a>)</p>
 </blockquote>
 <p>Kong默认插件</p>
 <ul>
@@ -610,11 +611,15 @@ kong-dashboard start -p 9000
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -626,11 +631,19 @@ kong-dashboard start -p 9000
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -646,19 +659,11 @@ kong-dashboard start -p 9000
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -674,7 +679,11 @@ kong-dashboard start -p 9000
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">template</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -686,11 +695,11 @@ kong-dashboard start -p 9000
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -702,7 +711,7 @@ kong-dashboard start -p 9000
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
+                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -710,11 +719,19 @@ kong-dashboard start -p 9000
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">gin</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -759,10 +776,6 @@ kong-dashboard start -p 9000
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>

@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/10/13/统计图的位图与矢量图/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="d3.js 用的svg,矢量图. echarts是canvas,位图.还没找见可以用代码互转的办法.">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-10-15T09:41:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="统计图的位图与矢量图">
@@ -175,20 +176,20 @@
 <pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;http://canvg.github.io/canvg/rgbcolor.js&quot;&gt;&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;http://canvg.github.io/canvg/StackBlur.js&quot;&gt;&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;http://canvg.github.io/canvg/canvg.js&quot;&gt;&lt;/script&gt;
-</code></pre><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span> </div><div class="line">    <span class="comment">&lt;!-- svg存放 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </div><div class="line">    <span class="comment">&lt;!-- canvas存放 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">width</span>=<span class="string">"200px"</span> <span class="attr">height</span>=<span class="string">"200px"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 触发 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"save"</span>&gt;</span>save<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">saveDaPicture</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> img = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>).toDataURL(<span class="string">"image/png"</span>);</div><div class="line">            $(<span class="string">'body'</span>).append(<span class="string">'&lt;img src="'</span> + img + <span class="string">'"/&gt;'</span>);</div><div class="line">        &#125;</div><div class="line">        $(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            $(<span class="string">'#save'</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="keyword">var</span> svg = $(<span class="string">'#container'</span>).html().replace(<span class="regexp">/&gt;\s+/g</span>, <span class="string">"&gt;"</span>).replace(<span class="regexp">/\s+&lt;/g</span>, <span class="string">"&lt;"</span>);</div><div class="line">                <span class="comment">// 这样会多一个base64的图出来.</span></div><div class="line">                canvg(<span class="string">'canvas'</span>, svg, &#123; <span class="attr">renderCallback</span>: saveDaPicture, <span class="attr">ignoreMouse</span>: <span class="literal">true</span>, <span class="attr">ignoreAnimation</span>: <span class="literal">true</span> &#125;);</div><div class="line">            &#125;);</div><div class="line">        &#125;)</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
+</code></pre><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span> </span><br><span class="line">    <span class="comment">&lt;!-- svg存放 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">    <span class="comment">&lt;!-- canvas存放 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">width</span>=<span class="string">"200px"</span> <span class="attr">height</span>=<span class="string">"200px"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 触发 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"save"</span>&gt;</span>save<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">saveDaPicture</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> img = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>).toDataURL(<span class="string">"image/png"</span>);</span></span><br><span class="line"><span class="javascript">            $(<span class="string">'body'</span>).append(<span class="string">'&lt;img src="'</span> + img + <span class="string">'"/&gt;'</span>);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="javascript">        $(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            $(<span class="string">'#save'</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> svg = $(<span class="string">'#container'</span>).html().replace(<span class="regexp">/&gt;\s+/g</span>, <span class="string">"&gt;"</span>).replace(<span class="regexp">/\s+&lt;/g</span>, <span class="string">"&lt;"</span>);</span></span><br><span class="line"><span class="javascript">                <span class="comment">// 这样会多一个base64的图出来.</span></span></span><br><span class="line"><span class="javascript">                canvg(<span class="string">'canvas'</span>, svg, &#123; <span class="attr">renderCallback</span>: saveDaPicture, <span class="attr">ignoreMouse</span>: <span class="literal">true</span>, <span class="attr">ignoreAnimation</span>: <span class="literal">true</span> &#125;);</span></span><br><span class="line"><span class="undefined">            &#125;);</span></span><br><span class="line"><span class="undefined">        &#125;)</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="针对SVG的展示库"><a href="#针对SVG的展示库" class="headerlink" title="针对SVG的展示库"></a>针对SVG的展示库</h2><ul>
-<li><a href="http://pablojs.com/" target="_blank" rel="external">pablojs</a>,这个可能会简单些.因为是专门针对svg的.</li>
+<li><a href="http://pablojs.com/" target="_blank" rel="noopener">pablojs</a>,这个可能会简单些.因为是专门针对svg的.</li>
 </ul>
 <p>主要引入</p>
 <pre><code>&lt;script src=&quot;pablo.min.js&quot;&gt;&lt;/script&gt;
-</code></pre><p>给一个button加事件内如如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Pablo(demoElement).svg(&#123;<span class="attr">height</span>:<span class="number">180</span>&#125;)</div><div class="line"><span class="comment">/* Append a &lt;circle&gt; element with attributes */</span></div><div class="line">.circle(&#123;<span class="attr">cx</span>:<span class="number">90</span>, <span class="attr">cy</span>:<span class="number">90</span>, <span class="attr">r</span>:<span class="number">90</span>, <span class="attr">fill</span>:<span class="string">'red'</span>&#125;)</div><div class="line"><span class="comment">/* Add an event listener to the circle */</span></div><div class="line">.on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="comment">/* On click, set the `fill` attribute */</span></div><div class="line">    Pablo(<span class="keyword">this</span>).attr(<span class="string">'fill'</span>, <span class="string">'green'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+</code></pre><p>给一个button加事件内如如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Pablo(demoElement).svg(&#123;<span class="attr">height</span>:<span class="number">180</span>&#125;)</span><br><span class="line"><span class="comment">/* Append a &lt;circle&gt; element with attributes */</span></span><br><span class="line">.circle(&#123;<span class="attr">cx</span>:<span class="number">90</span>, <span class="attr">cy</span>:<span class="number">90</span>, <span class="attr">r</span>:<span class="number">90</span>, <span class="attr">fill</span>:<span class="string">'red'</span>&#125;)</span><br><span class="line"><span class="comment">/* Add an event listener to the circle */</span></span><br><span class="line">.on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    <span class="comment">/* On click, set the `fill` attribute */</span></span><br><span class="line">    Pablo(<span class="keyword">this</span>).attr(<span class="string">'fill'</span>, <span class="string">'green'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>svg的导出和查看</li>
 </ul>
 <ol>
 <li><p>导出svg</p>
 <p> 就是一个xml文件,</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">xml</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">svg</span>&gt;</span>...<span class="tag">&lt;<span class="name">svg</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">xml</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">xml</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">svg</span>&gt;</span>...<span class="tag">&lt;<span class="name">svg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">xml</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>导出png,位图,用canvas</p>
 </li>
@@ -201,7 +202,7 @@
 <p> 4.直接在HTML中使用SVG标签</p>
 <p> 5.作为CSS背景</p>
 </li>
-<li><p>div 的内容转svg <a href="http://blog.csdn.net/jaylongli/article/details/50216553" target="_blank" rel="external">示例</a></p>
+<li><p>div 的内容转svg <a href="http://blog.csdn.net/jaylongli/article/details/50216553" target="_blank" rel="noopener">示例</a></p>
 </li>
 </ol>
 <hr>
@@ -214,12 +215,12 @@
 </li>
 </ul>
 <hr>
-<h2 id="有个统计语言环境R-svg-tiff或者pdf都可以导出参考"><a href="#有个统计语言环境R-svg-tiff或者pdf都可以导出参考" class="headerlink" title="有个统计语言环境R..svg.tiff或者pdf都可以导出参考."></a>有个统计语言环境R..svg.tiff或者pdf都可以导出<a href="http://blog.sina.com.cn/s/blog_6072546301016dbc.html" target="_blank" rel="external">参考</a>.</h2><hr>
-<p><a href="http://dmitrybaranovskiy.github.io/raphael/" target="_blank" rel="external">raphael.js</a> (<a href="https://github.com/DmitryBaranovskiy/raphael" target="_blank" rel="external">github</a>) 也是矢量图</p>
+<h2 id="有个统计语言环境R-svg-tiff或者pdf都可以导出参考"><a href="#有个统计语言环境R-svg-tiff或者pdf都可以导出参考" class="headerlink" title="有个统计语言环境R..svg.tiff或者pdf都可以导出参考."></a>有个统计语言环境R..svg.tiff或者pdf都可以导出<a href="http://blog.sina.com.cn/s/blog_6072546301016dbc.html" target="_blank" rel="noopener">参考</a>.</h2><hr>
+<p><a href="http://dmitrybaranovskiy.github.io/raphael/" target="_blank" rel="noopener">raphael.js</a> (<a href="https://github.com/DmitryBaranovskiy/raphael" target="_blank" rel="noopener">github</a>) 也是矢量图</p>
 <hr>
 <p>关于位图的另类使用,…只是觉得有点另类,矢量图不同于canvas制作动画.</p>
-<p>插件<a href="http://snapsvg.io/" target="_blank" rel="external">snapsvg</a>,<a href="http://www.zhangxinxu.com/GitHub/demo-Snap.svg/demo/basic/Element.add.php" target="_blank" rel="external">中文教程</a>.</p>
-<p>插件<a href="http://www.htmleaf.com/html5/SVG/201501301301.html" target="_blank" rel="external">svg.js</a>,<a href="http://www.htmleaf.com/ziliaoku/qianduanjiaocheng/20141018229.html" target="_blank" rel="external">教程</a></p>
+<p>插件<a href="http://snapsvg.io/" target="_blank" rel="noopener">snapsvg</a>,<a href="http://www.zhangxinxu.com/GitHub/demo-Snap.svg/demo/basic/Element.add.php" target="_blank" rel="noopener">中文教程</a>.</p>
+<p>插件<a href="http://www.htmleaf.com/html5/SVG/201501301301.html" target="_blank" rel="noopener">svg.js</a>,<a href="http://www.htmleaf.com/ziliaoku/qianduanjiaocheng/20141018229.html" target="_blank" rel="noopener">教程</a></p>
 
       
 
@@ -472,11 +473,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -488,11 +493,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,19 +521,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -536,7 +541,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">template</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -548,11 +557,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -564,7 +573,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
+                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,11 +581,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">gin</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -621,10 +638,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>

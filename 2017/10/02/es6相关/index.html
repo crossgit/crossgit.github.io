@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/10/02/es6相关/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="功能点">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-10-03T13:15:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es6相关">
@@ -219,7 +220,7 @@ Object.freeze(obj);
 <li><p>在字符串前面加函数来定制</p>
 </li>
 <li><p>根据函数的返回,来指定返回的内容.替换掉不该有的字符串.</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> sentence = tmp<span class="string">`abc<span class="subst">$&#123;ef&#125;</span>gh<span class="subst">$&#123;ij&#125;</span>`</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">tmp</span>(<span class="params">string,...arg</span>)</span>&#123;</div><div class="line">    <span class="comment">// string表示中间的字符串 abc,gh . 以变量开头的,会留下空的值</span></div><div class="line">    <span class="comment">// arg 表示所有的变量 ef,ij</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sentence = tmp<span class="string">`abc<span class="subst">$&#123;ef&#125;</span>gh<span class="subst">$&#123;ij&#125;</span>`</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tmp</span>(<span class="params">string,...arg</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// string表示中间的字符串 abc,gh . 以变量开头的,会留下空的值</span></span><br><span class="line">    <span class="comment">// arg 表示所有的变量 ef,ij</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
@@ -245,14 +246,14 @@ Object.freeze(obj);
 <p>对象解构</p>
 </blockquote>
 <ul>
-<li>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> tom = &#123;</div><div class="line">    <span class="attr">a</span>:<span class="number">1</span></div><div class="line">    b:<span class="number">2</span></div><div class="line">    c:<span class="number">3</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// 结构,a重命名aa; 增加d,默认值123</span></div><div class="line"><span class="keyword">const</span> &#123;<span class="attr">a</span>:aa,b,c,d = <span class="number">123</span>&#125; = tom;</div><div class="line"><span class="built_in">console</span>.log(aa,b,c1);</div></pre></td></tr></table></figure>
+<li>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> tom = &#123;</span><br><span class="line">    a:<span class="number">1</span></span><br><span class="line">    b:<span class="number">2</span></span><br><span class="line">    c:<span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结构,a重命名aa; 增加d,默认值123</span></span><br><span class="line"><span class="keyword">const</span> &#123;<span class="attr">a</span>:aa,b,c,d = <span class="number">123</span>&#125; = tom;</span><br><span class="line"><span class="built_in">console</span>.log(aa,b,c1);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
 <p>数组解构</p>
 </blockquote>
 <ul>
-<li>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> tom=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</div><div class="line"><span class="keyword">const</span> [a,b]=tom; <span class="comment">// 1</span></div><div class="line"><span class="keyword">const</span> [a,b,,c] = tom; <span class="comment">//2</span></div><div class="line"><span class="keyword">const</span> [a,...arg] = tom; <span class="comment">// 3</span></div><div class="line"><span class="keyword">const</span> [a,b,c,d,e,f,e=<span class="number">7</span>] = tom <span class="comment">//4</span></div></pre></td></tr></table></figure>
+<li>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> tom=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line"><span class="keyword">const</span> [a,b]=tom; <span class="comment">// 1</span></span><br><span class="line"><span class="keyword">const</span> [a,b,,c] = tom; <span class="comment">//2</span></span><br><span class="line"><span class="keyword">const</span> [a,...arg] = tom; <span class="comment">// 3</span></span><br><span class="line"><span class="keyword">const</span> [a,b,c,d,e,f,e=<span class="number">7</span>] = tom <span class="comment">//4</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
@@ -260,7 +261,7 @@ Object.freeze(obj);
 </blockquote>
 <ul>
 <li><p>es下的循环</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">comst doms = [1,2,3]; </div><div class="line">for(let i = 0; i &lt; 5; i++)&#123;&#125;  // 1</div><div class="line">doms.forEach(dom=&gt;&#123;...&#125;) // 2</div><div class="line">for(let i in doms)&#123;&#125; // 3 可跳出 continue | break</div><div class="line">for(let dom of doms)&#123;&#125; // 4</div><div class="line">for(let array of doms.entries())&#123;</div><div class="line">    // down 是否完成</div><div class="line">    //  value &#123;key:值&#125;</div><div class="line">&#125; // 5</div><div class="line">for(let [i,dom] of doms.entries())&#123;&#125; // 6</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">comst doms = [1,2,3]; </span><br><span class="line">for(let i = 0; i &lt; 5; i++)&#123;&#125;  // 1</span><br><span class="line">doms.forEach(dom=&gt;&#123;...&#125;) // 2</span><br><span class="line">for(let i in doms)&#123;&#125; // 3 可跳出 continue | break</span><br><span class="line">for(let dom of doms)&#123;&#125; // 4</span><br><span class="line">for(let array of doms.entries())&#123;</span><br><span class="line">    // down 是否完成</span><br><span class="line">    //  value &#123;key:值&#125;</span><br><span class="line">&#125; // 5</span><br><span class="line">for(let [i,dom] of doms.entries())&#123;&#125; // 6</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>仅支持 arguments 对象.   </p>
 </li>
@@ -303,7 +304,7 @@ Object.freeze(obj);
 <li><p>concat //两个数组连在一起.</p>
 </li>
 <li><p>扩展到数组里.</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> a=[<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>]</div><div class="line"><span class="keyword">const</span> b=[<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>]</div><div class="line"></div><div class="line"><span class="keyword">const</span> r = [...a,...b] <span class="comment">//1</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> todos=[..document.querySelectorAll(<span class="string">'li'</span>)]</div></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a=[<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>]</span><br><span class="line"><span class="keyword">const</span> b=[<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> r = [...a,...b] <span class="comment">//1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> todos=[..document.querySelectorAll(<span class="string">'li'</span>)]</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
@@ -311,10 +312,10 @@ Object.freeze(obj);
 </blockquote>
 <ul>
 <li><p>导出同名属性,方法省略function,</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.export=&#123;</div><div class="line">    a,b,c,</div><div class="line">    func()&#123;...&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.export=&#123;</span><br><span class="line">    a,b,c,</span><br><span class="line">    func()&#123;...&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>计算属性 可在对象内使用函数</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> keys = [a,b,c]</div><div class="line"><span class="keyword">const</span> values = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>Ï]</div><div class="line"></div><div class="line"><span class="keyword">const</span> r = &#123;</div><div class="line">    [keys.shift()]:values.shift(),</div><div class="line">    [keys.shift()]:values.shift(),</div><div class="line">    [keys.shift()]:values.shift(),</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> keys = [a,b,c]</span><br><span class="line"><span class="keyword">const</span> values = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>Ï]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> r = &#123;</span><br><span class="line">    [keys.shift()]:values.shift(),</span><br><span class="line">    [keys.shift()]:values.shift(),</span><br><span class="line">    [keys.shift()]:values.shift(),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
@@ -323,12 +324,12 @@ Object.freeze(obj);
 <ul>
 <li><p>常用库 axios</p>
 </li>
-<li> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> p =  <span class="keyword">new</span> promise(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</div><div class="line">    resolve(<span class="string">'成功信息'</span>);</div><div class="line">    reject(<span class="built_in">Error</span>(<span class="string">'失败信息'</span>));</div><div class="line"></div><div class="line">&#125;)</div><div class="line">p.then(<span class="function"><span class="params">data</span>=&gt;</span>&#123;</div><div class="line">    ...</div><div class="line">&#125;)</div><div class="line">p.catch(<span class="function"><span class="params">err</span>=&gt;</span>&#123;</div><div class="line">    ...</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<li> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> p =  <span class="keyword">new</span> promise(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    resolve(<span class="string">'成功信息'</span>);</span><br><span class="line">    reject(<span class="built_in">Error</span>(<span class="string">'失败信息'</span>));</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line">p.then(<span class="function"><span class="params">data</span>=&gt;</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br><span class="line">p.catch(<span class="function"><span class="params">err</span>=&gt;</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>链式调用</p>
 </li>
 <li><p>同步调用</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Promise</span></div><div class="line">    .all([obj1,obj2])</div><div class="line">    .then(</div><div class="line">        <span class="function"><span class="params">res</span>=&gt;</span>&#123;</div><div class="line">            <span class="keyword">const</span> &#123;o1,o2&#125; = res;</div><div class="line">            <span class="built_in">console</span>.log(o1,o2);</div><div class="line">        &#125;</div><div class="line">    )</div><div class="line">    .catch(<span class="function"><span class="params">err</span>=&gt;</span>&#123;..&#125;)</div></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span></span><br><span class="line">    .all([obj1,obj2])</span><br><span class="line">    .then(</span><br><span class="line">        res=&gt;&#123;</span><br><span class="line">            <span class="keyword">const</span> &#123;o1,o2&#125; = res;</span><br><span class="line">            <span class="built_in">console</span>.log(o1,o2);</span><br><span class="line">        &#125;</span><br><span class="line">    )</span><br><span class="line">    .catch(<span class="function"><span class="params">err</span>=&gt;</span>&#123;..&#125;)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>race 返回最先返回的结果.</p>
 </li>
@@ -372,12 +373,12 @@ Object.freeze(obj);
 <li><p>super 继承类,在构造函数中,传入父类的构造函数参数</p>
 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</div><div class="line">    <span class="comment">// 构造函数</span></div><div class="line">    <span class="keyword">constructor</span>()&#123;&#125;</div><div class="line">    <span class="comment">// info方法</span></div><div class="line">    info()&#123;&#125;</div><div class="line">    <span class="comment">// 静态方法</span></div><div class="line">    <span class="keyword">static</span> descripton()&#123;&#125;</div><div class="line">    <span class="comment">// 属性</span></div><div class="line">     <span class="keyword">let</span> myName=<span class="string">''</span>;</div><div class="line">    set github(value)&#123;</div><div class="line">        <span class="keyword">this</span>.myName=value; </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    get github(value)&#123;</div><div class="line">       <span class="keyword">return</span> value;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">    <span class="comment">// 构造函数</span></span><br><span class="line">    <span class="keyword">constructor</span>()&#123;&#125;</span><br><span class="line">    <span class="comment">// info方法</span></span><br><span class="line">    info()&#123;&#125;</span><br><span class="line">    <span class="comment">// 静态方法</span></span><br><span class="line">    <span class="keyword">static</span> descripton()&#123;&#125;</span><br><span class="line">    <span class="comment">// 属性</span></span><br><span class="line">     <span class="keyword">let</span> myName=<span class="string">''</span>;</span><br><span class="line">    set github(value)&#123;</span><br><span class="line">        <span class="keyword">this</span>.myName=value; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    get github(value)&#123;</span><br><span class="line">       <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>类的扩展</p>
 <p>遍历器:Iterator</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> colors=[a,b,c]</div><div class="line"><span class="keyword">const</span> iterator=colors[<span class="built_in">Symbol</span>.iterator]();</div><div class="line">iterator.next(); <span class="comment">// 返回对象</span></div><div class="line"><span class="comment">// -------</span></div><div class="line"><span class="keyword">const</span> iterators=colors.entries(); </div><div class="line">iterators.next(); <span class="comment">// 返回数组</span></div><div class="line"><span class="comment">// -------</span></div><div class="line"><span class="keyword">const</span> keys = colors.keys();</div><div class="line">keys.next() <span class="comment">// 返回主键对象  value,done</span></div><div class="line"><span class="comment">// ------</span></div><div class="line"><span class="keyword">const</span> values = colors.values(); <span class="comment">// 返回对象,还不能使用.</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> colors=[a,b,c]</span><br><span class="line"><span class="keyword">const</span> iterator=colors[<span class="built_in">Symbol</span>.iterator]();</span><br><span class="line">iterator.next(); <span class="comment">// 返回对象</span></span><br><span class="line"><span class="comment">// -------</span></span><br><span class="line"><span class="keyword">const</span> iterators=colors.entries(); </span><br><span class="line">iterators.next(); <span class="comment">// 返回数组</span></span><br><span class="line"><span class="comment">// -------</span></span><br><span class="line"><span class="keyword">const</span> keys = colors.keys();</span><br><span class="line">keys.next() <span class="comment">// 返回主键对象  value,done</span></span><br><span class="line"><span class="comment">// ------</span></span><br><span class="line"><span class="keyword">const</span> values = colors.values(); <span class="comment">// 返回对象,还不能使用.</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>next();</li>
 </ul>
@@ -400,7 +401,7 @@ Object.freeze(obj);
 <p>  const array = [2,3,5,4,3,2,5];<br>  const numberSet =  new Set(array);<br>  const uniqueNumber = […numberSet];</p>
 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> colors = <span class="keyword">new</span> <span class="built_in">Set</span>();</div><div class="line"></div><div class="line">colors.add(<span class="string">'red'</span>);</div><div class="line"></div><div class="line">colors.size;</div><div class="line"></div><div class="line">colors.delete(<span class="string">'red'</span>);</div><div class="line"></div><div class="line">colors.has(<span class="string">'red'</span>);</div><div class="line"></div><div class="line">colors.clear();</div><div class="line"></div><div class="line">color.values(); </div><div class="line"></div><div class="line"><span class="keyword">for</span> <span class="keyword">of</span> </div><div class="line"></div><div class="line">forEach</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> colors = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line"></span><br><span class="line">colors.add(<span class="string">'red'</span>);</span><br><span class="line"></span><br><span class="line">colors.size;</span><br><span class="line"></span><br><span class="line">colors.delete(<span class="string">'red'</span>);</span><br><span class="line"></span><br><span class="line">colors.has(<span class="string">'red'</span>);</span><br><span class="line"></span><br><span class="line">colors.clear();</span><br><span class="line"></span><br><span class="line">color.values(); </span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> <span class="keyword">of</span> </span><br><span class="line"></span><br><span class="line">forEach</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>weakSet</p>
 </blockquote>
@@ -417,7 +418,7 @@ Object.freeze(obj);
 <blockquote>
 <p>Map</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> people = <span class="keyword">new</span> <span class="built_in">Map</span>();</div><div class="line">people.set(<span class="string">'a'</span>,<span class="number">1</span>);</div><div class="line">people.set(<span class="string">'b'</span>,<span class="number">2</span>);</div><div class="line"></div><div class="line">people.get(<span class="string">'a'</span>);</div><div class="line"></div><div class="line">people.size</div><div class="line"></div><div class="line">people.has(<span class="string">'a'</span>)</div><div class="line"></div><div class="line">people.delete(<span class="string">'a'</span>)</div><div class="line"></div><div class="line">people.clear();</div><div class="line"></div><div class="line">people.forEach</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> [key,vale] <span class="keyword">of</span> people )&#123;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> people = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">people.set(<span class="string">'a'</span>,<span class="number">1</span>);</span><br><span class="line">people.set(<span class="string">'b'</span>,<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">people.get(<span class="string">'a'</span>);</span><br><span class="line"></span><br><span class="line">people.size</span><br><span class="line"></span><br><span class="line">people.has(<span class="string">'a'</span>)</span><br><span class="line"></span><br><span class="line">people.delete(<span class="string">'a'</span>)</span><br><span class="line"></span><br><span class="line">people.clear();</span><br><span class="line"></span><br><span class="line">people.forEach</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> [key,vale] <span class="keyword">of</span> people )&#123;&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>weakMap</p>
 </blockquote>
@@ -675,11 +676,15 @@ people.get(obj);
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -691,11 +696,19 @@ people.get(obj);
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -711,19 +724,11 @@ people.get(obj);
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -739,7 +744,11 @@ people.get(obj);
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">template</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -751,11 +760,11 @@ people.get(obj);
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -767,7 +776,7 @@ people.get(obj);
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
+                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -775,11 +784,19 @@ people.get(obj);
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">gin</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -824,10 +841,6 @@ people.get(obj);
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>

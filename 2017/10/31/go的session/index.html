@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://crossgit.github.io/2017/10/31/go的session/index.html">
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="go没有处理session,有一个beego的包 import &amp;quot;github.com/astaxie/beego/session&amp;quot;">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-10-31T10:45:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go的session">
@@ -169,7 +170,7 @@
         <p>go没有处理session,有一个beego的包</p>
 <pre><code>import &quot;github.com/astaxie/beego/session&quot;
 </code></pre><a id="more"></a>
-<p>声明与初始<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> (</div><div class="line">	globalSessions *session.Manager</div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</div><div class="line">	globalSessions, _ = session.NewManager(<span class="string">"memory"</span>, <span class="string">`&#123;"cookieName":"gosessionid","gclifetime":3600&#125;`</span>)</div><div class="line">	<span class="keyword">go</span> globalSessions.GC()</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>声明与初始<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	globalSessions *session.Manager</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">	globalSessions, _ = session.NewManager(<span class="string">"memory"</span>, <span class="string">`&#123;"cookieName":"gosessionid","gclifetime":3600&#125;`</span>)</span><br><span class="line">	<span class="keyword">go</span> globalSessions.GC()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>使用关键<code>SessionStart</code>,从http请求生成或读取会话ID。如果session id存在，则返回具有此ID的SessionStore。</p>
 <pre><code>us, err := globalSessions.SessionStart(w, r)
 
@@ -410,11 +411,15 @@ func（manager * Manager）SessionStart（w http.ResponseWriter，r * http.Reque
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -426,11 +431,19 @@ func（manager * Manager）SessionStart（w http.ResponseWriter，r * http.Reque
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -446,19 +459,11 @@ func（manager * Manager）SessionStart（w http.ResponseWriter，r * http.Reque
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -474,7 +479,11 @@ func（manager * Manager）SessionStart（w http.ResponseWriter，r * http.Reque
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">template</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -486,11 +495,11 @@ func（manager * Manager）SessionStart（w http.ResponseWriter，r * http.Reque
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,7 +511,7 @@ func（manager * Manager）SessionStart（w http.ResponseWriter，r * http.Reque
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
+                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,11 +519,19 @@ func（manager * Manager）SessionStart（w http.ResponseWriter，r * http.Reque
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">gin</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -559,10 +576,6 @@ func（manager * Manager）SessionStart（w http.ResponseWriter，r * http.Reque
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
             
             <div class="clearfix"></div>

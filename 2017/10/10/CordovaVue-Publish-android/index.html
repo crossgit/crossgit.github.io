@@ -167,7 +167,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>其实是关于cordova的android的打包,<a href="http://www.tuicool.com/articles/673mE3m" target="_blank" rel="external">转自</a>,另<a href="https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html#setting-gradle-properties" target="_blank" rel="external">Cordova官方教程</a></p>
+        <p>其实是关于cordova的android的打包,<a href="http://www.tuicool.com/articles/673mE3m" target="_blank" rel="noopener">转自</a>,另<a href="https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html#setting-gradle-properties" target="_blank" rel="noopener">Cordova官方教程</a></p>
 <a id="more"></a>
 <blockquote>
 <p>创建项目,在 cordova-demo <code>目录</code>创建一个项目，<code>ID</code> 为 com.example.cordovaDemo ，<code>项目名</code>为 cordovaDemo 。</p>
@@ -207,7 +207,7 @@ ln -s platforms/android/build/outputs/apk android-apk
 <pre><code>zipalign -v 4 android-apk/android-release-unsigned.apk android-apk/cordova-demo.apk
 </code></pre><hr>
 <h2 id="自动打包"><a href="#自动打包" class="headerlink" title="自动打包"></a>自动打包</h2><p>在根目录下创建一个文件 <code>build.json</code>,输入</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"android"</span>: &#123;</div><div class="line">    <span class="attr">"release"</span>: &#123;</div><div class="line">      <span class="attr">"keystore"</span>: <span class="string">"release-key.keystore"</span>,</div><div class="line">      <span class="attr">"alias"</span>: <span class="string">"cordova-demo"</span>,</div><div class="line">      <span class="attr">"storePassword"</span>: <span class="string">"testing"</span>,</div><div class="line">      <span class="attr">"password"</span>: <span class="string">"testing2"</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"android"</span>: &#123;</span><br><span class="line">    <span class="attr">"release"</span>: &#123;</span><br><span class="line">      <span class="attr">"keystore"</span>: <span class="string">"release-key.keystore"</span>,</span><br><span class="line">      <span class="attr">"alias"</span>: <span class="string">"cordova-demo"</span>,</span><br><span class="line">      <span class="attr">"storePassword"</span>: <span class="string">"testing"</span>,</span><br><span class="line">      <span class="attr">"password"</span>: <span class="string">"testing2"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>然后命令 </p>
 <pre><code>cordova build --release
 </code></pre><hr>
@@ -480,19 +480,15 @@ keyPassword=SECRET2
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,6 +501,10 @@ keyPassword=SECRET2
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -560,10 +560,6 @@ keyPassword=SECRET2
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
@@ -576,15 +572,19 @@ keyPassword=SECRET2
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">easyui</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+                <a href="javascript:void(0)" class="js-tag color4">gin</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">gin</a>
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
               </li>
              
               <li class="article-tag-list-item">

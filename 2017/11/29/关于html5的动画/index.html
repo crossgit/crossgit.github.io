@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://crossgit.github.io">
   <title>关于html5的动画 | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="可能的一些事情">
+  <meta name="description" content="网页上展示动画,不只是html5的动画,还有css和js的 通常有三种变化  移动  渐变  旋转">
 <meta name="keywords" content="html5">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于html5的动画">
 <meta property="og:url" content="http://crossgit.github.io/2017/11/29/关于html5的动画/index.html">
 <meta property="og:site_name" content="走走停停">
-<meta property="og:description" content="可能的一些事情">
+<meta property="og:description" content="网页上展示动画,不只是html5的动画,还有css和js的 通常有三种变化  移动  渐变  旋转">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-29T10:25:35.000Z">
+<meta property="og:updated_time" content="2017-12-02T09:42:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于html5的动画">
-<meta name="twitter:description" content="可能的一些事情">
+<meta name="twitter:description" content="网页上展示动画,不只是html5的动画,还有css和js的 通常有三种变化  移动  渐变  旋转">
   
     <link rel="alternative" href="/atom.xml" title="走走停停" type="application/atom+xml">
   
@@ -167,18 +167,97 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>可能的一些事情</p>
+        <p>网页上展示动画,不只是html5的动画,还有css和js的</p>
+<p>通常有三种变化</p>
+<ul>
+<li><p>移动</p>
+</li>
+<li><p>渐变</p>
+</li>
+<li><p>旋转</p>
+</li>
+</ul>
 <a id="more"></a>
-<blockquote>
-<p>可能会引入的第三方</p>
+<h3 id="html5的动画"><a href="#html5的动画" class="headerlink" title="html5的动画"></a>html5的动画</h3><blockquote>
+<p>这里就是 canvas 了,主要分几种</p>
 </blockquote>
 <ul>
-<li><script type="text/javascript" src="../js/jquery-1.9.0.min.js"></script>
+<li><p>初始: var cxt=document.getElementById(“myCanvas”).getContext(“2d”);</p>
 </li>
-<li><script type="text/javascript" src="../js/requestAnimationFrame.js"></script>
+<li><p>画线:  </p>
+<ul>
+<li><p>ctx.moveTo(x,y) 定义开始点</p>
 </li>
-<li></li>
+<li><p>ctx.lineTo(x,y) 定义结束位置</p>
+</li>
+<li><p>ctx.stroke()</p>
+</li>
 </ul>
+</li>
+<li><p>画圆</p>
+<ul>
+<li>xtc.arc(…)</li>
+</ul>
+</li>
+<li><p>渐变</p>
+</li>
+<li><p>放置图像</p>
+<ul>
+<li>xtc.drawImage(img,x,y)</li>
+</ul>
+</li>
+<li><h3 id="css-css3的动画"><a href="#css-css3的动画" class="headerlink" title="css/css3的动画"></a>css/css3的动画</h3></li>
+<li><p>根据hover来写不同的样式</p>
+</li>
+<li><p>2d和3d旋转处理</p>
+</li>
+<li><p>过度 transition</p>
+</li>
+<li><p>动画 animation ,以及 @keyframes</p>
+</li>
+</ul>
+<h3 id="js的动画-一般用来处理数字变化-进度条-一些简单的东西"><a href="#js的动画-一般用来处理数字变化-进度条-一些简单的东西" class="headerlink" title="js的动画,一般用来处理数字变化,进度条,一些简单的东西"></a>js的动画,一般用来处理数字变化,进度条,一些简单的东西</h3><blockquote>
+<p>setTimeOut</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"myDiv"</span> style=<span class="string">"background-color: lightblue;width: 0;height: 20px;line-height: 20px;"</span>&gt;<span class="number">0</span>%<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;button id=<span class="string">"btn"</span>&gt;run&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">var timer;</span></span><br><span class="line"><span class="regexp">btn.onclick = function()&#123;</span></span><br><span class="line"><span class="regexp">    clearTimeout(timer);</span></span><br><span class="line"><span class="regexp">    myDiv.style.width = '0';</span></span><br><span class="line"><span class="regexp">    timer = setTimeout(function fn()&#123;</span></span><br><span class="line"><span class="regexp">        if(parseInt(myDiv.style.width) &lt; 500)&#123;</span></span><br><span class="line"><span class="regexp">            myDiv.style.width = parseInt(myDiv.style.width) + 5 + 'px';</span></span><br><span class="line"><span class="regexp">            myDiv.innerHTML =     parseInt(myDiv.style.width)/</span><span class="number">5</span> + <span class="string">'%'</span>;</span><br><span class="line">            timer = setTimeout(fn,<span class="number">16</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            clearTimeout(timer);</span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;,<span class="number">16</span>);</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>setInterval</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"myDiv"</span> style=<span class="string">"background-color: lightblue;width: 0;height: 20px;line-height: 20px;"</span>&gt;<span class="number">0</span>%<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;button id=<span class="string">"btn"</span>&gt;run&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">var timer;</span></span><br><span class="line"><span class="regexp">btn.onclick = function()&#123;</span></span><br><span class="line"><span class="regexp">    clearInterval(timer);</span></span><br><span class="line"><span class="regexp">    myDiv.style.width = '0';</span></span><br><span class="line"><span class="regexp">    timer = setInterval(function()&#123;</span></span><br><span class="line"><span class="regexp">        if(parseInt(myDiv.style.width) &lt; 500)&#123;</span></span><br><span class="line"><span class="regexp">            myDiv.style.width = parseInt(myDiv.style.width) + 5 + 'px';</span></span><br><span class="line"><span class="regexp">            myDiv.innerHTML =     parseInt(myDiv.style.width)/</span><span class="number">5</span> + <span class="string">'%'</span>;    </span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            clearInterval(timer);</span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;,<span class="number">16</span>);</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>requestAnimationFrame</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"myDiv"</span> style=<span class="string">"background-color: lightblue;width: 0;height: 20px;line-height: 20px;"</span>&gt;<span class="number">0</span>%<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;button id=<span class="string">"btn"</span>&gt;run&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">var timer;</span></span><br><span class="line"><span class="regexp">btn.onclick = function()&#123;</span></span><br><span class="line"><span class="regexp">    myDiv.style.width = '0';</span></span><br><span class="line"><span class="regexp">    cancelAnimationFrame(timer);</span></span><br><span class="line"><span class="regexp">    timer = requestAnimationFrame(function fn()&#123;</span></span><br><span class="line"><span class="regexp">        if(parseInt(myDiv.style.width) &lt; 500)&#123;</span></span><br><span class="line"><span class="regexp">            myDiv.style.width = parseInt(myDiv.style.width) + 5 + 'px';</span></span><br><span class="line"><span class="regexp">            myDiv.innerHTML =     parseInt(myDiv.style.width)/</span><span class="number">5</span> + <span class="string">'%'</span>;</span><br><span class="line">            timer = requestAnimationFrame(fn);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            cancelAnimationFrame(timer);</span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="js-控制css的动画-与触发事件"><a href="#js-控制css的动画-与触发事件" class="headerlink" title="js 控制css的动画,与触发事件"></a>js 控制css的动画,与触发事件</h3><ul>
+<li><p>鼠标移动 mouseOver 的切换图片</p>
+</li>
+<li><p>移动端的手势插件 <a href="http://hammerjs.github.io/" target="_blank" rel="noopener">hammer.JS</a></p>
+</li>
+<li><p>直接控制css的js  <a href="https://github.com/rstacruz/jquery.transit" target="_blank" rel="noopener">jquery.transit.js</a>,<a href="http://ricostacruz.com/jquery.transit/" target="_blank" rel="noopener">官网?</a>,注意,先引入jq</p>
+</li>
+</ul>
+<h3 id="svg的动画"><a href="#svg的动画" class="headerlink" title="svg的动画"></a><a href="https://www.w3.org/TR/SVG/paths.html#PathData" target="_blank" rel="noopener">svg</a>的动画</h3><blockquote>
+<p>主要元素</p>
+</blockquote>
+<pre><code>&lt;set&gt;
+&lt;animate&gt;
+&lt;animateColor&gt;
+&lt;animateTransform&gt;
+&lt;animateMotion&gt;
+</code></pre><p>能实现的效果</p>
+<ul>
+<li><p>动画元素的数值属性（X, Y, …）</p>
+</li>
+<li><p>动画属性变换（平移或旋转）</p>
+</li>
+<li><p>动画颜色属性</p>
+</li>
+<li><p>沿着运动路径运动</p>
+</li>
+</ul>
+<blockquote>
+<p>svg 嵌入html</p>
+</blockquote>
 
       
 
@@ -423,19 +502,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -448,6 +523,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -503,10 +582,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
@@ -519,15 +594,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">easyui</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+                <a href="javascript:void(0)" class="js-tag color4">gin</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">gin</a>
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
               </li>
              
               <li class="article-tag-list-item">

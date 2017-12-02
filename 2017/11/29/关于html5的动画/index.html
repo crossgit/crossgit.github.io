@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="网页上展示动画,不只是html5的动画,还有css和js的 通常有三种变化  移动  渐变  旋转">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-02T09:42:08.000Z">
+<meta property="og:updated_time" content="2017-12-02T09:58:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于html5的动画">
 <meta name="twitter:description" content="网页上展示动画,不只是html5的动画,还有css和js的 通常有三种变化  移动  渐变  旋转">
@@ -229,7 +229,7 @@
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"myDiv"</span> style=<span class="string">"background-color: lightblue;width: 0;height: 20px;line-height: 20px;"</span>&gt;<span class="number">0</span>%<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;button id=<span class="string">"btn"</span>&gt;run&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">var timer;</span></span><br><span class="line"><span class="regexp">btn.onclick = function()&#123;</span></span><br><span class="line"><span class="regexp">    myDiv.style.width = '0';</span></span><br><span class="line"><span class="regexp">    cancelAnimationFrame(timer);</span></span><br><span class="line"><span class="regexp">    timer = requestAnimationFrame(function fn()&#123;</span></span><br><span class="line"><span class="regexp">        if(parseInt(myDiv.style.width) &lt; 500)&#123;</span></span><br><span class="line"><span class="regexp">            myDiv.style.width = parseInt(myDiv.style.width) + 5 + 'px';</span></span><br><span class="line"><span class="regexp">            myDiv.innerHTML =     parseInt(myDiv.style.width)/</span><span class="number">5</span> + <span class="string">'%'</span>;</span><br><span class="line">            timer = requestAnimationFrame(fn);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            cancelAnimationFrame(timer);</span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="js-控制css的动画-与触发事件"><a href="#js-控制css的动画-与触发事件" class="headerlink" title="js 控制css的动画,与触发事件"></a>js 控制css的动画,与触发事件</h3><ul>
-<li><p>鼠标移动 mouseOver 的切换图片</p>
+<li><p>鼠标移动 mouseOver/mouseOut 的切换图片</p>
 </li>
 <li><p>移动端的手势插件 <a href="http://hammerjs.github.io/" target="_blank" rel="noopener">hammer.JS</a></p>
 </li>
@@ -494,7 +494,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,7 +502,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,11 +510,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
+                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -542,10 +538,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
@@ -562,6 +554,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模板</a>
               </li>
              
@@ -570,7 +566,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">http</a>
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -582,6 +578,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">easyui</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
@@ -590,15 +594,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">easyui</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -614,23 +618,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kong</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">three.js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">webGL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -647,6 +635,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">搜集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">three.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">webGL</a>
               </li>
              
               <li class="article-tag-list-item">

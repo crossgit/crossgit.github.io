@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="redis一般用法">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-02T14:21:52.000Z">
+<meta property="og:updated_time" content="2017-12-03T06:56:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于redis">
 <meta name="twitter:description" content="redis一般用法">
@@ -205,7 +205,10 @@ hgetall car:1
 </li>
 <li><p>set (集合类型) 字符串的无序不重复结构. 有自动去重功能,可判断某个成员是否在一个set集合内(???).</p>
 <ul>
-<li>常用命令: sadd/spop(添加/删除元素) smembers(查询) sunion (添加多个集合)</li>
+<li><p>常用命令: sadd/spop(添加/删除元素) smembers(查询) sunion (添加多个集合)sinter(求交集)</p>
+</li>
+<li><p>求两个用户的共同好友</p>
+</li>
 </ul>
 </li>
 <li><p>zset(sortedset有序集合类型) 在set的基础上,为每个元素都关联了一个score,通过score实现排序功能.</p>
@@ -293,6 +296,38 @@ exec
 </li>
 <li><p>AOF: 将执行过的写指令记录下来,在数据恢复时按照从前到后的顺序再将指令都执行一遍,从而恢复数据.</p>
 </li>
+</ul>
+</li>
+</ul>
+<h3 id="内存优化"><a href="#内存优化" class="headerlink" title="内存优化"></a>内存优化</h3><ul>
+<li><p>用 <code>info</code> 查看统计信息,其中的内存<code>memory</code>部分关键几点:</p>
+<ul>
+<li><p>used_memory_human : 以可读格式返回redis分配的内存总量.</p>
+</li>
+<li><p>used_memory_rss: 从操作系统的角度,返回redis已分配的内存总量.这个值和top命令输出一致.</p>
+</li>
+<li><p>used_memory_peak_human: 以可读格式返回redis的内存消耗<code>峰值</code>.</p>
+</li>
+</ul>
+</li>
+<li><p>优化存储结构</p>
+<ul>
+<li><p>正常情况下,hash中的value以hashmap方式存储,如果hashmap成员较少,或者hashmap的值长度较少,会以类似于线性压缩表的方式(ziplist)保存hash数据,该控制参数对应于redis配置文件中的两项:</p>
+<pre><code>hash-max-ziplist-entries 512 // hashmap内部成员不超过512用ziplist存储,大于512用hashmap
+hash-max-ziplist-value 64 // 长度不超过64时用ziplist,超过64用hashmap
+</code></pre></li>
+<li><p>其他的</p>
+<pre><code>list-max-ziplist-entries 512
+list-max-ziplist-value 64
+set-max-ziplist-entries 512
+zset-max-ziplist-entries 128
+zset-max-ziplist-value 64
+</code></pre></li>
+<li><p>限制使用的最大内存</p>
+</li>
+<li><p>设置过期时间</p>
+<pre><code>EXPIRE key seconds
+</code></pre></li>
 </ul>
 </li>
 </ul>
@@ -535,7 +570,7 @@ exec
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -543,7 +578,7 @@ exec
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,11 +590,11 @@ exec
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -587,10 +622,6 @@ exec
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">go</a>
               </li>
              
@@ -600,6 +631,10 @@ exec
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">elastic</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -615,27 +650,15 @@ exec
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">pdf</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -647,19 +670,19 @@ exec
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kong</a>
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -671,15 +694,15 @@ exec
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">three.js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">webGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -703,11 +726,23 @@ exec
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kong</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">d3</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">echarts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
             
             <div class="clearfix"></div>

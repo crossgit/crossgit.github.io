@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="array slice map channel interface struct json">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-10-31T07:21:40.000Z">
+<meta property="og:updated_time" content="2017-12-03T01:10:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go的复合数据类型">
 <meta name="twitter:description" content="array slice map channel interface struct json">
@@ -205,7 +205,7 @@
 <li><p>指针直接访问底层数组,退化成普通数组操作</p>
 </li>
 </ul>
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">s := []<span class="keyword">int</span>&#123;<span class="number">0</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">p := &amp;s[<span class="number">2</span>]</span><br><span class="line">*p +=<span class="number">100</span></span><br><span class="line"></span><br><span class="line">fmt.Println(s)</span><br><span class="line"></span><br><span class="line"><span class="comment">// [0,2,103,3]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">s := []<span class="keyword">int</span>&#123;<span class="number">0</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 更改元素</span></span><br><span class="line">p := &amp;s[<span class="number">2</span>]</span><br><span class="line">*p +=<span class="number">100</span></span><br><span class="line"></span><br><span class="line">fmt.Println(s)</span><br><span class="line"></span><br><span class="line"><span class="comment">// [0,2,103,3]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 尾部追加 append</span></span><br><span class="line"><span class="keyword">var</span> ss []<span class="keyword">string</span></span><br><span class="line">ss=apend(ss,<span class="number">10</span>)</span><br><span class="line"><span class="comment">// 删除元素,需要新建切片,重新添加</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// copy</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>[][]T ,元素类型为[]T</p>
 </li>
@@ -224,6 +224,7 @@
 <li><p>delete() 函数用于从映射中删除项目.它需要映射以及指定要删除的相应键.</p>
 </li>
 </ul>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明 </span></span><br><span class="line">m := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)</span><br><span class="line">m[<span class="string">"a"</span>]=<span class="string">"aa"</span></span><br><span class="line">m[<span class="string">"b"</span>]=<span class="string">"bb"</span></span><br><span class="line"><span class="comment">//或</span></span><br><span class="line">m1 := <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>&#123;</span><br><span class="line">    <span class="string">"a"</span>:<span class="string">"aa"</span>,</span><br><span class="line">    <span class="string">"b"</span>:<span class="string">"bb"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="interface-接口类型"><a href="#interface-接口类型" class="headerlink" title="interface 接口类型"></a>interface 接口类型</h2><ul>
 <li><p>一系列方法的集合, 实现了这些方法的具体类型 这个接口类型的实例.</p>
 </li>
@@ -241,8 +242,7 @@
 </li>
 </ul>
 <figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"math/rand"</span></span><br><span class="line">    <span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 定义interface类型</span></span><br><span class="line">    <span class="keyword">var</span> v <span class="keyword">interface</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    r := rand.New(rand.NewSource(time.Now().UnixNano()))</span><br><span class="line">    <span class="keyword">for</span> i :=<span class="number">0</span>;i &lt; <span class="number">10</span>; i++&#123;</span><br><span class="line">        v = i</span><br><span class="line">        <span class="keyword">if</span> (r.Intn(<span class="number">100</span>)%<span class="number">2</span>) == <span class="number">0</span> &#123;</span><br><span class="line">            v = <span class="string">"hello"</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 断言,如果是int,输出v</span></span><br><span class="line">        <span class="keyword">if</span> _,ok := v.(<span class="keyword">int</span>); ok&#123;</span><br><span class="line">            fmt.Printf(<span class="string">"%d\n"</span>,v)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>#struct</p>
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">type</span> Employee <span class="keyword">struct</span>&#123;</span><br><span class="line">    Id      <span class="keyword">int</span>     <span class="string">`json:"id"`</span></span><br><span class="line">    Name    <span class="keyword">string</span>  <span class="string">`json:"name"`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> dilbert Employee</span><br></pre></td></tr></table></figure>
+<h2 id="struct"><a href="#struct" class="headerlink" title="struct"></a>struct</h2><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">type</span> Employee <span class="keyword">struct</span>&#123;</span><br><span class="line">    Id      <span class="keyword">int</span>     <span class="string">`json:"id"`</span></span><br><span class="line">    Name    <span class="keyword">string</span>  <span class="string">`json:"name"`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> dilbert Employee</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>结构体字面值</p>
 </li>
@@ -498,7 +498,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -506,7 +506,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -518,11 +518,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -550,10 +550,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">go</a>
               </li>
              
@@ -563,6 +559,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">elastic</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -578,27 +578,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">pdf</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -610,19 +598,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kong</a>
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -634,15 +622,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">three.js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">webGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -666,11 +654,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kong</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">d3</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">echarts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
             
             <div class="clearfix"></div>

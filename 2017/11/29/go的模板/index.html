@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="html/template">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-29T23:55:57.000Z">
+<meta property="og:updated_time" content="2017-12-12T09:06:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go的模板">
 <meta name="twitter:description" content="html/template">
@@ -328,7 +328,7 @@
 <p>如何让参数不转义,这种冒险行为是这样.. <code>template.HTML(到模板的参数))</code>,就是将参数用template.HTML括起来,还有 <code>template.JS</code>,<code>template.CSS</code></p>
 <p>还有一种对付这种不转义的办法,<code>自定义模板变量</code></p>
 </blockquote>
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">unescaped</span> <span class="params">(x <span class="keyword">string</span>)</span> <span class="title">interface</span></span>&#123;&#125; &#123; <span class="keyword">return</span> template.HTML(x) &#125; <span class="comment">// 定义 unescaped</span></span><br><span class="line"></span><br><span class="line">http.HandleFunc(<span class="string">"/"</span>, <span class="function"><span class="keyword">func</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123; </span><br><span class="line">		tmpl := template.New(<span class="string">""</span>)</span><br><span class="line">		tmpl = tmpl.Funcs(template.FuncMap&#123;<span class="string">"unescaped"</span>: unescaped&#125;)</span><br><span class="line">		tmpl, _ = tmpl.ParseFiles(<span class="string">"templates/demo.html"</span>)</span><br><span class="line">		<span class="comment">// tmpl = template.Must(tmpl.ParseFiles("templates/demo.html"))  // 这样写也可以的,那么这个template.Must到底干嘛的呢? 其实就是省略了一个err</span></span><br><span class="line">		user := User&#123;Nick: <span class="string">"abc"</span>, Des: <span class="string">"&lt;h1&gt;啥?啥?啥?&lt;/h1&gt;"</span>&#125;</span><br><span class="line">		<span class="keyword">if</span> err := tmpl.ExecuteTemplate(w, <span class="string">"demo"</span>, user); <span class="literal">nil</span> != err &#123;</span><br><span class="line">			http.Error(w, err.Error(), http.StatusBadRequest)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">unescaped</span> <span class="params">(x <span class="keyword">string</span>)</span> <span class="title">interface</span></span>&#123;&#125; &#123; <span class="keyword">return</span> template.HTML(x) &#125; <span class="comment">// 定义 unescaped</span></span><br><span class="line"></span><br><span class="line">http.HandleFunc(<span class="string">"/"</span>, <span class="function"><span class="keyword">func</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123; </span><br><span class="line">	tmpl := template.New(<span class="string">""</span>)</span><br><span class="line">	tmpl = tmpl.Funcs(template.FuncMap&#123;<span class="string">"unescaped"</span>: unescaped&#125;)</span><br><span class="line">	tmpl, _ = tmpl.ParseFiles(<span class="string">"templates/demo.html"</span>)</span><br><span class="line">	<span class="comment">// tmpl = template.Must(tmpl.ParseFiles("templates/demo.html"))  // 这样写也可以的,那么这个template.Must到底干嘛的呢? 其实就是省略了一个err</span></span><br><span class="line">	user := User&#123;Nick: <span class="string">"abc"</span>, Des: <span class="string">"&lt;h1&gt;啥?啥?啥?&lt;/h1&gt;"</span>&#125;</span><br><span class="line">	<span class="keyword">if</span> err := tmpl.ExecuteTemplate(w, <span class="string">"demo"</span>, user); <span class="literal">nil</span> != err &#123;</span><br><span class="line">		http.Error(w, err.Error(), http.StatusBadRequest)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>使用</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123; &#123;printf &quot;%s&quot; .Body | unescaped&#125; &#125; //[]byte</span><br><span class="line">&#123; &#123;.Body | unescaped&#125; &#125; //string</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -399,7 +399,8 @@
 </table>
 <h3 id="自定义模板函数"><a href="#自定义模板函数" class="headerlink" title="自定义模板函数"></a>自定义模板函数</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;  </span><br><span class="line">    </span><br><span class="line">    Func := template.FuncMap&#123;<span class="string">"Func"</span>: ce&#125;   <span class="comment">//把定义的函数实例  </span></span><br><span class="line">    t := template.New(<span class="string">""</span>)  </span><br><span class="line">    t.Funcs(Func)    <span class="comment">//注册要使用的函数  </span></span><br><span class="line">    t....</span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ce</span><span class="params">(i <span class="keyword">int</span>)</span> <span class="title">string</span></span> &#123;  </span><br><span class="line">    <span class="keyword">return</span> <span class="string">"姓名："</span>  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="子页面"><a href="#子页面" class="headerlink" title="子页面"></a>子页面</h3><p>一个页面包含了多个 <code>template</code>.</p>
-<p>ParseFiles 的时候,把这个页面的define定义的 页面,全写上.</p>
+<p>{ {template “别的模板名”} }</p>
+<p>如果用ParseFiles,那就把这个页面用到的页面全写上.</p>
 
       
 
@@ -652,15 +653,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">发布android</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -696,19 +697,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">go</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">go部署</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">elastic</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">es6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">go</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -724,10 +717,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdf</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
@@ -736,15 +725,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">easyui</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">gin</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color4">pdf</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -753,6 +746,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">gin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -768,6 +769,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kong</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">three.js</a>
               </li>
              
@@ -776,7 +785,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
+                <a href="javascript:void(0)" class="js-tag color2">oauth2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -796,14 +805,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">oauth2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kong</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">d3</a>
               </li>
              
@@ -812,11 +813,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+                <a href="javascript:void(0)" class="js-tag color5">go部署</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color3">elastic</a>
               </li>
             
             <div class="clearfix"></div>

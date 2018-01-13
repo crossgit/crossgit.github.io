@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://crossgit.github.io">
-  <title>关于gin | 走走停停</title>
+  <title>js里的Object | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个go的框架">
-<meta name="keywords" content="go,gin">
+  <meta name="description" content="整理来自 mdn">
+<meta name="keywords" content="js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于gin">
-<meta property="og:url" content="http://crossgit.github.io/2017/09/01/关于gin/index.html">
+<meta property="og:title" content="js里的Object">
+<meta property="og:url" content="http://crossgit.github.io/2018/01/11/js里的Object/index.html">
 <meta property="og:site_name" content="走走停停">
-<meta property="og:description" content="一个go的框架">
+<meta property="og:description" content="整理来自 mdn">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-09-01T06:38:49.000Z">
+<meta property="og:updated_time" content="2018-01-11T10:55:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于gin">
-<meta name="twitter:description" content="一个go的框架">
+<meta name="twitter:title" content="js里的Object">
+<meta name="twitter:description" content="整理来自 mdn">
   
     <link rel="alternative" href="/atom.xml" title="走走停停" type="application/atom+xml">
   
@@ -147,235 +147,173 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-关于gin" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-js里的Object" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      关于gin
+      js里的Object
     </h1>
   
 
         
-        <a href="/2017/09/01/关于gin/" class="archive-article-date">
-  	<time datetime="2017-09-01T04:20:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-01</time>
+        <a href="/2018/01/11/js里的Object/" class="archive-article-date">
+  	<time datetime="2018-01-11T09:03:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一个go的框架<br><a id="more"></a></p>
+        <p>整理来自 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" rel="noopener">mdn</a></p>
+<a id="more"></a>
 <blockquote>
-<p>跳过简单介绍</p>
+<p>属性</p>
 </blockquote>
-<p>是<a href="http://gopkg.in/gin-gonic/gin.v1" target="_blank" rel="noopener">gin.v1</a> <code>gopkg.in/gin-gonic/gin.v1</code></p>
+<ul>
+<li>Object.prototype</li>
+</ul>
+<p>所有Object对象都可以通过原型链看到原型对象的变化,除非受原型链影响的属性和方法在原型链中被进一步覆盖.</p>
+<ul>
+<li>Object.prototype.constructor</li>
+</ul>
+<p>特定的函数，用于创建一个对象的原型。构造函数</p>
+<ul>
+<li>Object.prototype.<strong>proto</strong> </li>
+</ul>
+<p>指向当对象被实例化的时候，用作原型的对象。</p>
+<ul>
+<li><p>Object.prototype.<strong>noSuchMethod</strong> </p>
+<p>当未定义的对象成员被调用作方法的时候，允许定义并执行的函数。</p>
+</li>
+</ul>
 <blockquote>
-<p>对前后数据交互的使用</p>
+<p>方法</p>
 </blockquote>
-<table>
-<thead>
-<tr>
-<th>后端接收</th>
-<th>传递方式</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>c.Param</td>
-<td>路由参数 <code>url/:params</code></td>
-<td>返回url参数的值,是c.Params.ByName(key)的简写</td>
-</tr>
-<tr>
-<td>c.DefaultParam</td>
-<td>url/*params</td>
-<td>c.DefaultParam(“params”, “Guest”) 如果没参数,给默认值</td>
-</tr>
-<tr>
-<td>c.PostForm</td>
-<td>form提交</td>
-<td>从post urlencoded 表单或多表单返回指定的键.</td>
-</tr>
-<tr>
-<td>c.DefaultPostForm</td>
-<td>form提交</td>
-<td>c.DefaultPostForm(“nick”, “anonymous”) 给默认值</td>
-</tr>
-<tr>
-<td>c.PostFormArray</td>
-<td>form提交</td>
-<td>返回切片,长度取决于参数数量</td>
-</tr>
-<tr>
-<td>c.Query</td>
-<td>url?part1=1&amp;part2=2</td>
-<td>url? 后面的参数</td>
-</tr>
-<tr>
-<td>c.DefaultQuery</td>
-<td>url?part1=1&amp;part2=2</td>
-<td>c.DefaultQuery(“part3”, “Guest”) 如果没这参数,给默认值</td>
-</tr>
-<tr>
-<td>c.QueryArray</td>
-<td>url?part1=1&amp;part2=2</td>
-<td>url? 后面的切片参数</td>
-</tr>
-<tr>
-<td>c.Request.FormFile(“upload”)</td>
-<td>文件上传</td>
-<td>file, header , err := c.Request.FormFile(“upload”) …</td>
-</tr>
-<tr>
-<td>c.Request.FormValue</td>
-<td>post的json参数</td>
-</tr>
-<tr>
-<td>c.Bind</td>
-<td>form绑定,用于验证</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>后端发布</th>
-<th>解释</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>c.String</td>
-<td>发布字符串</td>
-<td>c.String(http.StatusOK,”HELLO!”)</td>
-</tr>
-<tr>
-<td>c.JSON</td>
-<td>发布json格式</td>
-<td>c.JSON(HTTP.StatusOK,gin.H{“rows”,rows}) // rows,随意</td>
-</tr>
-<tr>
-<td>c.XML</td>
-<td>发布xml格式</td>
-<td>c.XML(http.StatusOK, gin.H{“message”: “hey”, “status”: http.StatusOK})</td>
-</tr>
-<tr>
-<td>c.YAML</td>
-<td>发布yaml格式</td>
-<td>c.YAML(http.StatusOK, gin.H{“message”: “hey”})</td>
-</tr>
-<tr>
-<td>c.HTML</td>
-<td>模板渲染</td>
-<td>c.HTML(http.StatusOK, “posts/index.tmpl”, gin.H{“title”: “Posts”})</td>
-</tr>
-<tr>
-<td>c.Redirect</td>
-<td>重定向</td>
-<td>c.Redirect(http.StatusMovedPermanently, “<a href="https://www.google.com/" target="_blank" rel="noopener">https://www.google.com/</a>“)</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>中间件相关</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>c.Set</td>
-<td>c.Set(“example”, “12345”)</td>
-</tr>
-<tr>
-<td>c.Next</td>
-<td>c.Next() request前后分割点</td>
-</tr>
-<tr>
-<td>c.Writer</td>
-<td>c.Writer.Status() 状态</td>
-</tr>
-<tr>
-<td>c.MustGet</td>
-<td>是否存在键</td>
-</tr>
-<tr>
-<td>c.Copy</td>
-<td>c.Copy()</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>可能的请求方式</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>路由的请求方式</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Use(…HandlerFunc) IRoutes</td>
-<td>中间件</td>
-</tr>
-<tr>
-<td>Handle(string, string, …HandlerFunc) IRoutes</td>
-<td></td>
-</tr>
-<tr>
-<td>Any(string, …HandlerFunc) IRoutes</td>
-<td>接收任意的请求类型 <code>GET, POST, PUT, PATCH, HEAD, OPTIONS, DELETE, CONNECT, TRACE</code></td>
-</tr>
-<tr>
-<td>GET(string, …HandlerFunc) IRoutes</td>
-<td>类似<code>router.Handle(&quot;GET&quot;, path, handle)</code></td>
-</tr>
-<tr>
-<td>POST(string, …HandlerFunc) IRoutes</td>
-<td></td>
-</tr>
-<tr>
-<td>DELETE(string, …HandlerFunc) IRoutes</td>
-<td></td>
-</tr>
-<tr>
-<td>PATCH(string, …HandlerFunc) IRoutes</td>
-<td></td>
-</tr>
-<tr>
-<td>PUT(string, …HandlerFunc) IRoutes</td>
-<td></td>
-</tr>
-<tr>
-<td>OPTIONS(string, …HandlerFunc) IRoutes</td>
-<td></td>
-</tr>
-<tr>
-<td>HEAD(string, …HandlerFunc) IRoutes</td>
-<td></td>
-</tr>
-<tr>
-<td>StaticFile(string, string) IRoutes</td>
-<td>静态<code>文件</code>路由 <code>router.StaticFile(&quot;favicon.ico&quot;, &quot;./resources/favicon.ico&quot;)</code></td>
-</tr>
-<tr>
-<td>Static(string, string) IRoutes</td>
-<td>静态<code>文件夹</code>路由 <code>router.Static(&quot;/路由&quot;,&quot;./文件夹目录&quot;)</code></td>
-</tr>
-<tr>
-<td>StaticFS(string, http.FileSystem) IRoutes</td>
-<td>静态<code>文件</code>路由 <code>router.Static(&quot;/路由&quot;,gin.Dir(&quot;FileSystem&quot;))</code></td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li>Object.assign()</li>
+</ul>
+<p>将所有可枚举属性的值从一个或多个源对象复制到目标对象.返回目标对象.</p>
+<ul>
+<li>Object.create()</li>
+</ul>
+<p>使用指定的原型对象及其属性去创建一个新的对象</p>
+<ul>
+<li>Object.defineProperties(obj,props)</li>
+</ul>
+<p>在一个对象上定义新的属性或修改现有属性,并返回该对象.</p>
+<ul>
+<li>Object.defineProperty(obj,prop,descriptor)</li>
+</ul>
+<p>在一个对象上定义一个新属性,或者修改一个对象的现有属性,并返回这个对象.</p>
+<ul>
+<li>Object.entries(obj)</li>
+</ul>
+<p>对象转多维数组</p>
+<pre><code>const obj = { foo: &apos;bar&apos;, baz: 42 };
+console.log(Object.entries(obj)); // [ [&apos;foo&apos;, &apos;bar&apos;], [&apos;baz&apos;, 42] ]
+</code></pre><ul>
+<li>Object.freeze()</li>
+</ul>
+<p>冻结对象,冻结后,对象属性不可更改,数值属性不可更改.</p>
+<ul>
+<li>Object.getOwnPropertyDescriptor(obj,prop)</li>
+</ul>
+<p>返回对象内,某属性的描述</p>
+<ul>
+<li>Object.getOwnPropertyDescriptors(obj)</li>
+</ul>
+<p>返回对象属性的描述,没有就空</p>
+<ul>
+<li>Object.getOwnPropertyNames(obj)</li>
+</ul>
+<p>返回数组或对象的key,数组返回 [0,1,2,length],对象返回key的数组</p>
+<ul>
+<li>Object.getOwnPropertySymbols(obj)</li>
+</ul>
+<p>返回 symbol属性的对象.</p>
+<ul>
+<li>Object.getPrototypeOf()</li>
+</ul>
+<p>返回原型的对象,没有继承属性,返回null</p>
+<ul>
+<li>Object.is(value1,value2)</li>
+</ul>
+<p>判断两个参数是否相等,特别的</p>
+<pre><code>Object.is(&apos;obj&apos;,&apos;obj&apos;);      //true
+Object.is(window,window);    //true
+Object.is(&apos;obj&apos;,&apos;foo&apos;);      //false
+Object.is([],[]);            //false
+Object.is(null,null);        //true
+Object.is(0,-0);             //false
+Object.is(-0,-0);            //true
+Object.is(NaN,0/0);          //true
+</code></pre><ul>
+<li>Object.isExtensible()</li>
+</ul>
+<p>判断一个对象是否可扩展,添加新的属性, 以下会让对象变得不可扩展</p>
+<pre><code>Object.preventExtensions(obj) ; // 不可扩展
+Object.freeze(obj); // 冻结对象
+</code></pre><ul>
+<li>Object.isFrozen()</li>
+</ul>
+<p>判断一个对象是否 <code>Frozen</code> 冻结的,指密封的,但是可写的,或者不可扩展的也是冻结的</p>
+<ul>
+<li>Object.isSealed()</li>
+</ul>
+<p>判断一个对象是否是 <code>sealed</code> 密封的, 特指不能扩展不能配置的对象,一般的对象都是可以扩展的,如果想不能扩展,做处理</p>
+<pre><code>var obj = {a:12,b:34};
+Objec.preventExtensions(obj);  // obj不能扩展
+Object.defineProperty(obj,&apos;a&apos;,{configurable:false});  //属性a 不能配置
+Object.defineProperty(obj,&apos;b&apos;,{configurable:false});  //属性b 不能配置,都需要设置
+
+Object.seal(obj); // 把obj生成密封对象
+</code></pre><ul>
+<li>Object.keys()</li>
+</ul>
+<p>将对象的键值放到数组内,带排序.</p>
+<ul>
+<li>Object.values()</li>
+</ul>
+<p>将对象的值放到数组内,带排序</p>
+<ul>
+<li>Object.preventExtensions()</li>
+</ul>
+<p>让一个对象变的不可扩展，也就是永远不能再添加新的属性。</p>
+<ul>
+<li>Object.prototype.hasOwnProperty()</li>
+</ul>
+<p>返回一个布尔值，指示对象自身属性中是否具有指定的属性</p>
+<ul>
+<li>Object.prototype.isPrototypeOf()</li>
+</ul>
+<p>测试一个对象是否存在于另一个对象的原型链上。</p>
+<ul>
+<li>Object.prototype.propertyIsEnumerable()</li>
+</ul>
+<p>返回一个布尔值，表示指定的属性是否可枚举。</p>
+<ul>
+<li>Object.prototype.toLocaleString()</li>
+</ul>
+<p>返回一个该对象的字符串表示。此方法被用于派生对象为了特定语言环境的目的（locale-specific purposes）而重载使用。</p>
+<ul>
+<li>Object.prototype.toString()</li>
+</ul>
+<p>返回一个表示该对象的字符串。</p>
+<ul>
+<li>Object.prototype.valueOf()</li>
+</ul>
+<p>返回指定对象的原始值。</p>
+<ul>
+<li>Object.seal()</li>
+</ul>
+<p>让一个对象密封，并返回被密封后的对象。密封对象将会阻止向对象添加新的属性，并且会将所有已有属性的可配置性（configurable）置为不可配置（false），即不可修改属性的描述或删除属性。但是可写性描述（writable）为可写（true）的属性的值仍然可以被修改。</p>
+<ul>
+<li>Object.setPrototypeOf()</li>
+</ul>
+<p>设置一个指定的对象的原型 ( 即, 内部[[Prototype]]属性）到另一个对象或  null。</p>
 
       
 
@@ -410,11 +348,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">go</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">gin</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
         		</li>
       		
 		</ul>
@@ -470,7 +404,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2017/09/01/关于gin/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2018/01/11/js里的Object/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -484,18 +418,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/09/03/关于easyui的多页签/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          关于easyui的多页签
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/08/29/关于kong/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">关于kong</div>
+    <a href="/2018/01/10/rgb渐变色/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">rgb渐变色</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -511,8 +436,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://crossgit.github.io/2017/09/01/关于gin/", 
-    sourceId: "关于gin",
+    url: "http://crossgit.github.io/2018/01/11/js里的Object/", 
+    sourceId: "js里的Object",
     productKey: "falsexiangce",
     target: "cloud-tie-wrapper"
   };

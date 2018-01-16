@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="关于发布,mac开发,部署到centos7 我的测试是在src下,一个单main.go文件和一个静态文件夹,步骤如下">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-03T02:43:18.000Z">
+<meta property="og:updated_time" content="2018-01-16T13:34:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go1">
 <meta name="twitter:description" content="关于发布,mac开发,部署到centos7 我的测试是在src下,一个单main.go文件和一个静态文件夹,步骤如下">
@@ -191,7 +191,15 @@ CGO_ENABLED=0 GOOS=windows GOARCH=386 go build main.go // 打包win环境 32位
 <pre><code>nohup ./main &amp;
 </code></pre><blockquote>
 <p>再下来是ningx的代理….就这样.</p>
+<p>如何更新</p>
 </blockquote>
+<ul>
+<li><p>停止nohup ,一般就查看端口,然后停止</p>
+<pre><code>lsof -i:10080 # 查看10080端口的pid
+kill -9 13969 # 停止占用端口的pid
+nohup main &amp;  # 启动
+</code></pre></li>
+</ul>
 <hr>
 <h2 id="关于守护进程的工具-supervisor-安装后-有一个echo-supervisord-conf-的工具-命令生成一个配置文件-安装要py2-7-看官网吧"><a href="#关于守护进程的工具-supervisor-安装后-有一个echo-supervisord-conf-的工具-命令生成一个配置文件-安装要py2-7-看官网吧" class="headerlink" title="关于守护进程的工具 supervisor,安装后,有一个echo_supervisord_conf 的工具,命令生成一个配置文件,(安装要py2.7,看官网吧)"></a>关于守护进程的工具 supervisor,安装后,有一个echo_supervisord_conf 的工具,命令生成一个配置文件,(安装要py2.7,看官网吧)</h2><pre><code>echo_supervisord_conf &gt; supervisord.conf
 </code></pre><ol>
@@ -492,7 +500,11 @@ supervisorctl&gt; reload
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -500,11 +512,7 @@ supervisorctl&gt; reload
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,6 +540,14 @@ supervisorctl&gt; reload
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">elastic</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模板</a>
               </li>
              
@@ -548,15 +564,11 @@ supervisorctl&gt; reload
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">elastic</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">pdf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -568,6 +580,10 @@ supervisorctl&gt; reload
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">easyui</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
               </li>
              
@@ -576,15 +592,7 @@ supervisorctl&gt; reload
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">easyui</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color4">gin</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,7 +600,7 @@ supervisorctl&gt; reload
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,11 +612,7 @@ supervisorctl&gt; reload
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">three.js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">webGL</a>
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -620,7 +624,11 @@ supervisorctl&gt; reload
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">oauth2</a>
+                <a href="javascript:void(0)" class="js-tag color4">three.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">webGL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -644,7 +652,7 @@ supervisorctl&gt; reload
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">gin</a>
+                <a href="javascript:void(0)" class="js-tag color2">oauth2</a>
               </li>
             
             <div class="clearfix"></div>

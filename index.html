@@ -413,22 +413,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>对象池模式：实例化并维护一组相同类型的对象实例；</p>
-<p>Object Pool Pattern</p>
-<p>The object pool creational design pattern is used to prepare and keep multiple instances according to the demand expectation.</p>
-<p>对象池创建型设计模式是用来准备和保存多个实例根据需求预测。</p>
-<p>Implementation<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> pool</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Pool <span class="keyword">chan</span> *Object</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">New</span><span class="params">(total <span class="keyword">int</span>)</span> *<span class="title">Pool</span></span> &#123;</span><br><span class="line">	p := <span class="built_in">make</span>(Pool, total)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; total; i++ &#123;</span><br><span class="line">		p &lt;- <span class="built_in">new</span>(Object)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> &amp;p</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>Usage</p>
-<p>Given below is a simple lifecycle example on an object pool.</p>
-<p>下面是对象池中的简单生命周期示例。</p>
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">p := pool.New(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> &#123;</span><br><span class="line"><span class="keyword">case</span> obj := &lt;-p:</span><br><span class="line">	obj.Do( <span class="comment">/*...*/</span> )</span><br><span class="line"></span><br><span class="line">	p &lt;- obj</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">	<span class="comment">// No more objects left — retry later or fail</span></span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Rules of Thumb</p>
-<p>Object pool pattern is useful in cases where object initialization is more expensive than the object maintenance.</p>
-<p>If there are spikes in demand as opposed to a steady demand, the maintenance overhead might overweigh the benefits of an object pool.</p>
-<p>It has positive effects on performance due to objects being initialized beforehand.</p>
-<p>对象池模式在对象初始化比对象维护更昂贵的情况下非常有用。</p>
-<p>如果有需求高峰相对稳定的需求，维护的费用可能会超过一个对象池的好处。</p>
-<p>它预先对对象进行初始化，对性能有积极的影响。</p>
-
+        
+          <a class="article-more-a" href="/2018/02/23/go设计模式-对象池/#more">查看更多...</a>
+        
       
 
       
@@ -721,22 +708,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Publish &amp; Subscribe Messaging Pattern</p>
-<p>发布/订阅消息模式</p>
-<p>Publish-Subscribe is a messaging pattern used to communicate messages between different components without these components knowing anything about each other’s identity.</p>
-<p>发布订阅是一种消息传递模式，用于在不同组件之间传递消息，而不需要知道彼此身份的任何组件。</p>
-<p>It is similar to the Observer behavioral design pattern. The fundamental design principals of both Observer and Publish-Subscribe is the decoupling of those interested in being informed about Event Messages from the informer (Observers or Publishers). Meaning that you don’t have to program the messages to be sent directly to specific receivers.</p>
-<p>它类似于观察者的行为设计模式。观察者和发布订阅的基本设计原则是将那些有意从告密者（观察者或发布者）获知事件消息的人解耦。这意味着你不需要编程直接发送给特定接收者的消息。</p>
-<p>To accomplish this, an intermediary, called a “message broker” or “event bus”, receives published messages, and then routes them on to subscribers.</p>
-<p>为了实现这一点，中介称为“消息代理”或“事件总线”，接收已发布的消息，然后将它们路由到订阅服务器。</p>
-<p>There are three components messages, topics, users.</p>
-<p>有三个组件消息、主题、用户。</p>
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 消息</span></span><br><span class="line"><span class="keyword">type</span> Message <span class="keyword">struct</span> &#123;</span><br><span class="line">    <span class="comment">// Contents </span></span><br><span class="line">    <span class="comment">// 消息内容</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 订阅</span></span><br><span class="line"><span class="keyword">type</span> Subscription <span class="keyword">struct</span> &#123;</span><br><span class="line">	ch <span class="keyword">chan</span>&lt;- Message</span><br><span class="line"></span><br><span class="line">	Inbox <span class="keyword">chan</span> Message</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 发布</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Subscription)</span> <span class="title">Publish</span><span class="params">(msg Message)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> _, ok := &lt;-s.ch; !ok &#123;</span><br><span class="line">		<span class="keyword">return</span> errors.New(<span class="string">"Topic has been closed"</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	s.ch &lt;- msg</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 话题</span></span><br><span class="line"><span class="keyword">type</span> Topic <span class="keyword">struct</span> &#123;</span><br><span class="line">	Subscribers    []Session</span><br><span class="line">	MessageHistory []Message</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 订阅</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Topic)</span> <span class="title">Subscribe</span><span class="params">(uid <span class="keyword">uint64</span>)</span> <span class="params">(Subscription, error)</span></span> &#123;</span><br><span class="line">    <span class="comment">// Get session and create one if it's the first</span></span><br><span class="line">    <span class="comment">// 给第一个获取会话并创建会话.</span></span><br><span class="line">    <span class="comment">// Add session to the Topic &amp; MessageHistory</span></span><br><span class="line">    <span class="comment">// 加入会议的主题和messagehistory</span></span><br><span class="line">    <span class="comment">// Create a subscription</span></span><br><span class="line">    <span class="comment">// 创建一个订阅</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 取消订阅</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Topic)</span> <span class="title">Unsubscribe</span><span class="params">(Subscription)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">	<span class="comment">// Implementation</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 删除</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Topic)</span> <span class="title">Delete</span><span class="params">()</span> <span class="title">error</span></span> &#123;</span><br><span class="line">	<span class="comment">// Implementation</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用户</span></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">    ID <span class="keyword">uint64</span></span><br><span class="line">    Name <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 会话</span></span><br><span class="line"><span class="keyword">type</span> Session <span class="keyword">struct</span> &#123;</span><br><span class="line">    User User</span><br><span class="line">    Timestamp time.Time</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Improvements 改进<br>Events can be published in a parallel fashion by utilizing stackless goroutines.<br>事件可以利用Stackless Goroutines以并行方式发表。</p>
-<p>Performance can be improved by dealing with straggler subscribers by using a buffered inbox and you stop sending events once the inbox is full.<br>性能可以通过处理离散的用户采用缓冲的收件箱，你停止发送事件一旦收件箱是满的改进。</p>
-
+        <p> 将信息传递给订阅者；<br>
+        
+          <a class="article-more-a" href="/2018/02/22/go设计模式-订阅发布模式/#more">查看更多...</a>
+        
       
 
       
@@ -872,7 +847,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -880,7 +855,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -888,7 +863,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">发布android</a>
+                <a href="javascript:void(0)" class="js-tag color2">plugin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -916,6 +895,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">go部署</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
@@ -932,10 +915,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模板</a>
               </li>
              
@@ -944,15 +923,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">go部署</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -960,7 +931,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -968,7 +939,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -980,7 +951,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">easyui</a>
+                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -988,19 +959,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">gin</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
+                <a href="javascript:void(0)" class="js-tag color2">easyui</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1008,11 +967,39 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">gin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">db</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kong</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">oauth2</a>
+                <a href="javascript:void(0)" class="js-tag color4">three.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">webGL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1028,19 +1015,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">db</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">three.js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">webGL</a>
+                <a href="javascript:void(0)" class="js-tag color2">oauth2</a>
               </li>
              
               <li class="article-tag-list-item">

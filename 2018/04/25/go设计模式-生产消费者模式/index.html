@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://crossgit.github.io">
-  <title>关于html5的动画 | 走走停停</title>
+  <title>go设计模式-生产消费者模式 | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="网页上展示动画,不只是html5的动画,还有css和js的 通常有三种变化  移动  渐变  旋转">
-<meta name="keywords" content="html5">
+  <meta name="description" content="转自 https://blog.csdn.net/qwertyupoiuytr/article/details/55101324">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于html5的动画">
-<meta property="og:url" content="http://crossgit.github.io/2017/11/29/关于html5的动画/index.html">
+<meta property="og:title" content="go设计模式-生产消费者模式">
+<meta property="og:url" content="http://crossgit.github.io/2018/04/25/go设计模式-生产消费者模式/index.html">
 <meta property="og:site_name" content="走走停停">
-<meta property="og:description" content="网页上展示动画,不只是html5的动画,还有css和js的 通常有三种变化  移动  渐变  旋转">
+<meta property="og:description" content="转自 https://blog.csdn.net/qwertyupoiuytr/article/details/55101324">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-02T09:58:39.000Z">
+<meta property="og:updated_time" content="2018-04-25T03:41:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于html5的动画">
-<meta name="twitter:description" content="网页上展示动画,不只是html5的动画,还有css和js的 通常有三种变化  移动  渐变  旋转">
+<meta name="twitter:title" content="go设计模式-生产消费者模式">
+<meta name="twitter:description" content="转自 https://blog.csdn.net/qwertyupoiuytr/article/details/55101324">
   
     <link rel="alternative" href="/atom.xml" title="走走停停" type="application/atom+xml">
   
@@ -147,117 +146,29 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-关于html5的动画" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-go设计模式-生产消费者模式" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      关于html5的动画
+      go设计模式-生产消费者模式
     </h1>
   
 
         
-        <a href="/2017/11/29/关于html5的动画/" class="archive-article-date">
-  	<time datetime="2017-11-29T09:54:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-29</time>
+        <a href="/2018/04/25/go设计模式-生产消费者模式/" class="archive-article-date">
+  	<time datetime="2018-04-25T03:40:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>网页上展示动画,不只是html5的动画,还有css和js的</p>
-<p>通常有三种变化</p>
-<ul>
-<li><p>移动</p>
-</li>
-<li><p>渐变</p>
-</li>
-<li><p>旋转</p>
-</li>
-</ul>
+        <p>转自 <a href="https://blog.csdn.net/qwertyupoiuytr/article/details/55101324" target="_blank" rel="noopener">https://blog.csdn.net/qwertyupoiuytr/article/details/55101324</a></p>
 <a id="more"></a>
-<h3 id="html5的动画"><a href="#html5的动画" class="headerlink" title="html5的动画"></a>html5的动画</h3><blockquote>
-<p>这里就是 canvas 了,主要分几种</p>
-</blockquote>
-<ul>
-<li><p>初始: var cxt=document.getElementById(“myCanvas”).getContext(“2d”);</p>
-</li>
-<li><p>画线:  </p>
-<ul>
-<li><p>ctx.moveTo(x,y) 定义开始点</p>
-</li>
-<li><p>ctx.lineTo(x,y) 定义结束位置</p>
-</li>
-<li><p>ctx.stroke()</p>
-</li>
-</ul>
-</li>
-<li><p>画圆</p>
-<ul>
-<li>xtc.arc(…)</li>
-</ul>
-</li>
-<li><p>渐变</p>
-</li>
-<li><p>放置图像</p>
-<ul>
-<li>xtc.drawImage(img,x,y)</li>
-</ul>
-</li>
-<li><h3 id="css-css3的动画"><a href="#css-css3的动画" class="headerlink" title="css/css3的动画"></a>css/css3的动画</h3></li>
-<li><p>根据hover来写不同的样式</p>
-</li>
-<li><p>2d和3d旋转处理</p>
-</li>
-<li><p>过度 transition</p>
-</li>
-<li><p>动画 animation ,以及 @keyframes</p>
-</li>
-</ul>
-<h3 id="js的动画-一般用来处理数字变化-进度条-一些简单的东西"><a href="#js的动画-一般用来处理数字变化-进度条-一些简单的东西" class="headerlink" title="js的动画,一般用来处理数字变化,进度条,一些简单的东西"></a>js的动画,一般用来处理数字变化,进度条,一些简单的东西</h3><blockquote>
-<p>setTimeOut</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"myDiv"</span> style=<span class="string">"background-color: lightblue;width: 0;height: 20px;line-height: 20px;"</span>&gt;<span class="number">0</span>%<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;button id=<span class="string">"btn"</span>&gt;run&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">var timer;</span></span><br><span class="line"><span class="regexp">btn.onclick = function()&#123;</span></span><br><span class="line"><span class="regexp">    clearTimeout(timer);</span></span><br><span class="line"><span class="regexp">    myDiv.style.width = '0';</span></span><br><span class="line"><span class="regexp">    timer = setTimeout(function fn()&#123;</span></span><br><span class="line"><span class="regexp">        if(parseInt(myDiv.style.width) &lt; 500)&#123;</span></span><br><span class="line"><span class="regexp">            myDiv.style.width = parseInt(myDiv.style.width) + 5 + 'px';</span></span><br><span class="line"><span class="regexp">            myDiv.innerHTML =     parseInt(myDiv.style.width)/</span><span class="number">5</span> + <span class="string">'%'</span>;</span><br><span class="line">            timer = setTimeout(fn,<span class="number">16</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            clearTimeout(timer);</span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;,<span class="number">16</span>);</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>setInterval</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"myDiv"</span> style=<span class="string">"background-color: lightblue;width: 0;height: 20px;line-height: 20px;"</span>&gt;<span class="number">0</span>%<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;button id=<span class="string">"btn"</span>&gt;run&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">var timer;</span></span><br><span class="line"><span class="regexp">btn.onclick = function()&#123;</span></span><br><span class="line"><span class="regexp">    clearInterval(timer);</span></span><br><span class="line"><span class="regexp">    myDiv.style.width = '0';</span></span><br><span class="line"><span class="regexp">    timer = setInterval(function()&#123;</span></span><br><span class="line"><span class="regexp">        if(parseInt(myDiv.style.width) &lt; 500)&#123;</span></span><br><span class="line"><span class="regexp">            myDiv.style.width = parseInt(myDiv.style.width) + 5 + 'px';</span></span><br><span class="line"><span class="regexp">            myDiv.innerHTML =     parseInt(myDiv.style.width)/</span><span class="number">5</span> + <span class="string">'%'</span>;    </span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            clearInterval(timer);</span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;,<span class="number">16</span>);</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>requestAnimationFrame</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"myDiv"</span> style=<span class="string">"background-color: lightblue;width: 0;height: 20px;line-height: 20px;"</span>&gt;<span class="number">0</span>%<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;button id=<span class="string">"btn"</span>&gt;run&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">var timer;</span></span><br><span class="line"><span class="regexp">btn.onclick = function()&#123;</span></span><br><span class="line"><span class="regexp">    myDiv.style.width = '0';</span></span><br><span class="line"><span class="regexp">    cancelAnimationFrame(timer);</span></span><br><span class="line"><span class="regexp">    timer = requestAnimationFrame(function fn()&#123;</span></span><br><span class="line"><span class="regexp">        if(parseInt(myDiv.style.width) &lt; 500)&#123;</span></span><br><span class="line"><span class="regexp">            myDiv.style.width = parseInt(myDiv.style.width) + 5 + 'px';</span></span><br><span class="line"><span class="regexp">            myDiv.innerHTML =     parseInt(myDiv.style.width)/</span><span class="number">5</span> + <span class="string">'%'</span>;</span><br><span class="line">            timer = requestAnimationFrame(fn);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            cancelAnimationFrame(timer);</span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="js-控制css的动画-与触发事件"><a href="#js-控制css的动画-与触发事件" class="headerlink" title="js 控制css的动画,与触发事件"></a>js 控制css的动画,与触发事件</h3><ul>
-<li><p>鼠标移动 mouseOver/mouseOut 的切换图片</p>
-</li>
-<li><p>移动端的手势插件 <a href="http://hammerjs.github.io/" target="_blank" rel="noopener">hammer.JS</a></p>
-</li>
-<li><p>直接控制css的js  <a href="https://github.com/rstacruz/jquery.transit" target="_blank" rel="noopener">jquery.transit.js</a>,<a href="http://ricostacruz.com/jquery.transit/" target="_blank" rel="noopener">官网?</a>,注意,先引入jq</p>
-</li>
-</ul>
-<h3 id="svg的动画"><a href="#svg的动画" class="headerlink" title="svg的动画"></a><a href="https://www.w3.org/TR/SVG/paths.html#PathData" target="_blank" rel="noopener">svg</a>的动画</h3><blockquote>
-<p>主要元素</p>
-</blockquote>
-<pre><code>&lt;set&gt;
-&lt;animate&gt;
-&lt;animateColor&gt;
-&lt;animateTransform&gt;
-&lt;animateMotion&gt;
-</code></pre><p>能实现的效果</p>
-<ul>
-<li><p>动画元素的数值属性（X, Y, …）</p>
-</li>
-<li><p>动画属性变换（平移或旋转）</p>
-</li>
-<li><p>动画颜色属性</p>
-</li>
-<li><p>沿着运动路径运动</p>
-</li>
-</ul>
-<blockquote>
-<p>svg 嵌入html</p>
-</blockquote>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"math/rand"</span></span><br><span class="line">    <span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> producer <span class="keyword">struct</span> &#123;</span><br><span class="line">    id <span class="keyword">int</span></span><br><span class="line">    level <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> consumer <span class="keyword">struct</span> &#123;</span><br><span class="line">    id <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义生产的方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p producer)</span> <span class="title">produce</span><span class="params">(inputQ <span class="keyword">chan</span> <span class="keyword">int</span>, waitQ <span class="keyword">chan</span> <span class="keyword">bool</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> x <span class="keyword">int</span></span><br><span class="line">    x = rand.Intn(<span class="number">9</span>) * p.level</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">30</span>; i++ &#123;    <span class="comment">// 每个生产者生产30个产品</span></span><br><span class="line">        inputQ &lt;- x    <span class="comment">// 将产品放入channel</span></span><br><span class="line">        fmt.Println(<span class="string">"[===&gt;] Producer "</span>, p.id, <span class="string">" produced "</span>, x)</span><br><span class="line">        sleepTime := rand.Intn(<span class="number">1000</span>) + <span class="number">1000</span></span><br><span class="line">        time.Sleep(time.Millisecond * time.Duration(sleepTime))    <span class="comment">// 生产者每1~2秒生产一个产品</span></span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Println(<span class="string">"[XXXX] Producer "</span>, p.id, <span class="string">" quit."</span>)</span><br><span class="line">    waitQ &lt;- <span class="literal">true</span>    <span class="comment">// 生产者结束后在等待channel中放入一个信号</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义消费的方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c consumer)</span> <span class="title">consume</span><span class="params">(inputQ <span class="keyword">chan</span> <span class="keyword">int</span>, waitQ <span class="keyword">chan</span> <span class="keyword">bool</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">        <span class="keyword">select</span> &#123;</span><br><span class="line">            <span class="keyword">case</span> x, ok := &lt;- inputQ:</span><br><span class="line">                <span class="keyword">if</span> ok &#123;    <span class="comment">// 判断channel是否关闭了</span></span><br><span class="line">                    fmt.Println(<span class="string">"[&lt;===] Consumer "</span>, c.id, <span class="string">" consumed "</span>, x)</span><br><span class="line">                &#125;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                fmt.Println(<span class="string">"[XXXX] Consumer "</span>, c.id, <span class="string">" quit."</span>)</span><br><span class="line">                waitQ &lt;- <span class="literal">true</span>    <span class="comment">// 消费者结束后在等待channel中放入一个信号</span></span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        sleepTime := rand.Intn(<span class="number">1000</span>) + <span class="number">2000</span></span><br><span class="line">        time.Sleep(time.Millisecond * time.Duration(sleepTime))    <span class="comment">// 消费者每2~3秒消费一个产品</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> pLevels = [<span class="number">8</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">10000</span>, <span class="number">100000</span>, <span class="number">1000000</span>, <span class="number">10000000</span>&#125;    <span class="comment">// 定义不同的Level来区分生产者</span></span><br><span class="line">    <span class="keyword">const</span> producerCount <span class="keyword">int</span> = <span class="number">5</span>    <span class="comment">// 生产者数量</span></span><br><span class="line">    <span class="keyword">const</span> consumerCount <span class="keyword">int</span> = <span class="number">10</span>    <span class="comment">// 消费者数量</span></span><br><span class="line">    <span class="keyword">var</span> inputQ = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>, producerCount * <span class="number">4</span>)    <span class="comment">// 生产队列，存放产品</span></span><br><span class="line">    <span class="keyword">var</span> waitQ = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">bool</span>)    <span class="comment">// 等待队列，用于main方法等待所有消费者结束</span></span><br><span class="line">    <span class="keyword">var</span> producers [producerCount] producer    <span class="comment">// 生产者数组</span></span><br><span class="line">    <span class="keyword">var</span> consumers [consumerCount] consumer    <span class="comment">// 消费者数组</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; producerCount; i++ &#123;</span><br><span class="line">        producers[i] = producer&#123;i, pLevels[i]&#125;    <span class="comment">// 初始化生产者id和Level</span></span><br><span class="line">        <span class="keyword">go</span> producers[i].produce(inputQ, waitQ)    <span class="comment">// 开始生产</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    time.Sleep(time.Second*<span class="number">5</span>)    <span class="comment">// 积累一定产品后再启动消费者</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; consumerCount; i++ &#123;</span><br><span class="line">        consumers[i] = consumer&#123;i&#125;    <span class="comment">// 初始化消费者</span></span><br><span class="line">        <span class="keyword">go</span> consumers[i].consume(inputQ, waitQ)    <span class="comment">// 开始消费</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; (producerCount + consumerCount); i++ &#123;</span><br><span class="line">        &lt;- waitQ    <span class="comment">// 等待所有生产者和消费者结束退出</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fmt.Println(<span class="string">"closed"</span>)</span><br><span class="line">    <span class="built_in">close</span>(inputQ)</span><br><span class="line">    <span class="built_in">close</span>(waitQ)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -287,17 +198,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">html5</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -348,7 +248,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2017/11/29/关于html5的动画/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2018/04/25/go设计模式-生产消费者模式/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -362,18 +262,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/11/29/go的模板/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          go的模板
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/11/26/新浪微博的oauth2-authorize说明/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">新浪微博的oauth2_authorize说明</div>
+    <a href="/2018/04/18/关于elasticsearch/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于elasticsearch</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -389,8 +280,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://crossgit.github.io/2017/11/29/关于html5的动画/", 
-    sourceId: "关于html5的动画",
+    url: "http://crossgit.github.io/2018/04/25/go设计模式-生产消费者模式/", 
+    sourceId: "go设计模式-生产消费者模式",
     productKey: "falsexiangce",
     target: "cloud-tie-wrapper"
   };

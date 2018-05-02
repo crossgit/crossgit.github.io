@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="介绍在docker中的配置,单机安装es 官方入门">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-19T03:48:51.196Z">
+<meta property="og:updated_time" content="2018-04-29T05:20:25.803Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于elasticsearch">
 <meta name="twitter:description" content="介绍在docker中的配置,单机安装es 官方入门">
@@ -188,7 +188,7 @@
 <ul>
 <li>vi elasticsearch.yml</li>
 </ul>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">cluster.name:</span> <span class="string">"docker-cluster"</span></span><br><span class="line"><span class="string">network.host:</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># minimum_master_nodes need to be explicitly set when bound on a public IP</span></span><br><span class="line"><span class="comment"># set to 1 to allow single node clusters</span></span><br><span class="line"><span class="comment"># Details: https://github.com/elastic/elasticsearch/pull/17288</span></span><br><span class="line"><span class="string">discovery.zen.minimum_master_nodes:</span> <span class="number">1</span></span><br><span class="line"><span class="string">xpack.license.self_generated.type:</span> <span class="string">basic</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 跨域设置</span></span><br><span class="line"><span class="string">http.cors.enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="string">http.cors.allow-origin:</span> <span class="string">/.*/</span></span><br><span class="line"><span class="comment"># 一个授权的问题</span></span><br><span class="line"><span class="comment"># http.cors.allow-headers: Authorization </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 好消息是,有安全机制的 x-pack;坏消息是,收费;好消息是,将来的版本可能免费,那么不卸载,到时候开吧.</span></span><br><span class="line"><span class="string">xpack.graph.enabled:</span> <span class="literal">false</span>    <span class="comment">#设置为false以禁用X-Pack图形功能。</span></span><br><span class="line"><span class="string">xpack.ml.enabled:</span> <span class="literal">false</span>       <span class="comment">#设置为false以禁用X-Pack机器学习功能。</span></span><br><span class="line"><span class="string">xpack.monitoring.enabled:</span> <span class="literal">false</span>  <span class="comment">#设置为false以禁用X-Pack监视功能。</span></span><br><span class="line"><span class="string">xpack.reporting.enabled:</span> <span class="literal">false</span>   <span class="comment">#设置为false以禁用X-Pack报告功能。</span></span><br><span class="line"><span class="string">xpack.security.enabled:</span> <span class="literal">false</span>    <span class="comment">#设置为false以禁用X-Pack安全功能。</span></span><br><span class="line"><span class="string">xpack.watcher.enabled:</span> <span class="literal">false</span>    <span class="comment">#设置为false以禁用Watcher。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">cluster.name:</span> <span class="string">"docker-cluster"</span></span><br><span class="line"><span class="string">network.host:</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># minimum_master_nodes need to be explicitly set when bound on a public IP</span></span><br><span class="line"><span class="comment"># set to 1 to allow single node clusters</span></span><br><span class="line"><span class="comment"># Details: https://github.com/elastic/elasticsearch/pull/17288</span></span><br><span class="line"><span class="string">discovery.zen.minimum_master_nodes:</span> <span class="number">1</span></span><br><span class="line"><span class="string">xpack.license.self_generated.type:</span> <span class="string">basic</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 跨域设置</span></span><br><span class="line"><span class="string">http.cors.enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="string">http.cors.allow-origin:</span> <span class="string">/.*/</span></span><br><span class="line"><span class="comment"># 一个授权的问题</span></span><br><span class="line"><span class="comment"># http.cors.allow-headers: Authorization </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 好消息是,有安全机制的 x-pack;坏消息是,收费;好消息是,将来的版本可能免费,那么不卸载,到时候开吧.</span></span><br><span class="line"></span><br><span class="line"><span class="string">xpack.graph.enabled:</span> <span class="literal">false</span>    <span class="comment">#设置为false以禁用X-Pack图形功能。</span></span><br><span class="line"><span class="string">xpack.ml.enabled:</span> <span class="literal">false</span>       <span class="comment">#设置为false以禁用X-Pack机器学习功能。</span></span><br><span class="line"><span class="string">xpack.monitoring.enabled:</span> <span class="literal">false</span>  <span class="comment">#设置为false以禁用X-Pack监视功能。</span></span><br><span class="line"><span class="string">xpack.reporting.enabled:</span> <span class="literal">false</span>   <span class="comment">#设置为false以禁用X-Pack报告功能。</span></span><br><span class="line"><span class="string">xpack.security.enabled:</span> <span class="literal">false</span>    <span class="comment">#设置为false以禁用X-Pack安全功能。通常是加这句,因为其他的还真不能禁止.</span></span><br><span class="line"><span class="string">xpack.watcher.enabled:</span> <span class="literal">false</span>    <span class="comment">#设置为false以禁用Watcher。</span></span><br></pre></td></tr></table></figure>
 <p>有一个<a href="https://github.com/hangxin1940/elasticsearch-cn-out-of-box" target="_blank" rel="noopener">中文版的es</a>,版本旧了些,但是可以了解下 elasticsearch.yml 能做到什么控制.</p>
 <blockquote>
 <p>jvm的配置文件</p>
@@ -486,6 +486,10 @@ docker run -d -p 9100:9100 eshead
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
@@ -494,11 +498,11 @@ docker run -d -p 9100:9100 eshead
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -522,10 +526,6 @@ docker run -d -p 9100:9100 eshead
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
@@ -534,11 +534,7 @@ docker run -d -p 9100:9100 eshead
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">go</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">go部署</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -546,7 +542,11 @@ docker run -d -p 9100:9100 eshead
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color3">go</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">go部署</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -582,7 +582,7 @@ docker run -d -p 9100:9100 eshead
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color4">pdf</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -594,15 +594,19 @@ docker run -d -p 9100:9100 eshead
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">easyui</a>
+                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdf</a>
+                <a href="javascript:void(0)" class="js-tag color2">easyui</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -618,23 +622,11 @@ docker run -d -p 9100:9100 eshead
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">gin</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -650,6 +642,18 @@ docker run -d -p 9100:9100 eshead
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kong</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
@@ -662,15 +666,15 @@ docker run -d -p 9100:9100 eshead
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">three.js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">webGL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kong</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -683,14 +687,6 @@ docker run -d -p 9100:9100 eshead
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">搜集</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">oauth2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -707,6 +703,10 @@ docker run -d -p 9100:9100 eshead
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">echarts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">oauth2</a>
               </li>
             
             <div class="clearfix"></div>

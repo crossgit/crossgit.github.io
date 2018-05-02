@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://crossgit.github.io">
-  <title>Category: go | 走走停停</title>
+  <title>关于elasticsearch2 | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="走走停停">
-<meta property="og:url" content="http://crossgit.github.io/categories/go/index.html">
+  <meta name="description" content="官网上的入门记录,6.2版本">
+<meta name="keywords" content="elasticsearch,elk">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于elasticsearch2">
+<meta property="og:url" content="http://crossgit.github.io/2018/04/29/关于elasticsearch2/index.html">
 <meta property="og:site_name" content="走走停停">
+<meta property="og:description" content="官网上的入门记录,6.2版本">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-29T08:46:28.073Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="走走停停">
+<meta name="twitter:title" content="关于elasticsearch2">
+<meta name="twitter:description" content="官网上的入门记录,6.2版本">
   
     <link rel="alternative" href="/atom.xml" title="走走停停" type="application/atom+xml">
   
@@ -142,124 +147,809 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-关于elasticsearch2" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/02/关于go/" class="archive-article-date">
-  	<time datetime="2017-06-02T03:50:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/02/关于go/">关于go</a>
+    <h1 class="article-title" itemprop="name">
+      关于elasticsearch2
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/04/29/关于elasticsearch2/" class="archive-article-date">
+  	<time datetime="2018-04-29T04:59:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>官网上的入门记录,<a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.2/index.html" target="_blank" rel="noopener">6.2版本</a></p>
+<a id="more"></a>
+<blockquote>
+<p>使用场景</p>
+</blockquote>
+<ul>
+<li><p>您运营一家在线网上商店，让您的客户可以搜索您销售的产品。在这种情况下，您可以使用Elasticsearch来存储您的整个产品目录和库存，并为其提供搜索和自动填充建议。</p>
+</li>
+<li><p>您希望收集日志或交易数据，并且想要分析和挖掘此数据以查找趋势，统计数据，汇总或异常情况。在这种情况下，您可以使用Logstash（Elasticsearch / Logstash / Kibana堆栈的一部分）来收集，汇总和分析数据，然后</p>
+</li>
+<li><p>使用Logstash将此数据提供给Elasticsearch。一旦数据在Elasticsearch中，您就可以运行搜索和聚合来挖掘您感兴趣的任何信息。</p>
+</li>
+<li><p>你运行一个价格提醒平台，它允许精明的顾客指定一条规则，例如“我有兴趣购买特定的电子小工具，并且如果在下个月内，任何供应商的小工具的价格低于$ X，我都会收到通知” 。在这种情况下，您可以缩减供应商价格，将其推入</p>
+</li>
+<li><p>Elasticsearch，并使用其反向搜索（Percolator）功能将价格变动与客户查询进行匹配，并最终在发现匹配时将警报推送给客户。</p>
+</li>
+<li><p>您需要分析/商业智能需求，并且希望快速调查，分析，可视化并针对大量数据提出临时问题（想想数百万或数十亿条记录）。在这种情况下，您可以使用Elasticsearch存储数据，然后使用Kibana（Elasticsearch / Logstash / Kibana堆栈的一部分）来构建自定义仪表板，以便可视化数据对您很重要的各个方面。另外，您可以使用Elasticsearch聚合功能对数据执行复杂的商业智能查询。</p>
+</li>
+</ul>
+<blockquote>
+<p>基本概念</p>
+</blockquote>
+<ul>
+<li>近实时(NRT) Near Realtime</li>
+</ul>
+<p>Elasticsearch是一个接近实时的搜索平台。这意味着从索引文档的时间到可搜索的时间之间存在轻微的延迟（通常为一秒）。</p>
+<ul>
+<li>群集编辑 Clster</li>
+</ul>
+<p>群集是一个或多个节点（服务器）的集合，它们一起保存整个数据，并提供跨所有节点的联合索引和搜索功能。集群由默认名称为“elasticsearch”的唯一名称标识。此名称很重要，因为如果节点设置为通过名称加入群集，则节点只能成为群集的一部分。</p>
+<p>确保不要在不同的环境中重复使用相同的群集名称，否则可能会导致节点加入错误的群集。例如，您可以使用logging-dev，logging-stage以及logging-prod 开发，分段和生产集群。</p>
+<p>请注意，有一个只有一个节点的集群是完全正确的。此外，您还可能拥有多个独立的群集，每个群集都有自己的唯一群集名称。</p>
+<ul>
+<li>节点编辑 Node</li>
+</ul>
+<p>节点是属于集群一部分的单个服务器，存储数据并参与集群的索引和搜索功能。就像一个集群一样，一个节点由一个名称来标识，默认情况下该名称是在启动时分配给节点的随机通用唯一标识符（UUID）。如果您不需要默认值，您可以定义任何您想要的节点名称。此名称对于管理目的非常重要，您需要确定网络中的哪些服务器与Elasticsearch群集中的哪些节点相对应。</p>
+<p>可以将节点配置为按集群名称加入特定集群。默认情况下，每个节点都设置为加入一个名为的群集elasticsearch，这意味着如果启动网络中的多个节点并假设它们可以互相发现，它们将自动形成并加入一个名为的群集elasticsearch。</p>
+<p>在单个群集中，您可以拥有任意数量的节点。此外，如果网络上当前没有其他Elasticsearch节点正在运行，则默认情况下启动单个节点会形成一个名为的新单节点群集elasticsearch。</p>
+<ul>
+<li>索引 Index</li>
+</ul>
+<p>索引是一些具有相似特征的文档集合。例如，您可以拥有客户数据的索引，产品目录的另一个索引以及订单数据的另一个索引。索引由名称（必须全部为小写）标识，并且此名称用于在对其中的文档执行索引，搜索，更新和删除操作时引用索引。</p>
+<p>在单个群集中，您可以根据需要定义多个索引。</p>
+<ul>
+<li>键入 type</li>
+</ul>
+<p>警告<br>在6.0.0中已弃用。<br>请参阅删除映射类型</p>
+<p>一种类型曾经是您的索引的逻辑类别/分区，允许您在同一索引中存储不同类型的文档，例如一种类型的用户，另一种类型的博客文章。不再可能在索引中创建多个类型，并且在更高版本中将删除整个类型的概念。有关更多信息，请参阅移除映射类型。</p>
+<ul>
+<li>文档 Document</li>
+</ul>
+<p>文档是可被索引的基本信息单位。例如，您可以为单个客户提供文档，为单个产品提供另一个文档，为单个订单提供另一个文档。本文档以JSON（JavaScript Object Notation）表示，它是一种无处不在的互联网数据交换格式。</p>
+<p>在索引/类型中，您可以根据需要存储任意数量的文档。请注意，尽管文档实际上驻留在索引中，但实际上文档必须被索引/分配给索引内的类型。</p>
+<ul>
+<li>分片与复制 Shards＆Replicas </li>
+</ul>
+<p>索引可能潜在地存储大量数据，这些数据可能会超出单个节点的硬件限制。例如，占用1TB磁盘空间的十亿份文档的单个索引可能不适合单个节点的磁盘，或者可能太慢而无法单独向单个节点提供搜索请求。</p>
+<p>为了解决这个问题，Elasticsearch提供了将索引细分为多个碎片的功能。当您创建索引时，您可以简单地定义所需的碎片数量。每个分片本身都是一个功能齐全且独立的“索引”，可以在集群中的任何节点上进行托管。</p>
+<p>分片很重要，主要有两个原因：</p>
+<ol>
+<li><p>它允许您水平分割/缩放内容量</p>
+</li>
+<li><p>它允许您跨越分片（可能在多个节点上）分发和并行化操作，从而提高性能/吞吐量<br>分片如何分布的机制以及其文档如何聚合回搜索请求完全由Elasticsearch管理，对用户来说透明。</p>
+</li>
+</ol>
+<p>在任何时候都可能出现故障的网络/云环境中，非常有用并且强烈建议有一个故障切换机制，以防碎片/节点以某种方式脱机或因任何原因而消失。为此，Elasticsearch允许您将索引碎片的一个或多个副本制作为简称为副本碎片或副本。</p>
+<p>复制很重要，主要有两个原因：</p>
+<ol>
+<li><p>它在碎片/节点失败的情况下提供高可用性。由于这个原因，需要注意的是，副本分片永远不会分配到与从中复制的原始/主分片相同的节点上。</p>
+</li>
+<li><p>它允许您扩展搜索量/吞吐量，因为搜索可以在所有副本上并行执行。</p>
+</li>
+</ol>
+<p>总而言之，每个索引可以分成多个分片。索引也可以被复制为零（意味着没有副本）或更多次。一旦复制，每个索引将具有主分片（从中复制的原始分片）和副本分片（主分片的副本）。在创建索引时，可以为每个索引定义分片和副本的数量。在创建索引之后，您可以随时更改动态副本的数量，但您无法在事后更改碎片的数量。</p>
+<p>默认情况下，Elasticsearch中的每个索引都分配了5个主分片和1个副本，这意味着如果您的集群中至少有两个节点，则索引将包含5个主分片和另外5个副本分片（1个完整副本），总共每个索引10个碎片。</p>
+<ul>
+<li>注意</li>
+</ul>
+<p>每个Elasticsearch分片都是一个Lucene索引。您可以在单个Lucene索引中拥有最大数量的文档。截至LUCENE-5843的限制是2,147,483,519（= Integer.MAX_VALUE - 128）文件。您可以使用_cat/shardsAPI 监控分片大小。</p>
+<blockquote>
+<p>安装,特别推荐 docker 安装</p>
+</blockquote>
+<p>Elasticsearch至少需要Java 8.在撰写本文时，建议您使用Oracle JDK 1.8.0_131版。Java安装因平台而异，因此我们不会在这里详细介绍这些细节。Oracle的推荐安装文档可以在Oracle网站上找到。只需要说，在安装Elasticsearch之前，请先运行（然后根据需要安装/升级）来检查您的Java版本：</p>
+<pre><code>java - 版本
+echo $ JAVA_HOME
+</code></pre><p>一旦我们建立了Java，我们就可以下载并运行Elasticsearch。二进制文件可以和www.elastic.co/downloads过去发布的所有版本一起提供。对于每一个版本，你有之间的选择zip或tar归档，一个DEB或RPM包或Windows MSI安装程序包。</p>
+<ul>
+<li>带有tar 的安装示例</li>
+</ul>
+<p>为了简单起见，我们使用tar文件。</p>
+<p>下面我们来下载Elasticsearch 6.2.4 tar：</p>
+<pre><code>curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.4.tar.gz
+</code></pre><p>然后解压缩如下：</p>
+<pre><code>tar -xvf elasticsearch-6.2.4.tar.gz
+</code></pre><p>它会在当前目录中创建一堆文件和文件夹。然后我们进入bin目录，如下所示：</p>
+<pre><code>cd elasticsearch-6.2.4/bin
+</code></pre><p>现在我们准备开始我们的节点和单个集群：</p>
+<pre><code>./elasticsearch
+</code></pre><ul>
+<li>安装Homebrew </li>
+</ul>
+<p>在macOS上，Elasticsearch也可以通过Homebrew安装：</p>
+<pre><code>brew install elasticsearch
+</code></pre><ul>
+<li>MSI Windows Installer 编辑的安装示例</li>
+</ul>
+<p>对于Windows用户，我们推荐使用MSI Installer软件包。该软件包包含一个图形用户界面（GUI），可引导您完成安装过程。</p>
+<p>首先，从<a href="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.4.msi下载Elasticsearch" target="_blank" rel="noopener">https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.4.msi下载Elasticsearch</a> 6.2.4 MSI 。</p>
+<p>然后双击下载的文件启动GUI。在第一个屏幕中，选择部署目录：</p>
+<p>图像/ msi_installer / msi_installer_locations.png<br>然后选择是作为服务安装还是根据需要手动启动Elasticsearch。要与tar示例对齐，请选择不安装为服务：</p>
+<p>图像/ msi_installer / msi_installer_no_service.png<br>对于配置，只需保留默认值即可：</p>
+<p>图像/ msi_installer / msi_installer_configuration.png<br>再次，为了与tar示例一致，请取消选中所有插件以不安装任何插件：</p>
+<p>图像/ msi_installer / msi_installer_plugins.png<br>点击安装按钮后，将安装Elasticsearch：</p>
+<p>图像/ msi_installer / msi_installer_success.png<br>默认情况下，Elasticsearch将安装在%PROGRAMFILES%\Elastic\Elasticsearch。在这里导航并进入bin目录，如下所示：</p>
+<p>与命令提示符：</p>
+<pre><code>cd %PROGRAMFILES%\Elastic\Elasticsearch\bin
+</code></pre><p>使用PowerShell：</p>
+<pre><code>cd $env:PROGRAMFILES\Elastic\Elasticsearch\bin
+</code></pre><p>现在我们准备开始我们的节点和单个集群：</p>
+<pre><code>.\elasticsearch.exe
+</code></pre><ul>
+<li>成功运行节点</li>
+</ul>
+<p>如果安装过程中一切顺利，您应该看到如下所示的一堆消息：</p>
+<pre><code>[2016-09-16T14:17:51,251][INFO ][o.e.n.Node               ] [] initializing ...
+[2016-09-16T14:17:51,329][INFO ][o.e.e.NodeEnvironment    ] [6-bjhwl] using [1] data paths, mounts [[/ (/dev/sda1)]], net usable_space [317.7gb], net total_space [453.6gb], spins? [no], types [ext4]
+[2016-09-16T14:17:51,330][INFO ][o.e.e.NodeEnvironment    ] [6-bjhwl] heap size [1.9gb], compressed ordinary object pointers [true]
+[2016-09-16T14:17:51,333][INFO ][o.e.n.Node               ] [6-bjhwl] node name [6-bjhwl] derived from node ID; set [node.name] to override
+[2016-09-16T14:17:51,334][INFO ][o.e.n.Node               ] [6-bjhwl] version[6.2.4], pid[21261], build[f5daa16/2016-09-16T09:12:24.346Z], OS[Linux/4.4.0-36-generic/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_60/25.60-b23]
+[2016-09-16T14:17:51,967][INFO ][o.e.p.PluginsService     ] [6-bjhwl] loaded module [aggs-matrix-stats]
+[2016-09-16T14:17:51,967][INFO ][o.e.p.PluginsService     ] [6-bjhwl] loaded module [ingest-common]
+[2016-09-16T14:17:51,967][INFO ][o.e.p.PluginsService     ] [6-bjhwl] loaded module [lang-expression]
+[2016-09-16T14:17:51,967][INFO ][o.e.p.PluginsService     ] [6-bjhwl] loaded module [lang-mustache]
+[2016-09-16T14:17:51,967][INFO ][o.e.p.PluginsService     ] [6-bjhwl] loaded module [lang-painless]
+[2016-09-16T14:17:51,967][INFO ][o.e.p.PluginsService     ] [6-bjhwl] loaded module [percolator]
+[2016-09-16T14:17:51,968][INFO ][o.e.p.PluginsService     ] [6-bjhwl] loaded module [reindex]
+[2016-09-16T14:17:51,968][INFO ][o.e.p.PluginsService     ] [6-bjhwl] loaded module [transport-netty3]
+[2016-09-16T14:17:51,968][INFO ][o.e.p.PluginsService     ] [6-bjhwl] loaded module [transport-netty4]
+[2016-09-16T14:17:51,968][INFO ][o.e.p.PluginsService     ] [6-bjhwl] loaded plugin [mapper-murmur3]
+[2016-09-16T14:17:53,521][INFO ][o.e.n.Node               ] [6-bjhwl] initialized
+[2016-09-16T14:17:53,521][INFO ][o.e.n.Node               ] [6-bjhwl] starting ...
+[2016-09-16T14:17:53,671][INFO ][o.e.t.TransportService   ] [6-bjhwl] publish_address {192.168.8.112:9300}, bound_addresses {{192.168.8.112:9300}
+        [2016-09-16T14:17:53,676][WARN ][o.e.b.BootstrapCheck     ] [6-bjhwl] max virtual memory areas vm.max_map_count [65530] likely too low, increase to at least [262144]
+        [2016-09-16T14:17:56,731][INFO ][o.e.h.HttpServer         ] [6-bjhwl] publish_address {192.168.8.112:9200}, bound_addresses {[::1]:9200}, {192.168.8.112:9200}
+        [2016-09-16T14:17:56,732][INFO ][o.e.g.GatewayService     ] [6-bjhwl] recovered [0] indices into cluster_state
+        [2016-09-16T14:17:56,748][INFO ][o.e.n.Node               ] [6-bjhwl] started
+
+没有太多细节，我们可以看到我们的节点名为“6-bjhwl”（在你的案例中将是一组不同的字符）已经开始，并且将它自己选为一个集群中的主节点。现在不要担心主人的意思。这里最重要的是我们在一个集群内启动了一个节点。
+
+如前所述，我们可以覆盖集群或节点名称。这可以在启动Elasticsearch时从命令行完成，如下所示：
+
+        ./elasticsearch -Ecluster.name=my_cluster_name -Enode.name=my_node_name
+
+还请注意标记为http的行，并提供关于我们的节点可到达的HTTP地址（192.168.8.112）和端口（9200）的信息。默认情况下，Elasticsearch使用端口9200来提供对其REST API的访问。如有必要，此端口可配置。
+
+> 探索你的集群
+
+* REST API
+
+现在我们已经启动并运行了节点（和集群），下一步就是了解如何与它进行通信。幸运的是，Elasticsearch提供了一个非常全面和强大的REST API，您可以使用它与群集进行交互。使用API​​可以完成的几件事情如下：
+
+        检查您的群集，节点和索引运行状况，状态和统计信息
+        管理您的群集，节点和索引数据和元数据
+        根据索引执行CRUD（创建，读取，更新和删除）和搜索操作
+        执行高级搜索操作，例如分页，排序，过滤，脚本，聚合等等
+
+ 
+> 群集健康
+
+让我们从一个基本的健康检查开始，我们可以用它来看看我们的集群是如何做的。我们将使用curl来执行此操作，但您可以使用允许您进行HTTP / REST调用的任何工具。假设我们仍然在开启Elasticsearch的同一节点上，并打开另一个命令外壳窗口。
+
+要检查群集健康状况，我们将使用_catAPI。您可以在Kibana的控制台中运行以下命令，方法是 单击“VIEW IN CONSOLE”或curl点击下面的“COPY AS CURL”链接并将其粘贴到终端中。
+
+        GET /_cat/health?v
+
+返回结果
+
+        epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks max_task_wait_time active_shards_percent
+        1475247709 17:01:49  elasticsearch green           1         1      0   0    0    0        0             0                  -                100.0%
+                                                                             
+我们可以看到名为“elasticsearch”的集群处于绿色状态。
+
+无论何时我们要求群集健康，我们要么获得绿色，黄色或红色。
+
+* 绿色 - 一切都很好（群集功能齐全）
+
+* 黄色 - 所有数据都可用，但一些副本尚未分配（群集完全可用）
+
+* 红色 - 某些数据因任何原因不可用（群集部分功能）
+
+* 注：群集为红色时，它将继续提供来自可用碎片的搜索请求，但您可能需要尽快修复它，因为存在未分配的碎片。
+
+同样从上面的回应中，我们可以看到总共有1个节点，并且我们有0个碎片，因为我们还没有数据。请注意，由于我们使用默认集群名称（elasticsearch），并且由于Elasticsearch默认使用单播网络发现来查找同一台计算机上的其他节点，因此您可能会意外启动计算机上的多个节点并使它们全部加入一个集群。在这种情况下，您可能会在上述响应中看到多个节点。
+
+我们也可以得到我们集群中的节点列表，如下所示：
+
+        GET /_cat/nodes?v
+
+返回结果
+
+
+        ip        heap.percent ram.percent cpu load_1m load_5m load_15m node.role master name
+        127.0.0.1           10           5   5    4.46                        mdi      *      PB2SGZY           
+                        
+在这里，我们可以看到我们的一个名为“PB2SGZY”的节点，它是当前在我们集群中的单个节点。
+
+> 列出所有指数
+
+现在让我们来看看我们的指数：
+
+        GET /_cat/indices?v
+
+返回结果
+
+        health status index uuid pri rep docs.count docs.deleted store.size pri.store.size
+
+这仅仅意味着我们在集群中还没有索引。
+
+> 创建索引
+
+现在让我们创建一个名为“customer”的索引，然后再次列出所有索引：
+
+        PUT /customer?pretty
+        GET /_cat/indices?v
+
+返回结果
+第一个命令使用PUT动词创建名为“customer”的索引。我们简单地追加pretty到调用的最后，告诉它可以很好地打印JSON响应（如果有的话）。
+
+        health status index    uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+        yellow open   customer 95SQ4TSUT7mWBT7VNHH67A   5   1          0            0       260b           260b
+
+第二条命令的结果告诉我们，我们现在有一个名为customer的索引，它有5个主分片和1个副本（默认值），它包含0个文档。
+
+您可能还会注意到客户索引标有黄色健康状况。回想一下我们之前的讨论，黄色意味着一些副本没有（尚未）分配。这个索引发生这种情况的原因是因为Elasticsearch默认为这个索引创建了一个副本。由于此刻我们只有一个节点正在运行，因此只有在其他节点加入群集的时间点之后才能分配一个副本（以获得高可用性）。一旦该副本被分配到第二个节点上，该索引的健康状态将变为绿色。
+
+> 索引和查询文档
+
+现在让我们把一些东西放入我们的客户索引。我们会将一个简单的客户文档编入客户索引，ID为1，如下所示：
+
+        PUT /customer/_doc/1?pretty
+        {
+        "name": "John Doe"
+        }
+
+
+返回结果
+
+        {
+            "_index" : "customer",
+             "_type" : "_doc",
+            "_id" : "1",
+            "_version" : 1,
+            "result" : "created",
+            "_shards" : {
+                "total" : 2,
+                "successful" : 1,
+                "failed" : 0
+            },
+            "_seq_no" : 0,
+            "_primary_term" : 1
+        }                               
+
+从上面，我们可以看到客户索引中成功创建了新的客户文档。该文档的内部ID为1，我们在索引时指定。
+
+重要的是要注意，Elasticsearch并不要求您在将文档编入索引之前先显式创建索引。在前面的例子中，Elasticsearch会自动创建客户索引，如果事先不存在的话。
+
+现在让我们检索我们刚编入索引的文档：
+
+        GET /customer/_doc/1?pretty
+
+返回结果
+
+        {
+            "_index" : "customer",
+            "_type" : "_doc",
+            "_id" : "1",
+            "_version" : 1,
+            "found" : true,
+            "_source" : { "name": "John Doe" }
+        }
+
+除了字段之外，没有什么不同之处found，我们找到了一个具有所请求的ID 1和另一个字段的_source文档，它返回了我们从上一步编入索引的完整JSON文档。
+
+> 删除索引
+
+现在让我们删除刚刚创建的索引，然后再次列出所有索引：
+
+        DELETE /customer?pretty
+        GET /_cat/indices?v
+
+返回
+
+        health status index uuid pri rep docs.count docs.deleted store.size pri.store.size
+
+这意味着索引已成功删除，现在我们回到我们在集群中没有任何内容的地方。
+
+在我们继续之前，让我们再仔细看看迄今为止学到的一些API命令：
+
+        PUT /customer
+        PUT /customer/_doc/1
+        {
+            "name": "John Doe"
+        }
+        GET /customer/_doc/1
+        DELETE /customer
+
+如果我们仔细研究上述命令，我们实际上可以看到我们如何在Elasticsearch中访问数据的模式。该模式可以概括如下：
+
+        <rest verb=""> /<index>/<type>/<id>
+
+这种REST访问模式在所有API命令中都非常普遍，如果你可以简单地记住它，你将在掌握Elasticsearch方面有一个良好的开端。
+
+> 修改数据
+
+Elasticsearch几乎实时提供数据操作和搜索功能。默认情况下，从索引/更新/删除数据开始，直到它出现在搜索结果中的时间，您可以预计会有一秒的延迟（刷新间隔）。这是与SQL等其他平台的重要区别，其中数据在事务完成后立即可用。
+
+索引/替换文档编辑
+我们以前见过我们如何索引单个文档。让我们再次回忆起那个命令：
+
+        PUT /customer/_doc/1?pretty
+        {
+        "name": "John Doe"
+        }
+
+再次，上面将索引指定的文件到客户索引中，ID为1.如果我们接着用不同的（或相同的）文件再次执行上述命令，Elasticsearch将取代（即重新索引）一个新文档现有的ID为1：
+
+        PUT /customer/_doc/1?pretty
+        {
+        "name": "Jane Doe"
+        }
+
+以上内容将ID为1的文档的名称从“John Doe”更改为“Jane Doe”。另一方面，如果我们使用不同的ID，则新文档将被编入索引，并且索引中已存在的文档将保持不变。
+
+        PUT /customer/_doc/2?pretty
+        {
+        "name": "Jane Doe"
+        }           
+
+以上索引ID为2的新文档。
+
+索引时，ID部分是可选的。如果未指定，Elasticsearch将生成一个随机ID，然后使用它来索引文档。作为索引API调用的一部分，将返回实际的ID Elasticsearch生成（或我们在前面的示例中明确指定的内容）。
+
+此示例显示如何在没有显式ID的情况下为文档建立索引：
+
+        POST /customer/_doc?pretty
+        {
+        "name": "Jane Doe"
+        }
+
+请注意，在上述情况下，我们使用的是POST动词而不是PUT，因为我们没有指定ID。
+
+> 更新文档
+
+除了能够索引和替换文档之外，我们还可以更新文档。但请注意，Elasticsearch实际上并没有在原地进行就地更新。无论何时我们进行更新，Elasticsearch都会删除旧文档，然后用一次性应用更新索引新文档。
+
+此示例显示如何通过将名称字段更改为“Jane Doe”来更新我们以前的文档（ID为1）：
+
+        POST /customer/_doc/1/_update?pretty
+        {
+            "doc": { "name": "Jane Doe" }
+        }
+
+此示例显示如何通过将名称字段更改为“Jane Doe”并同时向其添加年龄字段来更新我们以前的文档（ID为1）：
+
+        POST /customer/_doc/1/_update?pretty
+        {
+        "doc": { "name": "Jane Doe", "age": 20 }
+        }
+         
+更新也可以通过使用简单的脚本来执行。本示例使用脚本将年龄增加5：
+
+        POST /customer/_doc/1/_update?pretty
+        {
+        "script" : "ctx._source.age += 5"
+        }
+     
+在上面的例子中，ctx._source引用了即将更新的当前源文档。
+
+Elasticsearch提供了在给定查询条件（如SQL UPDATE-WHERE语句）的情况下更新多个文档的功能。请参阅docs-update-by-queryAPI
+
+> 删除文档
+
+删除文档相当简单。此示例显示如何删除以前的客户，其ID为2：
+
+        DELETE /customer/_doc/2?pretty
+
+查看_delete_by_queryAPI以删除与特定查询匹配的所有文档。值得注意的是，删除整个索引而不是使用Delete By Query API删除所有文档会更有效率。
+
+> 批处理
+
+除了能够索引，更新和删除单个文档之外，Elasticsearch还提供了使用_bulkAPI批量执行上述任何操作的功能。此功能非常重要，因为它提供了一种非常高效的机制，尽可能快地完成多项操作，尽可能少的网络往返。
+
+作为一个简单的例子，以下调用在一次批量操作中索引两个文档（ID 1 - John Doe和ID 2 - Jane Doe）：
+
+        POST /customer/_doc/_bulk?pretty
+        {"index":{"_id":"1"}}
+{&quot;name&quot;: &quot;John Doe&quot; }
+{&quot;index&quot;:{&quot;_id&quot;:&quot;2&quot;}}
+{&quot;name&quot;: &quot;Jane Doe&quot; }
+</id></type></index></rest></code></pre><p>本示例更新第一个文档（ID为1），然后在一次批量操作中删除第二个文档（ID为2）：</p>
+<pre><code>POST /customer/_doc/_bulk?pretty
+{&quot;update&quot;:{&quot;_id&quot;:&quot;1&quot;}}
+{&quot;doc&quot;: { &quot;name&quot;: &quot;John Doe becomes Jane Doe&quot; } }
+{&quot;delete&quot;:{&quot;_id&quot;:&quot;2&quot;}}
+</code></pre><p>请注意，对于删除操作，后面没有对应的源文档，因为删除操作只需要删除文档的标识。</p>
+<p>批量API不会因其中一个操作失败而失败。如果一个动作因任何原因失败，它将继续处理其后的其余动作。当批量API返回时，它将为每个操作提供一个状态（按照它发送的相同顺序），以便您可以检查特定操作是否失败。</p>
+<blockquote>
+<p>探索数据</p>
+</blockquote>
+<ul>
+<li>样本数据集编辑</li>
+</ul>
+<p>现在我们已经对基础知识进行了一瞥，让我们试着研究一个更真实的数据集。我准备了一个关于客户银行账户信息的虚构JSON文档样本。每个文档都有以下模式：</p>
+<pre><code>{
+    &quot;account_number&quot;: 0,
+    &quot;balance&quot;: 16623,
+    &quot;firstname&quot;: &quot;Bradshaw&quot;,
+    &quot;lastname&quot;: &quot;Mckenzie&quot;,
+    &quot;age&quot;: 29,
+    &quot;gender&quot;: &quot;F&quot;,
+    &quot;address&quot;: &quot;244 Columbus Place&quot;,
+    &quot;employer&quot;: &quot;Euron&quot;,
+    &quot;email&quot;: &quot;bradshawmckenzie@euron.com&quot;,
+    &quot;city&quot;: &quot;Hobucken&quot;,
+    &quot;state&quot;: &quot;CO&quot;
+}                           
+</code></pre><p>为了好奇，这些数据是使用生成的www.json-generator.com/，所以请忽略数据的实际值和语义，因为这些数据都是随机生成的。</p>
+<ul>
+<li>加载示例数据集编辑</li>
+</ul>
+<p>您可以从这里下载示例数据集（accounts.json）。将它解压缩到我们当前的目录，并按照如下所示将它加载到我们的集群中：</p>
+<pre><code>curl -H &quot;Content-Type: application/json&quot; -XPOST &quot;localhost:9200/bank/_doc/_bulk?pretty&amp;refresh&quot; --data-binary &quot;@accounts.json&quot;
+curl &quot;localhost:9200/_cat/indices?v&quot;
+</code></pre><p>返回</p>
+<pre><code>health status index uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+yellow open   bank  l7sSYV2cQXmu6_4rJWVIww   5   1       1000            0    128.6kb        128.6kb
+</code></pre><p>这意味着我们只是成功地将1000个文件批量索引到银行索引（在该_doc类型下）。</p>
+<blockquote>
+<p>搜索的API</p>
+</blockquote>
+<p>现在让我们开始一些简单的搜索。有运行检索两种基本方式：一种是通过发送搜索参数REST请求URI和其他通过发送他们REST请求主体。请求主体方法允许您更具表现力，并以更具可读性的JSON格式定义您的搜索。我们将尝试请求URI方法的一个示例，但在本教程的其余部分中，我们将专门使用请求主体方法。</p>
+<p>用于搜索的REST API可以从_search端点访问。本示例返回银行索引中的所有文档：</p>
+<pre><code>GET /bank/_search?q=*&amp;sort=account_number:asc&amp;pretty
+</code></pre><p>首先解析搜索调用。我们_search在银行索引中搜索（端点），并且该q=*参数指示Elasticsearch匹配索引中的所有文档。该sort=account_number:asc参数表示account_number按升序使用每个文档的字段对结果进行排序。该pretty参数同样告诉Elasticsearch返回漂亮的JSON结果。</p>
+<p>答案（部分显示）：</p>
+<pre><code>{
+&quot;took&quot; : 63,
+&quot;timed_out&quot; : false,
+&quot;_shards&quot; : {
+    &quot;total&quot; : 5,
+    &quot;successful&quot; : 5,
+    &quot;skipped&quot; : 0,
+    &quot;failed&quot; : 0
+},
+&quot;hits&quot; : {
+    &quot;total&quot; : 1000,
+    &quot;max_score&quot; : null,
+    &quot;hits&quot; : [ {
+    &quot;_index&quot; : &quot;bank&quot;,
+    &quot;_type&quot; : &quot;_doc&quot;,
+    &quot;_id&quot; : &quot;0&quot;,
+    &quot;sort&quot;: [0],
+    &quot;_score&quot; : null,
+    &quot;_source&quot; : {&quot;account_number&quot;:0,&quot;balance&quot;:16623,&quot;firstname&quot;:&quot;Bradshaw&quot;,&quot;lastname&quot;:&quot;Mckenzie&quot;,&quot;age&quot;:29,&quot;gender&quot;:&quot;F&quot;,&quot;address&quot;:&quot;244 Columbus Place&quot;,&quot;employer&quot;:&quot;Euron&quot;,&quot;email&quot;:&quot;bradshawmckenzie@euron.com&quot;,&quot;city&quot;:&quot;Hobucken&quot;,&quot;state&quot;:&quot;CO&quot;}
+    }, {
+    &quot;_index&quot; : &quot;bank&quot;,
+    &quot;_type&quot; : &quot;_doc&quot;,
+    &quot;_id&quot; : &quot;1&quot;,
+    &quot;sort&quot;: [1],
+    &quot;_score&quot; : null,
+    &quot;_source&quot; : {&quot;account_number&quot;:1,&quot;balance&quot;:39225,&quot;firstname&quot;:&quot;Amber&quot;,&quot;lastname&quot;:&quot;Duke&quot;,&quot;age&quot;:32,&quot;gender&quot;:&quot;M&quot;,&quot;address&quot;:&quot;880 Holmes Lane&quot;,&quot;employer&quot;:&quot;Pyrami&quot;,&quot;email&quot;:&quot;amberduke@pyrami.com&quot;,&quot;city&quot;:&quot;Brogan&quot;,&quot;state&quot;:&quot;IL&quot;}
+    }, ...
+    ]
+}
+}
+</code></pre><p>至于回应，我们看到以下部分：</p>
+<p>took - Elasticsearch执行搜索的时间（以毫秒为单位）</p>
+<p>timed_out - 告诉我们搜索是否超时</p>
+<p>_shards - 告诉我们搜索了多少碎片，以及搜索碎片成功/失败的次数</p>
+<p>hits - 搜索结果</p>
+<p>hits.total - 符合我们搜索条件的文件总数</p>
+<p>hits.hits - 实际的搜索结果数组（默认为前10个文档）</p>
+<p>hits.sort - 为结果排序键（按分数排序时缺失）</p>
+<p>hits._score并且max_score- 现在忽略这些字段</p>
+<p>以上是使用替代请求主体方法的上述相同的精确搜索：</p>
+<pre><code>GET /bank/_search
+{
+&quot;query&quot;: { &quot;match_all&quot;: {} },
+&quot;sort&quot;: [
+    { &quot;account_number&quot;: &quot;asc&quot; }
+]
+}
+</code></pre><p>这里的区别在于，不是传入q=*URI，而是向_searchAPI 提供JSON风格的查询请求体。我们将在下一节讨论这个JSON查询。</p>
+<p>重要的是要明白，一旦你得到你的搜索结果，Elasticsearch完全完成了请求，并没有维护任何种类的服务器端资源或打开游标到你的结果。这与许多其他平台（例如SQL）形成了鲜明对比，其中您可能最初会首先获得查询结果的部分子集，然后如果您想要获取（或翻阅）其余部分，则必须不断返回服务器的结果使用某种有状态的服务器端游标。</p>
+<blockquote>
+<p>查询介绍</p>
+</blockquote>
+<p>Elasticsearch提供了一种可用于执行查询的JSON式特定于领域的语言。这被称为查询DSL。查询语言非常全面，乍一看可能会让人感到恐慌，但实际学习它的最好方法是从几个基本示例开始。</p>
+<p>回到我们的最后一个例子，我们执行了这个查询：</p>
+<pre><code>GET /bank/_search
+{
+&quot;query&quot;: { &quot;match_all&quot;: {} }
+}
+</code></pre><p>解析上述内容，该query部分告诉我们我们的查询定义是什么，match_all部分仅仅是我们想要运行的查询类型。该match_all查询仅仅是在指定索引的所有文件进行搜索。</p>
+<p>除了query参数外，我们还可以传递其他参数来影响搜索结果。在上面我们传入的部分的例子中 sort，我们传入size：</p>
+<pre><code>GET /bank/_search
+{
+&quot;query&quot;: { &quot;match_all&quot;: {} },
+&quot;size&quot;: 1
+}
+</code></pre><p>请注意，如果size未指定，则默认为10。</p>
+<p>此示例执行a match_all并返回10到19号文档：</p>
+<pre><code>GET /bank/_search
+{
+&quot;query&quot;: { &quot;match_all&quot;: {} },
+&quot;from&quot;: 10,
+&quot;size&quot;: 10
+}
+</code></pre><p>在from（从0开始）参数规定了从启动该文件的索引和size参数指定了多少文件，返回从参数开始的。此功能在实现分页搜索结果时非常有用。请注意，如果from未指定，则默认为0。</p>
+<p>此示例match_all按帐户余额按降序排列结果并对结果进行排序，并返回前10个（默认大小）文档。</p>
+<pre><code>GET /bank/_search
+{
+&quot;query&quot;: { &quot;match_all&quot;: {} },
+&quot;sort&quot;: { &quot;balance&quot;: { &quot;order&quot;: &quot;desc&quot; } }
+}
+</code></pre><blockquote>
+<p>执行搜索</p>
+</blockquote>
+<p>现在我们已经看到了一些基本的搜索参数，让我们进一步深入查询DSL。我们先来看看返回的文档字段。默认情况下，完整的JSON文档作为所有搜索的一部分返回。这被称为源（_source搜索匹配中的字段）。如果我们不希望整个源文档返回，我们有能力只需要返回源内的几个字段。</p>
+<p>这个例子展示了如何从搜索中返回两个字段account_number和balance（在_source）之内：</p>
+<pre><code>GET /bank/_search
+{
+&quot;query&quot;: { &quot;match_all&quot;: {} },
+&quot;_source&quot;: [&quot;account_number&quot;, &quot;balance&quot;]
+}
+</code></pre><p>请注意，上述示例只是简化了_source字段。它仍然只会返回一个名为场_source，但在其内，只有田account_number和balance也包括在内。</p>
+<p>如果您来自SQL背景，则上述内容在概念上与SQL SELECT FROM字段列表有些相似。</p>
+<p>现在让我们继续查询部分。以前，我们已经看过match_all查询如何用来匹配所有文档。现在让我们来介绍一个称为match查询的新查询，它可以被看作是基本的搜索查询（即针对特定字段或字段集合进行的搜索）。</p>
+<p>此示例返回编号为20的帐户：</p>
+<pre><code>GET /bank/_search
+{
+&quot;query&quot;: { &quot;match&quot;: { &quot;account_number&quot;: 20 } }
+}
+</code></pre><p>此示例返回地址中包含术语“mill”的所有帐户：</p>
+<pre><code>GET /bank/_search
+{
+&quot;query&quot;: { &quot;match&quot;: { &quot;address&quot;: &quot;mill&quot; } }
+}
+</code></pre><p>本示例返回地址中包含术语“磨坊”或“巷道”的所有帐户：</p>
+<pre><code>GET /bank/_search
+{
+&quot;query&quot;: { &quot;match&quot;: { &quot;address&quot;: &quot;mill lane&quot; } }
+}
+</code></pre><p>这个例子是match（match_phrase）的一个变体，它返回地址中包含短语“mill lane”的所有帐户：</p>
+<pre><code>GET /bank/_search
+{
+&quot;query&quot;: { &quot;match_phrase&quot;: { &quot;address&quot;: &quot;mill lane&quot; } }
+}
+</code></pre><p>现在我们来介绍一下这个bool查询。该bool查询允许我们撰写较小的查询到使用布尔逻辑更大的查询。</p>
+<p>本示例组成两个match查询并返回地址中包含“mill”和“lane”的所有帐户：</p>
+<pre><code>GET /bank/_search
+{
+    &quot;query&quot;: {
+        &quot;bool&quot;: {
+        &quot;must&quot;: [
+            { &quot;match&quot;: { &quot;address&quot;: &quot;mill&quot; } },
+            { &quot;match&quot;: { &quot;address&quot;: &quot;lane&quot; } }
+        ]
+        }
+    }
+}
+</code></pre><p>在上面的例子中，该bool must子句指定了所有必须为真才能将文档视为匹配的查询。</p>
+<p>相反，此示例组成两个match查询并返回地址中包含“mill”或“lane”的所有帐户：</p>
+<pre><code>GET /bank/_search
+{
+&quot;query&quot;: {
+    &quot;bool&quot;: {
+    &quot;should&quot;: [
+        { &quot;match&quot;: { &quot;address&quot;: &quot;mill&quot; } },
+        { &quot;match&quot;: { &quot;address&quot;: &quot;lane&quot; } }
+    ]
+    }
+}
+}
+</code></pre><p>在上面的例子中，该bool should子句指定了一个查询列表，其中任何一个查询都必须是真实的，以使文档被视为匹配。</p>
+<p>此示例组成两个match查询并返回地址中既不包含“mill”也包含“lane”的所有帐户：</p>
+<pre><code>GET /bank/_search
+{
+&quot;query&quot;: {
+    &quot;bool&quot;: {
+    &quot;must_not&quot;: [
+        { &quot;match&quot;: { &quot;address&quot;: &quot;mill&quot; } },
+        { &quot;match&quot;: { &quot;address&quot;: &quot;lane&quot; } }
+    ]
+    }
+}
+}
+</code></pre><p>在上面的例子中，该bool must_not子句指定了一个查询列表，其中任何一个查询都不应该被视为匹配的文档。</p>
+<p>我们可以在一个查询中同时结合must，should和must_not子句bool。此外，我们可以bool在任何这些bool子句中编写查询来模拟任何复杂的多级布尔逻辑。</p>
+<p>此示例返回任何40岁但未居住在ID（aho）的人的所有帐户：</p>
+<pre><code>GET /bank/_search
+{
+    &quot;query&quot;: {
+        &quot;bool&quot;: {
+        &quot;must&quot;: [
+            { &quot;match&quot;: { &quot;age&quot;: &quot;40&quot; } }
+        ],
+        &quot;must_not&quot;: [
+            { &quot;match&quot;: { &quot;state&quot;: &quot;ID&quot; } }
+        ]
+        }
+    }
+}
+</code></pre><blockquote>
+<p>执行过滤器</p>
+</blockquote>
+<p>在上一节中，我们跳过了一个称为文档分数（_score搜索结果中的字段）的细节。分数是一个数值，它是文档与我们指定的搜索查询匹配度的相对度量。分数越高，文档越相关，分数越低，文档的相关性越低。</p>
+<p>但查询并不总是需要产生分数，特别是当它们仅用于“过滤”文档集时。Elasticsearch检测这些情况并自动优化查询执行，以便不计算无用分数。</p>
+<p>我们在前一节中介绍的bool查询还支持filter使用查询来限制将被其他子句匹配的文档的子句，而不会更改计算分数的方式。作为一个例子，我们来介绍一下range查询，它允许我们通过一系列值来过滤文档。这通常用于数字或日期过滤。</p>
+<p>此示例使用bool查询返回余额介于20000和30000之间的所有帐户。换句话说，我们希望查找余额大于或等于20000且小于等于30000的帐户。</p>
+<p>GET /bank/_search<br>{<br>  “query”: {<br>    “bool”: {<br>      “must”: { “match_all”: {} },<br>      “filter”: {<br>        “range”: {<br>          “balance”: {<br>            “gte”: 20000,<br>            “lte”: 30000<br>          }<br>        }<br>      }<br>    }<br>  }<br>}</p>
+<p>解析上述内容，bool查询包含match_all查询（查询部分）和range查询（过滤器部分）。我们可以将任何其他查询替换为查询和过滤器部分。在上述情况下，范围查询非常有意义，因为落入该范围的文档全部匹配“平等”，即没有文档比另一个文档更相关。</p>
+<p>除了match_all，match，bool，和range查询，有很多可用的其他查询类型的，我们不会进入他们在这里。由于我们已经对其工作原理有了基本的了解，因此将这些知识应用于学习和试用其他查询类型应该不会太困难。</p>
+<blockquote>
+<p>执行聚合</p>
+</blockquote>
+<p>聚合提供了从数据中分组和提取统计数据的功能。考虑聚合的最简单方法是将其大致等同于SQL GROUP BY和SQL聚合函数。在Elasticsearch中，您可以执行返回匹配的搜索，同时还可以在一个响应中返回与匹配不同的聚合结果。这是非常强大和高效的，因为您可以运行查询和多个聚合，并使用简洁和简化的API避免网络往返，从而一次性获得两种（或两种）操作的结果。</p>
+<p>首先，此示例按状态对所有帐户进行分组，然后返回按降序（也是默认值）排序的前10个（默认）状态：</p>
+<p>GET /bank/_search<br>{<br>  “size”: 0,<br>  “aggs”: {<br>    “group_by_state”: {<br>      “terms”: {<br>        “field”: “state.keyword”<br>      }<br>    }<br>  }<br>}</p>
+<p>在SQL中，上面的聚合在概念上类似于：</p>
+<p>SELECT state, COUNT(<em>) FROM bank GROUP BY state ORDER BY COUNT(</em>) DESC</p>
+<p>结果:</p>
+<p>{<br>  “took”: 29,<br>  “timed_out”: false,<br>  “_shards”: {<br>    “total”: 5,<br>    “successful”: 5,<br>    “skipped” : 0,<br>    “failed”: 0<br>  },<br>  “hits” : {<br>    “total” : 1000,<br>    “max_score” : 0.0,<br>    “hits” : [ ]<br>  },<br>  “aggregations” : {<br>    “group_by_state” : {<br>      “doc_count_error_upper_bound”: 20,<br>      “sum_other_doc_count”: 770,<br>      “buckets” : [ {<br>        “key” : “ID”,<br>        “doc_count” : 27<br>      }, {<br>        “key” : “TX”,<br>        “doc_count” : 27<br>      }, {<br>        “key” : “AL”,<br>        “doc_count” : 25<br>      }, {<br>        “key” : “MD”,<br>        “doc_count” : 25<br>      }, {<br>        “key” : “TN”,<br>        “doc_count” : 23<br>      }, {<br>        “key” : “MA”,<br>        “doc_count” : 21<br>      }, {<br>        “key” : “NC”,<br>        “doc_count” : 21<br>      }, {<br>        “key” : “ND”,<br>        “doc_count” : 21<br>      }, {<br>        “key” : “ME”,<br>        “doc_count” : 20<br>      }, {<br>        “key” : “MO”,<br>        “doc_count” : 20<br>      } ]<br>    }<br>  }<br>}</p>
+<p>我们可以看到，ID（爱达荷州）有27个账户，其次是TX（德克萨斯州）的27个账户，其次是AL（阿拉巴马州）的25个账户，等等。</p>
+<p>请注意，我们设置size=0为不显示搜索匹配，因为我们只想查看响应中的聚合结果。</p>
+<p>基于以前的汇总，本示例按状态计算平均账户余额（再次仅按按降序顺序排列的前10个州）:</p>
+<p>GET /bank/_search<br>{<br>  “size”: 0,<br>  “aggs”: {<br>    “group_by_state”: {<br>      “terms”: {<br>        “field”: “state.keyword”<br>      },<br>      “aggs”: {<br>        “average_balance”: {<br>          “avg”: {<br>            “field”: “balance”<br>          }<br>        }<br>      }<br>    }<br>  }<br>}</p>
+<p>注意我们如何在average_balance聚合内部嵌套group_by_state聚合。这是所有聚合的通用模式。您可以任意嵌套聚合内的聚合，以便从数据中提取所需的旋转摘要。</p>
+<p>基于以前的汇总，现在让我们按降序对平均余额进行排序：</p>
+<p>GET /bank/_search<br>{<br>  “size”: 0,<br>  “aggs”: {<br>    “group_by_state”: {<br>      “terms”: {<br>        “field”: “state.keyword”,<br>        “order”: {<br>          “average_balance”: “desc”<br>        }<br>      },<br>      “aggs”: {<br>        “average_balance”: {<br>          “avg”: {<br>            “field”: “balance”<br>          }<br>        }<br>      }<br>    }<br>  }<br>}</p>
+<p>这个例子演示了我们如何按年龄段（20-29岁，30-39岁和40-49岁）进行分组，然后按性别进行分组，然后最终得出每个性别的年龄段平均账户余额：</p>
+<p>GET /bank/_search<br>{<br>  “size”: 0,<br>  “aggs”: {<br>    “group_by_age”: {<br>      “range”: {<br>        “field”: “age”,<br>        “ranges”: [<br>          {<br>            “from”: 20,<br>            “to”: 30<br>          },<br>          {<br>            “from”: 30,<br>            “to”: 40<br>          },<br>          {<br>            “from”: 40,<br>            “to”: 50<br>          }<br>        ]<br>      },<br>      “aggs”: {<br>        “group_by_gender”: {<br>          “terms”: {<br>            “field”: “gender.keyword”<br>          },<br>          “aggs”: {<br>            “average_balance”: {<br>              “avg”: {<br>                “field”: “balance”<br>              }<br>            }<br>          }<br>        }<br>      }<br>    }<br>  }<br>}</p>
+<p>还有其他许多聚合功能，我们在这里不会详细介绍。该聚合参考指南是一个很好的起点，如果你想要做进一步的实验。</p>
+<p>最基础的介绍结束</p>
+<hr>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>凑合看吧,有问题github上见.<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">go</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/go/" class="article-tag-list-link color3">go</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/02/go1/" class="archive-article-date">
-  	<time datetime="2017-06-02T03:49:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/02/go1/">go1</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">go</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">elasticsearch</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">go部署</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">elk</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/go/" class="article-tag-list-link color3">go</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://crossgit.github.io/2018/04/29/关于elasticsearch2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/04/25/go设计模式-生产消费者模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">go设计模式-生产消费者模式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://crossgit.github.io/2018/04/29/关于elasticsearch2/", 
+    sourceId: "关于elasticsearch2",
+    productKey: "falsexiangce",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -283,10 +973,10 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: false,
 		root: "/",
 		innerArchive: true,

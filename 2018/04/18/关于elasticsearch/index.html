@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="介绍在docker中的配置,单机安装es 官方入门">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-29T05:20:25.802Z">
+<meta property="og:updated_time" content="2018-08-31T09:52:43.143Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于elasticsearch">
 <meta name="twitter:description" content="介绍在docker中的配置,单机安装es 官方入门">
@@ -176,6 +176,14 @@
 <li><p>运行,自带了三个容器,单机的可以删的剩一个</p>
 <pre><code>docker run -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; docker.elastic.co/elasticsearch/elasticsearch:6.2.3
 集群的所有节点都安装
+
+这里如果要更改配置的时候,难免要重启服务,这样操作的办法就是重新建一个镜像,systemctl是没法用的,如果想systemctl restart xxx
+
+错误提示  
+Failed to get D-Bus connection: Operation not permitted
+
+# 在创建docker容器时添加--privileged 
+docker run --privileged  -ti -e &quot;container=docker&quot;  -v /sys/fs/cgroup:/sys/fs/cgroup  centos  /usr/sbin/init
 </code></pre></li>
 <li><p>配置,假设容器id d999</p>
 <pre><code>docker exec -it d999 bash
@@ -204,7 +212,13 @@
 <li><p>安装一个<a href="https://github.com/medcl/elasticsearch-analysis-ik" target="_blank" rel="noopener">ik插件</a>,分词用</p>
 <pre><code>./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.2.3/elasticsearch-analysis-ik-6.2.3.zip
 
+./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.2.3/elasticsearch-analysis-ik-6.2.3.zip
+
 据说也可以放到plugin 解压, 就好了
+
+docker inspect -f &apos;{{.Id}}&apos; f8744
+
+docker cp  elasticsearch/ xxxxxxxxxxxxxxx:/usr/share/elasticsearch/plugins/ik
 </code></pre></li>
 <li><p>安装 x-pack <a href="http://www.51niux.com/?id=210" target="_blank" rel="noopener">参考1</a>,<a href="https://blog.csdn.net/lh2420124680/article/details/75529384" target="_blank" rel="noopener">参考2</a></p>
 <p>  安装</p>
@@ -486,11 +500,11 @@ docker run -d -p 9100:9100 eshead
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -499,18 +513,6 @@ docker run -d -p 9100:9100 eshead
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">测试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">图形</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -534,11 +536,15 @@ docker run -d -p 9100:9100 eshead
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color3">图形</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
+                <a href="javascript:void(0)" class="js-tag color4">svg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -547,6 +553,14 @@ docker run -d -p 9100:9100 eshead
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">go部署</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -582,7 +596,15 @@ docker run -d -p 9100:9100 eshead
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color2">r</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">scatterplot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">unifrac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,19 +612,7 @@ docker run -d -p 9100:9100 eshead
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">easyui</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -614,11 +624,19 @@ docker run -d -p 9100:9100 eshead
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">gin</a>
+                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">easyui</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -626,19 +644,7 @@ docker run -d -p 9100:9100 eshead
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kong</a>
+                <a href="javascript:void(0)" class="js-tag color4">gin</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -650,11 +656,31 @@ docker run -d -p 9100:9100 eshead
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -666,15 +692,15 @@ docker run -d -p 9100:9100 eshead
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kong</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">three.js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">webGL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -698,15 +724,15 @@ docker run -d -p 9100:9100 eshead
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">oauth2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">d3</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">oauth2</a>
               </li>
             
             <div class="clearfix"></div>

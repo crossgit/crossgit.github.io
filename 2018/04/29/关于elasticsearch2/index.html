@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="走走停停">
 <meta property="og:description" content="官网上的入门记录,6.2版本">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-29T08:46:28.072Z">
+<meta property="og:updated_time" content="2018-09-11T09:10:33.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于elasticsearch2">
 <meta name="twitter:description" content="官网上的入门记录,6.2版本">
@@ -786,29 +786,24 @@ yellow open   bank  l7sSYV2cQXmu6_4rJWVIww   5   1       1000            0    12
 <p>在上一节中，我们跳过了一个称为文档分数（_score搜索结果中的字段）的细节。分数是一个数值，它是文档与我们指定的搜索查询匹配度的相对度量。分数越高，文档越相关，分数越低，文档的相关性越低。</p>
 <p>但查询并不总是需要产生分数，特别是当它们仅用于“过滤”文档集时。Elasticsearch检测这些情况并自动优化查询执行，以便不计算无用分数。</p>
 <p>我们在前一节中介绍的bool查询还支持filter使用查询来限制将被其他子句匹配的文档的子句，而不会更改计算分数的方式。作为一个例子，我们来介绍一下range查询，它允许我们通过一系列值来过滤文档。这通常用于数字或日期过滤。</p>
-<p>此示例使用bool查询返回余额介于20000和30000之间的所有帐户。换句话说，我们希望查找余额大于或等于20000且小于等于30000的帐户。</p>
-<p>GET /bank/_search<br>{<br>  “query”: {<br>    “bool”: {<br>      “must”: { “match_all”: {} },<br>      “filter”: {<br>        “range”: {<br>          “balance”: {<br>            “gte”: 20000,<br>            “lte”: 30000<br>          }<br>        }<br>      }<br>    }<br>  }<br>}</p>
+<p>此示例使用bool查询返回余额介于20000和30000之间的所有帐户。换句话说，我们希望查找余额大于或等于20000且小于等于30000的帐户。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">GET /bank/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;bool&quot;: &#123;</span><br><span class="line">      &quot;must&quot;: &#123; &quot;match_all&quot;: &#123;&#125; &#125;,</span><br><span class="line">      &quot;filter&quot;: &#123;</span><br><span class="line">        &quot;range&quot;: &#123;</span><br><span class="line">          &quot;balance&quot;: &#123;</span><br><span class="line">            &quot;gte&quot;: 20000,</span><br><span class="line">            &quot;lte&quot;: 30000</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>解析上述内容，bool查询包含match_all查询（查询部分）和range查询（过滤器部分）。我们可以将任何其他查询替换为查询和过滤器部分。在上述情况下，范围查询非常有意义，因为落入该范围的文档全部匹配“平等”，即没有文档比另一个文档更相关。</p>
 <p>除了match_all，match，bool，和range查询，有很多可用的其他查询类型的，我们不会进入他们在这里。由于我们已经对其工作原理有了基本的了解，因此将这些知识应用于学习和试用其他查询类型应该不会太困难。</p>
 <blockquote>
 <p>执行聚合</p>
 </blockquote>
 <p>聚合提供了从数据中分组和提取统计数据的功能。考虑聚合的最简单方法是将其大致等同于SQL GROUP BY和SQL聚合函数。在Elasticsearch中，您可以执行返回匹配的搜索，同时还可以在一个响应中返回与匹配不同的聚合结果。这是非常强大和高效的，因为您可以运行查询和多个聚合，并使用简洁和简化的API避免网络往返，从而一次性获得两种（或两种）操作的结果。</p>
-<p>首先，此示例按状态对所有帐户进行分组，然后返回按降序（也是默认值）排序的前10个（默认）状态：</p>
-<p>GET /bank/_search<br>{<br>  “size”: 0,<br>  “aggs”: {<br>    “group_by_state”: {<br>      “terms”: {<br>        “field”: “state.keyword”<br>      }<br>    }<br>  }<br>}</p>
+<p>首先，此示例按状态对所有帐户进行分组，然后返回按降序（也是默认值）排序的前10个（默认）状态：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">GET /bank/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;size&quot;: 0,</span><br><span class="line">  &quot;aggs&quot;: &#123;</span><br><span class="line">    &quot;group_by_state&quot;: &#123;</span><br><span class="line">      &quot;terms&quot;: &#123;</span><br><span class="line">        &quot;field&quot;: &quot;state.keyword&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>在SQL中，上面的聚合在概念上类似于：</p>
 <p>SELECT state, COUNT(<em>) FROM bank GROUP BY state ORDER BY COUNT(</em>) DESC</p>
-<p>结果:</p>
-<p>{<br>  “took”: 29,<br>  “timed_out”: false,<br>  “_shards”: {<br>    “total”: 5,<br>    “successful”: 5,<br>    “skipped” : 0,<br>    “failed”: 0<br>  },<br>  “hits” : {<br>    “total” : 1000,<br>    “max_score” : 0.0,<br>    “hits” : [ ]<br>  },<br>  “aggregations” : {<br>    “group_by_state” : {<br>      “doc_count_error_upper_bound”: 20,<br>      “sum_other_doc_count”: 770,<br>      “buckets” : [ {<br>        “key” : “ID”,<br>        “doc_count” : 27<br>      }, {<br>        “key” : “TX”,<br>        “doc_count” : 27<br>      }, {<br>        “key” : “AL”,<br>        “doc_count” : 25<br>      }, {<br>        “key” : “MD”,<br>        “doc_count” : 25<br>      }, {<br>        “key” : “TN”,<br>        “doc_count” : 23<br>      }, {<br>        “key” : “MA”,<br>        “doc_count” : 21<br>      }, {<br>        “key” : “NC”,<br>        “doc_count” : 21<br>      }, {<br>        “key” : “ND”,<br>        “doc_count” : 21<br>      }, {<br>        “key” : “ME”,<br>        “doc_count” : 20<br>      }, {<br>        “key” : “MO”,<br>        “doc_count” : 20<br>      } ]<br>    }<br>  }<br>}</p>
+<p>结果:<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"took"</span>: <span class="number">29</span>,</span><br><span class="line">  <span class="attr">"timed_out"</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">"_shards"</span>: &#123;</span><br><span class="line">    <span class="attr">"total"</span>: <span class="number">5</span>,</span><br><span class="line">    <span class="attr">"successful"</span>: <span class="number">5</span>,</span><br><span class="line">    <span class="attr">"skipped"</span> : <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"failed"</span>: <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"hits"</span> : &#123;</span><br><span class="line">    <span class="attr">"total"</span> : <span class="number">1000</span>,</span><br><span class="line">    <span class="attr">"max_score"</span> : <span class="number">0.0</span>,</span><br><span class="line">    <span class="attr">"hits"</span> : [ ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"aggregations"</span> : &#123;</span><br><span class="line">    <span class="attr">"group_by_state"</span> : &#123;</span><br><span class="line">      <span class="attr">"doc_count_error_upper_bound"</span>: <span class="number">20</span>,</span><br><span class="line">      <span class="attr">"sum_other_doc_count"</span>: <span class="number">770</span>,</span><br><span class="line">      <span class="attr">"buckets"</span> : [ &#123;</span><br><span class="line">        <span class="attr">"key"</span> : <span class="string">"ID"</span>,</span><br><span class="line">        <span class="attr">"doc_count"</span> : <span class="number">27</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        <span class="attr">"key"</span> : <span class="string">"TX"</span>,</span><br><span class="line">        <span class="attr">"doc_count"</span> : <span class="number">27</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        <span class="attr">"key"</span> : <span class="string">"AL"</span>,</span><br><span class="line">        <span class="attr">"doc_count"</span> : <span class="number">25</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        <span class="attr">"key"</span> : <span class="string">"MD"</span>,</span><br><span class="line">        <span class="attr">"doc_count"</span> : <span class="number">25</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        <span class="attr">"key"</span> : <span class="string">"TN"</span>,</span><br><span class="line">        <span class="attr">"doc_count"</span> : <span class="number">23</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        <span class="attr">"key"</span> : <span class="string">"MA"</span>,</span><br><span class="line">        <span class="attr">"doc_count"</span> : <span class="number">21</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        <span class="attr">"key"</span> : <span class="string">"NC"</span>,</span><br><span class="line">        <span class="attr">"doc_count"</span> : <span class="number">21</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        <span class="attr">"key"</span> : <span class="string">"ND"</span>,</span><br><span class="line">        <span class="attr">"doc_count"</span> : <span class="number">21</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        <span class="attr">"key"</span> : <span class="string">"ME"</span>,</span><br><span class="line">        <span class="attr">"doc_count"</span> : <span class="number">20</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">        <span class="attr">"key"</span> : <span class="string">"MO"</span>,</span><br><span class="line">        <span class="attr">"doc_count"</span> : <span class="number">20</span></span><br><span class="line">      &#125; ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>我们可以看到，ID（爱达荷州）有27个账户，其次是TX（德克萨斯州）的27个账户，其次是AL（阿拉巴马州）的25个账户，等等。</p>
 <p>请注意，我们设置size=0为不显示搜索匹配，因为我们只想查看响应中的聚合结果。</p>
-<p>基于以前的汇总，本示例按状态计算平均账户余额（再次仅按按降序顺序排列的前10个州）:</p>
-<p>GET /bank/_search<br>{<br>  “size”: 0,<br>  “aggs”: {<br>    “group_by_state”: {<br>      “terms”: {<br>        “field”: “state.keyword”<br>      },<br>      “aggs”: {<br>        “average_balance”: {<br>          “avg”: {<br>            “field”: “balance”<br>          }<br>        }<br>      }<br>    }<br>  }<br>}</p>
+<p>基于以前的汇总，本示例按状态计算平均账户余额（再次仅按按降序顺序排列的前10个州）:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">GET /bank/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;size&quot;: 0,</span><br><span class="line">  &quot;aggs&quot;: &#123;</span><br><span class="line">    &quot;group_by_state&quot;: &#123;</span><br><span class="line">      &quot;terms&quot;: &#123;</span><br><span class="line">        &quot;field&quot;: &quot;state.keyword&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;aggs&quot;: &#123;</span><br><span class="line">        &quot;average_balance&quot;: &#123;</span><br><span class="line">          &quot;avg&quot;: &#123;</span><br><span class="line">            &quot;field&quot;: &quot;balance&quot;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>注意我们如何在average_balance聚合内部嵌套group_by_state聚合。这是所有聚合的通用模式。您可以任意嵌套聚合内的聚合，以便从数据中提取所需的旋转摘要。</p>
-<p>基于以前的汇总，现在让我们按降序对平均余额进行排序：</p>
-<p>GET /bank/_search<br>{<br>  “size”: 0,<br>  “aggs”: {<br>    “group_by_state”: {<br>      “terms”: {<br>        “field”: “state.keyword”,<br>        “order”: {<br>          “average_balance”: “desc”<br>        }<br>      },<br>      “aggs”: {<br>        “average_balance”: {<br>          “avg”: {<br>            “field”: “balance”<br>          }<br>        }<br>      }<br>    }<br>  }<br>}</p>
+<p>基于以前的汇总，现在让我们按降序对平均余额进行排序：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">GET /bank/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;size&quot;: 0,</span><br><span class="line">  &quot;aggs&quot;: &#123;</span><br><span class="line">    &quot;group_by_state&quot;: &#123;</span><br><span class="line">      &quot;terms&quot;: &#123;</span><br><span class="line">        &quot;field&quot;: &quot;state.keyword&quot;,</span><br><span class="line">        &quot;order&quot;: &#123;</span><br><span class="line">          &quot;average_balance&quot;: &quot;desc&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;aggs&quot;: &#123;</span><br><span class="line">        &quot;average_balance&quot;: &#123;</span><br><span class="line">          &quot;avg&quot;: &#123;</span><br><span class="line">            &quot;field&quot;: &quot;balance&quot;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这个例子演示了我们如何按年龄段（20-29岁，30-39岁和40-49岁）进行分组，然后按性别进行分组，然后最终得出每个性别的年龄段平均账户余额：</p>
-<p>GET /bank/_search<br>{<br>  “size”: 0,<br>  “aggs”: {<br>    “group_by_age”: {<br>      “range”: {<br>        “field”: “age”,<br>        “ranges”: [<br>          {<br>            “from”: 20,<br>            “to”: 30<br>          },<br>          {<br>            “from”: 30,<br>            “to”: 40<br>          },<br>          {<br>            “from”: 40,<br>            “to”: 50<br>          }<br>        ]<br>      },<br>      “aggs”: {<br>        “group_by_gender”: {<br>          “terms”: {<br>            “field”: “gender.keyword”<br>          },<br>          “aggs”: {<br>            “average_balance”: {<br>              “avg”: {<br>                “field”: “balance”<br>              }<br>            }<br>          }<br>        }<br>      }<br>    }<br>  }<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">GET /bank/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;size&quot;: 0,</span><br><span class="line">  &quot;aggs&quot;: &#123;</span><br><span class="line">    &quot;group_by_age&quot;: &#123;</span><br><span class="line">      &quot;range&quot;: &#123;</span><br><span class="line">        &quot;field&quot;: &quot;age&quot;,</span><br><span class="line">        &quot;ranges&quot;: [</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;from&quot;: 20,</span><br><span class="line">            &quot;to&quot;: 30</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;from&quot;: 30,</span><br><span class="line">            &quot;to&quot;: 40</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;from&quot;: 40,</span><br><span class="line">            &quot;to&quot;: 50</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;aggs&quot;: &#123;</span><br><span class="line">        &quot;group_by_gender&quot;: &#123;</span><br><span class="line">          &quot;terms&quot;: &#123;</span><br><span class="line">            &quot;field&quot;: &quot;gender.keyword&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          &quot;aggs&quot;: &#123;</span><br><span class="line">            &quot;average_balance&quot;: &#123;</span><br><span class="line">              &quot;avg&quot;: &#123;</span><br><span class="line">                &quot;field&quot;: &quot;balance&quot;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>还有其他许多聚合功能，我们在这里不会详细介绍。该聚合参考指南是一个很好的起点，如果你想要做进一步的实验。</p>
 <p>最基础的介绍结束</p>
 <hr>
@@ -1060,11 +1055,11 @@ yellow open   bank  l7sSYV2cQXmu6_4rJWVIww   5   1       1000            0    12
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1073,18 +1068,6 @@ yellow open   bank  l7sSYV2cQXmu6_4rJWVIww   5   1       1000            0    12
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">测试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">图形</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1108,11 +1091,15 @@ yellow open   bank  l7sSYV2cQXmu6_4rJWVIww   5   1       1000            0    12
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color3">图形</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
+                <a href="javascript:void(0)" class="js-tag color4">svg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1121,6 +1108,14 @@ yellow open   bank  l7sSYV2cQXmu6_4rJWVIww   5   1       1000            0    12
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">go部署</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1156,7 +1151,15 @@ yellow open   bank  l7sSYV2cQXmu6_4rJWVIww   5   1       1000            0    12
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color2">r</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">scatterplot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">unifrac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1164,19 +1167,7 @@ yellow open   bank  l7sSYV2cQXmu6_4rJWVIww   5   1       1000            0    12
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">easyui</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1188,11 +1179,19 @@ yellow open   bank  l7sSYV2cQXmu6_4rJWVIww   5   1       1000            0    12
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">gin</a>
+                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">easyui</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1200,19 +1199,7 @@ yellow open   bank  l7sSYV2cQXmu6_4rJWVIww   5   1       1000            0    12
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kong</a>
+                <a href="javascript:void(0)" class="js-tag color4">gin</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1224,11 +1211,31 @@ yellow open   bank  l7sSYV2cQXmu6_4rJWVIww   5   1       1000            0    12
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1240,15 +1247,15 @@ yellow open   bank  l7sSYV2cQXmu6_4rJWVIww   5   1       1000            0    12
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kong</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">three.js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">webGL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1272,15 +1279,15 @@ yellow open   bank  l7sSYV2cQXmu6_4rJWVIww   5   1       1000            0    12
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">oauth2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">d3</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">oauth2</a>
               </li>
             
             <div class="clearfix"></div>

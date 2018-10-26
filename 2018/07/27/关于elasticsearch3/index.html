@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://crossgit.github.io">
   <title>关于elasticsearch3 | 走走停停</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用term filter/query搜索,对搜搜文本不分词直接拿去倒排序索引中匹配.">
+  <meta name="description" content="使用term filter/query搜索,对搜搜文本不分词直接拿去倒排序索引中匹配.  license升级相关">
 <meta name="keywords" content="elasticsearch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于elasticsearch3">
 <meta property="og:url" content="http://crossgit.github.io/2018/07/27/关于elasticsearch3/index.html">
 <meta property="og:site_name" content="走走停停">
-<meta property="og:description" content="使用term filter/query搜索,对搜搜文本不分词直接拿去倒排序索引中匹配.">
+<meta property="og:description" content="使用term filter/query搜索,对搜搜文本不分词直接拿去倒排序索引中匹配.  license升级相关">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-27T09:48:38.091Z">
+<meta property="og:updated_time" content="2018-10-26T10:19:13.877Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于elasticsearch3">
-<meta name="twitter:description" content="使用term filter/query搜索,对搜搜文本不分词直接拿去倒排序索引中匹配.">
+<meta name="twitter:description" content="使用term filter/query搜索,对搜搜文本不分词直接拿去倒排序索引中匹配.  license升级相关">
   
     <link rel="alternative" href="/atom.xml" title="走走停停" type="application/atom+xml">
   
@@ -168,6 +168,52 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>使用term filter/query搜索,对搜搜文本不分词直接拿去倒排序索引中匹配.</p>
+<hr>
+<p>license升级相关</p>
+<a id="more"></a>
+<ul>
+<li><p>docker, 从官网下的镜像,里面的es只有一个月的试用期,30天过后,就会…</p>
+</li>
+<li><p>症状, 看日志</p>
+</li>
+</ul>
+<p>docker logs -f -t –tail 20 cid </p>
+<p>提示类似这样的</p>
+<p>2018-10-26T07:44:35.243941000Z operations are blocked on license expiration. All data operations (read and write) continue to work.<br>2018-10-26T07:44:35.244366000Z If you have a new license, please update it. Otherwise, please reach out to your support contact.<br>2018-10-26T07:44:35.245303000Z [2018-10-26T07:44:35,243][ERROR][o.e.x.m.c.c.ClusterStatsCollector] [aLm0QHX] collector [cluster_stats] failed to collect data<br>2018-10-26T07:44:35.245713000Z org.elasticsearch.ElasticsearchSecurityException: current license is non-compliant for [security]<br>2018-10-26T07:44:35.246193000Z     at org.elasticsearch.license.LicenseUtils.newComplianceException(LicenseUtils.java:35) ~[?:?]<br>2018-10-26T07:44:35.246561000Z     at org.elasticsearch.xpack.security.action.filter.SecurityActionFilter.apply(SecurityActionFilter.java:96) ~[?:?]<br>2018-10-26T07:44:35.247038000Z     at org.elasticsearch.action.support.TransportAction$RequestFilterChain.proceed(TransportAction.java:165) ~[elasticsearch-6.2.4.jar:6.2.4]</p>
+<ul>
+<li>需要升级license ,查看 license 状态</li>
+</ul>
+<p>curl -XGET ‘<a href="http://localhost:9200/_xpack/license" target="_blank" rel="noopener">http://localhost:9200/_xpack/license</a>‘ </p>
+<p>返回的json中,<code>status:expired</code></p>
+<ul>
+<li>一般是free base版本的license</li>
+</ul>
+<blockquote>
+<p>申请和下载 license</p>
+</blockquote>
+<p><a href="https://register.elastic.co/marvel_register" target="_blank" rel="noopener">https://register.elastic.co/marvel_register</a></p>
+<p>然后 填写个人信息,关键是<code>邮箱</code>,提交后,会收到邮件,在邮件里打开下载 license 的链接</p>
+<p>下载相应版本,得到一个json文件</p>
+<blockquote>
+<p>上传新licese, eslicense.json 是文件名</p>
+</blockquote>
+<p>curl -XPUT ‘<a href="http://localhost:9200/_xpack/license?acknowledge=true" target="_blank" rel="noopener">http://localhost:9200/_xpack/license?acknowledge=true</a>‘ -H “Content-Type:application/json” -d @eslicense.json</p>
+<p>返回</p>
+<p>{“acknowledged”:true,”license_status”:”valid”}%</p>
+<blockquote>
+<p>查看状态 </p>
+</blockquote>
+<p>curl -XGET ‘<a href="http://localhost:9200/_xpack/license" target="_blank" rel="noopener">http://localhost:9200/_xpack/license</a>‘ </p>
+<p>返回的json中,<code>status:active</code></p>
+<ul>
+<li>需要高端升级,延长原版本</li>
+</ul>
+<p>curl -XPUT ‘<a href="http://localhost:9200/_xpack/license" target="_blank" rel="noopener">http://localhost:9200/_xpack/license</a>‘ -H “Content-Type: application/json” -d @eslicense.json </p>
+<p>返回</p>
+<p>{“acknowledged”:false,”license_status”:”valid”,”acknowledge”:{“message”:”This license update requires acknowledgement. To acknowledge the license, please read the following messages and update the license again, this time with the “acknowledge=true” parameter:”,”marvel”:[“basic”,”Automatic index cleanup is locked to 7 days for clusters with [{}] license.basic”]}}</p>
+<ul>
+<li>然后就可以再用一年</li>
+</ul>
 
       
 
@@ -424,11 +470,23 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
+                <a href="javascript:void(0)" class="js-tag color3">图形</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">svg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -448,15 +506,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">图形</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">svg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -469,10 +519,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">go部署</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -489,6 +535,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">os</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">template</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -528,19 +582,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">pdf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdf</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -552,15 +602,11 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">easyui</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模板</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">template</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -568,11 +614,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">gin</a>
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -584,11 +630,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">eslint</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+                <a href="javascript:void(0)" class="js-tag color4">gin</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,14 +650,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kong</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
@@ -620,11 +658,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kong</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">three.js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">webGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">oauth2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -653,10 +703,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">echarts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">oauth2</a>
               </li>
             
             <div class="clearfix"></div>

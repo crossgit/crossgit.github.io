@@ -144,6 +144,363 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-css布局相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/16/css布局相关/">css布局相关</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/16/css布局相关/" class="archive-article-date">
+  	<time datetime="2018-12-16T12:37:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>来自 <a href="http://zh.learnlayout.com/" target="_blank" rel="noopener">http://zh.learnlayout.com/</a></p>
+        
+          <a class="article-more-a" href="/2018/12/16/css布局相关/#more">查看更多...</a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-lua-redis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/16/lua-redis/">lua-redis</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/16/lua-redis/" class="archive-article-date">
+  	<time datetime="2018-12-16T10:05:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>lua 的eval</p>
+</blockquote>
+<ul>
+<li>script: lua脚本 </li>
+<li>numkeys: key的个数  </li>
+<li>key: redis中数据结构的替代符号 (大写) </li>
+<li>arg: 传入redis中的参数 (大写)</li>
+</ul>
+<p>例如:<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval <span class="string">"return (keys[1],keys[2],argv[1],argv[2])"</span> <span class="number">2</span> username age jack <span class="number">20</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>lua 使用redis 命令: call()  </p>
+</blockquote>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval <span class="string">"return redis.call('set',KEYS[1],'ABCDE')"</span> <span class="number">1</span> name <span class="comment">-- 给name存入了ABCDE</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>EVALSHA 与eval区别: 增加缓存,生成摘要,执行摘要</p>
+</blockquote>
+<ul>
+<li>script flush : 清除所有脚本缓存  </li>
+<li>script exists : 根据跟定脚本的校验,检查指定的脚本是否存在与脚本缓存. </li>
+<li>script load : 将一个脚本装入脚本缓存,<code>返回sha1摘要</code>,但不立即运行.  </li>
+<li>script kill : 杀死当前正在运行的脚本.</li>
+</ul>
+<blockquote>
+<p>reids-cli 的 –eval ,直接执行lua脚本文件.</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-es5设计模式-状态模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/13/es5设计模式-状态模式/">es5设计模式-状态模式</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/13/es5设计模式-状态模式/" class="archive-article-date">
+  	<time datetime="2018-11-13T15:58:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>状态模式  允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。</p>
+        
+          <a class="article-more-a" href="/2018/11/13/es5设计模式-状态模式/#more">查看更多...</a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-es5设计模式-策略模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/13/es5设计模式-策略模式/">es5设计模式-策略模式</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/13/es5设计模式-策略模式/" class="archive-article-date">
+  	<time datetime="2018-11-13T15:49:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>策略模式:定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换.</p>
+        
+          <a class="article-more-a" href="/2018/11/13/es5设计模式-策略模式/#more">查看更多...</a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-es5设计模式-单例模式-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/13/es5设计模式-单例模式-1/">es5设计模式-单例模式</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/13/es5设计模式-单例模式-1/" class="archive-article-date">
+  	<time datetime="2018-11-13T15:33:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>单例模式:确保只有一个实例，并提供全局访问。</p>
+        
+          <a class="article-more-a" href="/2018/11/13/es5设计模式-单例模式-1/#more">查看更多...</a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-es5设计模式-装饰者和代理模式和适配器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/13/es5设计模式-装饰者和代理模式和适配器/">es5设计模式-装饰者和代理模式和适配器</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/13/es5设计模式-装饰者和代理模式和适配器/" class="archive-article-date">
+  	<time datetime="2018-11-13T15:24:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>装饰者模式: 给一个静态或动态对象追加行为；.<br>代理模式:  为其他对象提供一种代理以控制对这个对象的访问。<br>适配器模式: 多个不兼容的接口一起工作.  </p>
+<p> 适配器模式主要用来解决两个已有接口之间不匹配的问题，它不考虑这些接口是怎样实 现的，也不考虑它们将来可能会如何演化。适配器模式不需要改变已有的接口，就能够 使它们协同作用。<br> 装饰者模式和代理模式也不会改变原有对象的接口，但装饰者模式的作用是为了给对象 增加功能。装饰者模式常常形成一条长的装饰链，而适配器模式通常只包装一次。代理 模式是为了控制对对象的访问，通常也只包装一次。<br> 外观模式的作用倒是和适配器比较相似，有人把外观模式看成一组对象的适配器，但外 观模式最显著的特点是定义了一个新的接口。  </p>
+        
+          <a class="article-more-a" href="/2018/11/13/es5设计模式-装饰者和代理模式和适配器/#more">查看更多...</a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-es5设计模式-单例模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/12/es5设计模式-单例模式/">es5设计模式-单例模式</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/12/es5设计模式-单例模式/" class="archive-article-date">
+  	<time datetime="2018-11-12T02:52:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>单例模式:保证一个类仅有一个实例，并提供一个访问它的全局访问点。</p>
+        
+          <a class="article-more-a" href="/2018/11/12/es5设计模式-单例模式/#more">查看更多...</a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-es5设计模式-基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -318,432 +675,9 @@
 
 
   
-    <article id="post-关于elasticsearch6-2-x常用功能目录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/16/关于elasticsearch6-2-x常用功能目录/">关于elasticsearch6.2.x常用功能目录</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/16/关于elasticsearch6-2-x常用功能目录/" class="archive-article-date">
-  	<time datetime="2018-09-16T07:17:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>go 的elasticsearch 开发.</p>
-<p><a href="https://github.com/olivere/elastic" target="_blank" rel="noopener">https://github.com/olivere/elastic</a></p>
-        
-          <a class="article-more-a" href="/2018/09/16/关于elasticsearch6-2-x常用功能目录/#more">查看更多...</a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-关于elasticsearch6-2-x-reindex" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/11/关于elasticsearch6-2-x-reindex/">关于elasticsearch6.2.x__reindex</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/11/关于elasticsearch6-2-x-reindex/" class="archive-article-date">
-  	<time datetime="2018-09-11T09:16:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>reindex</p>
-        
-          <a class="article-more-a" href="/2018/09/11/关于elasticsearch6-2-x-reindex/#more">查看更多...</a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-r-包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/26/r-包/">r-包</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/26/r-包/" class="archive-article-date">
-  	<time datetime="2018-08-26T14:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>reashape2: 数据的重构与整合  </li>
-<li>dplyr: <a href="https://blog.csdn.net/u011253874/article/details/43022835" target="_blank" rel="noopener">数据清洗</a>(感觉作用有限)   </li>
-<li>Rwordseg 分词：使用的是Ansj中文分词工具，基于中科院的ictclas中文分词算法，采用隐马尔科夫模型。可用于人名识别、地名识别、组织机构名识别、多级词性标注、关键词提取等，还可以自己导入自定义词典 </li>
-<li>jiebaR 结巴分词</li>
-<li>library(topicmodels)：LDA主题模型  </li>
-<li>library(RTextTools)  </li>
-<li>library(tm)：Corpus，tm_map，DocumentTermMatrix，findFreqTerms，findAssocs等  </li>
-<li>library(tmcn)：getWordFreq，</li>
-<li>library(proxy)：计算文档余弦相似度  </li>
-<li>wordcloud 词云可视化 </li>
-<li>wordcloud2<br>安装方式install.packages(‘devtools’) devtools::install_github(“lchiffon/wordcloud2”)</li>
-</ul>
-<hr>
-<p>nlp 相关算法<br><a href="https://www.bilibili.com/video/av19324222/?p=6" target="_blank" rel="noopener">视频</a> </p>
-<ul>
-<li>auto encoder  算法  </li>
-<li>Intro  </li>
-<li>CNN4Text </li>
-<li>RNN </li>
-<li>LSTM  </li>
-<li><a href="http://www.sohu.com/a/219168211_633698" target="_blank" rel="noopener">一般步骤</a> </li>
-</ul>
-<hr>
-<p><a href="https://blog.csdn.net/northhan/article/details/72724058" target="_blank" rel="noopener">深度学习</a><br><a href="https://blog.csdn.net/dianacody/article/details/43916229" target="_blank" rel="noopener">机器学习</a><br><a href="https://blog.csdn.net/tMb8Z9Vdm66wH68VX1/article/details/80780573" target="_blank" rel="noopener">数据清洗</a> </p>
-<ul>
-<li>线性回归  </li>
-<li>逻辑回归   </li>
-<li>决策树  </li>
-<li>SVM  </li>
-<li>朴素贝叶斯  </li>
-<li>K最近邻算法  </li>
-<li>K均值算法  </li>
-<li>随机森林算法  </li>
-<li>降维算法  </li>
-<li>Gradient Boost 和 Adaboost 算法  </li>
-</ul>
-<hr>
-<p>问题:</p>
-<p><a href="https://www.cnblogs.com/robert-dlut/p/4371973.html" target="_blank" rel="noopener">NLP 特征选择</a><br>PCA 降维,去中心化,</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-r-scatterplot3d" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/15/r-scatterplot3d/">r_scatterplot3d</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/15/r-scatterplot3d/" class="archive-article-date">
-  	<time datetime="2018-08-15T07:16:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这大概是一个静态三维散点图scatterplot3d包的测试说明,针对PCoA  </p>
-        
-          <a class="article-more-a" href="/2018/08/15/r-scatterplot3d/#more">查看更多...</a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">r</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">scatterplot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">unifrac</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-关于elasticsearch3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/27/关于elasticsearch3/">关于elasticsearch3</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/27/关于elasticsearch3/" class="archive-article-date">
-  	<time datetime="2018-07-27T09:36:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>使用term filter/query搜索,对搜搜文本不分词直接拿去倒排序索引中匹配.</p>
-<hr>
-<p>license升级相关</p>
-        
-          <a class="article-more-a" href="/2018/07/27/关于elasticsearch3/#more">查看更多...</a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">elasticsearch</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-mysql相关问题1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/27/mysql相关问题1/">mysql相关问题1</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/27/mysql相关问题1/" class="archive-article-date">
-  	<time datetime="2018-06-27T09:34:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>MYSQL Statement violates GTID consistency: CREATE TABLE … SELECT. 错误代码： 1786 问题</p>
-</blockquote>
-<p>1、在MYSQL中，执行建表语句时CREATE TABLE  aaaa  AS SELECT * FROM menu;  报：</p>
-<p>  错误代码： 1786<br>Statement violates GTID consistency: CREATE TABLE … SELECT.</p>
-<p>  java后台报：</p>
-<p> Caused by: java.sql.SQLException: Statement violates GTID consistency: CREATE TABLE … SELECT.<br>        at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1073)<br>        at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3597)</p>
-<ul>
-<li><p>解决：</p>
-<p>在my.cnf 中将</p>
-</li>
-</ul>
-<p>gtid_mode = ON<br>enforce_gtid_consistency = ON</p>
-<p>改为</p>
-<p>gtid_mode = OFF<br>enforce_gtid_consistency = OFF</p>
-<p>要两个参数一起改,然后重启mysql，问题解决</p>
-<blockquote>
-<p>mysql的汉字排序</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="string">`table`</span> <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">convert</span>(<span class="string">`name`</span> <span class="keyword">USING</span> gbk) <span class="keyword">COLLATE</span> gbk_chinese_ci <span class="keyword">desc</span>;</span><br></pre></td></tr></table></figure>
-<p>意思就是..把别的类型先转成gbk的再排序</p>
-<blockquote>
-<p>通过mysqlWorkbench,将数据以sql文件导入的几个条件  错误提示<code>MySQL server has gone away</code></p>
-</blockquote>
-<ul>
-<li>文件大的问题</li>
-</ul>
-<p>查看和更改可运行的最大sql</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'%max_allowed_packet'</span>;</span><br><span class="line"><span class="comment">-- 设置 1G</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> max_allowed_packet = <span class="number">1024</span>*<span class="number">1024</span>*<span class="number">1024</span>;</span><br></pre></td></tr></table></figure>
-<p>也可以编辑my.cnf来修改（windows下my.ini）,在[mysqld]段或者mysql的server配置段进行修改。<br>max_allowed_packet = 20M<br>如果找不到my.cnf可以通过<br>mysql –help | grep my.cnf    </p>
-<ul>
-<li>超时的设置 ,在导入大文件sql时可能会遇见</li>
-</ul>
-<p>查看和更改</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看执行次数</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">global</span> <span class="keyword">status</span> <span class="keyword">like</span> <span class="string">'uptime'</span>;</span><br><span class="line"><span class="comment">-- 查看可执行最大时间  wait_timeout 对应的值</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">GLOBAL</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">'%timeout%'</span></span><br><span class="line"><span class="comment">-- 设置最大时间 单位是秒</span></span><br><span class="line"><span class="keyword">SET</span> <span class="keyword">GLOBAL</span> wait_timeout=<span class="number">10000</span></span><br><span class="line"><span class="comment">--</span></span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-go包-全文搜索" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/19/go包-全文搜索/">go包_全文搜索</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/19/go包-全文搜索/" class="archive-article-date">
-  	<time datetime="2018-06-19T03:54:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://tonybai.com/2016/12/06/an-intro-to-wukong-fulltext-search-engine/" target="_blank" rel="noopener">wukong</a></p>
-<p><a href="https://github.com/huichen/zerg" target="_blank" rel="noopener">zerg</a></p>
-<p><a href="https://github.com/huichen" target="_blank" rel="noopener">其他</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -851,15 +785,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">plugin</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">发布ios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -867,11 +797,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -887,6 +813,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
@@ -895,7 +825,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -908,6 +842,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -927,11 +865,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">template</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -943,7 +893,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">http</a>
+                <a href="javascript:void(0)" class="js-tag color4">pdf</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -959,31 +909,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdf</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">jssdk</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">easyui</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1003,15 +933,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">pdfmaker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1019,7 +945,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color2">easyui</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1031,11 +965,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">kong</a>
+                <a href="javascript:void(0)" class="js-tag color3">db</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1044,14 +978,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">webGL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">db</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1067,15 +993,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+                <a href="javascript:void(0)" class="js-tag color3">微信</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">template</a>
+                <a href="javascript:void(0)" class="js-tag color4">公众号</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">oauth2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pgsql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1087,11 +1017,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">微信</a>
+                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">公众号</a>
+                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kong</a>
               </li>
             
             <div class="clearfix"></div>
